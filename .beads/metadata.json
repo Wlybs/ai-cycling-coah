@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "Cycling",
+  "project_id": "01020d2c-060c-43af-ad3d-901a0c066c73"
+}
