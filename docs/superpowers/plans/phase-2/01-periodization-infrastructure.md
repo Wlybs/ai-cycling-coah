@@ -32,9 +32,9 @@ def test_phase_enum_values():
 def test_intensity_tier_ordering():
     tiers = [IntensityTier.REST, IntensityTier.EASY, IntensityTier.MEDIUM,
              IntensityTier.HARD, IntensityTier.RACE_SIM]
-    # 约定：order 由 weight 属性保证
-    weights = [t.weight for t in tiers]
-    assert weights == sorted(weights)
+    # 约定：order 由 ordinal 属性保证
+    ordinals = [t.ordinal for t in tiers]
+    assert ordinals == sorted(ordinals)
 
 def test_session_type_matches_legacy_training_type():
     # 必须与 plan_generator.DayPlan.training_type Literal 一致，ICU 日历同步依赖
@@ -88,7 +88,8 @@ class IntensityTier(str, Enum):
     RACE_SIM = "RACE_SIM"
 
     @property
-    def weight(self) -> int:
+    def ordinal(self) -> int:
+        """相对顺序值，仅用于排序比较，不代表训练负荷（TSS/W 等）。"""
         return {
             "REST": 0,
             "EASY": 1,

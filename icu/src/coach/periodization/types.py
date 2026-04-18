@@ -23,7 +23,8 @@ class IntensityTier(str, Enum):
     RACE_SIM = "RACE_SIM"
 
     @property
-    def weight(self) -> int:
+    def ordinal(self) -> int:
+        """相对顺序值，仅用于排序比较，不代表训练负荷（TSS/W 等）。"""
         return {
             "REST": 0,
             "EASY": 1,
