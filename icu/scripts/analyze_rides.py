@@ -1,12 +1,13 @@
-"""CLI for deep analyzer — single activity, dry-run, replay, or backfill."""
+"""CLI for deep analyzer — single activity, dry-run, replay, or backfill.
+
+API-free: produces `<id>.prompt.md` + `<id>.trace.json` + `summary_latest.json`
+under `coach_memory/deep_analysis/`. The user pastes `<id>.prompt.md` into
+Gemini CLI / Claude Code coach mode to obtain the narrative report.
+"""
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
-
-from dotenv import load_dotenv
-from google import genai
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
@@ -48,15 +49,10 @@ def _load_physiology(memory: Path):
     return bundle
 
 
-def _make_client():
-    load_dotenv(REPO / ".env")
-    return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Deep analyzer CLI")
+    parser = argparse.ArgumentParser(description="Deep analyzer CLI (API-free)")
     parser.add_argument("--activity", help="single activity id")
-    parser.add_argument("--dry-run", action="store_true", help="skip Gemini; print features + relevance + findings")
+    parser.add_argument("--dry-run", action="store_true", help="print features + relevance + activated to stdout without writing files")
     parser.add_argument("--replay", action="store_true", help="re-analyze and overwrite")
     parser.add_argument("--backfill", action="store_true", help="run on all interval/race/climb activities")
     parser.add_argument("--since", help="ISO date for --backfill filter")
@@ -88,14 +84,13 @@ def main():
         }, ensure_ascii=False, indent=2))
         return
 
-    client = _make_client()
     if args.activity:
         activity, streams = load_activity_doc(warehouse, args.activity)
         wbal = _wbal_payload_from_streams(streams, physiology)
         result = analyze_one(
             activity=activity, streams=streams, wbal_series=wbal,
             physiology_bundle=physiology, athlete=athlete, history=[],
-            output_dir=output, client=client,
+            output_dir=output,
         )
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return
@@ -120,7 +115,7 @@ def main():
         analyze_one(
             activity=activity, streams=streams, wbal_series=wbal,
             physiology_bundle=physiology, athlete=athlete, history=[],
-            output_dir=output, client=client,
+            output_dir=output,
         )
 
 

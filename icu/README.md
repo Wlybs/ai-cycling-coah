@@ -1,6 +1,6 @@
 # AI 骑行教练系统
 
-基于 **Intervals.icu** 数据，以 **Gemini CLI** 作为交互式教练，并通过 **Gemini API** 自动生成周训练计划推送到 ICU 日历。内置深度分析（Deep Analyzer）与运动员生理档案（Physiology Profile），使教练对话具备"个体化生理上下文"。
+基于 **Intervals.icu** 数据，以 **Gemini CLI / Claude Code 教练模式** 作为交互式教练。周训练计划与单次骑行深度分析均以 **prompt 文件** 形式产出，用户手动粘贴到教练侧（**不依赖 Gemini API，无需 API Key**）；拿到教练返回的结构化 JSON 后，可再用 `push_plan.py --push --plan-file` 推送到 ICU 日历。内置深度分析（Deep Analyzer）与运动员生理档案（Physiology Profile），使教练对话具备"个体化生理上下文"。
 
 ---
 
@@ -24,11 +24,12 @@ cd /mnt/d/Cycling/icu && gemini
 ### 环境变量（`.env`）
 
 ```ini
-GEMINI_API_KEY=...   # Gemini API Key（仅生成训练计划时消耗额度）
 API_KEY=...          # Intervals.icu → Settings → API
 ATHLETE_ID=i176789
 PROXY_PORT=7897      # 无代理则删除此行
 ```
+
+> **注**：本仓库不再需要 `GEMINI_API_KEY`。训练计划与深度分析均以 prompt 文件形式输出，由用户手动粘贴到 Gemini CLI / Claude Code 教练模式中使用。
 
 > `.env` **不得提交 git**，`.gitignore` 已排除。
 
@@ -49,8 +50,8 @@ scripts/sync_data.py           ← 一键同步（调用所有 sync_*）
        └─▶ scripts/refresh_physiology.py → 生理档案快照
 
 可选：
-  scripts/run_deep_analysis.py  → 对单次骑行做多分析器深挖
-  scripts/push_plan.py          → 用 Gemini API 生成周计划并推送 ICU 日历
+  scripts/run_deep_analysis.py  → 对单次骑行做多分析器深挖（写出 <id>.prompt.md + .trace.json）
+  scripts/push_plan.py          → 生成周计划 prompt 文件；配合 --push --plan-file 推送 ICU 日历
 ```
 
 ---
@@ -63,8 +64,11 @@ scripts/sync_data.py           ← 一键同步（调用所有 sync_*）
   （教练自动读取 coach_memory/ 与生理档案并点评本次骑行）
 
 每周一次：
-  sync_data.py  →  push_plan.py --push
-  （下周计划直接进入 ICU 日历，可选 --delete-existing 覆盖）
+  sync_data.py  →  push_plan.py
+  → 得到 coach_memory/plans/<week>_prompt.md
+  → 复制粘贴到 Gemini CLI / Claude Code 教练模式
+  → 保存返回的结构化 JSON 到文件
+  → push_plan.py --push --plan-file <file>  （可选 --delete-existing 覆盖）
 
 深度复盘（关键骑行后）：
   scripts/run_deep_analysis.py <activity_id>
@@ -152,7 +156,7 @@ scripts/sync_data.py           ← 一键同步（调用所有 sync_*）
 | `build_memory.py` | 从 `icu_data_warehouse/` 提炼 `coach_memory/` JSON | 随 sync_data |
 | `refresh_physiology.py` | 生成运动员生理档案快照 | 随 sync_data |
 | `update_coach_brief.py` | 把 Phase 1 生理摘要注入 `GEMINI.md` 的 Coach Brief 段 | 随 sync_data |
-| `push_plan.py` | 调用 Gemini API 生成结构化周计划，可选推送 ICU 日历 | 每周一次 |
+| `push_plan.py` | 生成结构化周计划 prompt 文件；`--push --plan-file <file>` 推送 ICU 日历（不调用 LLM） | 每周一次 |
 | `manage_memory.py` | 清理 `coach_memory/` 中过期条目（past races、resolved issues、log 摘要） | 按需 |
 
 **分析类**（按需运行）：
@@ -216,7 +220,7 @@ Gemini CLI 启动时自动读取这个目录的所有文件。
 |------|------|------|
 | `fetcher/` | `icu_client.py` | Intervals.icu API 封装（所有 HTTP 请求、代理、重试） |
 | `coach/` | `memory_builder.py` | 从 warehouse 提炼数据写入 `coach_memory/` |
-| `coach/` | `plan_generator.py` | 调用 Gemini API 生成结构化周计划、推送 ICU |
+| `coach/` | `plan_generator.py` | 构建周计划 prompt（API-free）并写入文件；提供 `push_plan_from_file()` 推送 ICU |
 | `coach/` | `plan_evaluator.py` | 计划评估（难度、区间分布、恢复合理性） |
 | `coach/` | `brief_updater.py` | 自动更新 `GEMINI.md` 中的 Coach Brief 段落 |
 | `coach/` | `phase1_injection.py` | 把 Phase 1 生理上下文注入 `plan_generator` prompt |
@@ -231,9 +235,9 @@ Gemini CLI 启动时自动读取这个目录的所有文件。
 
 | 文件 | 用途 |
 |------|------|
-| `prompt_coach.md` | `push_plan.py` 调用 Gemini API 时使用的教练 system prompt（中文、详细） |
+| `prompt_coach.md` | `push_plan.py` 构建周计划 prompt 时拼入的教练 system prompt（中文、详细） |
 
-> `GEMINI.md`（顶层）是 Gemini **CLI** 的 system prompt；`prompt_coach.md` 是 Gemini **API** 调用时的 system prompt。两者独立、互不覆盖。
+> `GEMINI.md`（顶层）是 Gemini **CLI** 的 system prompt；`prompt_coach.md` 则被 `plan_generator.build_plan_prompt()` 嵌入到写出的 prompt 文件头部。两者独立、互不覆盖。
 
 ---
 
@@ -261,7 +265,7 @@ Gemini CLI 启动时自动读取这个目录的所有文件。
 | 症状 | 可能原因 | 处理 |
 |------|---------|------|
 | `sync_data.py` 报 401 | `API_KEY` 或 `ATHLETE_ID` 错误 | 在 ICU → Settings → API 重新生成并写入 `.env` |
-| `push_plan.py` 报 `GEMINI_API_KEY` 缺失 | `.env` 未配置或变量名错写 | 检查 `.env`；确认 `GEMINI_API_KEY` 拼写正确 |
+| `push_plan.py --push` 报缺少 `--plan-file` | Phase 1.11 起 `--push` 需指定用户保存的 LLM 返回 JSON | 先跑 `push_plan.py` 生成 prompt，手动获取 JSON 后再 `--push --plan-file <path>` |
 | 同步极慢 / 超时 | 未开代理（国内网络） | 在 `.env` 设 `PROXY_PORT=<本地代理端口>` |
 | 教练对话读不到最新数据 | 忘记跑 `build_memory.py` | 运行 `sync_data.py`（会自动触发），或单独跑 `build_memory.py` |
 | 计划覆盖失败 | ICU 日历已有冲突事件 | 加 `--delete-existing` 强制覆盖 |

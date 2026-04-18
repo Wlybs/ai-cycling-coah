@@ -68,7 +68,6 @@ def analyze_one(
     athlete: dict,
     history: list,
     output_dir: Path,
-    client,
 ) -> dict:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -93,24 +92,18 @@ def analyze_one(
         except Exception as e:
             LOG.event(action=f"sub_{name}", activity_id=activity["id"], status="error", error=str(e))
 
-    try:
-        md = report_composer.compose(
-            activity=activity,
-            findings=findings_list,
-            athlete=athlete,
-            physiology=physiology_flat,
-            activated_set=activated,
-            client=client,
-        )
-    except Exception as e:
-        LOG.event(action="compose", activity_id=activity["id"], status="error", error=str(e))
-        (output_dir / f"{activity['id']}.raw.json").write_text(
-            json.dumps([f.model_dump() for f in findings_list], ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-        return {"status": "report_failed", "error": str(e)}
+    # Build the deep-analysis prompt (API-free): the user later pastes this
+    # file into Gemini CLI / Claude Code coach mode to get the narrative report.
+    prompt = report_composer.build_prompt(
+        activity=activity,
+        findings=findings_list,
+        athlete=athlete,
+        physiology=physiology_flat,
+        activated_set=activated,
+    )
+    prompt_path = output_dir / f"{activity['id']}.prompt.md"
+    prompt_path.write_text(prompt, encoding="utf-8")
 
-    (output_dir / f"{activity['id']}.md").write_text(md, encoding="utf-8")
     trace = {
         "features": features.model_dump(),
         "relevance": relevance,
@@ -134,8 +127,14 @@ def analyze_one(
     )
     (output_dir / "summary_latest.json").write_text(summary.model_dump_json(indent=2), encoding="utf-8")
 
-    LOG.event(action="analyze_one", activity_id=activity["id"], duration_ms=int((time.monotonic() - t0) * 1000), status="ok")
-    return {"status": "ok", "activated": sorted(activated)}
+    LOG.event(
+        action="analyze_one",
+        activity_id=activity["id"],
+        duration_ms=int((time.monotonic() - t0) * 1000),
+        status="ok",
+        prompt_path=str(prompt_path),
+    )
+    return {"status": "ok", "activated": sorted(activated), "prompt_path": str(prompt_path)}
 
 
 def analyze_new(
@@ -143,7 +142,6 @@ def analyze_new(
     physiology_bundle: dict,
     athlete: dict,
     output_dir: Path,
-    client,
     load_streams=None,
     load_wbal=None,
     history_for=None,
@@ -169,7 +167,6 @@ def analyze_new(
             athlete=athlete,
             history=history,
             output_dir=output_dir,
-            client=client,
         )
         results.append({"activity_id": activity["id"], **res})
         last_seen = activity["id"]

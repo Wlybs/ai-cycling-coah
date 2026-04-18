@@ -52,15 +52,19 @@ def validate_report(md: str) -> tuple[bool, list[str]]:
     return (len(reasons) == 0), reasons
 
 
-def compose(
+def build_prompt(
     activity: dict,
     findings: Iterable[Findings],
     athlete: dict,
     physiology: dict,
     activated_set: set[str],
-    client,
-    model: str = "gemini-2.5-flash",
 ) -> str:
+    """Build the full deep-analysis prompt (system prompt + JSON payload).
+
+    Pure function, no I/O, no LLM call. The returned string is ready to paste
+    into Gemini CLI / Claude Code coach mode; the pipeline writes it to a
+    `<id>.prompt.md` file for the user to consume manually.
+    """
     system_prompt = _load_system_prompt()
     findings_json = [f.model_dump() for f in findings]
     user_payload = {
@@ -75,8 +79,4 @@ def compose(
     }
     payload_text = json.dumps(user_payload, ensure_ascii=False, indent=2)
 
-    prompt = system_prompt + "\n\n---\n\n输入 JSON：\n```json\n" + payload_text + "\n```"
-
-    response = client.models.generate_content(model=model, contents=prompt)
-    md = response.text
-    return md
+    return system_prompt + "\n\n---\n\n输入 JSON：\n```json\n" + payload_text + "\n```"

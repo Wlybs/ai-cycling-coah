@@ -1,11 +1,12 @@
-"""Runs deep analysis for newly synced activities. Called by sync_data.py."""
+"""Runs deep analysis for newly synced activities. Called by sync_data.py.
+
+API-free pipeline: this script prepares `<id>.prompt.md` files ready for the
+user to paste into Gemini CLI / Claude Code coach mode. No LLM call is made
+and no API key is required.
+"""
 import json
-import os
 import sys
 from pathlib import Path
-
-from dotenv import load_dotenv
-from google import genai
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
@@ -70,16 +71,10 @@ def _load_physiology(memory):
     return bundle
 
 
-def _make_client():
-    load_dotenv(REPO / ".env")
-    return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-
-
 def main():
     warehouse = REPO / "icu_data_warehouse"
     memory = REPO / "coach_memory"
     output_dir = memory / "deep_analysis"
-    client = _make_client()
     athlete_path = warehouse / "1_Profile" / "athlete_profile.json"
     if not athlete_path.exists():
         athlete_path = warehouse / "1_Profile" / "athlete.json"
@@ -92,7 +87,6 @@ def main():
         physiology_bundle=physiology,
         athlete=athlete,
         output_dir=output_dir,
-        client=client,
         load_streams=_streams_loader(warehouse),
         load_wbal=_wbal_loader(warehouse, physiology),
         history_for=lambda act: [a for a in activities if a.get("id") != act["id"]][:20],

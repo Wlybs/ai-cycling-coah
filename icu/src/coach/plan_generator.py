@@ -1,34 +1,34 @@
 """
-训练计划生成器：调用 Gemini API 生成结构化周训练计划，并可同步到 ICU 日历。
+训练计划生成器（API-free）：构建结构化周训练计划的 **完整 prompt**，
+供用户手动粘贴到 Gemini CLI / Claude Code 教练模式。
 
-输出两份文件：
-  reports/plan_YYYYMMDD.md   — 教练分析文本（可读）
-  reports/plan_YYYYMMDD.json — 结构化计划数据（供日历同步）
+职责：
+  1. 汇总 coach_memory/ 与近期赛事，构建上下文
+  2. 注入 Phase 1 生理档案（phase1_injection）
+  3. 将最终 prompt 写到文件（默认 coach_memory/plans/<week>_prompt.md）
+
+推送 ICU 日历的逻辑保留在 _push_to_icu()，由 scripts/push_plan.py 在
+`--push --plan-file <path>` 时读取用户保存的 LLM 响应并推送。
 """
 import sys
 import os
 import json
 from datetime import datetime, timedelta
 from typing import Optional, Literal
-from dotenv import load_dotenv
 from pydantic import BaseModel
-from google import genai
-from google.genai import types
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 from src.utils.common import setup_encoding, get_warehouse_dir, load_json
 from src.fetcher.icu_client import ICUClient
 from src.coach.phase1_injection import inject_phase1_context
 
-load_dotenv(override=True)
 setup_encoding()
 
 WAREHOUSE = get_warehouse_dir()
 MEMORY_DIR = os.path.join(os.path.dirname(WAREHOUSE), "coach_memory")
+PLANS_DIR = os.path.join(MEMORY_DIR, "plans")
 REPORTS_DIR = os.path.join(os.path.dirname(WAREHOUSE), "reports")
 ICU_ROOT = os.path.dirname(WAREHOUSE)
-
-MODEL = "gemini-2.5-flash"
 
 
 # ─── Pydantic Schema ──────────────────────────────────────────────────────────
@@ -207,39 +207,15 @@ def _load_system_prompt() -> str:
     return "You are an elite cycling coach. Data-driven, tactically ruthless. Respond in Chinese."
 
 
-# ─── Gemini Client ────────────────────────────────────────────────────────────
+# ─── Prompt Building (API-free) ───────────────────────────────────────────────
 
-def _make_client():
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY 未设置，请在 .env 中填入")
-
-    proxy_port = os.getenv("PROXY_PORT")
-    if proxy_port:
-        import httpx
-        proxy_url = f"http://127.0.0.1:{proxy_port}"
-        transport = httpx.HTTPTransport(proxy=proxy_url)
-        http_client = httpx.Client(transport=transport)
-        return genai.Client(
-            api_key=api_key,
-            http_options=types.HttpOptions(httpx_client=http_client),
-        )
-    return genai.Client(api_key=api_key)
-
-
-# ─── Plan Generation ──────────────────────────────────────────────────────────
-
-def generate_plan(week_start=None, week_end=None, push_to_icu=False) -> dict:
-    """
-    生成结构化周训练计划。返回计划 dict。
+def build_plan_prompt(week_start=None, week_end=None) -> str:
+    """构建训练计划 prompt（不调用 LLM）。返回最终 prompt 字符串。
 
     week_start/week_end: date 对象，默认下周一到周日。
-    push_to_icu: 是否将计划推送到 ICU 日历。
     """
     if week_start is None:
         week_start, week_end = _next_week_range()
-
-    client = _make_client()
 
     memory_ctx = _load_memory_context()
     races_ctx = _load_upcoming_races()
@@ -272,64 +248,88 @@ def generate_plan(week_start=None, week_end=None, push_to_icu=False) -> dict:
 3. 每天给出具体可执行的功率/心率目标（不能模糊）
 4. 考虑骑手的快肌纤维优势和 ACL 恢复史
 5. 朝向5月爬坡赛目标推进
-6. coaching_summary 控制在200字以内"""
+6. coaching_summary 控制在200字以内
 
-    prompt = inject_phase1_context(prompt)
+## 输出格式要求
+请以符合以下 JSON schema 的 JSON 返回结构化计划（便于后续 push 到 ICU 日历）：
+
+```
+WeeklyPlan:
+  week_start: str (YYYY-MM-DD)
+  week_end:   str (YYYY-MM-DD)
+  coaching_summary: str (<=200 字)
+  focus_theme: str
+  weekly_tss_target: int
+  days: list[DayPlan]
+
+DayPlan:
+  date: str (YYYY-MM-DD)
+  day_of_week: str (周一/周二/...)
+  training_type: Rest | Recovery | Aerobic | Tempo | Threshold | VO2max | Neuromuscular | Race
+  icu_type: Ride | WeightTraining | Walk | Run | Rest
+  name: str
+  description: str
+  duration_min: int
+  target_tss: int
+  indoor: bool
+  power_range_w: str | null   # 例：\"250-280W\"
+  hr_range_bpm: str | null    # 例：\"155-170bpm\"
+```
+"""
+
+    return inject_phase1_context(prompt)
+
+
+def generate_plan(week_start=None, week_end=None, output_path: Optional[str] = None) -> str:
+    """构建 prompt 并保存到 `coach_memory/plans/<week>_prompt.md`（或显式路径）。
+    返回写入文件的绝对路径。用户再手动粘贴到 Gemini CLI / Claude Code 教练模式。
+    """
+    if week_start is None:
+        week_start, week_end = _next_week_range()
+
+    prompt = build_plan_prompt(week_start=week_start, week_end=week_end)
+
+    if output_path is None:
+        os.makedirs(PLANS_DIR, exist_ok=True)
+        date_tag = week_start.strftime("%Y-%m-%d")
+        output_path = os.path.join(PLANS_DIR, f"{date_tag}_prompt.md")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(prompt)
 
     print(f"\n{'='*60}")
-    print(f"🗓️  生成训练计划 — {week_start} 至 {week_end}")
+    print(f"🗓️  训练计划 prompt 已生成 — {week_start} 至 {week_end}")
+    print(f"{'='*60}")
+    print(f"\n📄 Prompt 文件: {output_path}")
+    print("\n下一步：复制该文件内容粘贴到 Gemini CLI 或 Claude Code 教练模式，")
+    print("获取结构化计划 JSON，保存为文本文件，再用 --push --plan-file 推送 ICU 日历。")
     print(f"{'='*60}\n")
-    print("💭 [Gemini 生成中...]\n")
 
-    response = client.models.generate_content(
-        model=MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=WeeklyPlan,
-        ),
-    )
+    return output_path
 
-    plan = json.loads(response.text)
 
-    # 打印摘要
-    print(f"📋 本周主题: {plan.get('focus_theme', '-')}")
-    print(f"🎯 周 TSS 目标: {plan.get('weekly_tss_target', '-')}")
-    print(f"\n{plan.get('coaching_summary', '')}\n")
-    print(f"\n{'─'*40}")
-
-    icon_map = {
-        "Rest": "😴", "Recovery": "🟢", "Aerobic": "🔵",
-        "Tempo": "🟡", "Threshold": "🟠", "VO2max": "🔴",
-        "Neuromuscular": "⚡", "Race": "🏆"
-    }
-    for day in plan.get("days", []):
-        icon = icon_map.get(day["training_type"], "📅")
-        print(f"{icon} {day['date']} {day['day_of_week']:3s} | {day['name']:<22} | "
-              f"{day.get('duration_min', 0):>3}min TSS={day.get('target_tss', 0):>3} | "
-              f"{day.get('power_range_w', '') or day.get('hr_range_bpm', '') or '-'}")
-
-    # 保存报告
+def push_plan_from_file(plan_file: str) -> dict:
+    """读取用户保存的 LLM 响应（JSON），解析为 WeeklyPlan，推送到 ICU 日历。"""
+    with open(plan_file, encoding="utf-8") as f:
+        raw = f.read()
+    # 容错：可能包含 ```json 代码块围栏
+    text = raw.strip()
+    if text.startswith("```"):
+        # 移除首行围栏
+        text = "\n".join(text.splitlines()[1:])
+        if text.rstrip().endswith("```"):
+            text = text.rstrip()[:-3]
+    plan = json.loads(text)
+    # 存一份标准化 JSON 便于追溯
     os.makedirs(REPORTS_DIR, exist_ok=True)
-    date_tag = week_start.strftime("%Y%m%d")
-
+    date_tag = plan.get("week_start", datetime.now().strftime("%Y-%m-%d")).replace("-", "")
     json_path = os.path.join(REPORTS_DIR, f"plan_{date_tag}.json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, ensure_ascii=False, indent=2)
-
     md_path = os.path.join(REPORTS_DIR, f"plan_{date_tag}.md")
     _save_plan_markdown(plan, md_path)
-
-    usage = response.usage_metadata
-    print(f"\n\n{'='*60}")
-    print(f"✅ 计划已保存: {json_path}")
-    if usage:
-        print(f"📊 Token: 输入={usage.prompt_token_count} 输出={usage.candidates_token_count}")
-    print(f"{'='*60}\n")
-
-    if push_to_icu:
-        _push_to_icu(plan)
-
+    print(f"\n✅ 计划已归档: {json_path}")
+    _push_to_icu(plan)
     return plan
 
 

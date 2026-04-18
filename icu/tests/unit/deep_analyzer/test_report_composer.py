@@ -1,6 +1,4 @@
-from unittest.mock import MagicMock
-
-from src.coach.deep_analyzer.report_composer import compose, validate_report
+from src.coach.deep_analyzer.report_composer import build_prompt, validate_report
 from src.coach.deep_analyzer.types import Findings
 
 
@@ -48,23 +46,48 @@ def test_validate_rejects_missing_evidence():
     assert not ok
 
 
-def test_compose_calls_gemini_and_returns_markdown():
-    fake_client = MagicMock()
-    fake_response = MagicMock()
-    fake_response.text = FAKE_REPORT
-    fake_client.models.generate_content.return_value = fake_response
-
+def test_build_prompt_contains_system_prompt_and_payload():
     activity = {"id": "i123", "date": "2026-04-15", "type": "vo2max",
                 "duration_s": 3600, "np_watts": 285, "tss": 95, "if": 0.95, "total_kj": 810}
-    findings = [Findings(analyzer="pacing", metrics={}, verdict="起步冒进", evidence=[("x", "y")])]
+    findings = [Findings(analyzer="pacing", metrics={"front_third_w": 320}, verdict="起步冒进", evidence=[("x", "y")])]
 
-    md = compose(
+    prompt = build_prompt(
         activity=activity,
         findings=findings,
         athlete={"weight_kg": 62, "type": "Type II dominant", "medical": "right ACL post-op"},
         physiology={"cp_watts": 285, "w_prime_joules": 22000},
         activated_set={"pacing", "w_balance"},
-        client=fake_client,
     )
-    assert "今日结论" in md
-    fake_client.models.generate_content.assert_called_once()
+
+    # System-prompt section (loaded from prompts/report_system.md) must be present.
+    # We only assert the static bridge markers injected by build_prompt itself,
+    # plus characteristic payload content.
+    assert "输入 JSON：" in prompt
+    assert "```json" in prompt
+    assert '"activity_id": "i123"' in prompt
+    assert '"type": "vo2max"' in prompt
+    assert '"activated_checklist"' in prompt
+    # activated_set → checklist lines
+    assert "[x] pacing" in prompt
+    assert "[x] w_balance" in prompt
+    assert "[ ] durability" in prompt
+    # finding serialized
+    assert '"analyzer": "pacing"' in prompt
+    assert '"verdict": "起步冒进"' in prompt
+
+
+def test_build_prompt_is_pure_no_client_dependency():
+    """build_prompt must not reach out to any network client. Passing no client
+    argument is the API; this test just exercises it twice to confirm
+    determinism / idempotence."""
+    activity = {"id": "i1", "date": "2026-04-15", "type": "vo2max",
+                "duration_s": 1800, "np_watts": 250, "tss": 40, "if": 0.87, "total_kj": 450}
+    p1 = build_prompt(
+        activity=activity, findings=[], athlete={}, physiology={},
+        activated_set=set(),
+    )
+    p2 = build_prompt(
+        activity=activity, findings=[], athlete={}, physiology={},
+        activated_set=set(),
+    )
+    assert p1 == p2
