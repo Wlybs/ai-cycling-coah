@@ -58,7 +58,8 @@ def main():
     memory = REPO / "coach_memory"
     output_dir = memory / "deep_analysis"
     client = _make_client()
-    athlete = json.loads((warehouse / "1_Profile" / "athlete.json").read_text()) if (warehouse / "1_Profile" / "athlete.json").exists() else {}
+    athlete_path = warehouse / "1_Profile" / "athlete.json"
+    athlete = json.loads(athlete_path.read_text()) if athlete_path.exists() else {}
     activities = _load_activity_list(warehouse)
     physiology = _load_physiology(memory)
 

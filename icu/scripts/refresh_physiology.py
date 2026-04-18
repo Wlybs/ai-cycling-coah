@@ -40,8 +40,8 @@ def _load_wellness(warehouse):
             elif isinstance(d, list):
                 for rec in d:
                     out[rec.get("id") or rec.get("date")] = rec
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"skip wellness {f}: {exc}", file=sys.stderr)
     return out
 
 
