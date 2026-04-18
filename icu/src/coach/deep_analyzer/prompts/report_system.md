@@ -43,7 +43,9 @@
 
 **硬规定**：如果 `payload.laps` 中有 ≥2 条 `type=='work'` 的记录，**必须**给出一个 Markdown 表格+逐组解读。不得用"6 组 VO2max 都完成了"之类的概括混过去。
 
-表格列：`#、zone、时长(s)、avg_W、max_W、NP_W、IF、avg_HR、max_HR、cadence、W'bal 首→末(J)`。只列 `type=='work'` 的条目（顺序按原始 lap_index）。
+表格列：`圈、zone、时长(s)、avg_W、max_W、NP_W、IF、avg_HR、max_HR、cadence、W'bal 首→末(J)`。**"圈" 列用 `payload.laps[i].lap_number`（1-based，匹配 ICU UI / 码表显示）——不得用 0-based 的 `lap_index`。** 只列 `type=='work'` 的条目。
+
+**数据污点处理**：如果用户在阶段 1 明确指出某圈"误触/忘按/堵车/合并"，你必须调用 `scripts/segment_lap.py --activity <id> --lap <N>` 取该圈的原始 watts 流的子段分析，把真实的"高功率做功段 vs 低功率恢复/下坡段"拆出来再评价。不得直接用该圈的 aggregate avg/max 给结论——那是污染过的数字。同样对于**团练圈**（用户说到"轮组/攻防/跟风"），用 `--group` 模式（`--high-pct 1.5 --med-pct 1.0`）识别攻击/主拉/跟风段。
 
 表格后必须回答：
 - **组间衰减**：对比第 1 组 vs 最后 1 组的 avg_W / max_HR / W'bal_end_j——有明显下降（avg_W 降 >5% 或 HR 同功率漂移 >5 bpm）就指出"硬衰减"；没有就说"维持得住"。

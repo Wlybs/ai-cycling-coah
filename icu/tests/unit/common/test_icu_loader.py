@@ -112,7 +112,10 @@ def test_normalize_laps_prefers_icu_intervals():
     assert lap["type"] == "work"  # zone 5 → work regardless of ICU's type field
     assert lap["duration_s"] == 240
     assert lap["avg_power"] == 320
-    assert lap["lap_index"] == 1
+    # lap_index is now 0-based positional (not the ICU `number` field);
+    # lap_number is the 1-based user-facing display
+    assert lap["lap_index"] == 0
+    assert lap["lap_number"] == 1
     assert lap["if"] == pytest.approx(320 / 300, rel=1e-3)
 
 

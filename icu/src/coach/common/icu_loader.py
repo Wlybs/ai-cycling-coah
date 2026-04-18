@@ -225,7 +225,8 @@ def normalize_laps(
             np_power = iv.get("weighted_average_watts")
             out.append(
                 {
-                    "lap_index": iv.get("number") if iv.get("number") is not None else idx,
+                    "lap_index": idx,  # 0-based internal index into icu_intervals
+                    "lap_number": idx + 1,  # 1-based user-facing (matches ICU UI / 码表)
                     "type": lap_type,
                     "label": iv.get("label"),
                     "zone": zone,
@@ -251,7 +252,8 @@ def normalize_laps(
         avg = lap.get("avg_watts") or 0
         out.append(
             {
-                "lap_index": lap.get("lap_number") if lap.get("lap_number") is not None else idx,
+                "lap_index": idx,
+                "lap_number": idx + 1,
                 "type": _classify_lap_type(None, avg, duration, ftp),
                 "label": None,
                 "zone": None,
