@@ -566,8 +566,11 @@ def test_write_and_load_snapshot_roundtrip(tmp_path):
     assert loaded is not None
     assert loaded.current_phase is Phase.BUILD
     assert loaded.micro.weekly_tss_target == 450
-    # 同时写了 micro_cycle_YYYY-WW.json
-    assert any((base.glob("micro_cycle_*.json")))
+    # 同时写了所有 4 个拆分文件
+    assert (base / "phase_current.json").exists()
+    assert (base / "macro_plan.json").exists()
+    assert (base / "meso_block.json").exists()
+    assert any(base.glob("micro_cycle_*.json"))
 
 
 def test_load_missing_returns_none(tmp_path):
@@ -617,21 +620,22 @@ def write_phase_current(
         "reasons": reasons,
     }
     path = base / PHASE_CURRENT
-    path.write_text(json.dumps(doc, ensure_ascii=False, indent=2))
+    path.write_text(json.dumps(doc, ensure_ascii=False, indent=2),
+                    encoding="utf-8")
     return str(path)
 
 
 def write_macro_plan(base_dir: Path, macro: MacroPlan) -> str:
     base = _ensure_dir(base_dir)
     path = base / MACRO_PLAN
-    path.write_text(macro.model_dump_json(indent=2))
+    path.write_text(macro.model_dump_json(indent=2), encoding="utf-8")
     return str(path)
 
 
 def write_meso_block(base_dir: Path, meso: MesoBlock) -> str:
     base = _ensure_dir(base_dir)
     path = base / MESO_BLOCK
-    path.write_text(meso.model_dump_json(indent=2))
+    path.write_text(meso.model_dump_json(indent=2), encoding="utf-8")
     return str(path)
 
 
@@ -643,7 +647,7 @@ def _micro_filename(micro: MicroCycle) -> str:
 def write_micro_cycle(base_dir: Path, micro: MicroCycle) -> str:
     base = _ensure_dir(base_dir)
     path = base / _micro_filename(micro)
-    path.write_text(micro.model_dump_json(indent=2))
+    path.write_text(micro.model_dump_json(indent=2), encoding="utf-8")
     return str(path)
 
 
@@ -661,7 +665,7 @@ def write_periodization_snapshot(
     write_meso_block(base, snap.meso)
     write_micro_cycle(base, snap.micro)
     path = base / SNAPSHOT
-    path.write_text(snap.model_dump_json(indent=2))
+    path.write_text(snap.model_dump_json(indent=2), encoding="utf-8")
     return str(path)
 
 
@@ -670,7 +674,8 @@ def load_periodization_snapshot(base_dir: Path) -> Optional[PeriodizationSnapsho
     if not path.exists():
         return None
     try:
-        return PeriodizationSnapshot.model_validate_json(path.read_text())
+        return PeriodizationSnapshot.model_validate_json(
+            path.read_text(encoding="utf-8"))
     except Exception:
         return None
 ```

@@ -70,8 +70,11 @@ def test_write_and_load_snapshot_roundtrip(tmp_path):
     assert loaded is not None
     assert loaded.current_phase is Phase.BUILD
     assert loaded.micro.weekly_tss_target == 450
-    # 同时写了 micro_cycle_YYYY-WW.json
-    assert any((base.glob("micro_cycle_*.json")))
+    # 同时写了所有 4 个拆分文件
+    assert (base / "phase_current.json").exists()
+    assert (base / "macro_plan.json").exists()
+    assert (base / "meso_block.json").exists()
+    assert any(base.glob("micro_cycle_*.json"))
 
 
 def test_load_missing_returns_none(tmp_path):
