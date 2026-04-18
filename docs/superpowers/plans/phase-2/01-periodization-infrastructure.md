@@ -135,8 +135,34 @@ git commit -m "feat(coach-phase2): periodization package scaffold with Phase/Int
 **Files:**
 - Modify: `icu/src/coach/periodization/types.py` (append models)
 - Modify: `icu/tests/unit/periodization/test_types.py` (append tests)
+- Create: `icu/tests/unit/periodization/conftest.py` (shared `phase_intent_fixture`)
 
 - [ ] **Step 1: Write failing tests — model roundtrip + required fields**
+
+> Note: the MicroCycle tests consume a shared `phase_intent_fixture` that lives in `conftest.py` (added in this task). Do NOT inline a `_build_intent_fixture` helper in the test module.
+
+Create `icu/tests/unit/periodization/conftest.py`:
+```python
+"""Shared pytest fixtures for periodization unit tests."""
+from __future__ import annotations
+
+import pytest
+
+from src.coach.periodization.types import Phase, PhaseIntent
+
+
+@pytest.fixture
+def phase_intent_fixture():
+    """Default PhaseIntent (BUILD phase) for MicroCycle/Snapshot construction."""
+    def _build(phase: Phase = Phase.BUILD) -> PhaseIntent:
+        return PhaseIntent(
+            phase=phase, primary_adaptation="threshold_capacity",
+            weekly_tss_target=500,
+            intensity_distribution_pct={"low": 75, "mid": 15, "high": 10},
+            rest_days_per_week=1, rationale="test",
+        )
+    return _build
+```
 
 Append to `icu/tests/unit/periodization/test_types.py`:
 ```python
@@ -192,7 +218,7 @@ def test_macro_window_has_dates_and_intent():
     assert (w.end_date - w.start_date).days == 9
 
 
-def test_micro_cycle_seven_day_intents_required():
+def test_micro_cycle_seven_day_intents_required(phase_intent_fixture):
     days = [
         DayIntent(day_of_week="Mon", tier=IntensityTier.REST,
                   target_tss=0, session_hint="complete rest"),
@@ -213,7 +239,7 @@ def test_micro_cycle_seven_day_intents_required():
         week_start=date(2026, 4, 20),
         week_end=date(2026, 4, 26),
         phase=Phase.BUILD,
-        intent=days[1],  # primary intent of the week — here, threshold/VO2max
+        intent=phase_intent_fixture(),   # PhaseIntent, not DayIntent
         days=days,
         weekly_tss_target=450,
     )
@@ -221,17 +247,70 @@ def test_micro_cycle_seven_day_intents_required():
     assert cycle.weekly_tss_target == 450
 
 
-def test_micro_cycle_rejects_non_seven_day():
+def test_micro_cycle_rejects_non_seven_day(phase_intent_fixture):
     with pytest.raises(ValidationError):
         MicroCycle(
             week_start=date(2026, 4, 20),
             week_end=date(2026, 4, 26),
             phase=Phase.BUILD,
-            intent=DayIntent(day_of_week="Mon", tier=IntensityTier.REST,
-                             target_tss=0, session_hint="rest"),
+            intent=phase_intent_fixture(),
             days=[],  # empty
             weekly_tss_target=450,
         )
+
+
+def test_phase_intent_rejects_negative_values():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"low": 110, "mid": 10, "high": -20},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_phase_intent_rejects_value_above_100():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"low": 101, "mid": -1, "high": 0},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_phase_intent_rejects_wrong_keys():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"z1": 70, "z2": 20, "z3": 10},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_macro_window_rejects_reversed_dates():
+    from datetime import date as _d
+    intent = PhaseIntent(
+        phase=Phase.BUILD, primary_adaptation="x",
+        weekly_tss_target=400,
+        intensity_distribution_pct={"low": 75, "mid": 15, "high": 10},
+        rest_days_per_week=1, rationale="x",
+    )
+    with pytest.raises(ValidationError):
+        MacroWindow(phase=Phase.BUILD,
+                    start_date=_d(2026, 5, 10),
+                    end_date=_d(2026, 5, 1), intent=intent)
+
+
+def test_meso_block_rejects_unknown_pattern():
+    from datetime import date as _d
+    with pytest.raises(ValidationError):
+        MesoBlock(pattern="4:2:1",
+                  block_start=_d(2026, 4, 13),
+                  block_end=_d(2026, 4, 26),
+                  weekly_load_multipliers=[1.0, 0.9, 0.8],
+                  phase=Phase.BUILD)
 
 
 def test_periodization_snapshot_composition():
@@ -280,12 +359,19 @@ Expected: FAIL — classes undefined.
 
 - [ ] **Step 3: Implement models**
 
-Append to `icu/src/coach/periodization/types.py`:
+Rewrite `icu/src/coach/periodization/types.py` with all imports at the top (stdlib → third-party), then the enums (from T25), then the models:
 ```python
+"""Periodization 层的类型定义。所有对外暴露的数据结构都是 Pydantic 模型。"""
+from __future__ import annotations
+
 from datetime import date
-from typing import Optional
+from enum import Enum
+from typing import Literal, Optional
 
 from pydantic import BaseModel, Field, model_validator
+
+
+# ... Phase / IntensityTier / SessionType enums from T25 (unchanged) ...
 
 
 class PhaseIntent(BaseModel):
@@ -310,6 +396,8 @@ class PhaseIntent(BaseModel):
             raise ValueError("intensity_distribution_pct keys must be {'low','mid','high'}")
         if sum(self.intensity_distribution_pct.values()) != 100:
             raise ValueError("intensity_distribution_pct must sum to 100")
+        if any(v < 0 or v > 100 for v in self.intensity_distribution_pct.values()):
+            raise ValueError("intensity_distribution_pct values must each be in [0, 100]")
         return self
 
 
@@ -336,7 +424,9 @@ class MacroPlan(BaseModel):
 
 class MesoBlock(BaseModel):
     """中观训练块 (通常 3–6 周)。"""
-    pattern: str = Field(..., description="'3:1' | '2:1' | 'polarized' | 'linear'")
+    pattern: Literal["3:1", "2:1", "polarized", "linear"] = Field(
+        ..., description="'3:1' | '2:1' | 'polarized' | 'linear'"
+    )
     block_start: date
     block_end: date
     weekly_load_multipliers: list[float] = Field(..., min_length=3, max_length=6)

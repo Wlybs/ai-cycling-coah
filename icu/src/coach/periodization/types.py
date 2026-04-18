@@ -1,7 +1,11 @@
 """Periodization 层的类型定义。所有对外暴露的数据结构都是 Pydantic 模型。"""
 from __future__ import annotations
 
+from datetime import date
 from enum import Enum
+from typing import Literal, Optional
+
+from pydantic import BaseModel, Field, model_validator
 
 
 class Phase(str, Enum):
@@ -48,12 +52,6 @@ class SessionType(str, Enum):
     RACE = "Race"
 
 
-from datetime import date
-from typing import Optional
-
-from pydantic import BaseModel, Field, model_validator
-
-
 class PhaseIntent(BaseModel):
     """单个阶段的生理学意图。周期化引擎的对外主数据结构。"""
     phase: Phase
@@ -76,6 +74,8 @@ class PhaseIntent(BaseModel):
             raise ValueError("intensity_distribution_pct keys must be {'low','mid','high'}")
         if sum(self.intensity_distribution_pct.values()) != 100:
             raise ValueError("intensity_distribution_pct must sum to 100")
+        if any(v < 0 or v > 100 for v in self.intensity_distribution_pct.values()):
+            raise ValueError("intensity_distribution_pct values must each be in [0, 100]")
         return self
 
 
@@ -102,7 +102,9 @@ class MacroPlan(BaseModel):
 
 class MesoBlock(BaseModel):
     """中观训练块 (通常 3–6 周)。"""
-    pattern: str = Field(..., description="'3:1' | '2:1' | 'polarized' | 'linear'")
+    pattern: Literal["3:1", "2:1", "polarized", "linear"] = Field(
+        ..., description="'3:1' | '2:1' | 'polarized' | 'linear'"
+    )
     block_start: date
     block_end: date
     weekly_load_multipliers: list[float] = Field(..., min_length=3, max_length=6)

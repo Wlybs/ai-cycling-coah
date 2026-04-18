@@ -70,16 +70,7 @@ def test_macro_window_has_dates_and_intent():
     assert (w.end_date - w.start_date).days == 9
 
 
-def _build_intent_fixture(phase=Phase.BUILD):
-    return PhaseIntent(
-        phase=phase, primary_adaptation="threshold_capacity",
-        weekly_tss_target=500,
-        intensity_distribution_pct={"low": 75, "mid": 15, "high": 10},
-        rest_days_per_week=1, rationale="test",
-    )
-
-
-def test_micro_cycle_seven_day_intents_required():
+def test_micro_cycle_seven_day_intents_required(phase_intent_fixture):
     days = [
         DayIntent(day_of_week="Mon", tier=IntensityTier.REST,
                   target_tss=0, session_hint="complete rest"),
@@ -100,7 +91,7 @@ def test_micro_cycle_seven_day_intents_required():
         week_start=date(2026, 4, 20),
         week_end=date(2026, 4, 26),
         phase=Phase.BUILD,
-        intent=_build_intent_fixture(),   # PhaseIntent, not DayIntent
+        intent=phase_intent_fixture(),   # PhaseIntent, not DayIntent
         days=days,
         weekly_tss_target=450,
     )
@@ -108,16 +99,70 @@ def test_micro_cycle_seven_day_intents_required():
     assert cycle.weekly_tss_target == 450
 
 
-def test_micro_cycle_rejects_non_seven_day():
+def test_micro_cycle_rejects_non_seven_day(phase_intent_fixture):
     with pytest.raises(ValidationError):
         MicroCycle(
             week_start=date(2026, 4, 20),
             week_end=date(2026, 4, 26),
             phase=Phase.BUILD,
-            intent=_build_intent_fixture(),
+            intent=phase_intent_fixture(),
             days=[],  # empty
             weekly_tss_target=450,
         )
+
+
+def test_phase_intent_rejects_negative_values():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"low": 110, "mid": 10, "high": -20},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_phase_intent_rejects_value_above_100():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"low": 101, "mid": -1, "high": 0},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_phase_intent_rejects_wrong_keys():
+    with pytest.raises(ValidationError):
+        PhaseIntent(
+            phase=Phase.BASE, primary_adaptation="x",
+            weekly_tss_target=400,
+            intensity_distribution_pct={"z1": 70, "z2": 20, "z3": 10},
+            rest_days_per_week=1, rationale="bug",
+        )
+
+
+def test_macro_window_rejects_reversed_dates():
+    from datetime import date as _d
+    intent = PhaseIntent(
+        phase=Phase.BUILD, primary_adaptation="x",
+        weekly_tss_target=400,
+        intensity_distribution_pct={"low": 75, "mid": 15, "high": 10},
+        rest_days_per_week=1, rationale="x",
+    )
+    with pytest.raises(ValidationError):
+        MacroWindow(phase=Phase.BUILD,
+                    start_date=_d(2026, 5, 10),
+                    end_date=_d(2026, 5, 1), intent=intent)
+
+
+def test_meso_block_rejects_unknown_pattern():
+    from datetime import date as _d
+    with pytest.raises(ValidationError):
+        MesoBlock(pattern="4:2:1",
+                  block_start=_d(2026, 4, 13),
+                  block_end=_d(2026, 4, 26),
+                  weekly_load_multipliers=[1.0, 0.9, 0.8],
+                  phase=Phase.BUILD)
 
 
 def test_periodization_snapshot_composition():
