@@ -322,18 +322,57 @@ def load_events_by_date(warehouse_dir: Path) -> dict[str, str]:
 
 
 def _load_athlete(warehouse_dir: Path) -> tuple[int, float]:
-    """Return (ftp, weight_kg) with sensible fallbacks."""
-    ftp = 288
-    weight = 62.0
+    """Return (ftp, weight_kg) with cascading fallbacks.
+
+    Lookup order (athlete_profile.json often has icu_ftp=None because
+    sync_profile.py doesn't populate it):
+      1. athlete_profile.json top-level icu_ftp / ftp
+      2. athlete_profile.json sportSettings[Ride].ftp
+      3. Most recent activity summary's icu_ftp
+      4. Most recent activity summary's sportSettings[Ride].ftp
+      5. Hardcoded 288 fallback.
+    """
+    ftp: int | None = None
+    weight: float | None = None
     path = warehouse_dir / "1_Profile" / "athlete_profile.json"
     if path.exists():
         try:
             prof = json.loads(path.read_text(encoding="utf-8"))
-            ftp = int(prof.get("icu_ftp") or prof.get("ftp") or ftp)
-            weight = float(prof.get("icu_weight") or prof.get("weight") or weight)
+            ftp = prof.get("icu_ftp") or prof.get("ftp")
+            weight = prof.get("icu_weight") or prof.get("weight")
+            if not ftp:
+                for s in prof.get("sportSettings") or []:
+                    if isinstance(s, dict) and "Ride" in (s.get("types") or []):
+                        ftp = s.get("ftp") or s.get("indoor_ftp")
+                        break
         except Exception:
             pass
-    return ftp, weight
+
+    if not ftp:
+        # Walk activity details newest-first for an FTP value.
+        detail_dir = warehouse_dir / "5_Activities_Detail"
+        if detail_dir.exists():
+            for f in sorted(detail_dir.glob("*.json"), reverse=True):
+                try:
+                    doc = json.loads(f.read_text(encoding="utf-8"))
+                except Exception:
+                    continue
+                summary = doc.get("summary") if isinstance(doc, dict) else None
+                if not isinstance(summary, dict):
+                    summary = doc if isinstance(doc, dict) else {}
+                cand = summary.get("icu_ftp")
+                if not cand:
+                    for s in summary.get("sportSettings") or []:
+                        if isinstance(s, dict) and "Ride" in (s.get("types") or []):
+                            cand = s.get("ftp") or s.get("indoor_ftp")
+                            break
+                if cand:
+                    ftp = cand
+                    if not weight:
+                        weight = summary.get("weight") or summary.get("icu_weight")
+                    break
+
+    return int(ftp or 288), float(weight or 62.0)
 
 
 # ---------------- activity doc loader ----------------
