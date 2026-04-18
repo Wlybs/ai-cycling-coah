@@ -10,6 +10,7 @@ from google import genai
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
+from src.coach.common.icu_loader import load_activity_doc
 from src.coach.deep_analyzer.orchestrator import analyze_new
 
 
@@ -20,21 +21,42 @@ def _load_activity_list(warehouse):
     return json.loads(path.read_text())
 
 
-def _load_streams_for(warehouse):
-    def loader(activity_id):
-        f = warehouse / "5_Activities_Detail" / activity_id / "streams.json"
-        if f.exists():
-            return json.loads(f.read_text())
+def _wbal_from_streams(streams, physiology_bundle):
+    if not streams:
         return None
+    series = streams.get("w_bal") or []
+    if not series:
+        return None
+    wp = None
+    cp_w = physiology_bundle.get("cp_w") if physiology_bundle else None
+    if isinstance(cp_w, dict):
+        wp = cp_w.get("w_prime_joules")
+    out = {"series": list(series)}
+    if wp:
+        try:
+            out["min_w_bal_pct"] = min(series) / float(wp) * 100.0
+        except Exception:
+            pass
+    return out
+
+
+def _streams_loader(warehouse):
+    def loader(activity_id):
+        try:
+            _, streams = load_activity_doc(warehouse, activity_id)
+            return streams
+        except FileNotFoundError:
+            return None
     return loader
 
 
-def _load_wbal_for(warehouse):
+def _wbal_loader(warehouse, physiology_bundle):
     def loader(activity_id):
-        f = warehouse / "5_Activities_Detail" / f"{activity_id}_wbalance.json"
-        if f.exists():
-            return json.loads(f.read_text())
-        return None
+        try:
+            _, streams = load_activity_doc(warehouse, activity_id)
+        except FileNotFoundError:
+            return None
+        return _wbal_from_streams(streams, physiology_bundle)
     return loader
 
 
@@ -58,7 +80,9 @@ def main():
     memory = REPO / "coach_memory"
     output_dir = memory / "deep_analysis"
     client = _make_client()
-    athlete_path = warehouse / "1_Profile" / "athlete.json"
+    athlete_path = warehouse / "1_Profile" / "athlete_profile.json"
+    if not athlete_path.exists():
+        athlete_path = warehouse / "1_Profile" / "athlete.json"
     athlete = json.loads(athlete_path.read_text()) if athlete_path.exists() else {}
     activities = _load_activity_list(warehouse)
     physiology = _load_physiology(memory)
@@ -69,8 +93,8 @@ def main():
         athlete=athlete,
         output_dir=output_dir,
         client=client,
-        load_streams=_load_streams_for(warehouse),
-        load_wbal=_load_wbal_for(warehouse),
+        load_streams=_streams_loader(warehouse),
+        load_wbal=_wbal_loader(warehouse, physiology),
         history_for=lambda act: [a for a in activities if a.get("id") != act["id"]][:20],
     )
     print(json.dumps(results, ensure_ascii=False, indent=2))

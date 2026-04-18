@@ -11,10 +11,25 @@ LOG = get_logger("physiology_refresher")
 
 
 def _load_athlete(warehouse_dir: Path) -> dict:
-    path = warehouse_dir / "1_Profile" / "athlete.json"
-    if not path.exists():
-        return {"ftp": 288, "hr_max": 195, "weight": 62}
-    return json.loads(path.read_text())
+    """Load athlete profile, tolerating either real (athlete_profile.json) or
+    legacy-synthetic (athlete.json) filename, and ICU-style key names."""
+    defaults = {"ftp": 288, "hr_max": 195, "weight": 62}
+    for name in ("athlete_profile.json", "athlete.json"):
+        path = warehouse_dir / "1_Profile" / name
+        if not path.exists():
+            continue
+        try:
+            raw = json.loads(path.read_text())
+        except Exception:
+            continue
+        if not isinstance(raw, dict):
+            continue
+        return {
+            "ftp": int(raw.get("ftp") or raw.get("icu_ftp") or defaults["ftp"]),
+            "hr_max": int(raw.get("hr_max") or raw.get("icu_hr_max") or defaults["hr_max"]),
+            "weight": float(raw.get("weight") or raw.get("icu_weight") or defaults["weight"]),
+        }
+    return defaults
 
 
 def _safe(name: str, fn):

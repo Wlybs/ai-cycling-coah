@@ -117,10 +117,32 @@ def load_mmp_from_warehouse(warehouse_dir: Path) -> MMP:
 
 
 def _iter_curve_points(doc):
-    """Best-effort extraction tolerant to both list-of-dicts and dict-of-lists shapes."""
+    """Best-effort extraction tolerant to multiple shapes.
+
+    Handles:
+      1) Real ICU shape: {"list": [{"after_kj": int, "secs": [..], "watts": [..]}, ...]}
+         Only entries with after_kj == 0 (fresh MMP) are yielded.
+      2) Legacy synthetic: {"secs": [..], "watts": [..]}
+      3) Legacy list-of-dicts: [{"secs": int, "watts": int}, ...]
+    """
+    # Shape 1: ICU real — {"list": [...]}
+    if isinstance(doc, dict) and isinstance(doc.get("list"), list):
+        for entry in doc["list"]:
+            if not isinstance(entry, dict):
+                continue
+            if entry.get("after_kj") != 0:
+                continue
+            secs = entry.get("secs") or []
+            watts = entry.get("watts") or []
+            for s, w in zip(secs, watts):
+                yield s, w
+        return
+    # Shape 2: dict with parallel arrays
     if isinstance(doc, dict) and "secs" in doc and "watts" in doc:
         yield from zip(doc["secs"], doc["watts"])
-    elif isinstance(doc, list):
+        return
+    # Shape 3: list of dicts
+    if isinstance(doc, list):
         for item in doc:
             if isinstance(item, dict) and "secs" in item and "watts" in item:
                 yield item["secs"], item["watts"]

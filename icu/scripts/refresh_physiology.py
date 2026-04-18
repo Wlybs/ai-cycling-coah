@@ -6,24 +6,18 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
+from src.coach.common.icu_loader import iter_activity_docs
 from src.coach.physiology.refresher import refresh_all
 
 
 def _load_activities(warehouse):
+    """Use the ICU adapter to yield Phase 1-shaped activities with power streams attached."""
     out = []
-    detail_dir = warehouse / "5_Activities_Detail"
-    if not detail_dir.exists():
-        return out
-    for f in sorted(detail_dir.glob("*/activity.json")):
-        try:
-            doc = json.loads(f.read_text())
-            streams_file = f.parent / "streams.json"
-            if streams_file.exists():
-                streams = json.loads(streams_file.read_text())
-                doc["power_stream"] = streams.get("watts") or streams.get("power") or []
-            out.append(doc)
-        except Exception as exc:
-            print(f"skip {f}: {exc}", file=sys.stderr)
+    for activity, streams in iter_activity_docs(warehouse):
+        if streams is not None and streams.get("power"):
+            # durability_model.fit_durability reads activity["power_stream"]
+            activity["power_stream"] = streams["power"]
+        out.append(activity)
     return out
 
 

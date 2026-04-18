@@ -11,26 +11,31 @@ from google import genai
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
+from src.coach.common.icu_loader import load_activity_doc
 from src.coach.deep_analyzer.feature_detector import detect_features
 from src.coach.deep_analyzer.router import route
 from src.coach.deep_analyzer.orchestrator import analyze_one
 
 
-def _load_activity(warehouse: Path, activity_id: str):
-    f = warehouse / "5_Activities_Detail" / activity_id / "activity.json"
-    if not f.exists():
-        raise FileNotFoundError(f)
-    return json.loads(f.read_text())
-
-
-def _load_streams(warehouse: Path, activity_id: str):
-    f = warehouse / "5_Activities_Detail" / activity_id / "streams.json"
-    return json.loads(f.read_text()) if f.exists() else None
-
-
-def _load_wbal(warehouse: Path, activity_id: str):
-    f = warehouse / "5_Activities_Detail" / f"{activity_id}_wbalance.json"
-    return json.loads(f.read_text()) if f.exists() else None
+def _wbal_payload_from_streams(streams, physiology_bundle):
+    """Wrap streams['w_bal'] into the dict shape sub-analyzers expect.
+    Returns None if no w_bal available."""
+    if not streams:
+        return None
+    series = streams.get("w_bal") or []
+    if not series:
+        return None
+    wp = None
+    cp_w = physiology_bundle.get("cp_w") if physiology_bundle else None
+    if isinstance(cp_w, dict):
+        wp = cp_w.get("w_prime_joules")
+    out = {"series": list(series)}
+    if wp:
+        try:
+            out["min_w_bal_pct"] = min(series) / float(wp) * 100.0
+        except Exception:
+            pass
+    return out
 
 
 def _load_physiology(memory: Path):
@@ -66,12 +71,13 @@ def main():
         parser.error("one of --activity or --backfill is required")
 
     physiology = _load_physiology(memory)
-    athlete_path = warehouse / "1_Profile" / "athlete.json"
+    athlete_path = warehouse / "1_Profile" / "athlete_profile.json"
+    if not athlete_path.exists():
+        athlete_path = warehouse / "1_Profile" / "athlete.json"
     athlete = json.loads(athlete_path.read_text()) if athlete_path.exists() else {}
 
     if args.dry_run and args.activity:
-        activity = _load_activity(warehouse, args.activity)
-        streams = _load_streams(warehouse, args.activity)
+        activity, streams = load_activity_doc(warehouse, args.activity)
         phys_flat = dict((physiology.get("cp_w") or {}))
         features = detect_features(activity, streams, phys_flat, athlete)
         rel = route(features)
@@ -84,9 +90,8 @@ def main():
 
     client = _make_client()
     if args.activity:
-        activity = _load_activity(warehouse, args.activity)
-        streams = _load_streams(warehouse, args.activity)
-        wbal = _load_wbal(warehouse, args.activity)
+        activity, streams = load_activity_doc(warehouse, args.activity)
+        wbal = _wbal_payload_from_streams(streams, physiology)
         result = analyze_one(
             activity=activity, streams=streams, wbal_series=wbal,
             physiology_bundle=physiology, athlete=athlete, history=[],
@@ -95,18 +100,25 @@ def main():
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return
 
+    # backfill: iterate activity list; load details via adapter
     list_path = warehouse / "4_Activities_List" / "activities.json"
-    activities = json.loads(list_path.read_text()) if list_path.exists() else []
+    activities_raw = json.loads(list_path.read_text()) if list_path.exists() else []
     if args.since:
-        activities = [a for a in activities if (a.get("date") or "") >= args.since]
-    for a in activities:
-        features = detect_features(a, None, dict(physiology.get("cp_w") or {}), athlete)
+        activities_raw = [a for a in activities_raw if (a.get("start_date_local") or a.get("date") or "") >= args.since]
+    for raw in activities_raw:
+        aid = raw.get("id")
+        if not aid:
+            continue
+        try:
+            activity, streams = load_activity_doc(warehouse, aid)
+        except FileNotFoundError:
+            continue
+        features = detect_features(activity, streams, dict(physiology.get("cp_w") or {}), athlete)
         if not (features.has_intervals or features.is_race or features.has_climbing):
             continue
-        streams = _load_streams(warehouse, a["id"])
-        wbal = _load_wbal(warehouse, a["id"])
+        wbal = _wbal_payload_from_streams(streams, physiology)
         analyze_one(
-            activity=a, streams=streams, wbal_series=wbal,
+            activity=activity, streams=streams, wbal_series=wbal,
             physiology_bundle=physiology, athlete=athlete, history=[],
             output_dir=output, client=client,
         )

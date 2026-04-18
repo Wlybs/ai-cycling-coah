@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from src.coach.physiology.cp_w_fitter import fit_cp_w, write_snapshot
+from src.coach.physiology.cp_w_fitter import fit_cp_w, write_snapshot, _iter_curve_points
 
 
 def synthetic_mmp(cp=280, w_prime=22000, t_k=-10.0, durations=None):
@@ -47,3 +47,13 @@ def test_cache_skips_refit_when_data_unchanged(tmp_path, monkeypatch):
     hash1 = m.hash_mmp(mmp)
     hash2 = m.hash_mmp(mmp)
     assert hash1 == hash2
+
+
+def test_iter_curve_points_handles_icu_list_shape():
+    doc = {
+        "list": [
+            {"after_kj": 0, "secs": [60, 300], "watts": [450, 330]},
+            {"after_kj": 1000, "secs": [60, 300], "watts": [420, 310]},
+        ]
+    }
+    assert list(_iter_curve_points(doc)) == [(60, 450), (300, 330)]
