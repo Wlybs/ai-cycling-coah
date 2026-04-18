@@ -16,7 +16,7 @@ def _fake_report():
     )
 
 
-def test_analyze_one_writes_report_and_trace(tmp_path, monkeypatch):
+def test_analyze_one_writes_report_and_trace(tmp_path):
     fake_client = MagicMock()
     fake_client.models.generate_content.return_value = MagicMock(text=_fake_report())
 

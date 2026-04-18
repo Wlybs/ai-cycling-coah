@@ -105,7 +105,8 @@ def analyze_one(
     except Exception as e:
         LOG.event(action="compose", activity_id=activity["id"], status="error", error=str(e))
         (output_dir / f"{activity['id']}.raw.json").write_text(
-            json.dumps([f.model_dump() for f in findings_list], ensure_ascii=False, indent=2)
+            json.dumps([f.model_dump() for f in findings_list], ensure_ascii=False, indent=2),
+            encoding="utf-8",
         )
         return {"status": "report_failed", "error": str(e)}
 
@@ -116,9 +117,11 @@ def analyze_one(
         "activated": sorted(activated),
         "findings": [f.model_dump() for f in findings_list],
     }
-    (output_dir / f"{activity['id']}.trace.json").write_text(json.dumps(trace, ensure_ascii=False, indent=2))
+    (output_dir / f"{activity['id']}.trace.json").write_text(json.dumps(trace, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    headline = next((f.verdict for f in findings_list if f.analyzer in ("pacing", "target_align", "historical_cmp")), "分析完成")
+    _HEADLINE_PRIORITY = ("pacing", "target_align", "historical_cmp")
+    findings_by_analyzer = {f.analyzer: f for f in findings_list}
+    headline = next((findings_by_analyzer[a].verdict for a in _HEADLINE_PRIORITY if a in findings_by_analyzer), "分析完成")
     summary = SummaryLatest(
         activity_id=activity["id"],
         analyzed_at=datetime.now(timezone.utc).isoformat(),
@@ -129,7 +132,7 @@ def analyze_one(
         next_plan_hints=_next_plan_hints(findings_list),
         knee_flag=(physiology_bundle.get("response") or {}).get("knee_loading", {}).get("flag"),
     )
-    (output_dir / "summary_latest.json").write_text(summary.model_dump_json(indent=2))
+    (output_dir / "summary_latest.json").write_text(summary.model_dump_json(indent=2), encoding="utf-8")
 
     LOG.event(action="analyze_one", activity_id=activity["id"], duration_ms=int((time.monotonic() - t0) * 1000), status="ok")
     return {"status": "ok", "activated": sorted(activated)}
@@ -172,5 +175,5 @@ def analyze_new(
         last_seen = activity["id"]
     state.last_analyzed_activity_id = last_seen
     state.last_analyzed_at = datetime.now(timezone.utc).isoformat()
-    state_path.write_text(state.model_dump_json(indent=2))
+    state_path.write_text(state.model_dump_json(indent=2), encoding="utf-8")
     return results
