@@ -1,8 +1,47 @@
-# Session Startup Protocol (MANDATORY — runs automatically)
+# Intent Routing (check BEFORE anything else)
 
-**This executes unconditionally at the start of every conversation, before doing anything else.**
+**Read the user's first message. Match it against these intents. The matched intent's protocol OVERRIDES the Session Startup Protocol below — skip all sync/build/extract steps when routed.**
 
-When you receive the very first message of a session — regardless of what the user says — you MUST execute the following steps in order:
+## Intent A — Single-ride deep analysis (NO sync, NO hallucination)
+
+**Triggers**: "分析我 X 日的骑行", "分析 YYYY-MM-DD 的训练", "分析我上次/最近的骑行", "这次骑行怎么样", "评价一下这次训练", "上次骑行分析"
+
+**Protocol**:
+1. **Do NOT run `sync_data.py`, `build_memory.py`, `extract_ride_summary.py`, or any other script.** The ride's `.prompt.md` already contains everything you need: structured findings, slim athlete profile, physiology bundle, activation checklist.
+2. **Find the target `.prompt.md`**:
+   - For "上次/最近"：read `coach_memory/deep_analysis/summary_latest.json`, take the `activity_id`, then open `coach_memory/deep_analysis/<activity_id>.prompt.md`.
+   - For a specific date (e.g., "4月12日" → `2026-04-12`)：run `grep -l '"date": "2026-04-12"' coach_memory/deep_analysis/*.prompt.md` to find the file.
+3. **Read that `.prompt.md` file in full.** It is a self-contained system prompt + JSON payload.
+4. **Follow its embedded system prompt LITERALLY.** That prompt mandates a TWO-STAGE protocol:
+   - **Stage 1**: your FIRST response must be 2–4 targeted diagnostic questions about ride intent, unusual power segments, external factors, athlete state. **No report, no section headers, no verdicts, no table output allowed.**
+   - **Stage 2**: only AFTER the user answers, produce the structured report with their intent quoted verbatim as the evaluation anchor.
+5. **Hard rules that override everything else**:
+   - Use ONLY the data in the `.prompt.md` payload. Do NOT invent interval counts, wattage numbers, lap times, or verdicts not present in the `findings` array.
+   - The `findings` array is the sole source of verdicts. `"verdict": "后段崩盘"` etc. — don't embellish.
+   - Skip any `data_points_used` / `activity_id` metadata repetition — they're not for the report.
+
+## Intent B — Weekly plan generation
+
+**Triggers**: "帮我排下周计划", "生成下周训练", "推一下下周的训练计划", "下周怎么练"
+
+**Protocol**:
+1. Do NOT run `sync_data.py` (user would explicitly say "先同步一下" if they want).
+2. Find the latest plan prompt: `ls -t coach_memory/plans/*_prompt.md | head -1`.
+3. Read that file in full. Follow its system prompt literally.
+
+## Intent C — Status brief / open-ended coach conversation
+
+**Triggers**: "现在状态怎么样", "给我一个简报", "目前疲劳", "我该练什么", or anything NOT matching A or B.
+
+**Protocol**: fall through to the Session Startup Protocol below.
+
+---
+
+# Session Startup Protocol (for Intent C only)
+
+**Runs only when the user's first message matches Intent C above. Skip this entire section for Intent A (single-ride analysis) and Intent B (weekly plan) — those have their own protocols.**
+
+For Intent C, execute the following steps in order:
 
 1. **Sync latest data from Intervals.icu** (run these two commands via the shell tool):
    ```bash
@@ -279,4 +318,8 @@ Each option must include a one-line **"Why this"** explaining how it complements
 The athlete picks based on how they feel that day. Do not pick for them unless they ask.
 
 <!-- BEGIN: phase1_coach_brief -->
+## 当前画像（自动更新，勿手动编辑本段）
+- 个人 CP 309W / W' 20115J（vs 设定 FTP 288W，差 +21W）
+- 最近深度分析：后段崩盘（stimulus=0.3, flat）
+- 近 1 次 stimulus 均值 = 0.3
 <!-- END: phase1_coach_brief -->
