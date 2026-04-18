@@ -544,3 +544,29 @@ Phase 1 is additive. Rollback = revert commits; the existing system returns unch
 ## Next Phase
 
 On Phase 1 completion, brainstorm Phase 2 (periodization engine + session designer rewrite) will begin — plan_generator's temporary injection glue is replaced with first-class architecture.
+
+## Implementation Completed
+
+Date: 2026-04-18
+Real-warehouse CP fit R²: **0.916** (3-param hyperbolic, CP=306W, W'=20870J on 90-day MMP)
+User acceptance: **yes** (v1 accepted after iterative refinement in 1.10–1.16; user quote: "现在第一版的这个报告我可以接受，如果之后在具体情况下出现其他问题的话，我们再进一步修改。")
+
+Beyond the original T1–T24 plan, the following adjustments landed in this phase to make the pipeline work against the real warehouse and the user's actual workflow (no Gemini API key; coaches via Gemini CLI / Claude Code). Each is its own commit under `feat(coach-phase1): ... (Phase 1.N)`:
+
+- **1.10 ICU schema adapter** (`src/coach/common/icu_loader.py`) — central adapter layer translating real ICU key names / file shapes / event structures to the Phase 1 internal schema; lets sub_analyzers stay untouched.
+- **1.11 API-free pipeline** — no `GEMINI_API_KEY` anywhere; `report_composer.compose()` replaced by pure `build_prompt()`; orchestrator writes `<id>.prompt.md` for the athlete to paste into Gemini CLI / Claude Code coach mode.
+- **1.12 Ask-first protocol + payload slim** — coach MUST ask 2–4 targeted questions before emitting a report; payload slimmed from 37KB to 6.8KB by dropping Run/Swim/Other sportSettings, physiology `data_points_used`, and `verdict='数据不足'` findings.
+- **1.13 Intent routing in GEMINI.md** — Intent A/B/C forking so `分析我上次骑行` loads the right `.prompt.md` instead of running the legacy sync+brief pipeline.
+- **1.13 ACL mention gate** — `ACL`/`右膝术后`/`半月板` forbidden unless `knee_loading.flag` non-null or user reports actual pain in Stage 1.
+- **1.14 Per-interval payload + TSB-aware recovery** — zone-based `_classify_lap_type` (ICU's `type='WORK'` ignored); laps carry HR/cadence/W'bal_start_end/zone/label/strain; payload adds `form={ctl,atl,tsb}`/`feel`/`user_description`; system prompt mandates a Markdown interval-execution table + TSB-tiered recovery rules (no more "TSS>150 → recovery" reflex).
+- **1.15 Raw-stream re-segmentation tool** (`src/coach/common/lap_segmenter.py` + `scripts/segment_lap.py`) — when user reports merged / double-pressed / group-ride laps, coach runs the segmenter to pull the real work segment out of the polluted aggregate. 1-based `lap_number` field added for display alignment with the ICU UI / 码表.
+- **1.16 Segment HR/cadence + M:SS format + group-lap mandate** — segmenter emits per-sub-segment HR/cadence; durations ≥60s render as `M:SS min`; group-ride laps (user mentions 轮组/攻防/跟风) MUST emit full sub-segment Markdown table, no vague prose summaries.
+
+Test suite baseline: **106 passed** (from 77 before T22).
+
+Known follow-ups for Phase 2:
+1. `8_Events/planned_type` lookup is best-effort (many ICU events carry generic categories like "WORKOUT"); `target_align` relevance stays low. Phase 2 session-designer should write structured event `sub_type` so this dimension activates reliably.
+2. `hr_drift_z2_bpm` defaults to None (ICU doesn't expose this summary field). If Phase 2 wants the signal, compute from stream HR during z2 segments.
+3. `--debug` + `icu/logs/gemini_raw/` raw-response capture was out-of-scope (pipeline is LLM-API-free, so the observability target shifted — save prompt.md + timestamp, which already happens).
+4. Phase 2 `prose_generator` plan (`ai-coach-phase-2` branch, File 09) currently assumes a Gemini API client; must be re-planned under the "no API key" constraint — same API-free pattern as Phase 1.11 applies.
+5. 16 of 55 legacy flat activity detail files (pre-2026-01-14) are silently skipped by `iter_activity_docs`. Phase 2 may want to re-sync those with `scripts/sync_activity_detail.py` if historical signal matters.
