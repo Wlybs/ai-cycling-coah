@@ -32,6 +32,58 @@ def _activated_checklist(activated_set: set[str]) -> str:
     return "\n".join(lines)
 
 
+_ATHLETE_COACH_KEYS = (
+    "id", "icu_athlete_id", "name", "firstname", "lastname",
+    "weight", "icu_weight", "weight_kg", "height",
+    "sex", "icu_date_of_birth", "icu_resting_hr",
+    "type", "medical",
+)
+_SPORT_SETTINGS_COACH_KEYS = (
+    "ftp", "indoor_ftp", "w_prime", "p_max",
+    "power_zones", "power_zone_names",
+    "sweet_spot_min", "sweet_spot_max",
+    "lthr", "max_hr", "hr_zones", "hr_zone_names", "hr_load_type",
+    "mmp_model",
+)
+
+
+def _slim_athlete(athlete: dict) -> dict:
+    """Project raw ICU athlete dict to coaching-relevant fields.
+
+    Drops Run/Swim/Other sportSettings, strips Ride settings to key fields,
+    removes ICU admin/sync/notification noise. Non-ICU caller-projected fields
+    (weight_kg, type, medical, ...) pass through unchanged."""
+    if not isinstance(athlete, dict):
+        return athlete
+    out = {k: athlete[k] for k in _ATHLETE_COACH_KEYS if k in athlete}
+    settings = athlete.get("sportSettings")
+    if isinstance(settings, list):
+        ride_entry = next(
+            (s for s in settings if isinstance(s, dict) and "Ride" in (s.get("types") or [])),
+            None,
+        )
+        if ride_entry:
+            out["sportSettings_ride"] = {
+                k: ride_entry[k] for k in _SPORT_SETTINGS_COACH_KEYS if k in ride_entry
+            }
+    return out
+
+
+def _slim_physiology(physiology: dict) -> dict:
+    """Drop debug-only fields (raw MMP point list) from physiology bundle."""
+    if not isinstance(physiology, dict):
+        return physiology
+    return {k: v for k, v in physiology.items() if k != "data_points_used"}
+
+
+def _filter_findings(findings_json: list[dict]) -> list[dict]:
+    """Drop findings whose verdict indicates the analyzer had no signal.
+
+    The coach report shouldn't allocate prose to 'no-data' verdicts; trace.json
+    (written separately by the orchestrator) preserves them for debugging."""
+    return [f for f in findings_json if f.get("verdict") != "数据不足"]
+
+
 def validate_report(md: str) -> tuple[bool, list[str]]:
     reasons = []
     required_sections = ["## 今日结论", "## 关键发现", "## 下次怎么办"]
@@ -66,14 +118,14 @@ def build_prompt(
     `<id>.prompt.md` file for the user to consume manually.
     """
     system_prompt = _load_system_prompt()
-    findings_json = [f.model_dump() for f in findings]
+    findings_json = _filter_findings([f.model_dump() for f in findings])
     user_payload = {
         "activity_id": activity["id"],
         "date": activity.get("date", ""),
         "type": activity.get("type", ""),
         "session_line": _session_line(activity),
-        "athlete": athlete,
-        "physiology": physiology,
+        "athlete": _slim_athlete(athlete),
+        "physiology": _slim_physiology(physiology),
         "findings": findings_json,
         "activated_checklist": _activated_checklist(activated_set),
     }
