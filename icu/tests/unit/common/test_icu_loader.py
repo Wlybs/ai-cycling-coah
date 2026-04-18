@@ -100,6 +100,7 @@ def test_normalize_laps_prefers_icu_intervals():
             "average_watts": 320,
             "weighted_average_watts": 325,
             "number": 1,
+            "zone": 5,
         }
     ]
     fit_laps = [
@@ -108,7 +109,7 @@ def test_normalize_laps_prefers_icu_intervals():
     out = icu_loader.normalize_laps(icu_intervals, fit_laps, ftp=300)
     assert len(out) == 1
     lap = out[0]
-    assert lap["type"] == "work"
+    assert lap["type"] == "work"  # zone 5 → work regardless of ICU's type field
     assert lap["duration_s"] == 240
     assert lap["avg_power"] == 320
     assert lap["lap_index"] == 1
@@ -122,9 +123,77 @@ def test_normalize_laps_falls_back_to_fit_laps():
         ftp=300,
     )
     assert len(out) == 1
-    assert out[0]["type"] == "ride"
+    # 200W at FTP 300 = 66% FTP → z2 by classifier (no zone field in FIT lap)
+    assert out[0]["type"] == "z2"
     assert out[0]["duration_s"] == 300
     assert out[0]["avg_power"] == 200
+
+
+def test_normalize_laps_classifies_by_zone_not_icu_type_field():
+    """ICU marks every interval type='WORK'; real class must come from zone."""
+    intervals = [
+        {"type": "WORK", "moving_time": 2953, "average_watts": 146, "zone": 1},   # long z1 = warmup_or_cooldown
+        {"type": "WORK", "moving_time": 240, "average_watts": 320, "zone": 5},    # VO2max = work
+        {"type": "WORK", "moving_time": 120, "average_watts": 180, "zone": 1},    # short z1 = recovery
+        {"type": "WORK", "moving_time": 240, "average_watts": 296, "zone": 4},    # threshold @ 240s = work
+        {"type": "WORK", "moving_time": 30, "average_watts": 310, "zone": 4},     # short z4 = surge
+        {"type": "WORK", "moving_time": 180, "average_watts": 240, "zone": 3},    # tempo
+        {"type": "WORK", "moving_time": 600, "average_watts": 195, "zone": 2},    # z2
+    ]
+    out = icu_loader.normalize_laps(intervals, [], ftp=300)
+    assert [lap["type"] for lap in out] == [
+        "warmup_or_cooldown", "work", "recovery", "work", "surge", "tempo", "z2"
+    ]
+
+
+def test_normalize_laps_preserves_rich_fields():
+    """LLM needs per-interval HR/cadence/W'bal to reason about execution."""
+    intervals = [
+        {
+            "type": "WORK", "moving_time": 240, "average_watts": 349,
+            "weighted_average_watts": 352, "max_watts": 535, "zone": 5,
+            "average_heartrate": 173, "max_heartrate": 180,
+            "average_cadence": 95, "decoupling": 2.1,
+            "wbal_start": 19000, "wbal_end": 6000,
+            "strain_score": 85, "joules_above_ftp": 15000,
+            "number": 11, "label": "VO2 #4",
+        }
+    ]
+    out = icu_loader.normalize_laps(intervals, [], ftp=300)
+    lap = out[0]
+    assert lap["zone"] == 5
+    assert lap["label"] == "VO2 #4"
+    assert lap["max_power"] == 535
+    assert lap["np_power"] == 352
+    assert lap["avg_hr"] == 173
+    assert lap["max_hr"] == 180
+    assert lap["avg_cadence"] == 95
+    assert lap["decoupling_pct"] == 2.1
+    assert lap["wbal_start_j"] == 19000
+    assert lap["wbal_end_j"] == 6000
+    assert lap["strain_score"] == 85
+    assert lap["joules_above_ftp"] == 15000
+
+
+def test_normalize_summary_includes_form_and_description():
+    """CTL/ATL/TSB + user notes must flow into the normalized activity so the
+    coach can calibrate recovery advice by form rather than raw TSS."""
+    summary = {
+        "id": "iZ",
+        "start_date_local": "2026-04-12T08:00:00",
+        "icu_ctl": 103.1,
+        "icu_atl": 125.8,
+        "feel": 3,
+        "description": "之江路400w52巡航\n6 组 VO2max" + "x" * 1000,
+    }
+    out = icu_loader.normalize_summary(summary, athlete_ftp=300, athlete_weight_kg=62)
+    assert out["form"]["ctl"] == 103.1
+    assert out["form"]["atl"] == 125.8
+    assert out["form"]["tsb"] == pytest.approx(-22.7, rel=1e-2)
+    assert out["feel"] == 3
+    # Description must be truncated to 500 chars to bound prompt size
+    assert len(out["description"]) == 500
+    assert out["description"].startswith("之江路400w52巡航")
 
 
 def test_load_activity_doc_nested_file(tmp_path: Path):

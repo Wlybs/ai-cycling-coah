@@ -36,10 +36,26 @@
 **本次训练意图（引自用户）**：<逐字复述用户回答的核心意图，1 句话>
 
 ## 今日结论
-1-2 句话定性总结。**必须和用户声明的意图对齐评价**——意图是 endurance 就不拿 interval 标准评判，意图是冲组就不拿 endurance 节奏评判。
+
+1-2 句话定性总结，**必须基于**：(a) 用户声明的意图，(b) 间歇表格里的实际执行数据，(c) `payload.form.tsb` 反映的进场状态，(d) `payload.physiology.min_w_bal_pct` 反映的客观生理余量。不得把单次 TSS 当判断依据（TSS 的含义高度取决于 CTL 基线——CTL 100 的骑手吃 TSS 180 与 CTL 50 的骑手吃 TSS 180 完全不是一回事）。
+
+## 间歇执行分析（payload.laps 非空且含 type='work' 条目时必须输出）
+
+**硬规定**：如果 `payload.laps` 中有 ≥2 条 `type=='work'` 的记录，**必须**给出一个 Markdown 表格+逐组解读。不得用"6 组 VO2max 都完成了"之类的概括混过去。
+
+表格列：`#、zone、时长(s)、avg_W、max_W、NP_W、IF、avg_HR、max_HR、cadence、W'bal 首→末(J)`。只列 `type=='work'` 的条目（顺序按原始 lap_index）。
+
+表格后必须回答：
+- **组间衰减**：对比第 1 组 vs 最后 1 组的 avg_W / max_HR / W'bal_end_j——有明显下降（avg_W 降 >5% 或 HR 同功率漂移 >5 bpm）就指出"硬衰减"；没有就说"维持得住"。
+- **HR 漂移**：同功率下 HR 递增是累积疲劳信号。
+- **W'bal 轨迹**：哪组是真正掏空点（`wbal_end_j` 最低）？组间是否有恢复？
+- **零散高区**：`payload.laps` 里若有 `type` 为 `surge`/`tempo`/`z2` 且**非 warmup/cooldown** 的条目（例如单独一段平路轮转、独立冲刺），单独点名并评价其定位（主训练一部分 or 顺带刺激）。
+
+**禁止**：在这一节说"N 组 VO2max"而不列出每组的实际功率/心率数字。若你写不出数字，说明 laps 里没这些组——不要编。
 
 ## 关键发现
-payload 里的 findings 已经过滤过——只剩有实质 verdict 的条目。每条：
+
+payload 里的 findings 已经过滤（只剩实质 verdict）。每条：
 ### N. <主题>
 > 证据: <逐字引用 findings 中的一条 evidence>
 - 结论: <结合意图的教练级解读>
@@ -48,7 +64,15 @@ payload 里的 findings 已经过滤过——只剩有实质 verdict 的条目�
 **ACL/膝关节限制词**：除非 payload 里 `physiology.response.knee_loading.flag` 非空、或用户在阶段 1 明确报告了膝部疼痛/不适，**禁止**在报告中出现 "ACL"/"半月板"/"右膝术后" 等词。这些是既往病史，不是当下的训练限制因素，反复提及会降低信号密度、给骑手不必要的心理暗示。
 
 ## 下次怎么办
+
 1-3 条具体到可执行（目标功率 W、时长、区间、频次）的建议。必须回应用户陈述的目标（例如"你目标是爬坡赛，所以 ..."）。
+
+**recovery 处方规则**（硬约束，不许"TSS 高就推 recovery"）：
+- `payload.form.tsb > +5`：新鲜，**禁止**建议 recovery 骑；可以安排下一次质量训练。
+- `payload.form.tsb` 在 -10 ~ +5：正常波动，按用户意图自由安排。
+- `payload.form.tsb` 在 -20 ~ -10：有堆积，可以提 Z2/Z1 短骑或休息日（非强制）。
+- `payload.form.tsb < -20` **且** `min_w_bal_pct < 15%` 或 feel ≥ 4：深度疲劳，推荐完全休息 24-48h。
+- 其它情况下**不主动推 recovery**。
 
 ## 附:本次激活的分析维度
 `- [x]` / `- [ ]` 标注。

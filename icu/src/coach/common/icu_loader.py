@@ -63,6 +63,19 @@ def normalize_summary(
     if events_by_date and date:
         planned_type = events_by_date.get(date)
 
+    ctl = summary.get("icu_ctl")
+    atl = summary.get("icu_atl")
+    tsb = (ctl - atl) if (ctl is not None and atl is not None) else None
+    form = {
+        "ctl": round(ctl, 1) if ctl is not None else None,
+        "atl": round(atl, 1) if atl is not None else None,
+        "tsb": round(tsb, 1) if tsb is not None else None,
+    }
+
+    description = summary.get("description") or ""
+    if description:
+        description = description[:500]
+
     return {
         "id": summary.get("id"),
         "date": date,
@@ -73,12 +86,17 @@ def normalize_summary(
         "if": if_val,
         "total_kj": total_kj,
         "max_hr": summary.get("max_heartrate"),
+        "avg_hr": summary.get("average_heartrate"),
+        "avg_cadence": summary.get("average_cadence"),
         "elevation_gain_m": summary.get("total_elevation_gain"),
         "decoupling_pct": summary.get("decoupling"),
         "avg_temperature_c": summary.get("average_temp"),
         "hr_drift_z2_bpm": None,  # not available in ICU; sub-analyzers tolerate None
         "planned_type": planned_type,
         "weight_kg": athlete_weight_kg,
+        "form": form,
+        "feel": summary.get("feel"),  # ICU RPE 1-5 (lower=better subjectively)
+        "description": description,  # first 500 chars of user-written notes
         "_raw": summary,
     }
 
@@ -128,11 +146,55 @@ def normalize_streams(streams: dict) -> dict:
 # ---------------- laps ----------------
 
 
+def _classify_lap_type(
+    zone: int | None,
+    avg_power: int | float | None,
+    duration_s: int,
+    ftp: int,
+) -> str:
+    """Derive work/recovery/tempo/ride/warmup/cooldown from ICU zone + context.
+
+    ICU labels every interval `type='WORK'` — useless for downstream filtering.
+    We classify by power zone (1–7) the interval spent most time in:
+      - zone 5+ → 'work'  (VO2max / anaerobic — the real hard intervals)
+      - zone 4   → 'work' if >=120s, else 'surge'  (threshold efforts)
+      - zone 3   → 'tempo'
+      - zone 2   → 'z2'
+      - zone 1   → 'recovery' if between other work intervals / short (<=600s),
+                  else 'warmup_or_cooldown' for long (>600s) z1 blocks that
+                  bookend the session
+      - None/0   → fall back to FTP% threshold: >=90% → 'work', >=70% → 'tempo',
+                  >=55% → 'z2', else 'recovery'
+    """
+    if zone is not None and zone >= 5:
+        return "work"
+    if zone == 4:
+        return "work" if duration_s >= 120 else "surge"
+    if zone == 3:
+        return "tempo"
+    if zone == 2:
+        return "z2"
+    if zone == 1:
+        return "recovery" if duration_s <= 600 else "warmup_or_cooldown"
+    # zone unknown — derive from FTP%
+    if ftp and avg_power:
+        pct = avg_power / ftp
+        if pct >= 0.90:
+            return "work"
+        if pct >= 0.70:
+            return "tempo"
+        if pct >= 0.55:
+            return "z2"
+    return "recovery"
+
+
 def _icu_type_to_internal(raw: str | None) -> str:
+    """Legacy fallback when `zone` is missing. ICU's type field is normally
+    useless ('WORK' for everything) so prefer _classify_lap_type."""
     if not raw:
         return "ride"
     u = str(raw).strip().upper()
-    if u in ("WORK", "INTERVAL", "EFFORT"):
+    if u in ("INTERVAL", "EFFORT"):
         return "work"
     if u in ("RECOVERY", "REST", "REST_INTERVAL"):
         return "recovery"
@@ -145,21 +207,41 @@ def normalize_laps(
     *,
     ftp: int,
 ) -> list[dict]:
-    """Prefer structured icu_intervals; fall back to FIT laps."""
+    """Prefer structured icu_intervals; fall back to FIT laps.
+
+    Output per lap includes coaching-relevant fields that let the LLM reason
+    per-interval instead of guessing from aggregate session metrics:
+      lap_index, type, label, zone, duration_s, avg_power, max_power,
+      np_power, if, avg_hr, max_hr, avg_cadence, wbal_start_j, wbal_end_j,
+      decoupling_pct, strain_score, joules_above_ftp.
+    """
     out: list[dict] = []
     if icu_intervals:
         for idx, iv in enumerate(icu_intervals):
             duration = iv.get("moving_time") or iv.get("elapsed_time") or 0
             avg = iv.get("average_watts") or 0
+            zone = iv.get("zone")
+            lap_type = _classify_lap_type(zone, avg, duration, ftp)
             np_power = iv.get("weighted_average_watts")
             out.append(
                 {
                     "lap_index": iv.get("number") if iv.get("number") is not None else idx,
-                    "type": _icu_type_to_internal(iv.get("type")),
+                    "type": lap_type,
+                    "label": iv.get("label"),
+                    "zone": zone,
                     "duration_s": duration,
                     "avg_power": avg,
+                    "max_power": iv.get("max_watts"),
                     "np_power": np_power,
-                    "if": (avg / ftp) if ftp and avg else None,
+                    "if": round(avg / ftp, 3) if ftp and avg else None,
+                    "avg_hr": iv.get("average_heartrate"),
+                    "max_hr": iv.get("max_heartrate"),
+                    "avg_cadence": iv.get("average_cadence"),
+                    "wbal_start_j": iv.get("wbal_start"),
+                    "wbal_end_j": iv.get("wbal_end"),
+                    "decoupling_pct": iv.get("decoupling"),
+                    "strain_score": iv.get("strain_score"),
+                    "joules_above_ftp": iv.get("joules_above_ftp"),
                 }
             )
         return out
@@ -170,11 +252,22 @@ def normalize_laps(
         out.append(
             {
                 "lap_index": lap.get("lap_number") if lap.get("lap_number") is not None else idx,
-                "type": "ride",  # FIT laps have no work/recovery distinction
+                "type": _classify_lap_type(None, avg, duration, ftp),
+                "label": None,
+                "zone": None,
                 "duration_s": duration,
                 "avg_power": avg,
+                "max_power": lap.get("max_watts"),
                 "np_power": None,
-                "if": (avg / ftp) if ftp and avg else None,
+                "if": round(avg / ftp, 3) if ftp and avg else None,
+                "avg_hr": lap.get("avg_hr"),
+                "max_hr": None,
+                "avg_cadence": lap.get("avg_cadence"),
+                "wbal_start_j": None,
+                "wbal_end_j": None,
+                "decoupling_pct": None,
+                "strain_score": None,
+                "joules_above_ftp": None,
             }
         )
     return out
