@@ -41,6 +41,8 @@ def segment_lap_by_power(
     min_segment_s: int = 10,
     high_pct: float = 0.90,
     med_pct: float = 0.60,
+    hr_stream: list[int | float] | None = None,
+    cadence_stream: list[int | float] | None = None,
 ) -> list[dict]:
     """Run-length-encode a watts stream into intensity-class runs.
 
@@ -113,12 +115,22 @@ def segment_lap_by_power(
         else:
             i += 1
 
+    def _slice_stat(stream, s, e):
+        if not stream:
+            return None, None
+        chunk = [v for v in stream[s:e] if v is not None]
+        if not chunk:
+            return None, None
+        return round(sum(chunk) / len(chunk)), int(max(chunk))
+
     out: list[dict] = []
     for klass, s, e in runs:
         w_slice = [float(w or 0) for w in watts[s:e]]
         if not w_slice:
             continue
         avg = sum(w_slice) / len(w_slice)
+        avg_hr, max_hr = _slice_stat(hr_stream, s, e)
+        avg_cad, _ = _slice_stat(cadence_stream, s, e)
         out.append(
             {
                 "class": klass,
@@ -128,6 +140,9 @@ def segment_lap_by_power(
                 "avg_w": round(avg),
                 "max_w": int(max(w_slice)),
                 "if": round(avg / ftp, 3) if ftp else None,
+                "avg_hr": avg_hr,
+                "max_hr": max_hr,
+                "avg_cadence": avg_cad,
             }
         )
     return out

@@ -57,6 +57,8 @@ def main():
     intervals = doc.get("icu_intervals") or []
     streams = doc.get("streams") or {}
     watts_full = streams.get("watts") or []
+    hr_full = streams.get("heartrate") or []
+    cad_full = streams.get("cadence") or []
 
     idx0 = args.lap - 1
     if not (0 <= idx0 < len(intervals)):
@@ -67,6 +69,8 @@ def main():
     start = iv.get("start_index", 0) or 0
     end = iv.get("end_index", len(watts_full)) or len(watts_full)
     lap_watts = watts_full[start:end]
+    lap_hr = hr_full[start:end] if hr_full else None
+    lap_cad = cad_full[start:end] if cad_full else None
 
     ftp, _weight = _load_athlete(warehouse)
 
@@ -87,6 +91,8 @@ def main():
         min_segment_s=args.min_seg,
         high_pct=high_pct,
         med_pct=med_pct,
+        hr_stream=lap_hr,
+        cadence_stream=lap_cad,
     )
 
     print(json.dumps({

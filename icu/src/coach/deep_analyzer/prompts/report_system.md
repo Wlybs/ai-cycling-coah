@@ -43,9 +43,20 @@
 
 **硬规定**：如果 `payload.laps` 中有 ≥2 条 `type=='work'` 的记录，**必须**给出一个 Markdown 表格+逐组解读。不得用"6 组 VO2max 都完成了"之类的概括混过去。
 
-表格列：`圈、zone、时长(s)、avg_W、max_W、NP_W、IF、avg_HR、max_HR、cadence、W'bal 首→末(J)`。**"圈" 列用 `payload.laps[i].lap_number`（1-based，匹配 ICU UI / 码表显示）——不得用 0-based 的 `lap_index`。** 只列 `type=='work'` 的条目。
+表格列：`圈、zone、时长、avg_W、max_W、NP_W、IF、avg_HR、max_HR、cadence、W'bal 首→末(J)`。**"圈" 列用 `payload.laps[i].lap_number`（1-based，匹配 ICU UI / 码表显示）——不得用 0-based 的 `lap_index`。** 只列 `type=='work'` 的条目。
 
-**数据污点处理**：如果用户在阶段 1 明确指出某圈"误触/忘按/堵车/合并"，你必须调用 `scripts/segment_lap.py --activity <id> --lap <N>` 取该圈的原始 watts 流的子段分析，把真实的"高功率做功段 vs 低功率恢复/下坡段"拆出来再评价。不得直接用该圈的 aggregate avg/max 给结论——那是污染过的数字。同样对于**团练圈**（用户说到"轮组/攻防/跟风"），用 `--group` 模式（`--high-pct 1.5 --med-pct 1.0`）识别攻击/主拉/跟风段。
+**时长格式规则（全报告通用，不仅这张表）**：
+- 时长 < 60 秒 → 保留"Xs"（例："35s"、"51s"）
+- 时长 ≥ 60 秒 → **必须**换算成 `M:SS min` 格式（例：`270s → 4:30 min`, `421s → 7:01 min`, `1889s → 31:29 min`）
+- 整分钟时长可省秒位（`600s → 10 min`）
+
+**数据污点处理**：如果用户在阶段 1 明确指出某圈"误触/忘按/堵车/合并"，你必须调用 `scripts/segment_lap.py --activity <id> --lap <N>` 取该圈的原始 watts 流的子段分析，把真实的"高功率做功段 vs 低功率恢复/下坡段"拆出来再评价。不得直接用该圈的 aggregate avg/max 给结论——那是污染过的数字。
+
+**团练圈深度分析**（用户说到"轮组/攻防/跟风/跟车"时必须执行）：
+1. 调用 `scripts/segment_lap.py --activity <id> --lap <N> --group --min-seg 5`（`--group` 启用攻击阈值 high≥1.5×FTP / med≥1.0×FTP；`--min-seg 5` 因为轮组子段常常很短）。
+2. **必须**把所有子段列成一张 Markdown 表格，列：`子段、开始 t、时长、avg_W、max_W、IF、avg_HR、max_HR、avg_cadence、定性（攻击/主拉/跟车/喘息）`。时长按上述格式规则。
+3. 表格后必须用 2-3 句话解读：**攻击次数 + 最高功率持续时长 + 跟车段的功率均值**（反映用户在轮组里扮演的角色：进攻者 vs 跟风者 vs 主拉机器）。
+4. **禁止**用"短暂冲出 X-YW 的拉速段 + Y-ZW 的群顶段 + A-BW 的跟风喘息段"这种概括性短语。每一类至少给出一个具体的 `duration / avg_W / HR` 数据点。
 
 表格后必须回答：
 - **组间衰减**：对比第 1 组 vs 最后 1 组的 avg_W / max_HR / W'bal_end_j——有明显下降（avg_W 降 >5% 或 HR 同功率漂移 >5 bpm）就指出"硬衰减"；没有就说"维持得住"。
