@@ -26,16 +26,19 @@ def render_brief(physiology, summary, recent_scores, response_knee) -> str:
     lines = [BEGIN]
     lines.append("## 当前画像（自动更新，勿手动编辑本段）")
     if physiology:
+        cp = physiology.get("cp_watts", "?")
+        wp = physiology.get("w_prime_joules", "?")
+        ftp = physiology.get("athlete_ftp_set", "?")
         delta = physiology.get("cp_vs_ftp_delta_w")
         delta_str = f"{delta:+d}W" if isinstance(delta, int) else "N/A"
         lines.append(
-            f"- 个人 CP {physiology['cp_watts']}W / W' {physiology['w_prime_joules']}J"
-            f"（vs 设定 FTP {physiology['athlete_ftp_set']}W，差 {delta_str}）"
+            f"- 个人 CP {cp}W / W' {wp}J"
+            f"（vs 设定 FTP {ftp}W，差 {delta_str}）"
         )
     if summary:
         lines.append(
-            f"- 最近深度分析：{summary['headline_verdict']}"
-            f"（stimulus={summary['stimulus_score']}, {summary['progression_flag']}）"
+            f"- 最近深度分析：{summary.get('headline_verdict', '?')}"
+            f"（stimulus={summary.get('stimulus_score', '?')}, {summary.get('progression_flag', '?')}）"
         )
     if recent_scores:
         lines.append(
