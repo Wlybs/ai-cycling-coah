@@ -246,7 +246,7 @@ def build_plan_prompt(week_start=None, week_end=None) -> str:
 1. 与当前体能状态（TSB）匹配，高疲劳时降负荷
 2. 体现训练极化原则，避免垃圾里程
 3. 每天给出具体可执行的功率/心率目标（不能模糊）
-4. 考虑骑手的快肌纤维优势和 ACL 恢复史
+4. 考虑骑手的快肌纤维优势；ACL 属既往病史，除非 physiology knee_loading flag 非空或骑手明确反馈膝痛，**不要**在计划里提及膝盖/ACL
 5. 朝向5月爬坡赛目标推进
 6. coaching_summary 控制在200字以内
 
