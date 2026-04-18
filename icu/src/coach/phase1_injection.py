@@ -21,7 +21,13 @@ def _tail_reports(dir_: Path, n: int = 5) -> list[str]:
     if not dir_.exists():
         return []
     md_files = sorted(dir_.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)[:n]
-    return [f.read_text(encoding="utf-8") for f in md_files]
+    out = []
+    for f in md_files:
+        try:
+            out.append(f.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return out
 
 
 def render_phase1_context_block(physiology, durability, response, summary, recent_reports) -> str:
@@ -33,7 +39,8 @@ def render_phase1_context_block(physiology, durability, response, summary, recen
         r2 = physiology.get("fit_r_squared")
         ftp = physiology.get("athlete_ftp_set")
         delta = physiology.get("cp_vs_ftp_delta_w")
-        lines.append(f"- **个人 CP {cp}W / W' {wp}J**（拟合 R²={r2}）；与设定 FTP {ftp}W 偏差 {delta:+d}W。规划强度时以 **CP 而非 FTP** 作为阈值。")
+        delta_str = f"{delta:+d}W" if isinstance(delta, int) else "N/A"
+        lines.append(f"- **个人 CP {cp}W / W' {wp}J**（拟合 R²={r2}）；与设定 FTP {ftp}W 偏差 {delta_str}。规划强度时以 **CP 而非 FTP** 作为阈值。")
 
     if durability and durability.get("decay_rate_pct_per_1000kj"):
         decay = durability["decay_rate_pct_per_1000kj"]
