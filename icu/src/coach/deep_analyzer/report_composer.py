@@ -1,4 +1,6 @@
+import json
 import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Iterable
 
@@ -8,6 +10,7 @@ SYSTEM_PROMPT_PATH = Path(__file__).parent / "prompts" / "report_system.md"
 SUB_ANALYZERS = ["pacing", "w_balance", "durability", "climbing", "target_align", "historical_cmp"]
 
 
+@lru_cache(maxsize=1)
 def _load_system_prompt() -> str:
     return SYSTEM_PROMPT_PATH.read_text(encoding="utf-8")
 
@@ -21,7 +24,7 @@ def _session_line(activity: dict) -> str:
     return f"{dur} 分钟 · NP {np} W · TSS {tss} · IF {if_val} · {kj} kJ"
 
 
-def _activated_checklist(activated_set) -> str:
+def _activated_checklist(activated_set: set[str]) -> str:
     lines = []
     for name in SUB_ANALYZERS:
         mark = "x" if name in activated_set else " "
@@ -70,8 +73,7 @@ def compose(
         "findings": findings_json,
         "activated_checklist": _activated_checklist(activated_set),
     }
-    import json as _json
-    payload_text = _json.dumps(user_payload, ensure_ascii=False, indent=2)
+    payload_text = json.dumps(user_payload, ensure_ascii=False, indent=2)
 
     prompt = system_prompt + "\n\n---\n\n输入 JSON：\n```json\n" + payload_text + "\n```"
 
