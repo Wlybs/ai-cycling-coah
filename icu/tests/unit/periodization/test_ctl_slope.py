@@ -60,3 +60,28 @@ def test_empty_series_returns_none_slope():
     assert slope.slope_per_day is None
     assert slope.interpretation == "unknown"
     assert slope.sample_size == 0
+
+
+def test_duplicate_dates_deduplicated_last_wins():
+    """重复日期只保留最后一条，不应让回归被双倍权重拉偏。"""
+    series = [
+        {"id": "2026-04-01", "ctl": 90.0},
+        {"id": "2026-04-01", "ctl": 95.0},  # duplicate date, different CTL
+        {"id": "2026-04-02", "ctl": 96.0},
+        {"id": "2026-04-03", "ctl": 97.0},
+    ]
+    slope = analyze_ctl_slope(series, reference_date=date(2026, 4, 4), window_days=7)
+    assert slope.sample_size == 3  # 4 rows → 3 unique dates
+    assert slope.last_ctl == 97.0
+
+
+def test_future_dates_excluded():
+    """reference_date 之后的行应被过滤掉。"""
+    series = [
+        {"id": "2026-04-01", "ctl": 90.0},
+        {"id": "2026-04-02", "ctl": 91.0},
+        {"id": "2026-04-05", "ctl": 99.0},  # future relative to ref
+    ]
+    slope = analyze_ctl_slope(series, reference_date=date(2026, 4, 3), window_days=7)
+    assert slope.sample_size == 2
+    assert slope.last_ctl == 91.0

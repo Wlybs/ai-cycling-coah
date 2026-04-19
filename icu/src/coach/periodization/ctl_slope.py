@@ -1,8 +1,9 @@
 """CTL 斜率分析。用 N 天线性回归估计 CTL/d，用于识别加载/平台/减量阶段。"""
 from __future__ import annotations
 
+import warnings
 from datetime import date, datetime
-from typing import Optional
+from typing import Literal, Optional
 
 import numpy as np
 from pydantic import BaseModel
@@ -10,7 +11,7 @@ from pydantic import BaseModel
 
 class CTLSlope(BaseModel):
     slope_per_day: Optional[float]
-    interpretation: str  # "increasing" | "flat" | "decreasing" | "unknown"
+    interpretation: Literal["increasing", "flat", "decreasing", "unknown"]
     sample_size: int
     window_start: Optional[date] = None
     window_end: Optional[date] = None
@@ -20,7 +21,7 @@ class CTLSlope(BaseModel):
 def _parse_date(v: str) -> Optional[date]:
     try:
         return datetime.strptime(v[:10], "%Y-%m-%d").date()
-    except Exception:
+    except (ValueError, TypeError):
         return None
 
 
@@ -48,6 +49,8 @@ def analyze_ctl_slope(
     if not pairs:
         return CTLSlope(slope_per_day=None, interpretation="unknown", sample_size=0)
 
+    # Dedup: if multiple rows share the same date, keep the last one
+    pairs = list({d: (d, v) for d, v in pairs}.values())
     pairs.sort(key=lambda p: p[0])
     xs = np.array([(p[0] - pairs[0][0]).days for p in pairs], dtype=float)
     ys = np.array([p[1] for p in pairs], dtype=float)
@@ -57,7 +60,9 @@ def analyze_ctl_slope(
             window_start=pairs[0][0], window_end=pairs[0][0],
             last_ctl=pairs[0][1],
         )
-    slope, _ = np.polyfit(xs, ys, 1)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", np.RankWarning)
+        slope, _ = np.polyfit(xs, ys, 1)
     if slope > FLAT_THRESHOLD_PER_DAY:
         interp = "increasing"
     elif slope < -FLAT_THRESHOLD_PER_DAY:
