@@ -106,3 +106,26 @@ def test_refresh_captures_next_race_when_present(tmp_path: Path) -> None:
     assert snap.next_race.race_date == date(2026, 6, 15)
     # days_out is tracked on RaceEntry (race_calendar) but NOT persisted to NextRace snapshot
     assert (snap.next_race.race_date - date(2026, 4, 18)).days == 58
+
+
+def test_refresh_reads_stimulus_median_from_trace_files(tmp_path: Path) -> None:
+    warehouse = _seed_warehouse(tmp_path)
+    memory = _seed_memory(tmp_path)
+    # Seed multiple trace files — engine should use median of these over summary_latest
+    deep_dir = memory / "deep_analysis"
+    for i, score in enumerate([0.40, 0.60, 0.80]):
+        (deep_dir / f"2026-04-{10+i:02d}.trace.json").write_text(
+            json.dumps({"stimulus_score": score}),
+            encoding="utf-8",
+        )
+    result = refresh_periodization(
+        warehouse_dir=warehouse,
+        memory_dir=memory,
+        reference_date=date(2026, 4, 18),
+        generated_at="2026-04-18T00:00:00Z",
+    )
+    assert result["status"] == "ok"
+    # Snapshot exists and is structurally valid — exercises the trace.json branch
+    snap = load_periodization_snapshot(memory / "periodization")
+    assert snap is not None
+    assert snap.current_phase is not None

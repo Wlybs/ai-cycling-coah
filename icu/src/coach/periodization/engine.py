@@ -62,20 +62,20 @@ def _load_stimulus_median(memory_dir: Path) -> Optional[float]:
     """Median stimulus_score from coach_memory/deep_analysis/*.trace.json.
 
     Walks recent .trace.json files in descending mtime order, collects stimulus_score
-    values, returns median of up to 5 most recent. Falls back to summary_latest.json
-    if no .trace files have stimulus_score. Returns None if nothing found.
+    values from the 5 most recent files, returns their median. Falls back to
+    summary_latest.json if no .trace files have stimulus_score. Returns None if nothing found.
     """
     deep_dir = memory_dir / "deep_analysis"
     if not deep_dir.exists():
         return None
 
     scores: list[float] = []
-    # Sort by mtime descending, take up to 10 most recent
+    # Sort by mtime descending, take up to 5 most recent
     trace_files = sorted(
         deep_dir.glob("*.trace.json"),
         key=lambda p: p.stat().st_mtime,
         reverse=True
-    )[:10]
+    )[:5]
 
     for trace_path in trace_files:
         try:
@@ -87,7 +87,7 @@ def _load_stimulus_median(memory_dir: Path) -> Optional[float]:
             scores.append(float(stimulus))
 
     if scores:
-        return statistics.median(scores[:5])
+        return statistics.median(scores)
 
     # Fallback: summary_latest.json
     summary_path = deep_dir / "summary_latest.json"
@@ -121,6 +121,8 @@ def _load_knee_flag(memory_dir: Path) -> Optional[str]:
 
 def _locate_window(windows: list[MacroWindow], ref: date) -> MacroWindow:
     """Find the MacroWindow containing ref, fallback to nearest by date."""
+    if not windows:
+        raise ValueError("_locate_window: windows list is empty")
     for w in windows:
         if w.start_date <= ref <= w.end_date:
             return w
@@ -158,7 +160,7 @@ def refresh_periodization(
     try:
         # Load raw data
         wellness = _load_wellness(warehouse_dir)
-        athlete = _load_athlete(warehouse_dir)  # Unused now, reserved for future
+        _athlete = _load_athlete(warehouse_dir)  # Unused now, reserved for future
 
         # Extract baseline CTL from latest wellness entry
         baseline_ctl = 90.0
@@ -274,10 +276,12 @@ def refresh_periodization(
 
     except Exception as e:
         # Log error with duration
+        error_msg = f"{type(e).__name__}: {e}"
         LOG.event(
             action="refresh_periodization",
             duration_ms=int((time.monotonic() - t0) * 1000),
             status="error",
-            error=str(e),
+            error=error_msg,
+            error_type=type(e).__name__,
         )
-        return {"status": "error", "error": str(e)}
+        return {"status": "error", "error": error_msg}
