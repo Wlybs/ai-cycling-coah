@@ -4,10 +4,6 @@ from src.coach.session_designer.intent_translator import (
 from src.coach.periodization.types import IntensityTier
 
 
-def _intent(tier, hint):
-    return {"tier": tier, "hint": hint}
-
-
 def test_rest_always_rest_day():
     name = translate_intent(
         tier=IntensityTier.REST, hint="rest",
@@ -79,3 +75,31 @@ def test_openers_keyword_matches():
         tolerance_classes={},
     )
     assert name == "openers_short"
+
+
+def test_recovery_rule_does_not_match_bare_spin():
+    # Before hardening: "spindown calibration" matched "spin" → recovery_spin. No more.
+    name = translate_intent(
+        tier=IntensityTier.HARD, hint="spindown calibration",
+        tolerance_classes={},
+    )
+    # Falls through to HARD tier default
+    assert name == "threshold_2x20"
+
+
+def test_high_tolerance_promotes_vo2_5x4_to_6x3():
+    # Generic "vo2" hint, HARD tier, high tolerance → upgrade to 6x3
+    name = translate_intent(
+        tier=IntensityTier.HARD, hint="VO2max intervals",
+        tolerance_classes={"VO2max": "high"},
+    )
+    assert name == "vo2max_short_6x3"
+
+
+def test_tolerance_lookup_is_case_insensitive():
+    # Upstream might emit different casing for the tolerance key
+    name = translate_intent(
+        tier=IntensityTier.HARD, hint="VO2max 5x4'",
+        tolerance_classes={"VO2MAX": "low"},
+    )
+    assert name == "threshold_2x20"

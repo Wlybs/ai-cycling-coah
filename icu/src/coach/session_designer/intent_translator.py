@@ -23,7 +23,7 @@ _KEYWORD_RULES: list[tuple[tuple[str, ...], str]] = [
     (("tempo inside", "with tempo", "long with"), "endurance_long_with_tempo"),
     (("opener",), "openers_short"),
     (("race",), "race_sim_course"),
-    (("recovery", "spin"), "recovery_spin"),
+    (("recovery spin", "recovery ride", "easy spin"), "recovery_spin"),
     (("tempo",), "tempo_continuous_60"),
     (("long",), "endurance_long_z2"),
 ]
@@ -49,10 +49,14 @@ def translate_intent(
 
     # tolerance downgrade: 低耐受 VO2 → threshold
     if name.startswith("vo2max"):
-        tc = tolerance_classes.get("VO2max") or tolerance_classes.get("vo2max")
+        tc = next(
+            (v for k, v in tolerance_classes.items() if k.lower() == "vo2max"),
+            None,
+        )
         if tc == "low":
             return "threshold_2x20"
-        if tc == "high" and name == "vo2max_short_5x4" and "6x3" in hint.lower():
+        if tc == "high" and name == "vo2max_short_5x4":
+            # High-responder + generic VO2 intent → prefer higher-density 6x3 variant.
             return "vo2max_short_6x3"
 
     return name
