@@ -295,7 +295,7 @@ class DecisionEntry(BaseModel):
     confidence: float | None
     payload: dict           # 按 decision_type 变结构
     evidence_refs: list[str] = []
-    superseded_by: str | None = None
+    superseded_by: str | None = None   # ULID of an EARLIER entry this one supersedes/corrects; set at write time of the newer entry (append-only-safe)
 ```
 
 ### Writer API
@@ -333,7 +333,7 @@ reader.query_similar(
 )
 
 # 追溯决策链
-reader.trace_chain(entry_id="...")  # 返回 superseded_by 指向的所有后续 entry
+reader.trace_chain(entry_id="...")  # 从 entry_id 出发顺着 superseded_by 指针回溯到被其修正的更早 entry，返回整条修正链
 ```
 
 `query_similar` 实现：纯 Python 过滤（phase 全等 + |ctl 差| ≤ tolerance），按时间倒序，取 limit。无需向量检索。
