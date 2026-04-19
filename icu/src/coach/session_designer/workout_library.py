@@ -3,9 +3,15 @@ from __future__ import annotations
 
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from ..periodization.types import IntensityTier, SessionType
+
+
+# Helper defaults (named constants for clarity and maintainability)
+DEFAULT_WU_S = 900       # 15-minute warmup
+DEFAULT_CD_S = 600       # 10-minute cooldown
+DEFAULT_REST_S = 180     # 3-minute active rest between reps
 
 
 class WorkoutTemplateStep(BaseModel):
@@ -17,7 +23,14 @@ class WorkoutTemplateStep(BaseModel):
     pct_of_cp_high: Optional[float] = None
     w_prime_deplete_pct_max: Optional[float] = None
     zone: str = Field(..., pattern=r"^(Z1|Z2|Z3|Z4|Z5|Z6|Z7)$")
-    rep_count: int = 1
+    rep_count: int = Field(
+        default=1,
+        description=(
+            "Informational: how many reps this step represents when templates "
+            "describe a rep group as a single line. Composer (T39) may use this "
+            "for display copy; not consumed by the library itself."
+        ),
+    )
 
 
 class WorkoutTemplate(BaseModel):
@@ -27,6 +40,23 @@ class WorkoutTemplate(BaseModel):
     steps: list[WorkoutTemplateStep]
     total_duration_s_range: tuple[int, int]
     notes: str
+
+    @model_validator(mode="after")
+    def _check_total_duration_in_range(self):
+        total = sum(s.duration_s for s in self.steps)
+        lo, hi = self.total_duration_s_range
+        if lo > hi:
+            raise ValueError(
+                f"template {self.name!r}: total_duration_s_range has lo > hi "
+                f"({lo} > {hi})"
+            )
+        if not (lo <= total <= hi):
+            raise ValueError(
+                f"template {self.name!r}: computed step total {total}s "
+                f"falls outside declared range ({lo}, {hi}). "
+                f"Either fix the range or the steps."
+            )
+        return self
 
 
 def _step(label: str, duration_s: int, pct_low: Optional[float],
@@ -39,15 +69,15 @@ def _step(label: str, duration_s: int, pct_low: Optional[float],
     )
 
 
-def _wu(dur_s=900) -> WorkoutTemplateStep:
+def _wu(dur_s=DEFAULT_WU_S) -> WorkoutTemplateStep:
     return _step("WU", dur_s, 0.40, 0.70, "Z1")
 
 
-def _cd(dur_s=600) -> WorkoutTemplateStep:
+def _cd(dur_s=DEFAULT_CD_S) -> WorkoutTemplateStep:
     return _step("CD", dur_s, 0.40, 0.60, "Z1")
 
 
-def _rest_interval(dur_s=180) -> WorkoutTemplateStep:
+def _rest_interval(dur_s=DEFAULT_REST_S) -> WorkoutTemplateStep:
     return _step("rest", dur_s, 0.40, 0.55, "Z1")
 
 
@@ -72,7 +102,7 @@ WORKOUT_TEMPLATES: list[WorkoutTemplate] = [
                + _build_intervals("VO2 {i}/{total} 4'", 5, 240, 180,
                                   1.10, 1.15, "Z5", 0.25)
                + [_cd()]),
-        total_duration_s_range=(2700, 3300),
+        total_duration_s_range=(3000, 3600),
         notes="经典 5x4' VO2max @ 110-115% CP，r3' active rest。W' 单次消耗上限 25% 以留余量。",
     ),
     WorkoutTemplate(
@@ -82,7 +112,7 @@ WORKOUT_TEMPLATES: list[WorkoutTemplate] = [
                + _build_intervals("VO2 {i}/{total} 3'", 6, 180, 180,
                                   1.15, 1.20, "Z5", 0.20)
                + [_cd()]),
-        total_duration_s_range=(2700, 3300),
+        total_duration_s_range=(3000, 3600),
         notes="6x3' VO2max 高刺激密度，PEAK 阶段使用。",
     ),
     WorkoutTemplate(
@@ -92,7 +122,7 @@ WORKOUT_TEMPLATES: list[WorkoutTemplate] = [
                + _build_intervals("TH {i}/{total} 20'", 2, 1200, 480,
                                   0.97, 1.02, "Z4", None)
                + [_cd()]),
-        total_duration_s_range=(4500, 5400),
+        total_duration_s_range=(4200, 5400),
         notes="Threshold 2x20 @ 97-102% CP，提高乳酸清除。",
     ),
     WorkoutTemplate(

@@ -1,7 +1,9 @@
 import pytest
+from pydantic import ValidationError
 
 from src.coach.session_designer.workout_library import (
-    WORKOUT_TEMPLATES, get_template, list_templates_for_tier,
+    WORKOUT_TEMPLATES, WorkoutTemplate, WorkoutTemplateStep, get_template,
+    list_templates_for_tier,
 )
 from src.coach.periodization.types import IntensityTier, SessionType
 
@@ -47,3 +49,18 @@ def test_template_steps_use_symbolic_targets_not_absolute_watts():
         assert step.target_w_low is None
         assert step.target_w_high is None
     assert any(s.pct_of_cp_low is not None for s in t.steps)
+
+
+def test_template_validator_rejects_out_of_range_step_sum():
+    with pytest.raises(ValidationError):
+        WorkoutTemplate(
+            name="bogus",
+            session_type=SessionType.THRESHOLD,
+            tier=IntensityTier.HARD,
+            steps=[
+                WorkoutTemplateStep(label="WU", duration_s=900, zone="Z1"),
+                WorkoutTemplateStep(label="work", duration_s=1200, zone="Z4"),
+            ],  # sum = 2100
+            total_duration_s_range=(3000, 4000),  # deliberately out of range
+            notes="bogus",
+        )
