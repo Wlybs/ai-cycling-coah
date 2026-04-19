@@ -1,5 +1,10 @@
 # Phase 2 — Integration (Tasks T45–T46)
 
+> **Revised 2026-04-19:** API-free prose flow. No `google.genai` import, no
+> `enrich_with_prose` call. Uses `plan_writer.save_weekly_plan` +
+> `prose_io.render_prose_prompt` + `prose_io.load_and_apply_prose`.
+> See [`../../specs/2026-04-19-phase-2-file-09-redesign.md`](../../specs/2026-04-19-phase-2-file-09-redesign.md).
+
 > Part of the Phase 2 implementation plan. See [00-index.md](./00-index.md).
 
 **Files covered:**
@@ -25,11 +30,11 @@
 3. 调 `periodization.engine.refresh_periodization(reference_date=week_start)` → 结果里 `micro_cycle` 对应到目标周
 4. 如果 refresh 返回 `status != ok`，raise；由 CLI 决定是否回退
 5. 调 `session_designer.assembler.design_week(micro, memory_dir)` → `(plan, sessions, violations)`
-6. 如果 `push_to_icu`：调 `session_designer.prose_generator.enrich_with_prose()`（需要 `google.genai.Client`）
-7. 否则 skip prose（仅本地结构化保存，减少 token 开销）
-8. `save_weekly_plan()` 生成 json + md；`write_plan_trace()` 生成 trace
-9. 如果 `push_to_icu`：调用已有的 `src.coach.plan_generator._push_to_icu(plan_dict)` — 这是 Phase 1 未标记为"禁止修改"的 helper，可以 import 重用。但要确认 `_push_to_icu` 能吃 `plan.model_dump()` 结果（DayPlanV2 字段与 legacy DayPlan 一对一，应可以直接吃）
-10. 返回 `{status, plan_path, trace_path, violations}`
+6. 调 `prose_io.render_prose_prompt()` 生成提示词（API-free，仅本地）
+7. 调 `save_weekly_plan()` 生成 json + md + prose_prompt；`write_plan_trace()` 生成 trace
+8. 如果 `push_to_icu`：调用已有的 `src.coach.plan_generator._push_to_icu(plan_dict)` — 这是 Phase 1 未标记为"禁止修改"的 helper，可以 import 重用。但要确认 `_push_to_icu` 能吃 `plan.model_dump()` 结果（DayPlanV2 字段与 legacy DayPlan 一对一，应可以直接吃）
+9. 返回 `{status, plan_path, trace_path, violations, prose_prompt_path}`
+10. 用户在 Claude Code 或 Gemini 中粘贴提示词，获得 JSON 响应后，运行 `load_and_apply_prose()` 合并
 
 ### Important guardrails
 
@@ -90,7 +95,7 @@ def _seed_warehouse_and_memory(tmp_path):
     return warehouse, memory
 
 
-def test_generate_plan_v2_without_push_skips_prose(tmp_path):
+def test_generate_plan_v2_without_push_generates_skeleton(tmp_path):
     warehouse, memory = _seed_warehouse_and_memory(tmp_path)
     reports = tmp_path / "reports"
     result = generate_plan_v2(
@@ -100,36 +105,18 @@ def test_generate_plan_v2_without_push_skips_prose(tmp_path):
         memory_dir=memory,
         reports_dir=reports,
         push_to_icu=False,
-        gemini_client=None,
     )
     assert isinstance(result, GeneratePlanV2Result)
     assert result.status == "ok"
     assert Path(result.plan_json_path).exists()
     assert Path(result.trace_path).exists()
-    # coaching_summary 为空（没做 prose）
-    doc = json.loads(Path(result.plan_json_path).read_text())
-    assert doc["coaching_summary"] == ""
+    assert result.prose_prompt_path is not None
+    assert Path(result.prose_prompt_path).exists()
 
 
-def test_generate_plan_v2_with_push_calls_gemini_and_icu(tmp_path):
+def test_generate_plan_v2_with_push_calls_icu_only(tmp_path):
     warehouse, memory = _seed_warehouse_and_memory(tmp_path)
     reports = tmp_path / "reports"
-
-    prose_payload = {
-        "coaching_summary": "本周 BUILD week，重点 threshold + VO2max。",
-        "days": [],  # 空 days → 保留 skeleton description
-    }
-
-    class _FakeResp:
-        text = json.dumps(prose_payload, ensure_ascii=False)
-        usage_metadata = SimpleNamespace(prompt_token_count=0,
-                                         candidates_token_count=0)
-
-    class _FakeClient:
-        class models:
-            @staticmethod
-            def generate_content(**kwargs):
-                return _FakeResp()
 
     pushed = {"called": False}
     with patch("src.coach.plan_generator._push_to_icu",
@@ -138,12 +125,11 @@ def test_generate_plan_v2_with_push_calls_gemini_and_icu(tmp_path):
             week_start=date(2026, 4, 20),
             week_end=date(2026, 4, 26),
             warehouse_dir=warehouse, memory_dir=memory, reports_dir=reports,
-            push_to_icu=True, gemini_client=_FakeClient(),
+            push_to_icu=True,
         )
     assert result.status == "ok"
     assert pushed["called"] is True
-    doc = json.loads(Path(result.plan_json_path).read_text())
-    assert doc["coaching_summary"].startswith("本周 BUILD")
+    assert Path(result.prose_prompt_path).exists()
 
 
 def test_generate_plan_v2_returns_error_when_periodization_fails(tmp_path):
@@ -162,7 +148,7 @@ def test_generate_plan_v2_returns_error_when_periodization_fails(tmp_path):
             week_end=date(2026, 4, 26),
             warehouse_dir=warehouse, memory_dir=memory,
             reports_dir=tmp_path / "reports",
-            push_to_icu=False, gemini_client=None,
+            push_to_icu=False,
         )
     assert result.status == "error"
     assert "forced" in (result.error or "")
@@ -176,20 +162,21 @@ Expected: FAIL — module undefined.
 
 Write `icu/src/coach/session_designer/generator_v2.py`:
 ```python
-"""Phase 2 全栈门面：Periodization + Designer + Prose + Save + ICU push。"""
+"""Phase 2 全栈门面：Periodization + Designer + Prose IO + Save + ICU push（API-free）。"""
 from __future__ import annotations
 
 import time
 from dataclasses import dataclass
 from datetime import date as DateT, datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 from ..common.logging import get_logger
 from ..periodization import engine as periodization_engine
 from ..periodization.snapshot_io import load_periodization_snapshot
 from .assembler import design_week, write_plan_trace
-from .prose_generator import enrich_with_prose, save_weekly_plan
+from .plan_writer import save_weekly_plan
+from .prose_io import render_prose_prompt
 
 LOG = get_logger("generate_plan_v2")
 
@@ -200,6 +187,7 @@ class GeneratePlanV2Result:
     plan_json_path: Optional[str] = None
     plan_md_path: Optional[str] = None
     trace_path: Optional[str] = None
+    prose_prompt_path: Optional[str] = None
     error: Optional[str] = None
     violations: Optional[list] = None
 
@@ -237,8 +225,6 @@ def generate_plan_v2(
     memory_dir: Path,
     reports_dir: Path,
     push_to_icu: bool,
-    gemini_client: Optional[Any],
-    model: str = "gemini-2.5-flash",
 ) -> GeneratePlanV2Result:
     t0 = time.monotonic()
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -266,21 +252,20 @@ def generate_plan_v2(
         micro_cycle=snap.micro, memory_dir=memory_dir,
     )
 
-    # 3) Optional prose enrichment
-    if push_to_icu and gemini_client is not None:
-        physio_summary = _physiology_summary(memory_dir)
-        plan = enrich_with_prose(
-            plan=plan,
-            phase_rationale=snap.micro.intent.rationale,
-            phase_value=snap.current_phase.value,
-            physiology_summary=physio_summary,
-            violations=[v.model_dump() for v in violations],
-            client=gemini_client, model=model,
-        )
+    # 3) Generate prose prompt (API-free)
+    physio_summary = _physiology_summary(memory_dir)
+    prose_prompt = render_prose_prompt(
+        plan=plan,
+        phase_rationale=snap.micro.intent.rationale,
+        phase_value=snap.current_phase.value,
+        physiology_summary=physio_summary,
+        violations=[v.model_dump() for v in violations],
+    )
 
-    # 4) Save reports
-    paths = save_weekly_plan(plan=plan, out_dir=reports_dir,
-                             week_start=week_start)
+    # 4) Save reports (includes prose prompt)
+    paths = save_weekly_plan(
+        plan=plan, out_dir=reports_dir, prose_prompt=prose_prompt,
+    )
     trace_path = write_plan_trace(
         out_dir=reports_dir, week_start=week_start,
         sessions=sessions, violations=violations, generated_at=now_iso,
@@ -298,6 +283,7 @@ def generate_plan_v2(
                 status="error", error=f"icu push failed: {e}",
                 plan_json_path=paths["json"], plan_md_path=paths["md"],
                 trace_path=trace_path,
+                prose_prompt_path=paths.get("prose_prompt"),
                 violations=[v.model_dump() for v in violations],
             )
 
@@ -312,6 +298,7 @@ def generate_plan_v2(
         plan_json_path=paths["json"],
         plan_md_path=paths["md"],
         trace_path=trace_path,
+        prose_prompt_path=paths.get("prose_prompt"),
         violations=[v.model_dump() for v in violations],
     )
 ```
@@ -343,6 +330,16 @@ git commit -m "feat(coach-phase2): generate_plan_v2 facade (periodization + desi
 **Files:**
 - Modify: `icu/scripts/push_plan.py`（仅追加）
 - Create: `icu/tests/integration/test_push_plan_engine_flag.py`
+
+### CLI Flags Reference
+
+| Flag | Purpose |
+|------|---------|
+| `--engine v2` | Run `generate_plan_v2` (API-free skeleton + prose prompt). Default v1 for backward compatibility. |
+| `--engine v1` | Legacy `generate_plan` — requires Gemini API key if `--push` is used. |
+| `--push` | Push skeleton or enriched plan to ICU calendar. Works with both engines. |
+| `--delete-existing` | Clear existing plan events before push (must use with `--push`). |
+| `--week YYYY-MM-DD` | Target week (any day in week; rounded to Monday). If omitted, uses next week. |
 
 - [ ] **Step 1: Write failing integration test**
 
@@ -449,19 +446,18 @@ if __name__ == "__main__":
     if engine == "v2":
         from src.utils.common import get_warehouse_dir
         from src.coach.session_designer.generator_v2 import generate_plan_v2
-        from google import genai
-        import os as _os
-        client = (genai.Client(api_key=_os.getenv("GEMINI_API_KEY"))
-                  if push and _os.getenv("GEMINI_API_KEY") else None)
         result = generate_plan_v2(
             week_start=week_start, week_end=week_end,
             warehouse_dir=Path(get_warehouse_dir()),
             memory_dir=Path(get_warehouse_dir()).parent / "coach_memory",
             reports_dir=Path(get_warehouse_dir()).parent / "reports",
-            push_to_icu=push, gemini_client=client,
+            push_to_icu=push,
         )
         if result.status == "ok":
-            print(f"✅ v2 计划已保存: {result.plan_json_path}")
+            print(f"✅ v2 骨架计划已保存: {result.plan_json_path}")
+            print(f"📝 教练叙述提示词: {result.prose_prompt_path}")
+            if push:
+                print(f"   （已推送到 ICU）")
             if result.violations:
                 print(f"⚠️  未解决护栏: {result.violations}")
         else:
