@@ -1,7 +1,6 @@
 """CTL 斜率分析。用 N 天线性回归估计 CTL/d，用于识别加载/平台/减量阶段。"""
 from __future__ import annotations
 
-import warnings
 from datetime import date, datetime
 from typing import Literal, Optional
 
@@ -60,8 +59,11 @@ def analyze_ctl_slope(
             window_start=pairs[0][0], window_end=pairs[0][0],
             last_ctl=pairs[0][1],
         )
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", np.RankWarning)
+    # Short-circuit when all ys are identical — np.polyfit would fit slope=0
+    # but also emits a RankWarning on a degenerate system. Avoid both.
+    if float(np.ptp(ys)) == 0.0:
+        slope = 0.0
+    else:
         slope, _ = np.polyfit(xs, ys, 1)
     if slope > FLAT_THRESHOLD_PER_DAY:
         interp = "increasing"
