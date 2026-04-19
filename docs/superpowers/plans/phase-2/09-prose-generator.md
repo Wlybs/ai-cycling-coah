@@ -69,7 +69,6 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 from src.coach.session_designer.plan_writer import save_weekly_plan
@@ -106,7 +105,6 @@ def _plan(**overrides) -> WeeklyPlan:
         week_end="2026-04-26",
         focus_theme="BUILD week — threshold_capacity",
         weekly_tss_target=500,
-        coaching_summary="",
         days=days,
     )
     base.update(overrides)
@@ -120,7 +118,7 @@ _TRACE_STUB = {"composer": "stub", "assembler": "stub"}
 def test_save_weekly_plan_emits_all_four_artifacts(tmp_path):
     plan = _plan()
     paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     assert set(paths.keys()) == {"json", "md", "trace", "prose_prompt"}
@@ -145,9 +143,7 @@ def test_save_weekly_plan_emits_all_four_artifacts(tmp_path):
 
 def test_save_weekly_plan_writes_only_json_and_md_when_optional_args_missing(tmp_path):
     plan = _plan()
-    paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
-    )
+    paths = save_weekly_plan(plan=plan, out_dir=tmp_path)
     assert set(paths.keys()) == {"json", "md"}
     assert not (tmp_path / "plan_20260420.trace.json").exists()
     assert not (tmp_path / "plan_20260420.prose_prompt.md").exists()
@@ -156,12 +152,12 @@ def test_save_weekly_plan_writes_only_json_and_md_when_optional_args_missing(tmp
 def test_save_weekly_plan_is_utf8_and_idempotent_on_rewrite(tmp_path):
     plan = _plan()
     save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     plan2 = plan.model_copy(update={"coaching_summary": "升级版教练文案"})
     paths = save_weekly_plan(
-        plan=plan2, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan2, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     md = Path(paths["md"]).read_text(encoding="utf-8")
@@ -172,7 +168,7 @@ def test_save_weekly_plan_is_utf8_and_idempotent_on_rewrite(tmp_path):
 def test_markdown_table_includes_power_or_hr_range(tmp_path):
     plan = _plan()
     paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     md = Path(paths["md"]).read_text(encoding="utf-8")
@@ -208,7 +204,7 @@ No LLM API call anywhere in this module.
 from __future__ import annotations
 
 import json
-from datetime import date as DateT
+from datetime import date
 from pathlib import Path
 
 from .types import WeeklyPlan
@@ -241,11 +237,13 @@ def _render_markdown(plan: WeeklyPlan) -> str:
 def save_weekly_plan(
     plan: WeeklyPlan,
     out_dir: Path,
-    week_start: DateT,
     prose_prompt: str | None = None,
     trace: dict | None = None,
 ) -> dict[str, Path]:
     """Write plan artifacts. Overwrites any existing files with the same tag.
+
+    Filename tag is derived from plan.week_start (ISO date string) so the
+    on-disk filename and the JSON content can never drift apart.
 
     .json and .md are always written. .trace.json and .prose_prompt.md are
     written only when the corresponding argument is not None — this lets
@@ -254,7 +252,7 @@ def save_weekly_plan(
     """
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    tag = week_start.strftime("%Y%m%d")
+    tag = date.fromisoformat(plan.week_start).strftime("%Y%m%d")
 
     paths: dict[str, Path] = {
         "json": out / f"plan_{tag}.json",
@@ -309,7 +307,6 @@ git commit -m "feat(coach-phase2): T43 plan_writer — 4-artifact weekly plan ou
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 import pytest
@@ -439,7 +436,7 @@ def test_apply_prose_response_rejects_date_mismatch():
 def test_load_and_apply_prose_rewrites_json_and_md_in_place(tmp_path):
     plan = _plan()
     saved = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt="original prompt", trace={"composer": "v1"},
     )
 
@@ -452,7 +449,6 @@ def test_load_and_apply_prose_rewrites_json_and_md_in_place(tmp_path):
         plan_path=saved["json"],
         response_path=response_path,
         out_dir=tmp_path,
-        week_start=date(2026, 4, 20),
     )
     # Only json + md returned (trace & prompt left untouched from initial save)
     assert set(out.keys()) == {"json", "md"}
@@ -499,7 +495,6 @@ JSON back into the WeeklyPlan with a two-layer numeric-field guard:
 from __future__ import annotations
 
 import json
-from datetime import date as DateT
 from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
@@ -587,7 +582,6 @@ def load_and_apply_prose(
     plan_path: Path,
     response_path: Path,
     out_dir: Path,
-    week_start: DateT,
 ) -> dict[str, Path]:
     """Read plan.json + response.json, merge prose into plan, and overwrite
     plan_YYYYMMDD.{json,md} only. The `.trace.json` and `.prose_prompt.md`
@@ -602,7 +596,6 @@ def load_and_apply_prose(
     return save_weekly_plan(
         plan=enriched,
         out_dir=out_dir,
-        week_start=week_start,
         # prose_prompt=None, trace=None → only .json + .md get rewritten
     )
 ```
@@ -675,7 +668,6 @@ def generate_plan_v2(week_start: date, week_end: date) -> dict[str, Path]:
     trace = build_trace(plan, snapshot)          # from File 08
     paths = save_weekly_plan(
         plan=plan, out_dir=Path("reports"),
-        week_start=week_start,
         prose_prompt=prompt, trace=trace,
     )
     print(f"✅ 骨架计划已写入 {paths['json']}")
@@ -685,13 +677,10 @@ def generate_plan_v2(week_start: date, week_end: date) -> dict[str, Path]:
 
 
 def apply_prose_to_existing(plan_path: Path, response_path: Path) -> dict[str, Path]:
-    week_start_iso = json.loads(plan_path.read_text(encoding="utf-8"))["week_start"]
-    week_start = date.fromisoformat(week_start_iso)
     return load_and_apply_prose(
         plan_path=plan_path,
         response_path=response_path,
         out_dir=plan_path.parent,
-        week_start=week_start,
     )
 ```
 
