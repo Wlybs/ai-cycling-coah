@@ -69,9 +69,16 @@ def build_meso_block(
       Pydantic contract (File 01 ``types.py`` declares ``min_length=3``). When the
       usable macro window is shorter than 3 weeks, the multiplier count is floored
       at 3 even though ``block_end`` reflects the true macro boundary.
+
+    Note: when the remaining macro window is shorter than 3 weeks, ``block_end``
+    reflects the true macro boundary while ``len(weekly_load_multipliers)`` stays
+    at 3 (the Pydantic floor from ``MesoBlock.weekly_load_multipliers``). Callers
+    must use the multiplier list length — not ``block_end - block_start`` — to
+    determine the effective number of loading weeks in such edge cases.
     """
     from .types import MacroWindow, MesoBlock
-    assert isinstance(macro, MacroWindow)
+    if not isinstance(macro, MacroWindow):
+        raise TypeError(f"expected MacroWindow, got {type(macro).__name__}")
     if pattern not in MESO_PATTERNS:
         raise KeyError(f"unknown meso pattern: {pattern}")
     multipliers = list(MESO_PATTERNS[pattern])

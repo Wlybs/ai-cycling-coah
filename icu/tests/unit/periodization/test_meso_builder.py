@@ -111,6 +111,30 @@ def test_build_meso_block_rejects_unknown_pattern():
         )
 
 
+def test_build_meso_block_floors_multipliers_at_three_when_macro_too_short():
+    # Macro window only 14 days (2 weeks) — shorter than the 3-week min_length
+    # floor enforced by File 01 MesoBlock. The builder should clip block_end
+    # to the macro boundary but keep multipliers count at 3 (Pydantic contract).
+    macro = _make_macro_window(date(2026, 4, 13), date(2026, 4, 26))
+    meso = build_meso_block(
+        reference_date=date(2026, 4, 13),
+        macro=macro, pattern="3:1",
+    )
+    assert meso.block_end == date(2026, 4, 26)
+    # Floor guarantees exactly 3 multipliers even though macro window is 2 weeks
+    assert len(meso.weekly_load_multipliers) == 3
+    assert meso.weekly_load_multipliers == [1.00, 1.05, 1.10]
+
+
+def test_build_meso_block_type_error_on_non_macrowindow():
+    with pytest.raises(TypeError):
+        build_meso_block(
+            reference_date=date(2026, 4, 13),
+            macro="not a MacroWindow",  # type: ignore[arg-type]
+            pattern="3:1",
+        )
+
+
 def test_all_patterns_defined():
     assert set(MESO_PATTERNS.keys()) == {"3:1", "2:1", "polarized", "linear"}
     for multipliers in MESO_PATTERNS.values():
