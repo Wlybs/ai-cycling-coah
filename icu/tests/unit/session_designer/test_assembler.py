@@ -109,3 +109,23 @@ def test_missing_physiology_still_produces_plan_using_ftp_fallback(tmp_path):
     )
     assert plan.weekly_tss_target == 500
     assert len(plan.days) == 7
+
+
+def test_write_plan_trace_json_roundtrip(tmp_path):
+    from src.coach.session_designer.assembler import write_plan_trace
+    _write_phys(tmp_path)
+    _plan, sessions, violations = design_week(
+        micro_cycle=_micro(), memory_dir=tmp_path / "coach_memory",
+    )
+    out = tmp_path / "reports"
+    path = write_plan_trace(
+        out_dir=out, week_start=date(2026, 4, 20),
+        sessions=sessions, violations=violations,
+        generated_at="2026-04-18T00:00:00Z",
+    )
+    doc = json.loads(Path(path).read_text())
+    assert doc["generated_at"] == "2026-04-18T00:00:00Z"
+    assert len(doc["days"]) == 7
+    assert all("template_name" in d["trace"] for d in doc["days"])
+    # violations 可以是空数组
+    assert isinstance(doc["violations_remaining"], list)

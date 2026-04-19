@@ -190,3 +190,57 @@ def design_week(
     )
 
     return plan, sessions, remaining
+
+
+def write_plan_trace(
+    out_dir: Path,
+    week_start: DateT,
+    sessions: list[DesignedSession],
+    violations: list[SafetyViolation],
+    generated_at: str,
+) -> str:
+    """Write a plan trace JSON for the assembled week.
+
+    Schema:
+        {
+          "generated_at": <ISO string>,
+          "week_start":   <ISO date>,
+          "days": [
+            {"day_of_week", "date", "session_type", "template_name", "trace"},
+            ... (7 entries)
+          ],
+          "violations_remaining": [SafetyViolation.model_dump(), ...]
+        }
+
+    Args:
+        out_dir: Output directory; created if missing.
+        week_start: The Monday of the week being planned.
+        sessions: Designed sessions from design_week().
+        violations: Remaining safety violations after one auto-revision pass.
+        generated_at: Caller-supplied UTC timestamp (keeps the function
+            deterministic and testable; no wall-clock call inside).
+
+    Returns:
+        Absolute path (str) of the written JSON file.
+    """
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    name = f"plan_{week_start.strftime('%Y%m%d')}.trace.json"
+    doc = {
+        "generated_at": generated_at,
+        "week_start": week_start.isoformat(),
+        "days": [
+            {
+                "day_of_week": s.day_of_week,
+                "date": s.date,
+                "session_type": s.session_type.value,
+                "template_name": s.trace.get("template_name") if s.trace else None,
+                "trace": s.trace or {},
+            }
+            for s in sessions
+        ],
+        "violations_remaining": [v.model_dump() for v in violations],
+    }
+    path = out_dir / name
+    path.write_text(json.dumps(doc, ensure_ascii=False, indent=2))
+    return str(path)
