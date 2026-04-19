@@ -15,6 +15,9 @@ PEAK_MAX_DAYS = 21
 CTL_NEAR_PEAK_RATIO = 0.95
 SLOPE_BUILD_MIN = 0.2
 STIMULUS_UNDER = 0.40
+STIMULUS_BUILD_MIN = 0.50  # 与 spec 表格 row 6 一致: stimulus 中位数 > 0.5 才算 quality on target
+SLOPE_TRANSITION_MAX = -0.3
+TRANSITION_RACE_WINDOW_DAYS = 28
 CTL_BASE_PROTECT = 75.0  # 底盘保护阈值（用户决策 2026-04-18）
 
 
@@ -41,7 +44,7 @@ def detect_phase(
     # 1. TAPER / RACE
     if days_out is not None:
         if days_out == 0:
-            reasons.append(f"race day: {nxt.name}")
+            reasons.append(f"race day: {nxt.name} → RACE")
             return Phase.RACE, reasons
         if 0 < days_out <= TAPER_WINDOW_DAYS:
             reasons.append(
@@ -72,13 +75,20 @@ def detect_phase(
         )
         return Phase.BASE, reasons
 
+    # 2.6. NO-HISTORY PROTECT — 完全无 CTL 历史（新用户/长停训后第一次）强制 BASE
+    if ctl_slope.last_ctl is None and ctl_slope.slope_per_day is None:
+        reasons.append(
+            "no CTL history → BASE (no signal, conservatively base-build)"
+        )
+        return Phase.BASE, reasons
+
     # 3. TRANSITION — CTL 下降且未来 28 天没有赛
-    future_28d = [r for r in races
-                  if 0 <= (r.race_date - reference_date).days <= 28]
+    future_race_window = [r for r in races
+                          if 0 <= (r.race_date - reference_date).days <= TRANSITION_RACE_WINDOW_DAYS]
     if (ctl_slope.interpretation == "decreasing"
             and ctl_slope.slope_per_day is not None
-            and ctl_slope.slope_per_day < -0.3
-            and not future_28d):
+            and ctl_slope.slope_per_day < SLOPE_TRANSITION_MAX
+            and not future_race_window):
         reasons.append(
             f"CTL slope {ctl_slope.slope_per_day:+.2f}/d, no race within 28d → TRANSITION"
         )
@@ -97,7 +107,7 @@ def detect_phase(
     if (ctl_slope.slope_per_day is not None
             and ctl_slope.slope_per_day >= SLOPE_BUILD_MIN
             and (recent_stimulus_median is None
-                 or recent_stimulus_median >= 0.45)):
+                 or recent_stimulus_median >= STIMULUS_BUILD_MIN)):
         reasons.append(
             f"CTL rising {ctl_slope.slope_per_day:+.2f}/d, quality on target → BUILD"
         )
