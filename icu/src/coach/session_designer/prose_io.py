@@ -39,15 +39,20 @@ class _ProseResponse(BaseModel):
 
 
 def _load_prompt_template() -> str:
-    return PROMPT_FILE.read_text(encoding="utf-8")
+    try:
+        return PROMPT_FILE.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"prose prompt template not found: {PROMPT_FILE}"
+        ) from None
 
 
 def render_prose_prompt(
     plan: WeeklyPlan,
     phase_rationale: str,
     phase_value: str,
-    physiology_summary: dict,
-    violations: list,
+    physiology_summary: dict[str, object],
+    violations: list[dict],
 ) -> str:
     base = _load_prompt_template()
     physio_line = (
@@ -107,9 +112,9 @@ def load_and_apply_prose(
     pre-enrichment artifacts whose content does not change with prose merge.
     """
     plan = WeeklyPlan.model_validate_json(
-        Path(plan_path).read_text(encoding="utf-8")
+        plan_path.read_text(encoding="utf-8")
     )
-    response_doc = json.loads(Path(response_path).read_text(encoding="utf-8"))
+    response_doc = json.loads(response_path.read_text(encoding="utf-8"))
     enriched = apply_prose_response(plan, response_doc)
     return save_weekly_plan(
         plan=enriched,
