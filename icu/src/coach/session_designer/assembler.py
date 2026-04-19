@@ -18,8 +18,10 @@ from .types import (
 
 DOW_DATES = {"Mon": 0, "Tue": 1, "Wed": 2, "Thu": 3,
              "Fri": 4, "Sat": 5, "Sun": 6}
-DEFAULT_W_PRIME = 20000    # Joules — used only when cp_w_current.json missing/incomplete
-MIN_CP = 100               # Watts — sanity floor for fallback_ftp
+DEFAULT_W_PRIME = 20000        # Joules — used only when cp_w_current.json missing/incomplete
+MIN_CP = 100                   # Watts — sanity floor for fallback_ftp
+TSS_EASY_SHAVE_RATIO = 0.7     # tss_budget_overflow: cut last EASY day's TSS to 70%
+DEFAULT_REST_DAY_INDEX = 4     # Fri — used only when missing_rest_day violation lacks day_index
 
 
 def _load_json(path: Path) -> Optional[dict]:
@@ -27,7 +29,7 @@ def _load_json(path: Path) -> Optional[dict]:
         return None
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError):
         return None
 
 
@@ -75,7 +77,13 @@ def _session_to_dayplan(s: DesignedSession) -> DayPlanV2:
 def _revise_for_violations(
     days_intents: list[dict[str, Any]], violations: list[SafetyViolation]
 ) -> list[dict[str, Any]]:
-    """基于 violations 做一次保守修订。规则同 safety_guards 的 suggested_action。"""
+    """基于 violations 做一次保守修订。规则同 safety_guards 的 suggested_action。
+
+    Rule ordering follows ``violations`` list order; all demotions converge to
+    MEDIUM/EASY/REST so later rules re-targeting the same day are idempotent
+    (a HARD already demoted by ``hard_back_to_back`` stays demoted when
+    ``w_prime_weekly_overdraw`` re-visits it).
+    """
     out = [dict(d) for d in days_intents]
     for v in violations:
         if v.rule == "hard_back_to_back" and v.day_index is not None:
@@ -94,12 +102,13 @@ def _revise_for_violations(
             for i in range(len(out) - 1, -1, -1):
                 if out[i].get("tier") == "EASY" and out[i].get("target_tss", 0) > 0:
                     out[i]["target_tss"] = max(
-                        0, int(out[i]["target_tss"] * 0.7))
+                        0, int(out[i]["target_tss"] * TSS_EASY_SHAVE_RATIO))
                     break
         elif v.rule == "missing_rest_day":
-            out[4]["tier"] = "REST"
-            out[4]["session_hint"] = "rest"
-            out[4]["target_tss"] = 0
+            idx = v.day_index if v.day_index is not None else DEFAULT_REST_DAY_INDEX
+            out[idx]["tier"] = "REST"
+            out[idx]["session_hint"] = "rest"
+            out[idx]["target_tss"] = 0
     return out
 
 
