@@ -73,6 +73,11 @@ def _scale_long_ride_to_tss(
         return converted, 1.0
 
     needed = target_tss - (estimated - main_tss)
+    non_main_s = sum(
+        template.steps[i].duration_s
+        for i in range(len(template.steps))
+        if i not in main_indices
+    )
     if needed <= 0:
         stretch = template.total_duration_s_range[0] / sum(
             s.duration_s for s in template.steps)
@@ -81,19 +86,12 @@ def _scale_long_ride_to_tss(
         main_tss_per_s = main_tss / main_seconds
         new_main_seconds = max(600, needed / main_tss_per_s)
         stretch = new_main_seconds / main_seconds
-        total_s = (stretch * main_seconds
-                   + sum(template.steps[i].duration_s
-                         for i in range(len(template.steps))
-                         if i not in main_indices))
+        total_s = stretch * main_seconds + non_main_s
         lo, hi = template.total_duration_s_range
         if total_s > hi:
-            stretch = (hi - sum(template.steps[i].duration_s
-                                for i in range(len(template.steps))
-                                if i not in main_indices)) / main_seconds
-        if total_s < lo:
-            stretch = (lo - sum(template.steps[i].duration_s
-                                for i in range(len(template.steps))
-                                if i not in main_indices)) / main_seconds
+            stretch = (hi - non_main_s) / main_seconds
+        elif total_s < lo:
+            stretch = (lo - non_main_s) / main_seconds
 
     for i in main_indices:
         orig = converted[i]
@@ -125,7 +123,7 @@ def _build_description(
     parts: list[str] = []
     for s in steps:
         minutes = max(1, round(s.duration_s / 60))
-        if s.target_w_low and s.target_w_high:
+        if s.target_w_low is not None and s.target_w_high is not None:
             parts.append(f"{s.label} {minutes}min @ {s.target_w_low}-{s.target_w_high}W")
         else:
             parts.append(f"{s.label} {minutes}min")
@@ -185,8 +183,8 @@ def compose_session(
     tss_est = 0.0
     for s in steps:
         mid = _mid(
-            (s.target_w_low / cp) if s.target_w_low else None,
-            (s.target_w_high / cp) if s.target_w_high else None,
+            (s.target_w_low / cp) if s.target_w_low is not None else None,
+            (s.target_w_high / cp) if s.target_w_high is not None else None,
         )
         if mid is None:
             continue
@@ -199,6 +197,16 @@ def compose_session(
         diff_pct = abs(tss_est - intent.target_tss) / max(intent.target_tss, 1)
         final_tss = intent.target_tss if diff_pct <= 0.15 else int(round(tss_est))
 
+    # Case-insensitive lookup: response_profile["types"] keys may be lowercase
+    # (from physiology.response_profile) but SessionType.value is Title Case.
+    type_key = template.session_type.value
+    types_dict = response_profile.get("types") or {}
+    tolerance_entry: dict = {}
+    for k, v in types_dict.items():
+        if isinstance(k, str) and k.lower() == type_key.lower():
+            tolerance_entry = v or {}
+            break
+
     trace = {
         "template_name": template.name,
         "cp_watts": cp,
@@ -206,9 +214,8 @@ def compose_session(
         "tss_estimated": round(tss_est, 1),
         "tss_target": intent.target_tss,
         "duration_stretched_pct": round((stretch - 1.0) * 100, 1),
-        "durability_applied": bool(durability.get("decay_rate_pct_per_1000kj")),
-        "tolerance_class": (response_profile.get("types") or {})
-            .get(template.session_type.value, {}).get("tolerance_class"),
+        "durability_applied": bool(durability.get("decay_rate_pct_per_1000kj")),  # T42 will consume decay rate; today this is a presence flag only
+        "tolerance_class": tolerance_entry.get("tolerance_class"),
     }
 
     return DesignedSession(

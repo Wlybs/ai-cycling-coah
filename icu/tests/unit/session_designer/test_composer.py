@@ -126,3 +126,19 @@ def test_trace_records_cp_and_template_name():
     assert trace["cp_watts"] == 280
     assert trace["w_prime_joules"] == 22000
     assert "tss_estimated" in trace
+
+
+def test_tolerance_class_matched_case_insensitively():
+    intent = SessionIntent(
+        day_of_week="Tue", tier=IntensityTier.HARD,
+        target_tss=95, session_hint="threshold 2x20'",
+    )
+    # response_profile keys may arrive lowercase (from physiology.response_profile)
+    session = compose_session(
+        intent=intent, date=date(2026, 4, 21),
+        template_name="threshold_2x20",
+        physiology=_physiology(cp=280),
+        durability={},
+        response_profile={"types": {"threshold": {"tolerance_class": "high"}}},
+    )
+    assert session.trace["tolerance_class"] == "high"
