@@ -49,6 +49,47 @@ def select_meso_pattern(
     return "3:1"
 
 
-def build_meso_block(*args, **kwargs):
-    """Placeholder — implemented in Task T33."""
-    raise NotImplementedError("build_meso_block implemented in T33")
+def _monday_of(d: date) -> date:
+    """Return the Monday of the ISO week containing ``d``."""
+    return d - timedelta(days=d.weekday())
+
+
+def build_meso_block(
+    reference_date: date,
+    macro: "MacroWindow",
+    pattern: str,
+) -> "MesoBlock":
+    """Build the current meso block aligned to the Monday of ``reference_date``.
+
+    - ``block_start``: the later of ``reference_date``'s Monday and ``macro.start_date``.
+    - Natural ``block_end``: ``block_start`` + (7 × len(pattern multipliers) − 1) days.
+    - If the macro window ends earlier, truncate ``block_end`` to ``macro.end_date``
+      and clip the multiplier list to the remaining full weeks (ceiling).
+    - Enforces ``len(multipliers) >= 3`` to satisfy ``MesoBlock.weekly_load_multipliers``
+      Pydantic contract (File 01 ``types.py`` declares ``min_length=3``). When the
+      usable macro window is shorter than 3 weeks, the multiplier count is floored
+      at 3 even though ``block_end`` reflects the true macro boundary.
+    """
+    from .types import MacroWindow, MesoBlock
+    assert isinstance(macro, MacroWindow)
+    if pattern not in MESO_PATTERNS:
+        raise KeyError(f"unknown meso pattern: {pattern}")
+    multipliers = list(MESO_PATTERNS[pattern])
+
+    block_start = max(_monday_of(reference_date), macro.start_date)
+    natural_end = block_start + timedelta(days=7 * len(multipliers) - 1)
+    if natural_end <= macro.end_date:
+        block_end = natural_end
+    else:
+        block_end = macro.end_date
+        available_days = (block_end - block_start).days + 1
+        full_weeks = max(3, (available_days + 6) // 7)
+        full_weeks = min(full_weeks, len(multipliers))
+        multipliers = multipliers[:full_weeks]
+    return MesoBlock(
+        pattern=pattern,
+        block_start=block_start,
+        block_end=block_end,
+        weekly_load_multipliers=multipliers,
+        phase=macro.phase,
+    )

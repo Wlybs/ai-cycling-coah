@@ -1,9 +1,10 @@
 import pytest
+from datetime import date, timedelta
 
 from src.coach.periodization.meso_builder import (
     select_meso_pattern, MESO_PATTERNS, build_meso_block,
 )
-from src.coach.periodization.types import Phase
+from src.coach.periodization.types import Phase, MacroWindow, PhaseIntent
 
 
 def test_base_phase_uses_polarized():
@@ -50,9 +51,64 @@ def test_transition_falls_through_to_three_one():
     assert p == "3:1"
 
 
-def test_build_meso_block_stub_raises_not_implemented():
-    with pytest.raises(NotImplementedError):
-        build_meso_block()
+def _make_macro_window(
+    start: date, end: date, phase: Phase = Phase.BUILD
+) -> MacroWindow:
+    intent = PhaseIntent(
+        phase=phase, primary_adaptation="threshold_capacity",
+        weekly_tss_target=500,
+        intensity_distribution_pct={"low": 75.0, "mid": 15.0, "high": 10.0},
+        rest_days_per_week=1, rationale="test",
+    )
+    return MacroWindow(phase=phase, start_date=start, end_date=end, intent=intent)
+
+
+def test_build_meso_block_aligns_to_monday():
+    # reference_date = Sat 2026-04-18; its Monday = 2026-04-13
+    macro = _make_macro_window(date(2026, 4, 1), date(2026, 5, 28))
+    meso = build_meso_block(
+        reference_date=date(2026, 4, 18),
+        macro=macro, pattern="3:1",
+    )
+    assert meso.block_start == date(2026, 4, 13)  # Monday
+    assert meso.block_end == date(2026, 4, 13) + timedelta(days=27)
+    assert meso.weekly_load_multipliers == [1.00, 1.05, 1.10, 0.70]
+    assert meso.phase is Phase.BUILD
+
+
+def test_build_meso_block_truncates_when_macro_window_ends_sooner():
+    # Plan originally used a 10-day macro window expecting 1-2 multipliers,
+    # but File 01 types.py enforces min_length=3 on weekly_load_multipliers.
+    # Use a 21-day macro window (3 full weeks) so truncation from 4-week
+    # "3:1" pattern yields exactly 3 multipliers.
+    macro = _make_macro_window(date(2026, 4, 13), date(2026, 5, 3))
+    meso = build_meso_block(
+        reference_date=date(2026, 4, 13),
+        macro=macro, pattern="3:1",
+    )
+    assert meso.block_end == date(2026, 5, 3)
+    assert len(meso.weekly_load_multipliers) == 3
+    assert meso.weekly_load_multipliers == [1.00, 1.05, 1.10]
+
+
+def test_build_meso_block_taper_linear_three_weeks():
+    macro = _make_macro_window(
+        date(2026, 5, 1), date(2026, 5, 21), phase=Phase.TAPER
+    )
+    meso = build_meso_block(
+        reference_date=date(2026, 5, 1), macro=macro, pattern="linear",
+    )
+    assert len(meso.weekly_load_multipliers) == 3
+    assert meso.weekly_load_multipliers == [1.00, 0.70, 0.40]
+
+
+def test_build_meso_block_rejects_unknown_pattern():
+    macro = _make_macro_window(date(2026, 4, 1), date(2026, 5, 28))
+    with pytest.raises(KeyError):
+        build_meso_block(
+            reference_date=date(2026, 4, 18),
+            macro=macro, pattern="does-not-exist",
+        )
 
 
 def test_all_patterns_defined():
