@@ -1,4 +1,3 @@
-from datetime import date
 import pytest
 
 from src.coach.periodization.meso_builder import (
@@ -37,6 +36,23 @@ def test_taper_uses_linear():
     p = select_meso_pattern(
         phase=Phase.TAPER, knee_flag=None, recent_atl_delta=-3.0)
     assert p == "linear"
+
+
+def test_peak_phase_default_three_one():
+    p = select_meso_pattern(
+        phase=Phase.PEAK, knee_flag=None, recent_atl_delta=0.0)
+    assert p == "3:1"
+
+
+def test_transition_falls_through_to_three_one():
+    p = select_meso_pattern(
+        phase=Phase.TRANSITION, knee_flag=None, recent_atl_delta=0.0)
+    assert p == "3:1"
+
+
+def test_build_meso_block_stub_raises_not_implemented():
+    with pytest.raises(NotImplementedError):
+        build_meso_block()
 
 
 def test_all_patterns_defined():
