@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 from src.coach.session_designer.plan_writer import save_weekly_plan
@@ -39,7 +38,6 @@ def _plan(**overrides) -> WeeklyPlan:
         week_end="2026-04-26",
         focus_theme="BUILD week — threshold_capacity",
         weekly_tss_target=500,
-        coaching_summary="",
         days=days,
     )
     base.update(overrides)
@@ -53,7 +51,7 @@ _TRACE_STUB = {"composer": "stub", "assembler": "stub"}
 def test_save_weekly_plan_emits_all_four_artifacts(tmp_path):
     plan = _plan()
     paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     assert set(paths.keys()) == {"json", "md", "trace", "prose_prompt"}
@@ -79,7 +77,7 @@ def test_save_weekly_plan_emits_all_four_artifacts(tmp_path):
 def test_save_weekly_plan_writes_only_json_and_md_when_optional_args_missing(tmp_path):
     plan = _plan()
     paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
     )
     assert set(paths.keys()) == {"json", "md"}
     assert not (tmp_path / "plan_20260420.trace.json").exists()
@@ -89,12 +87,12 @@ def test_save_weekly_plan_writes_only_json_and_md_when_optional_args_missing(tmp
 def test_save_weekly_plan_is_utf8_and_idempotent_on_rewrite(tmp_path):
     plan = _plan()
     save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     plan2 = plan.model_copy(update={"coaching_summary": "升级版教练文案"})
     paths = save_weekly_plan(
-        plan=plan2, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan2, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     md = Path(paths["md"]).read_text(encoding="utf-8")
@@ -105,7 +103,7 @@ def test_save_weekly_plan_is_utf8_and_idempotent_on_rewrite(tmp_path):
 def test_markdown_table_includes_power_or_hr_range(tmp_path):
     plan = _plan()
     paths = save_weekly_plan(
-        plan=plan, out_dir=tmp_path, week_start=date(2026, 4, 20),
+        plan=plan, out_dir=tmp_path,
         prose_prompt=_PROMPT_STUB, trace=_TRACE_STUB,
     )
     md = Path(paths["md"]).read_text(encoding="utf-8")

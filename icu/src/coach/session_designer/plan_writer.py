@@ -11,7 +11,7 @@ No LLM API call anywhere in this module.
 from __future__ import annotations
 
 import json
-from datetime import date as DateT
+from datetime import date
 from pathlib import Path
 
 from .types import WeeklyPlan
@@ -44,20 +44,22 @@ def _render_markdown(plan: WeeklyPlan) -> str:
 def save_weekly_plan(
     plan: WeeklyPlan,
     out_dir: Path,
-    week_start: DateT,
     prose_prompt: str | None = None,
     trace: dict | None = None,
 ) -> dict[str, Path]:
-    """Write plan artifacts. Overwrites any existing files with the same tag.
+    """Write plan artifacts under out_dir. Overwrites existing files.
+
+    Filename tag is derived from plan.week_start (ISO date string) so the
+    on-disk filename and the JSON content can never drift apart.
 
     .json and .md are always written. .trace.json and .prose_prompt.md are
-    written only when the corresponding argument is not None — this lets
-    `apply_prose_response` reuse this function to rewrite only the prose
-    outputs without touching the trace or prompt artifacts.
+    written only when the corresponding argument is not None — so the prose
+    apply step can reuse this function to rewrite only the prose-affected
+    files without touching trace/prompt artifacts.
     """
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    tag = week_start.strftime("%Y%m%d")
+    tag = date.fromisoformat(plan.week_start).strftime("%Y%m%d")
 
     paths: dict[str, Path] = {
         "json": out / f"plan_{tag}.json",

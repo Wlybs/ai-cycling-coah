@@ -28,5 +28,5 @@ class WeeklyPlan(BaseModel):
     week_end: str
     focus_theme: str
     weekly_tss_target: int
-    coaching_summary: str
+    coaching_summary: Optional[str] = None
     days: list[DayPlanV2]
