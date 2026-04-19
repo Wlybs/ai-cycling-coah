@@ -117,6 +117,7 @@ def _merge_and_trim(windows: list[MacroWindow]) -> list[MacroWindow]:
     for w in sorted_w[1:]:
         prev = out[-1]
         if w.start_date <= prev.end_date:
+            # model_copy skips validators in Pydantic v2; manually check end >= start below.
             out[-1] = prev.model_copy(
                 update={"end_date": w.start_date - timedelta(days=1)}
             )
@@ -133,6 +134,11 @@ def plan_macro(
     races: list[RaceEntry],
     generated_at: str,
 ) -> MacroPlan:
+    """根据参考日期、baseline CTL 和赛历生成宏观训练计划。
+
+    - 每场 A 级赛倒推 BASE→BUILD→PEAK→TAPER；两赛间隔 < 56 天走 maintain 分支。
+    - 无 A 级赛：baseline_ctl < 75 全走 BASE（底盘保护），否则 BUILD + TRANSITION 循环。
+    """
     a_races = sorted(
         [r for r in races if r.priority.upper() == "A"
          and r.race_date >= reference_date],

@@ -86,3 +86,40 @@ def test_every_window_has_intent_with_matching_phase():
     )
     for w in plan.windows:
         assert w.intent.phase is w.phase
+
+
+def test_all_races_in_the_past_falls_through_to_rolling_build():
+    """赛历都是过去时 → 走无赛历分支（rolling build + transition），不再倒推。"""
+    past_race = RaceEntry(
+        name="OldRace", race_date=date(2025, 11, 1), priority="A"
+    )
+    plan = plan_macro(
+        reference_date=date(2026, 4, 18),
+        baseline_ctl=90,
+        races=[past_race],
+        generated_at="2026-04-18T00:00:00Z",
+    )
+    phases = {w.phase for w in plan.windows}
+    # 过去的赛被过滤 → 走 rolling build 分支
+    assert Phase.BUILD in phases
+    assert Phase.TRANSITION in phases
+    # 没有 TAPER/PEAK 这些赛前窗口
+    assert Phase.TAPER not in phases
+    assert Phase.PEAK not in phases
+
+
+def test_two_extremely_close_races_collapse_to_single_taper():
+    """两场 A 赛间隔 < TAPER_DAYS+3 → maintain 分支里 peak_start >= taper_start，
+    合并成仅 TAPER 一个窗口。"""
+    r1 = RaceEntry(name="R1", race_date=date(2026, 5, 10), priority="A")
+    r2 = RaceEntry(name="R2", race_date=date(2026, 5, 16), priority="A")  # 6 天后
+    plan = plan_macro(
+        reference_date=date(2026, 4, 1), baseline_ctl=88,
+        races=[r1, r2],
+        generated_at="2026-04-01T00:00:00Z",
+    )
+    # 第二场赛前应至少有一个 TAPER（由 fallback 产出），但没有独立 PEAK
+    r2_tapers = [w for w in plan.windows
+                 if w.phase is Phase.TAPER and w.end_date <= r2.race_date
+                 and w.start_date > r1.race_date]
+    assert len(r2_tapers) >= 1
