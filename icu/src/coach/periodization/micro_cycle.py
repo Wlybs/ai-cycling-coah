@@ -86,7 +86,12 @@ def _apply_extra_rest(
     current_rests = sum(1 for t, _ in days if t is IntensityTier.REST)
     if current_rests >= rest_days_required:
         return days
-    out = list(days)
+    if rest_days_required > current_rests + 1:
+        raise ValueError(
+            f"_apply_extra_rest can add at most 1 rest day (current={current_rests}, "
+            f"required={rest_days_required}); extend the helper to cover larger gaps."
+        )
+    out = list(days)  # returns a copy; _TEMPLATES entry is never mutated
     # 4 号位（周五）若非 REST，改成 REST
     if out[4][0] is not IntensityTier.REST:
         out[4] = (IntensityTier.REST, "rest (additional per intent)")
@@ -106,8 +111,8 @@ def _distribute_tss(
     delta = week_tss - sum(ints)
     if ints:
         # 把 delta 加在第一个非零项上
-        for i in range(len(ints)):
-            if weights[i] > 0:
+        for i, w in enumerate(weights):
+            if w > 0:
                 ints[i] += delta
                 break
     return ints
@@ -122,7 +127,8 @@ def build_micro_cycle(
     """构造一周微循环。
 
     Args:
-        week_start: Monday of the week.
+        week_start: Monday of the week. Must be a Monday (weekday() == 0),
+                   or ValueError is raised.
         meso: MesoBlock containing the weekly load multipliers and phase.
         intent: PhaseIntent with weekly TSS target and rest days requirement.
         week_idx: 0-indexed week within the meso block (0, 1, 2, ...).
@@ -137,7 +143,15 @@ def build_micro_cycle(
           only 1 REST, Friday (index 4) is replaced with REST.
         - Per-day TSS is distributed by tier weights and rounded to int.
           Rounding errors are corrected by adjusting the first non-zero day.
+
+    Raises:
+        ValueError: If week_start is not a Monday.
     """
+    if week_start.weekday() != 0:
+        raise ValueError(
+            f"week_start must be a Monday (weekday() == 0), got {week_start} "
+            f"(weekday={week_start.weekday()})"
+        )
     template = _TEMPLATES[meso.phase]
     template = _apply_extra_rest(template, intent.rest_days_per_week)
 

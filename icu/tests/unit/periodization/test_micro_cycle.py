@@ -81,7 +81,8 @@ def test_build_week_tss_sum_within_15pct_of_target():
     )
     actual = sum(d.target_tss for d in wk.days)
     diff = abs(actual - wk.weekly_tss_target)
-    assert diff <= wk.weekly_tss_target * 0.15
+    # delta-correction makes the sum exactly equal; tolerate ±1 for floor/ceil edge cases
+    assert diff <= 1
 
 
 def test_base_phase_uses_z2_dominant_hints():
@@ -103,3 +104,21 @@ def test_week_primary_intent_matches_phase():
         week_start=date(2026, 5, 4), meso=meso, intent=intent, week_idx=0,
     )
     assert wk.intent.phase is Phase.PEAK
+
+
+import pytest
+
+
+@pytest.mark.parametrize("week_idx,expected_mult", [
+    (-1, 1.00),   # clamps to idx 0
+    (0, 1.00),
+    (3, 0.70),    # last entry of [1.00, 1.05, 1.10, 0.70]
+    (99, 0.70),   # clamps to last entry
+])
+def test_build_week_clamps_week_idx_out_of_range(week_idx, expected_mult):
+    intent = _intent(Phase.BUILD, tss=500)
+    meso = _meso()
+    wk = build_micro_cycle(
+        week_start=date(2026, 4, 20), meso=meso, intent=intent, week_idx=week_idx,
+    )
+    assert wk.weekly_tss_target == int(round(500 * expected_mult))
