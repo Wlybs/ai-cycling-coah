@@ -5,9 +5,12 @@ from pydantic import BaseModel
 
 STAND_KEYWORDS = ("standing climb", "standing attack", "摇车", "climb attack")
 HARD_DAYS_WEEKLY_LIMIT = 4  # 一周 HARD 日数阈值（用户决策 2026-04-18）
+TSS_OVERFLOW_FACTOR = 1.15  # 周 TSS 超标阈值：sum > target * 1.15 即触发
 
 
 class SafetyViolation(BaseModel):
+    """One safety-rule hit: which rule fired, on which day, and how to fix."""
+
     rule: str
     day_index: int | None = None
     message: str
@@ -64,6 +67,25 @@ def check_weekly_plan(
     durability: dict,
     w_prime_joules: int,
 ) -> list[SafetyViolation]:
+    """Run the 5-rule safety audit over a draft weekly plan.
+
+    Args:
+        days: List of daily dicts with tier, session_hint, target_tss, day_of_week.
+        weekly_tss_target: Expected TSS budget for the week.
+        response_profile: Athlete profile (tolerance_class, knee_loading, etc.).
+        durability: Athlete durability signature (reserved for future W'/durability rules).
+        w_prime_joules: W' capacity in joules (reserved for future W'/durability rules).
+
+    Returns:
+        List of SafetyViolation objects, one per violated rule.
+
+    Note: ``durability`` and ``w_prime_joules`` are accepted but not yet
+    consumed — they are reserved for future rules that model W' depletion
+    over consecutive days and fade from durability-weighted intensity.
+    The parameters are part of the T42 assembler contract today so the
+    signature does not change when those rules are added.
+    """
+    _ = durability, w_prime_joules  # reserved for future W'/durability rules
     out: list[SafetyViolation] = []
 
     # Rule: missing rest day
@@ -103,10 +125,10 @@ def check_weekly_plan(
 
     # Rule: TSS budget overflow
     total_tss = sum(int(d.get("target_tss", 0)) for d in days)
-    if total_tss > weekly_tss_target * 1.15:
+    if total_tss > weekly_tss_target * TSS_OVERFLOW_FACTOR:
         out.append(SafetyViolation(
             rule="tss_budget_overflow",
-            message=f"周 TSS {total_tss} > target {weekly_tss_target} * 1.15",
+            message=f"周 TSS {total_tss} > target {weekly_tss_target} * {TSS_OVERFLOW_FACTOR}",
             suggested_action="把最后一个 EASY 日的 target_tss 下调",
         ))
 
