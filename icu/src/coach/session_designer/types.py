@@ -8,7 +8,7 @@ File 06 adds workout-design models without modifying the File 09 stubs.
 """
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field, model_validator
 
 from src.coach.periodization.types import IntensityTier, SessionType
@@ -66,6 +66,9 @@ class WorkoutStep(BaseModel):
         if (self.target_hr_low is not None and self.target_hr_high is not None
                 and self.target_hr_low > self.target_hr_high):
             raise ValueError("target_hr_low must be <= target_hr_high")
+        if (self.target_rpm_low is not None and self.target_rpm_high is not None
+                and self.target_rpm_low > self.target_rpm_high):
+            raise ValueError("target_rpm_low must be <= target_rpm_high")
         return self
 
 
@@ -110,4 +113,4 @@ class DesignedSession(BaseModel):
     structure: SessionStructure
     power_range_w: Optional[str] = None
     hr_range_bpm: Optional[str] = None
-    trace: Optional[dict] = None
+    trace: Optional[dict[str, Any]] = None

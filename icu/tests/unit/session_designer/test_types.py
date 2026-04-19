@@ -1,5 +1,3 @@
-from datetime import date
-
 import pytest
 from pydantic import ValidationError
 
@@ -24,6 +22,18 @@ def test_workout_step_power_range_ordering():
         WorkoutStep(
             label="invalid", duration_s=600,
             target_w_low=300, target_w_high=280, zone="Z4",
+        )
+
+
+def test_workout_step_rpm_range_ordering():
+    WorkoutStep(
+        label="cadence block", duration_s=600,
+        target_rpm_low=85, target_rpm_high=95, zone="Z2",
+    )
+    with pytest.raises(ValidationError):
+        WorkoutStep(
+            label="bad cadence", duration_s=600,
+            target_rpm_low=100, target_rpm_high=80, zone="Z2",
         )
 
 
