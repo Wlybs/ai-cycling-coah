@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 from datetime import date, datetime
 from pathlib import Path
-from typing import Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
+
+_logger = logging.getLogger(__name__)
 
 RACE_KEYWORDS = ("race", "比赛", "爬坡赛", "赛", "climb")
 
@@ -16,15 +19,26 @@ RACE_KEYWORDS = ("race", "比赛", "爬坡赛", "赛", "climb")
 class RaceEntry(BaseModel):
     name: str
     race_date: date
-    priority: str = "A"
+    priority: Literal["A", "B", "C"] = "A"
     course_hint: Optional[str] = None
     days_out: Optional[int] = None
+
+    @field_validator("priority", mode="before")
+    @classmethod
+    def _normalize_priority(cls, v):
+        """Map unknown/numeric/None priority values to 'C' (low-priority default)."""
+        if v is None:
+            return "A"
+        s = str(v).strip().upper()
+        if s in ("A", "B", "C"):
+            return s
+        return "C"
 
 
 def _parse_event_date(raw: str) -> Optional[date]:
     try:
         return datetime.strptime(raw[:10], "%Y-%m-%d").date()
-    except Exception:
+    except (ValueError, TypeError):
         return None
 
 
@@ -48,7 +62,8 @@ def _load_from_events(warehouse_dir: Path) -> list[RaceEntry]:
         return []
     try:
         events = json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
+    except (OSError, json.JSONDecodeError) as e:
+        _logger.warning("race_calendar: failed to parse %s: %s", path, e)
         return []
     out: list[RaceEntry] = []
     for ev in events:
@@ -60,7 +75,7 @@ def _load_from_events(warehouse_dir: Path) -> list[RaceEntry]:
         out.append(RaceEntry(
             name=ev.get("name") or "Race",
             race_date=d,
-            priority=ev.get("priority") or "A",
+            priority=ev.get("priority", "A"),
             course_hint=ev.get("description"),
         ))
     return out

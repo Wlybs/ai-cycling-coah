@@ -58,3 +58,24 @@ def test_next_race_after_reference_date():
     nxt = next_race_after(races, reference_date=date(2026, 4, 18))
     assert nxt.name == "Goal"
     assert nxt.days_out == (date(2026, 5, 26) - date(2026, 4, 18)).days
+
+
+def test_next_race_after_empty_list():
+    assert next_race_after([], reference_date=date(2026, 4, 18)) is None
+
+
+def test_next_race_after_same_day_match():
+    """reference_date == race_date 应被视为"未来"（即赛当日仍返回该赛事）。"""
+    races = [RaceEntry(name="Today", race_date=date(2026, 4, 18), priority="A")]
+    nxt = next_race_after(races, reference_date=date(2026, 4, 18))
+    assert nxt is not None
+    assert nxt.name == "Today"
+    assert nxt.days_out == 0
+
+
+def test_race_entry_priority_normalized_to_valid_enum():
+    """未知优先级应被规范化为 'C'，None 应默认 'A'。"""
+    assert RaceEntry(name="x", race_date=date(2026, 5, 1), priority="high").priority == "C"
+    assert RaceEntry(name="y", race_date=date(2026, 5, 2), priority="1").priority == "C"
+    assert RaceEntry(name="z", race_date=date(2026, 5, 3), priority=None).priority == "A"
+    assert RaceEntry(name="w", race_date=date(2026, 5, 4), priority="b").priority == "B"
