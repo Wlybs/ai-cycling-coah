@@ -42,6 +42,12 @@ def parse_args():
                         help="推送前删除目标周内已有 WORKOUT 事件")
     parser.add_argument("--week",
                         help="指定周（任一该周日期 YYYY-MM-DD）")
+    parser.add_argument(
+        "--engine",
+        choices=["v1", "v2"],
+        default="v1",
+        help="计划生成引擎：v1=legacy generate_plan（默认，prompt 文件）；v2=generate_plan_v2（Phase 2 API-free 完整流水线，失败自动回退 v1）",
+    )
     return parser.parse_args()
 
 
@@ -55,6 +61,41 @@ def _resolve_week(args):
         monday = ref_date - timedelta(days=ref_date.weekday())
         return monday, monday + timedelta(days=6)
     return _next_week_range()
+
+
+def _run_v2_engine(week_start, week_end) -> bool:
+    """Run the Phase 2 generate_plan_v2 pipeline.
+
+    Returns True on success (plan artifacts written under reports_dir).
+    Returns False if the v2 engine returned status=="error" — caller should
+    fall back to v1.
+    """
+    # Lazy import so v1 default path has no new dependency
+    from pathlib import Path
+    from src.coach.session_designer.generator_v2 import generate_plan_v2
+
+    project_root = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    warehouse_dir = project_root / "icu_data_warehouse"
+    memory_dir = project_root / "coach_memory"
+    reports_dir = project_root / "coach_memory" / "plans"
+
+    result = generate_plan_v2(
+        week_start=week_start,
+        week_end=week_end,
+        warehouse_dir=warehouse_dir,
+        memory_dir=memory_dir,
+        reports_dir=reports_dir,
+        push_to_icu=False,
+    )
+    if result.status != "ok":
+        print(f"⚠️  v2 engine failed ({result.error}); falling back to v1", file=sys.stderr)
+        return False
+    print(f"✅ v2 plan generated: {result.plan_md_path}")
+    print(f"   prose prompt: {result.prose_prompt_path}")
+    print(f"   trace: {result.trace_path}")
+    if result.violations:
+        print(f"   remaining violations: {len(result.violations)}", file=sys.stderr)
+    return True
 
 
 def main():
@@ -78,8 +119,12 @@ def main():
         push_plan_from_file(args.plan_file)
         return
 
-    # 默认：生成 prompt 文件，不推送。
+    # 默认：生成计划，不推送。
     print(f"计划周期: {week_start} 至 {week_end}")
+    if args.engine == "v2":
+        if _run_v2_engine(week_start, week_end):
+            return
+        # else: fall through to v1
     generate_plan(week_start=week_start, week_end=week_end)
 
 
