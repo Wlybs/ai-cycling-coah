@@ -8,6 +8,7 @@
 持久化 / ICU PATCH 在 scripts/daily_adapt.py 与 scripts/apply_adaptation.py 完成。
 判定规则与阈值见 docs/superpowers/specs/2026-04-19-phase-3-blueprint.md §Component 5。
 """
+from .daily_adapt import run as run_daily_adapt
 from .prompt_builder import build_red_override, build_yellow_nudge
 from .rules import evaluate_signals
 from .session_revisor import revise_session
@@ -33,4 +34,5 @@ __all__ = [
     "build_yellow_nudge",
     "evaluate_signals",
     "revise_session",
+    "run_daily_adapt",
 ]
