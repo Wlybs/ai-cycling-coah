@@ -58,7 +58,7 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parse_args(argv)
     ledger_path = args.ledger or (args.memory / "ledger" / "decisions.jsonl")
-    writer = LedgerWriter(ledger_path)
+    writer = None if args.dry_run else LedgerWriter(ledger_path)
     reader = LedgerReader(ledger_path)
 
     try:

@@ -13,10 +13,13 @@ CLI is a thin shell in scripts/daily_adapt.py.
 from __future__ import annotations
 
 import json
+import logging
 from datetime import date as DateT
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable
+
+from pydantic import ValidationError
 
 from src.coach.common.logging import get_logger
 from src.coach.ledger.reader import LedgerReader
@@ -36,6 +39,7 @@ from .session_revisor import revise_session
 from .types import SignalSnapshot
 
 _log = get_logger("adapter")
+logger = logging.getLogger(__name__)
 
 # Phase 2 DayPlanV2.training_type -> SessionType
 _TRAINING_TYPE_TO_SESSION_TYPE: dict[str, SessionType] = {
@@ -56,7 +60,10 @@ _BASELINE_MIN_SAMPLES = 7  # below this, return None -> evaluate_signals skips t
 def _read_json(path: Path) -> Any:
     if not path.exists():
         return None
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Malformed JSON in {path}: {e}") from e
 
 
 def _wellness_for_date(history: list[dict], target_date: DateT) -> dict:
@@ -104,6 +111,7 @@ def _build_signal_snapshot(
     )
 
 
+# DRIFT: keep field set in sync with scripts.ingest_ledger._FALLBACK_STATE
 def _fallback_state(target_date: DateT) -> AthleteStateRef:
     """Conservative fallback when warehouse / physiology snapshots are absent.
 
@@ -145,7 +153,12 @@ def _build_athlete_state(
             phase=str(phase),
             week_of_year=target_date.isocalendar()[1],
         )
-    except Exception:
+    except (ValueError, TypeError, ValidationError) as exc:
+        logger.warning(
+            "Failed to build AthleteStateRef from %s, falling back: %s",
+            memory_dir / "physiology" / "cp_w_current.json", exc,
+            exc_info=False,
+        )
         return _fallback_state(target_date)
 
 
@@ -182,7 +195,8 @@ def _find_original_session(
         try:
             plan = WeeklyPlan.model_validate_json(
                 path.read_text(encoding="utf-8"))
-        except Exception:
+        except Exception as exc:
+            logger.debug("Skipped plan candidate %s: %s", path, exc)
             continue
         for day in plan.days:
             if day.date == target_date.isoformat():
@@ -197,7 +211,7 @@ def run(
     warehouse_dir: Path,
     writer: LedgerWriter | None = None,
     reader: LedgerReader | None = None,
-    now_fn: Callable[[], datetime] = lambda: datetime.now(timezone.utc),
+    now_fn: Callable[[], datetime] | None = None,
     dry_run: bool = False,
 ) -> dict[str, Any]:
     """Evaluate today's signals; (optionally) persist outputs; return result dict.
@@ -211,9 +225,12 @@ def run(
       report_path: Path | None       (None for green / dry_run)
       proposed_session_path: Path | None
       ledger_entry_id: str | None    (None when dry_run)
+      captured_at: datetime          (snapshot timestamp, derived from now_fn)
 
     Pure orchestrator: NO sys.exit, NO argv parse, NO print.
     """
+    if now_fn is None:
+        now_fn = lambda: datetime.now(timezone.utc)
     now = now_fn()
     wellness_path = warehouse_dir / "2_Wellness" / "wellness_history.json"
     history = _read_json(wellness_path)
@@ -310,14 +327,19 @@ def run(
                 if proposed_path else None
             ),
         }
-        entry_id = writer.record(
-            decision_type="adaptation_verdict",
-            source="adapter.daily",
-            athlete_state=state,
-            payload=payload,
-            evidence_refs=[str(wellness_path)],
-            confidence=1.0,
-        )
+        ledger_path = memory_dir / "ledger" / "decisions.jsonl"
+        try:
+            entry_id = writer.record(
+                decision_type="adaptation_verdict",
+                source="adapter.daily",
+                athlete_state=state,
+                payload=payload,
+                evidence_refs=[str(wellness_path)],
+                confidence=1.0,
+            )
+        except OSError as exc:
+            raise FileNotFoundError(
+                f"Ledger write failed at {ledger_path}: {exc}") from exc
 
     _log.event(
         "adapter_run_completed",
@@ -336,4 +358,5 @@ def run(
         "report_path": report_path,
         "proposed_session_path": proposed_path,
         "ledger_entry_id": entry_id,
+        "captured_at": snapshot.captured_at,
     }

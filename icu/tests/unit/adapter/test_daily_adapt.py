@@ -383,7 +383,7 @@ def test_wellness_missing_target_date_raises(
     wh_path.write_text(json.dumps(history), encoding="utf-8")
     writer = LedgerWriter(memory_dir / "ledger" / "decisions.jsonl")
     reader = LedgerReader(memory_dir / "ledger" / "decisions.jsonl")
-    with pytest.raises((FileNotFoundError, ValueError, KeyError)):
+    with pytest.raises((FileNotFoundError, ValueError)):
         run(
             target_date=target_date,
             memory_dir=memory_dir, warehouse_dir=warehouse_dir,
@@ -407,6 +407,8 @@ def test_now_fn_is_used_not_real_clock(
         writer=writer, reader=reader,
         now_fn=lambda: weird_now,
     )
-    # The verdict's signal_summary should reflect snapshot built with weird_now
-    # (acceptance: result completed without error and ledger entry exists)
+    # Acceptance: orchestrator surfaces snapshot.captured_at on its return dict,
+    # and that timestamp == weird_now (proving now_fn was the time source for
+    # SignalSnapshot construction, not datetime.now()).
     assert result["ledger_entry_id"] is not None
+    assert result["captured_at"] == weird_now
