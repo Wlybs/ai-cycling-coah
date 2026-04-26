@@ -234,6 +234,6 @@ def evaluate_signals(
         severity=round(severity, 3),
         triggered=triggered,
         guardrails=guardrails,
-        action=action,
+        recommended_action=action,
     )
     return verdict_obj

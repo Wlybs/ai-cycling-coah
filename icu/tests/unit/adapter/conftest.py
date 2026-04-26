@@ -14,6 +14,22 @@ def fixed_utc_now() -> datetime:
 
 
 @pytest.fixture
+def freeze_now(monkeypatch, fixed_utc_now):
+    """Freeze datetime.now() inside src.coach.adapter.rules to fixed_utc_now."""
+    import src.coach.adapter.rules as rules_mod
+
+    class _Frozen(datetime):
+        @classmethod
+        def now(cls, tz=None):  # type: ignore[override]
+            if tz is None:
+                return fixed_utc_now.replace(tzinfo=None)
+            return fixed_utc_now.astimezone(tz)
+
+    monkeypatch.setattr(rules_mod, "datetime", _Frozen)
+    return fixed_utc_now
+
+
+@pytest.fixture
 def baseline_state() -> AthleteStateRef:
     """Healthy mid-BUILD state — TSB only mildly negative."""
     return AthleteStateRef(

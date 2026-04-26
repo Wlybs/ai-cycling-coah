@@ -117,32 +117,6 @@ def _verdict_entry(state: AthleteStateRef, verdict: str,
     )
 
 
-class _FrozenDatetime(datetime):
-    _frozen: datetime
-
-    @classmethod
-    def now(cls, tz=None):  # type: ignore[override]
-        if tz is None:
-            return cls._frozen.replace(tzinfo=None)
-        return cls._frozen.astimezone(tz)
-
-
-@pytest.fixture
-def freeze_now(monkeypatch, fixed_utc_now):
-    """Freeze datetime.now() inside src.coach.adapter.rules to fixed_utc_now."""
-    import src.coach.adapter.rules as rules_mod
-
-    class _Frozen(datetime):
-        @classmethod
-        def now(cls, tz=None):  # type: ignore[override]
-            if tz is None:
-                return fixed_utc_now.replace(tzinfo=None)
-            return fixed_utc_now.astimezone(tz)
-
-    monkeypatch.setattr(rules_mod, "datetime", _Frozen)
-    return fixed_utc_now
-
-
 def test_consecutive_red_count_zero(baseline_state, fixed_utc_now, freeze_now):
     history = [
         _verdict_entry(baseline_state, "green", fixed_utc_now - timedelta(days=i))
