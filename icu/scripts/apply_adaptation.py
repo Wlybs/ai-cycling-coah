@@ -49,15 +49,18 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
                    help="icu_data_warehouse/ directory")
     p.add_argument("--ledger", type=Path, default=None,
                    help="ledger JSONL path (default: <memory>/ledger/decisions.jsonl)")
-    p.add_argument("--confirm", action="store_true",
-                   help="Actually send the PUT to ICU. Default = dry-run print only.")
+    gate = p.add_mutually_exclusive_group()
+    gate.add_argument("--confirm", action="store_true",
+                      help="Actually send the PUT to ICU. Default = dry-run print only.")
+    gate.add_argument("--dry-run", action="store_true",
+                      help="Explicit dry-run (default behavior; mutually exclusive with --confirm).")
     return p.parse_args(argv)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parse_args(argv)
     ledger_path = args.ledger or (args.memory / "ledger" / "decisions.jsonl")
-    writer = LedgerWriter(ledger_path)
+    writer = None if not args.confirm else LedgerWriter(ledger_path)
     reader = LedgerReader(ledger_path)
 
     try:
@@ -74,7 +77,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
     except Exception as exc:  # PUT failed
-        print(f"PATCH FAILED: {exc}", file=sys.stderr)
+        print(f"PUT FAILED: {exc}", file=sys.stderr)
         return 2
 
     out = {

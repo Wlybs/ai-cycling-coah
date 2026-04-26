@@ -138,8 +138,11 @@ class ICUClient:
         """训练模板库（已保存的 workout）。"""
         return self._get(f"/athlete/{self.athlete_id}/workouts")
 
-    # Phase 3 T61 extension: update_event
-    def update_event(self, event_id, event_data):
-        """更新 ICU 日历上指定的训练计划事件 (PUT)."""
+    def update_event(self, event_id, event_data) -> dict:
+        """更新 ICU 日历上指定的训练计划事件。
+
+        发起 PUT /athlete/{athlete_id}/events/{event_id}，返回更新后的事件 JSON。
+        `event_data` 应为完整事件载荷（PUT 语义，非 PATCH 局部更新）。
+        """
         path = f"/athlete/{self.athlete_id}/events/{event_id}"
         return self._request("PUT", path, json=event_data).json()

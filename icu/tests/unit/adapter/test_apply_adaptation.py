@@ -18,18 +18,21 @@ from src.coach.ledger.writer import LedgerWriter
 # ---------- Build a red-verdict day end-to-end via daily_adapt ----------
 
 @pytest.fixture
-def fixed_now() -> datetime:
-    return datetime(2026, 4, 19, 6, 0, tzinfo=timezone.utc)
+def target_date() -> date:
+    # LedgerWriter.record stamps with the real wall clock (T58 invariant);
+    # the apply_adaptation same-day verdict filter then requires the target
+    # date to match today, otherwise no-fallback would (correctly) raise.
+    return datetime.now(timezone.utc).date()
+
+
+@pytest.fixture
+def fixed_now(target_date) -> datetime:
+    return datetime.combine(target_date, datetime.min.time(), tzinfo=timezone.utc).replace(hour=6)
 
 
 @pytest.fixture
 def now_fn(fixed_now):
     return lambda: fixed_now
-
-
-@pytest.fixture
-def target_date() -> date:
-    return date(2026, 4, 19)
 
 
 @pytest.fixture
@@ -202,6 +205,7 @@ def test_confirm_patch_failure_does_not_write_ledger(
     writer = LedgerWriter(red_world["ledger_path"])
     reader = LedgerReader(red_world["ledger_path"])
     n_before = len(reader.query(decision_type="adaptation_applied"))
+    size_before = red_world["ledger_path"].stat().st_size
 
     with pytest.raises(_PatchFailed):
         run_apply(
@@ -212,9 +216,10 @@ def test_confirm_patch_failure_does_not_write_ledger(
             writer=writer, reader=reader, now_fn=now_fn,
             confirm=True,
         )
-    # Ledger uncorrupted
+    # Ledger uncorrupted: neither parseable count nor raw byte size changed.
     n_after = len(reader.query(decision_type="adaptation_applied"))
     assert n_after == n_before
+    assert red_world["ledger_path"].stat().st_size == size_before
 
 
 # ---------- Missing verdict: fail-fast ----------
@@ -294,3 +299,25 @@ def test_icu_client_has_update_event_method():
     from src.fetcher.icu_client import ICUClient
     assert hasattr(ICUClient, "update_event"), \
         "T61 must add ICUClient.update_event(event_id, event_data)"
+
+
+# ---------- now_fn injection seam ----------
+
+def test_now_fn_is_used_not_real_clock(red_world, target_date, fixed_now):
+    """The injected `now_fn` must populate `applied_at` on the result dict —
+    proves the injection seam exists and isn't shadowed by real wall clock."""
+    mock_client = MagicMock()
+    mock_client.update_event.return_value = {"id": "evt_999"}
+    writer = LedgerWriter(red_world["ledger_path"])
+    reader = LedgerReader(red_world["ledger_path"])
+
+    result = run_apply(
+        target_date=target_date,
+        memory_dir=red_world["memory_dir"],
+        warehouse_dir=red_world["warehouse_dir"],
+        client_factory=lambda: mock_client,
+        writer=writer, reader=reader,
+        now_fn=lambda: fixed_now,
+        confirm=False,
+    )
+    assert result["applied_at"] == fixed_now

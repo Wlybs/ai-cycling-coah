@@ -4,8 +4,8 @@ Default: dry-run — print the payload that would be sent, exit 0.
 With --confirm: send PUT /athlete/{id}/events/{event_id} via ICUClient.update_event,
 then append `adaptation_applied` to ledger.
 
-Transactional invariant: ledger entry is appended ONLY after PATCH succeeds.
-On any PATCH exception, the ledger stays untouched and the exception propagates.
+Transactional invariant: ledger entry is appended ONLY after PUT succeeds.
+On any PUT exception, the ledger stays untouched and the exception propagates.
 """
 from __future__ import annotations
 
@@ -32,13 +32,12 @@ def _read_json(path: Path) -> Any:
 
 
 def _find_today_verdict(reader: LedgerReader, target_date: DateT) -> DecisionEntry:
-    """Resolve today's adaptation_verdict.
+    """Resolve today's adaptation_verdict — fail fast if no same-day entry exists.
 
-    Strategy: prefer entries whose ledger timestamp falls inside the target
-    UTC day; if none match (e.g. test fixtures run with `now_fn` injected
-    while the ledger writer still stamps real wall clock), fall back to the
-    latest `adaptation_verdict` entry overall. ULID ordering is time-sortable
-    so `entries[-1]` is the most recent write either way.
+    Filters strictly by the target UTC day. A stale-verdict fallback would
+    silently apply yesterday's verdict to today's session, which is a safety
+    failure. Tests that need a same-day verdict must construct one via injected
+    `now_fn` and same-day ledger entries.
     """
     day_start = datetime.combine(target_date, datetime.min.time(), tzinfo=timezone.utc)
     day_end = day_start.replace(hour=23, minute=59, second=59)
@@ -46,13 +45,10 @@ def _find_today_verdict(reader: LedgerReader, target_date: DateT) -> DecisionEnt
         decision_type="adaptation_verdict",
         since=day_start, until=day_end,
     )
-    if same_day:
-        return same_day[-1]
-    all_entries = reader.query(decision_type="adaptation_verdict")
-    if not all_entries:
+    if not same_day:
         raise ValueError(
-            f"No adaptation_verdict for {target_date.isoformat()}; run daily_adapt first")
-    return all_entries[-1]
+            f"No adaptation_verdict found for {target_date.isoformat()}")
+    return same_day[-1]
 
 
 def _find_today_event_id(warehouse_dir: Path, target_date: DateT) -> str:
@@ -121,11 +117,14 @@ def run(
       patch_payload: dict   (the body that would be / was sent)
       ledger_entry_id: str | None (None unless confirm=True AND PUT succeeded)
       verdict_entry_id: str  (the source adaptation_verdict ULID)
+      applied_at: datetime  (timestamp from now_fn() at the time of this run;
+                             surfaced in both dry_run and applied paths)
 
     Raises if PUT fails under confirm=True (ledger then NOT appended).
     """
     if now_fn is None:
         now_fn = lambda: datetime.now(timezone.utc)
+    applied_at = now_fn()
     if client_factory is None:
         client_factory = lambda: ICUClient()
     if reader is None:
@@ -161,6 +160,7 @@ def run(
             "patch_payload": payload,
             "ledger_entry_id": None,
             "verdict_entry_id": verdict_entry.entry_id,
+            "applied_at": applied_at,
         }
 
     client = client_factory()
@@ -198,12 +198,11 @@ def run(
         event_id=event_id,
         recommended_action=verdict_entry.payload.get("recommended_action"),
     )
-    # captured for return; suppress unused lint
-    _ = now_fn
     return {
         "mode": "applied",
         "event_id": event_id,
         "patch_payload": payload,
         "ledger_entry_id": entry_id,
         "verdict_entry_id": verdict_entry.entry_id,
+        "applied_at": applied_at,
     }
