@@ -112,3 +112,109 @@ def test_step1_accepts_empty_prior_responses() -> None:
     out = build_strict_prompt(step=1, request=_make_request(),
                               prior_responses={})
     assert "<planner>" in out
+
+
+# ============================================================
+# T67.2 — steps 2 / 3 / 4
+# ============================================================
+
+_PLANNER_BODY = "<planner>\n- Wed: VO2max 75min @ CP=288W\n</planner>\n"
+_CRITIC_BODY = (
+    "<critic>\n1. tss=380 < 5*ctl=340.\n"
+    "2. work=20min < 25min.\n3. no race-sim.\n</critic>\n"
+)
+_PHYS_BODY = (
+    "<physiologist>\nCP=288W, W'=18000J durability=0.92 "
+    "response_profile OK; knee_flag=false.\n</physiologist>\n"
+)
+
+
+def _bsp(step: int, **kw):
+    from src.coach.consensus.strict_prompt import build_strict_prompt
+    return build_strict_prompt(step=step, request=_make_request(), **kw)
+
+
+def test_step2_requires_planner_prior() -> None:
+    with pytest.raises(ValueError) as exc:
+        _bsp(2, prior_responses={})
+    assert "planner" in str(exc.value).lower()
+
+
+def test_step2_embeds_planner_response() -> None:
+    out = _bsp(2, prior_responses={"planner": _PLANNER_BODY})
+    assert "Prior Planner response" in out
+    assert "Wed: VO2max 75min" in out
+
+
+def test_step2_section_a_critic_only() -> None:
+    out = _bsp(2, prior_responses={"planner": _PLANNER_BODY})
+    assert "Critic (`<critic>`)" in out
+    assert "Planner (`<planner>`)" not in out
+    assert "Physiologist (`<physiologist>`)" not in out
+    assert "Arbiter (`<arbiter>`)" not in out
+
+
+def test_step2_under_dosed_triggers_present_for_critic() -> None:
+    out = _bsp(2, prior_responses={"planner": _PLANNER_BODY})
+    assert "UNDER-DOSED HYPOTHESIS" in out
+
+
+def test_step2_section_d_critic_only_no_summary_json() -> None:
+    out = _bsp(2, prior_responses={"planner": _PLANNER_BODY})
+    assert "<critic>" in out
+    assert "<summary_json>" not in out
+
+
+def test_step3_requires_planner_and_critic() -> None:
+    with pytest.raises(ValueError) as exc:
+        _bsp(3, prior_responses={"planner": _PLANNER_BODY})
+    assert "critic" in str(exc.value).lower()
+
+
+def test_step3_embeds_planner_and_critic_priors() -> None:
+    out = _bsp(3, prior_responses={
+        "planner": _PLANNER_BODY, "critic": _CRITIC_BODY})
+    assert "Prior Planner response" in out
+    assert "Prior Critic response" in out
+    assert "tss=380" in out
+
+
+def test_step3_no_under_dosed_triggers() -> None:
+    out = _bsp(3, prior_responses={
+        "planner": _PLANNER_BODY, "critic": _CRITIC_BODY})
+    assert "UNDER-DOSED HYPOTHESIS" not in out
+
+
+def test_step4_requires_all_three_priors() -> None:
+    with pytest.raises(ValueError) as exc:
+        _bsp(4, prior_responses={
+            "planner": _PLANNER_BODY, "critic": _CRITIC_BODY})
+    assert "physiologist" in str(exc.value).lower()
+
+
+def test_step4_embeds_all_three_priors() -> None:
+    out = _bsp(4, prior_responses={
+        "planner": _PLANNER_BODY, "critic": _CRITIC_BODY,
+        "physiologist": _PHYS_BODY})
+    assert "Prior Planner response" in out
+    assert "Prior Critic response" in out
+    assert "Prior Physiologist response" in out
+
+
+def test_step4_section_d_arbiter_with_summary_json() -> None:
+    out = _bsp(4, prior_responses={
+        "planner": _PLANNER_BODY, "critic": _CRITIC_BODY,
+        "physiologist": _PHYS_BODY})
+    assert "<arbiter>" in out
+    assert "<summary_json>" in out
+    assert "ACCEPT|REVISE|REJECT" in out
+
+
+def test_step4_rejects_arbiter_in_prior_responses() -> None:
+    """Arbiter is the OUTPUT, never a prior input."""
+    with pytest.raises(ValueError) as exc:
+        _bsp(4, prior_responses={
+            "planner": _PLANNER_BODY, "critic": _CRITIC_BODY,
+            "physiologist": _PHYS_BODY,
+            "arbiter": "<arbiter>oops</arbiter>"})
+    assert "arbiter" in str(exc.value).lower()

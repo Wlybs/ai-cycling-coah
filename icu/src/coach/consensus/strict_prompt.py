@@ -21,6 +21,41 @@ STRICT_STEP_TO_ROLE: dict[int, str] = {
 }
 _VALID_STEPS: frozenset[int] = frozenset(STRICT_STEP_TO_ROLE.keys())
 
+_STEP_REQUIRED_PRIORS: dict[int, frozenset[str]] = {
+    1: frozenset(),
+    2: frozenset({"planner"}),
+    3: frozenset({"planner", "critic"}),
+    4: frozenset({"planner", "critic", "physiologist"}),
+}
+# Arbiter is OUTPUT, never an input role.
+_ALLOWED_PRIOR_KEYS: frozenset[str] = frozenset(
+    {"planner", "critic", "physiologist"})
+
+
+def _validate_prior_responses(
+    step: int, prior_responses: dict[str, str] | None,
+) -> dict[str, str]:
+    pr = prior_responses or {}
+    if step == 1:
+        if pr:
+            raise ValueError(
+                "step=1 cannot accept prior_responses")
+        return {}
+    extra = set(pr) - _ALLOWED_PRIOR_KEYS
+    if extra:
+        raise ValueError(
+            f"prior_responses disallowed keys: {sorted(extra)}; "
+            f"only {sorted(_ALLOWED_PRIOR_KEYS)} valid")
+    missing = _STEP_REQUIRED_PRIORS[step] - set(pr)
+    if missing:
+        raise ValueError(
+            f"step={step} requires {sorted(_STEP_REQUIRED_PRIORS[step])}; "
+            f"missing {sorted(missing)}")
+    blanks = [k for k, v in pr.items() if not (v or "").strip()]
+    if blanks:
+        raise ValueError(f"prior_responses blank: {sorted(blanks)}")
+    return dict(pr)
+
 
 def build_strict_prompt(
     step: int,
@@ -28,13 +63,10 @@ def build_strict_prompt(
     history: list[HistoryTriplet] | None = None,
     prior_responses: dict[str, str] | None = None,
 ) -> str:
-    """Return a single-role markdown prompt body for `step`."""
     if step not in _VALID_STEPS:
         raise ValueError(
             f"step must be one of {sorted(_VALID_STEPS)}, got {step!r}")
-    if step == 1 and prior_responses:
-        raise ValueError(
-            "step=1 cannot accept prior_responses (Planner has no priors)")
+    priors = _validate_prior_responses(step, prior_responses)
 
     role = STRICT_STEP_TO_ROLE[step]
     triggers: list[str] = []
@@ -44,7 +76,7 @@ def build_strict_prompt(
 
     parts: list[str] = [_section_a_for_role(role, triggers)]
     if step >= 2:
-        parts.append(_render_prior_responses(prior_responses or {}))
+        parts.append(_render_prior_responses(priors))
     parts.append(_section_b(request))
     parts.append(_section_c(history or []))
     parts.append(_section_d_for_role(role))
@@ -53,7 +85,7 @@ def build_strict_prompt(
     _log.event("strict_prompt_built", step=step, role=role,
                n_under_dosed_triggers=len(triggers),
                n_history_triplets=len(history or []),
-               n_prior_responses=len(prior_responses or {}))
+               n_prior_responses=len(priors))
     return body
 
 
