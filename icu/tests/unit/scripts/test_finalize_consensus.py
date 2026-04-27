@@ -713,3 +713,259 @@ def test_step2_emits_strict_step3_next_steps(tmp_path: Path,
     _strict_call(consensus_dir, 2)
     out = capsys.readouterr().out
     assert "--step 3" in out and "2_critic.response.md" in out
+
+
+# ============================================================
+# T68.3 — step 4 finalize (concat + parse + ledger + verdict.md)
+# ============================================================
+
+_HAPPY_PLANNER = (
+    "<planner>\n- Wed: VO2max 75min @ CP=288W.\n"
+    "- Sat: Threshold 90min @ 95% CP.\n</planner>"
+)
+_HAPPY_CRITIC = (
+    "<critic>\n"
+    "1. Wed VO2 work=20min < 25min (durability=0.92).\n"
+    "2. weekly_tss=380 < 5*ctl=340.\n"
+    "3. No race-sim, phase=BUILD ending 14 days.\n"
+    "</critic>"
+)
+_HAPPY_PHYS = (
+    "<physiologist>\nCP=288W W'=18000J durability decay 6%/1000kJ; "
+    "response_profile.tolerance_class=high; end-of-week W' ≈ -2400J "
+    "(knee_flag=false).\n</physiologist>"
+)
+_HAPPY_ARBITER = (
+    "<arbiter>\nREVISE\nLower Wed VO2 work to 18min (durability=0.92).\n"
+    "</arbiter>\n"
+    '<summary_json>\n{"verdict": "REVISE", "confidence": 0.74}\n'
+    "</summary_json>"
+)
+
+
+def _seed_full_strict(tmp_path: Path) -> Path:
+    d = tmp_path / "session_full"
+    d.mkdir(parents=True)
+    (d / "verdict_request.json").write_text(
+        json.dumps(_REQUEST_PAYLOAD), encoding="utf-8")
+    (d / "1_planner.response.md").write_text(_HAPPY_PLANNER, encoding="utf-8")
+    (d / "2_critic.response.md").write_text(_HAPPY_CRITIC, encoding="utf-8")
+    (d / "3_physiologist.response.md").write_text(
+        _HAPPY_PHYS, encoding="utf-8")
+    (d / "4_arbiter.response.md").write_text(_HAPPY_ARBITER, encoding="utf-8")
+    return d
+
+
+def _make_athlete_state(tmp_path: Path) -> Path:
+    p = tmp_path / "athlete_state.json"
+    p.write_text(json.dumps({
+        "ctl": 68.0, "atl": 72.0, "tsb": -4.0,
+        "w_prime": 18000, "phase": "BUILD", "week_of_year": 17,
+    }), encoding="utf-8")
+    return p
+
+
+def _step4_dryrun_args(tmp_path: Path, consensus_dir: Path) -> list[str]:
+    return ["--mode", "strict", "--step", "4",
+            "--consensus-dir", str(consensus_dir),
+            "--athlete-state", str(_make_athlete_state(tmp_path))]
+
+
+def test_step4_dry_run_happy(tmp_path: Path, capsys) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    assert main(_step4_dryrun_args(tmp_path, consensus_dir)) == 0
+    out = capsys.readouterr().out
+    assert "[DRY-RUN]" in out
+    assert '"mode": "strict"' in out
+    assert '"source": "consensus.strict"' in out
+    assert (consensus_dir / "strict_verdict.md").exists()
+
+
+def test_step4_confirm_appends_to_ledger(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    ledger_path = tmp_path / "decisions.jsonl"
+    rc = main(_step4_dryrun_args(tmp_path, consensus_dir)
+              + ["--confirm", "--ledger", str(ledger_path)])
+    assert rc == 0
+    line = ledger_path.read_text(encoding="utf-8").strip().splitlines()[-1]
+    entry = json.loads(line)
+    assert entry["decision_type"] == "consensus_verdict"
+    assert entry["source"] == "consensus.strict"
+    assert entry["payload"]["mode"] == "strict"
+    assert entry["payload"]["verdict"] == "REVISE"
+    assert "content_hash" in entry["payload"]
+    assert len(entry["evidence_refs"]) == 4
+
+
+def test_step4_confirm_idempotent_on_rerun(tmp_path: Path,
+                                           capsys) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    ledger_path = tmp_path / "decisions.jsonl"
+    args = (_step4_dryrun_args(tmp_path, consensus_dir)
+            + ["--confirm", "--ledger", str(ledger_path)])
+    rc1 = main(args)
+    capsys.readouterr()
+    rc2 = main(args)
+    assert rc1 == 0 and rc2 == 0
+    assert "Already finalized" in capsys.readouterr().out
+    lines = ledger_path.read_text(encoding="utf-8").strip().splitlines()
+    consensus_lines = [l for l in lines
+                       if json.loads(l)["decision_type"]
+                       == "consensus_verdict"]
+    assert len(consensus_lines) == 1
+
+
+def test_step4_concat_preserves_role_tag_order(tmp_path: Path) -> None:
+    """Concat ordering planner→critic→physiologist→arbiter,
+    verified via strict_verdict.md."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    main(_step4_dryrun_args(tmp_path, consensus_dir))
+    md = (consensus_dir / "strict_verdict.md").read_text(encoding="utf-8")
+    assert (md.index("### Planner") < md.index("### Critic")
+            < md.index("### Physiologist") < md.index("### Arbiter"))
+
+
+def test_step4_parser_failure_returns_2(tmp_path: Path) -> None:
+    """text=ACCEPT vs summary_json=REVISE rejected by parse(mode='strict')."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    (consensus_dir / "4_arbiter.response.md").write_text(
+        "<arbiter>\nACCEPT\nfine.\n</arbiter>\n"
+        '<summary_json>\n{"verdict": "REVISE", "confidence": 0.5}\n'
+        "</summary_json>", encoding="utf-8")
+    rc = main(_step4_dryrun_args(tmp_path, consensus_dir) + [
+        "--confirm", "--ledger", str(tmp_path / "decisions.jsonl")])
+    assert rc == 2
+
+
+def test_step4_missing_arbiter_response_falls_to_prompt_build(
+    tmp_path: Path,
+) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    (consensus_dir / "4_arbiter.response.md").unlink()
+    assert main(_step4_dryrun_args(tmp_path, consensus_dir)) == 0
+    assert (consensus_dir / "4_arbiter.prompt.md").exists()
+    assert not (consensus_dir / "strict_verdict.md").exists()
+
+
+def test_step4_strict_verdict_md_contents(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    main(_step4_dryrun_args(tmp_path, consensus_dir))
+    md = (consensus_dir / "strict_verdict.md").read_text(encoding="utf-8")
+    assert "**Mode**: strict" in md
+    assert "**Verdict**: REVISE" in md
+    assert "**Confidence**: 0.74" in md
+    assert "## Expert turns" in md
+    assert "## summary_json" in md
+
+
+def test_step4_evidence_refs_paths_in_order(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    ledger_path = tmp_path / "decisions.jsonl"
+    main([
+        "--mode", "strict", "--step", "4", "--confirm",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(_make_athlete_state(tmp_path)),
+        "--ledger", str(ledger_path),
+    ])
+    line = ledger_path.read_text(encoding="utf-8").strip().splitlines()[-1]
+    refs = json.loads(line)["evidence_refs"]
+    assert len(refs) == 4
+    assert refs[0].endswith("1_planner.response.md")
+    assert refs[3].endswith("4_arbiter.response.md")
+
+
+def test_step4_confirm_missing_arbiter_response_returns_2(
+    tmp_path: Path,
+) -> None:
+    """--confirm + missing 4_arbiter.response.md → exit 2 (no silent
+    re-route to prompt-build)."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    (consensus_dir / "4_arbiter.response.md").unlink()
+    rc = main([
+        "--mode", "strict", "--step", "4", "--confirm",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(_make_athlete_state(tmp_path)),
+        "--ledger", str(tmp_path / "decisions.jsonl"),
+    ])
+    assert rc == 2
+
+
+def test_step4_council_validator_does_not_fire_in_strict_mode(
+    tmp_path: Path,
+) -> None:
+    """Regression-pin Architectural decision #4."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    rc = main([
+        "--mode", "strict", "--step", "4",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(_make_athlete_state(tmp_path)),
+    ])
+    assert rc == 0
+
+
+def test_step4_confidence_out_of_range_rejected(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    (consensus_dir / "4_arbiter.response.md").write_text(
+        '<arbiter>\nACCEPT\nfine.\n</arbiter>\n<summary_json>\n'
+        '{"verdict": "ACCEPT", "confidence": 2.0}\n</summary_json>',
+        encoding="utf-8",
+    )
+    rc = main([
+        "--mode", "strict", "--step", "4", "--confirm",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(_make_athlete_state(tmp_path)),
+        "--ledger", str(tmp_path / "decisions.jsonl"),
+    ])
+    assert rc == 2
+
+
+def test_step4_critic_under_3_points_rejected(tmp_path: Path) -> None:
+    """Parser rule 3 still fires: Critic <3 points → fail."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    (consensus_dir / "2_critic.response.md").write_text(
+        "<critic>\n1. only one.\n</critic>", encoding="utf-8",
+    )
+    rc = main([
+        "--mode", "strict", "--step", "4", "--confirm",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(_make_athlete_state(tmp_path)),
+        "--ledger", str(tmp_path / "decisions.jsonl"),
+    ])
+    assert rc == 2
+
+
+def test_step4_athlete_state_reused_for_ledger_record(
+    tmp_path: Path,
+) -> None:
+    """The --athlete-state JSON is what's recorded (not VerdictRequest's
+    embedded athlete_state)."""
+    from scripts.finalize_consensus import main
+    consensus_dir = _seed_full_strict(tmp_path)
+    p = tmp_path / "newer_state.json"
+    p.write_text(json.dumps({
+        "ctl": 71.0, "atl": 75.0, "tsb": -4.0,
+        "w_prime": 18500, "phase": "BUILD", "week_of_year": 18,
+    }), encoding="utf-8")
+    ledger_path = tmp_path / "decisions.jsonl"
+    main([
+        "--mode", "strict", "--step", "4", "--confirm",
+        "--consensus-dir", str(consensus_dir),
+        "--athlete-state", str(p),
+        "--ledger", str(ledger_path),
+    ])
+    line = ledger_path.read_text(encoding="utf-8").strip().splitlines()[-1]
+    entry = json.loads(line)
+    assert entry["athlete_state_ref"]["week_of_year"] == 18
+    assert entry["athlete_state_ref"]["w_prime"] == 18500

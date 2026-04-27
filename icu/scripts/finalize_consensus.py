@@ -221,10 +221,181 @@ def _strict_main(args: argparse.Namespace) -> int:
     return 0
 
 
+_SUMMARY_JSON_RE = re.compile(
+    r"<summary_json>(.*?)</summary_json>",
+    re.DOTALL | re.IGNORECASE)
+
+
+def _concat_strict_responses(consensus_dir: Path) -> tuple[str, list[Path]]:
+    """Concatenate 4 role bodies + arbiter's summary_json. Order:
+    planner → critic → physiologist → arbiter."""
+    paths: list[Path] = []
+    bodies: list[str] = []
+    summary_block = ""
+    for step in (1, 2, 3, 4):
+        role = STRICT_STEP_TO_ROLE[step]
+        path = consensus_dir / f"{step}_{role}.response.md"
+        if not path.exists():
+            raise FileNotFoundError(
+                f"strict response missing: {path.name}")
+        md = path.read_text(encoding="utf-8")
+        body = _extract_role_body(md, role)
+        bodies.append(f"<{role}>\n{body}\n</{role}>")
+        paths.append(path)
+        if role == "arbiter":
+            sm = _SUMMARY_JSON_RE.search(md)
+            if not sm:
+                raise ValueError(
+                    "4_arbiter.response.md missing <summary_json>")
+            summary_block = (f"<summary_json>\n{sm.group(1).strip()}\n"
+                             "</summary_json>")
+    return "\n\n".join(bodies + [summary_block]) + "\n", paths
+
+
+def _write_strict_verdict_md(consensus_dir: Path,
+                             verdict: CouncilVerdict,
+                             response_paths: list[Path],
+                             content_hash: str,
+                             entry_id: str | None) -> None:
+    now = datetime.now(timezone.utc).isoformat()
+    role_to_body = {t.role: t.body_md.strip()
+                    for t in verdict.expert_turns}
+    summary_dump = json.dumps(verdict.summary_json, indent=2,
+                              sort_keys=True, ensure_ascii=False)
+    refs_lines = "\n".join(f"  - {p}" for p in response_paths)
+    body = (
+        f"# Strict consensus verdict — {now}\n\n"
+        f"**Mode**: {verdict.mode}\n"
+        f"**Verdict**: {verdict.verdict}\n"
+        f"**Confidence**: {verdict.confidence:.2f}\n"
+        f"**Justification**: {verdict.justification}\n\n"
+        "## Expert turns\n\n"
+        f"### Planner\n{role_to_body.get('planner', '(missing)')}\n\n"
+        f"### Critic\n{role_to_body.get('critic', '(missing)')}\n\n"
+        f"### Physiologist\n"
+        f"{role_to_body.get('physiologist', '(missing)')}\n\n"
+        f"### Arbiter\n{role_to_body.get('arbiter', '(missing)')}\n\n"
+        f"## summary_json\n\n```json\n{summary_dump}\n```\n\n"
+        "## Ledger entry\n\n"
+        f"- entry_id: {entry_id or '(DRY-RUN)'}\n"
+        f"- evidence_refs:\n{refs_lines}\n"
+        f"- content_hash: {content_hash}\n"
+    )
+    (consensus_dir / "strict_verdict.md").write_text(body, encoding="utf-8")
+
+
 def _strict_finalize_step4(args: argparse.Namespace,
                            consensus_dir: Path) -> int:
-    print("[T68.2 stub] step 4 finalize not yet implemented",
-          file=sys.stderr)
+    if args.athlete_state is None:
+        print("ERROR: strict step 4 finalize requires --athlete-state.",
+              file=sys.stderr)
+        return 2
+
+    try:
+        synth, response_paths = _concat_strict_responses(consensus_dir)
+    except (FileNotFoundError, ValueError) as exc:
+        print(f"ERROR: strict step 4 input: {exc}", file=sys.stderr)
+        return 2
+    except OSError as exc:
+        print(f"ERROR: cannot read strict response: {exc}",
+              file=sys.stderr)
+        return 2
+
+    try:
+        athlete_state = _read_athlete_state(args.athlete_state)
+    except SystemExit as exc:
+        return int(exc.code) if isinstance(exc.code, int) else 2
+
+    try:
+        verdict = parse_council(synth, mode="strict")
+    except ConsensusValidationError as exc:
+        print("ERROR: strict response failed parser validation:",
+              file=sys.stderr)
+        for v in exc.violations:
+            print(f"  - {v}", file=sys.stderr)
+        return 2
+
+    content_hash = _content_hash(verdict)
+
+    if args.confirm:
+        if args.ledger is None:
+            print("ERROR: strict step 4 --confirm requires --ledger.",
+                  file=sys.stderr)
+            return 2
+        if args.ledger.exists():
+            try:
+                reader = LedgerReader(args.ledger)
+                existing = reader.query(
+                    decision_type="consensus_verdict", limit=None)
+            except Exception as exc:
+                print(f"ERROR: ledger read failed: {exc}",
+                      file=sys.stderr)
+                return 3
+            for prior in existing:
+                if prior.payload.get("content_hash") == content_hash:
+                    print(f"Already finalized: "
+                          f"content_hash={content_hash[:12]}... "
+                          f"existing entry_id={prior.entry_id}")
+                    try:
+                        _write_strict_verdict_md(
+                            consensus_dir, verdict, response_paths,
+                            content_hash, prior.entry_id)
+                    except OSError:
+                        pass
+                    return 0
+
+    if not args.confirm:
+        entry_preview = {
+            "decision_type": "consensus_verdict",
+            "source": "consensus.strict",
+            "athlete_state_ref": athlete_state.model_dump(),
+            "confidence": verdict.confidence,
+            "evidence_refs": [str(p) for p in response_paths],
+            "payload": verdict.model_dump(),
+            "content_hash": content_hash,
+        }
+        print("[DRY-RUN] would append the following ledger entry:")
+        print(json.dumps(entry_preview, indent=2,
+                         sort_keys=True, ensure_ascii=False))
+        print("\nRe-run with --confirm + --ledger to actually append.")
+        try:
+            _write_strict_verdict_md(
+                consensus_dir, verdict, response_paths,
+                content_hash, None)
+        except OSError as exc:
+            print(f"ERROR: cannot write strict_verdict.md: {exc}",
+                  file=sys.stderr)
+            return 3
+        return 0
+
+    payload = verdict.model_dump()
+    payload["content_hash"] = content_hash
+    try:
+        writer = LedgerWriter(args.ledger)
+        entry_id = writer.record(
+            decision_type="consensus_verdict",
+            source="consensus.strict",
+            athlete_state=athlete_state,
+            payload=payload,
+            evidence_refs=[str(p) for p in response_paths],
+            confidence=verdict.confidence,
+            superseded_by=None,
+        )
+    except Exception as exc:
+        print(f"ERROR: ledger write failed: {exc}", file=sys.stderr)
+        return 3
+
+    try:
+        _write_strict_verdict_md(consensus_dir, verdict, response_paths,
+                                 content_hash, entry_id)
+    except OSError as exc:
+        print(f"ERROR: cannot write strict_verdict.md: {exc}",
+              file=sys.stderr)
+        return 3
+
+    print(f"Appended consensus_verdict entry_id={entry_id} "
+          f"(source=consensus.strict, "
+          f"content_hash={content_hash[:12]}...)")
     return 0
 
 
