@@ -26,7 +26,9 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Sequence
 
@@ -35,7 +37,13 @@ _ICU_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_ICU_ROOT))
 os.environ.setdefault("ICU_LOG_DIR", str(_ICU_ROOT / "logs"))
 
+from src.coach.consensus.council_prompt import VerdictRequest  # noqa: E402
+from src.coach.consensus.history_injector import HistoryTriplet  # noqa: E402
 from src.coach.consensus.response_parser import parse as parse_council  # noqa: E402
+from src.coach.consensus.strict_prompt import (  # noqa: E402
+    STRICT_STEP_TO_ROLE,
+    build_strict_prompt,
+)
 from src.coach.consensus.types import (  # noqa: E402
     ConsensusValidationError,
     CouncilVerdict,
@@ -43,6 +51,78 @@ from src.coach.consensus.types import (  # noqa: E402
 from src.coach.ledger.reader import LedgerReader  # noqa: E402
 from src.coach.ledger.types import AthleteStateRef  # noqa: E402
 from src.coach.ledger.writer import LedgerWriter  # noqa: E402
+
+
+_NEXT_STEPS_STRICT_TEMPLATE: dict[int, str] = {
+    2: ("Next steps (strict step 2 — Critic):\n"
+        "  1. Open 2_critic.prompt.md, paste into Gemini.\n"
+        "  2. Save reply as 2_critic.response.md.\n"
+        "  3. Run: scripts/finalize_consensus.py --mode strict --step 3 "
+        "--consensus-dir <this_dir>"),
+    3: ("Next steps (strict step 3 — Physiologist):\n"
+        "  1. Open 3_physiologist.prompt.md, paste into Gemini.\n"
+        "  2. Save reply as 3_physiologist.response.md.\n"
+        "  3. Run: scripts/finalize_consensus.py --mode strict --step 4 "
+        "--consensus-dir <this_dir>"),
+    4: ("Next steps (strict step 4 — Arbiter):\n"
+        "  1. Open 4_arbiter.prompt.md, paste into Gemini.\n"
+        "  2. Save reply as 4_arbiter.response.md.\n"
+        "  3. Re-run step 4 (dry-run preview), then add --confirm + "
+        "--athlete-state + --ledger to append."),
+}
+
+
+_TAG_RE_CACHE: dict[str, re.Pattern] = {}
+
+
+def _extract_role_body(md: str, role: str) -> str:
+    """Body inside <role>...</role>; raise on missing/duplicate/blank."""
+    pat = _TAG_RE_CACHE.get(role)
+    if pat is None:
+        pat = re.compile(rf"<{role}>(.*?)</{role}>",
+                         re.DOTALL | re.IGNORECASE)
+        _TAG_RE_CACHE[role] = pat
+    matches = pat.findall(md)
+    if len(matches) != 1:
+        raise ValueError(f"malformed role tag: expected exactly one "
+                         f"<{role}>...</{role}>, got {len(matches)}")
+    body = matches[0].strip()
+    if not body:
+        raise ValueError(f"role tag <{role}> body is blank")
+    return body
+
+
+def _load_strict_inputs(
+    consensus_dir: Path,
+) -> tuple[VerdictRequest, list[HistoryTriplet] | None]:
+    req_path = consensus_dir / "verdict_request.json"
+    if not req_path.exists():
+        raise FileNotFoundError(
+            f"verdict_request.json not in {consensus_dir}")
+    req_payload = json.loads(req_path.read_text(encoding="utf-8"))
+    request = VerdictRequest.model_validate(req_payload)
+    history: list[HistoryTriplet] | None = None
+    hist_path = consensus_dir / "history.json"
+    if hist_path.exists():
+        hp = json.loads(hist_path.read_text(encoding="utf-8"))
+        if not isinstance(hp, list):
+            raise ValueError("history.json must be a JSON list")
+        history = [HistoryTriplet.model_validate(t) for t in hp]
+    return request, history
+
+
+def _read_prior_responses(consensus_dir: Path, step: int) -> dict[str, str]:
+    out: dict[str, str] = {}
+    for s in range(1, step):
+        role = STRICT_STEP_TO_ROLE[s]
+        path = consensus_dir / f"{s}_{role}.response.md"
+        if not path.exists():
+            raise FileNotFoundError(
+                f"prior strict response missing: {path.name}")
+        md = path.read_text(encoding="utf-8")
+        body = _extract_role_body(md, role)
+        out[role] = f"<{role}>\n{body}\n</{role}>"
+    return out
 
 
 # ---------- argparse ----------
@@ -96,8 +176,55 @@ def _validate_args(args: argparse.Namespace) -> int | None:
 
 
 def _strict_main(args: argparse.Namespace) -> int:
-    """T68.1 stub; T68.2/T68.3 fill in."""
-    print(f"[T68.1 stub] strict step={args.step}", file=sys.stderr)
+    consensus_dir: Path = args.consensus_dir
+    if not consensus_dir.is_dir():
+        print(f"ERROR: --consensus-dir not a directory: {consensus_dir}",
+              file=sys.stderr)
+        return 2
+
+    step: int = args.step
+    arbiter_response = consensus_dir / "4_arbiter.response.md"
+    if step == 4 and (args.confirm or arbiter_response.exists()):
+        return _strict_finalize_step4(args, consensus_dir)
+
+    try:
+        request, history = _load_strict_inputs(consensus_dir)
+        priors = _read_prior_responses(consensus_dir, step)
+    except (FileNotFoundError, ValueError, json.JSONDecodeError) as exc:
+        print(f"ERROR: strict step {step} input: {exc}",
+              file=sys.stderr)
+        return 2
+    except Exception as exc:
+        print(f"ERROR: strict step {step} validation: {exc}",
+              file=sys.stderr)
+        return 2
+
+    try:
+        body = build_strict_prompt(
+            step=step, request=request,
+            history=history, prior_responses=priors)
+    except ValueError as exc:
+        print(f"ERROR: build_strict_prompt step {step}: {exc}",
+              file=sys.stderr)
+        return 2
+
+    role = STRICT_STEP_TO_ROLE[step]
+    out_path = consensus_dir / f"{step}_{role}.prompt.md"
+    try:
+        out_path.write_text(body, encoding="utf-8")
+    except OSError as exc:
+        print(f"ERROR: cannot write {out_path}: {exc}", file=sys.stderr)
+        return 3
+
+    print(f"Wrote strict step-{step} prompt -> {out_path}")
+    print(_NEXT_STEPS_STRICT_TEMPLATE[step])
+    return 0
+
+
+def _strict_finalize_step4(args: argparse.Namespace,
+                           consensus_dir: Path) -> int:
+    print("[T68.2 stub] step 4 finalize not yet implemented",
+          file=sys.stderr)
     return 0
 
 

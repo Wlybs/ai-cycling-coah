@@ -584,3 +584,132 @@ def test_council_response_path_still_required(tmp_path: Path) -> None:
     assert main(["--mode", "council",
                  "--ledger", str(tmp_path / "l.jsonl"),
                  "--athlete-state", str(tmp_path / "a.json")]) == 2
+
+
+# ============================================================
+# T68.2 — step 2 / 3 router + step 4 prompt-build sub-mode
+# ============================================================
+
+_REQUEST_PAYLOAD = {
+    "plan": {"plan_period": "2026-W17", "weekly_tss_target": 380,
+             "days": [{"day": "Wed", "training_type": "VO2max",
+                       "duration_min": 75, "tier": "HIGH"}]},
+    "athlete_state": {"ctl": 68.0, "atl": 72.0, "tsb": -4.0,
+                      "w_prime": 18000, "phase": "BUILD",
+                      "week_of_year": 17},
+    "physiology": {"cp_watts": 288, "w_prime_joules": 18000},
+    "wellness_trend": [],
+    "periodization_summary": {"phase": "BUILD"},
+}
+
+
+def _seed_dir(tmp_path: Path, *,
+              with_planner=False, with_critic=False,
+              with_phys=False, with_arbiter=False) -> Path:
+    d = tmp_path / "session"
+    d.mkdir(parents=True)
+    (d / "verdict_request.json").write_text(
+        json.dumps(_REQUEST_PAYLOAD), encoding="utf-8")
+    if with_planner:
+        (d / "1_planner.response.md").write_text(
+            "<planner>\n- Wed VO2 @ CP=288W\n</planner>\n",
+            encoding="utf-8")
+    if with_critic:
+        (d / "2_critic.response.md").write_text(
+            "<critic>\n1. tss=380 < 340.\n2. work=20min < 25min.\n"
+            "3. no race-sim.\n</critic>\n", encoding="utf-8")
+    if with_phys:
+        (d / "3_physiologist.response.md").write_text(
+            "<physiologist>\nCP=288W W'=18000J durability=0.92 "
+            "response_profile=high; knee_flag=false.\n"
+            "</physiologist>\n", encoding="utf-8")
+    if with_arbiter:
+        (d / "4_arbiter.response.md").write_text(
+            "<arbiter>\nREVISE\nLower Wed VO2 to 18min.\n</arbiter>\n"
+            '<summary_json>\n{"verdict": "REVISE", "confidence": 0.74}\n'
+            "</summary_json>\n", encoding="utf-8")
+    return d
+
+
+def _strict_call(consensus_dir: Path, step: int) -> int:
+    from scripts.finalize_consensus import main
+    return main(["--mode", "strict", "--step", str(step),
+                 "--consensus-dir", str(consensus_dir)])
+
+
+def test_step2_writes_critic_prompt(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True)
+    assert _strict_call(consensus_dir, 2) == 0
+    body = (consensus_dir / "2_critic.prompt.md").read_text(encoding="utf-8")
+    assert "Prior Planner response" in body
+    assert "Critic (`<critic>`)" in body
+
+
+def test_step2_missing_planner_response_returns_2(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path)
+    assert _strict_call(consensus_dir, 2) == 2
+
+
+def test_step2_malformed_planner_tag_returns_2(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path)
+    (consensus_dir / "1_planner.response.md").write_text(
+        "<planner>no close", encoding="utf-8")
+    assert _strict_call(consensus_dir, 2) == 2
+
+
+def test_step2_blank_planner_body_returns_2(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path)
+    (consensus_dir / "1_planner.response.md").write_text(
+        "<planner>   </planner>", encoding="utf-8")
+    assert _strict_call(consensus_dir, 2) == 2
+
+
+def test_step3_writes_physiologist_prompt(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True, with_critic=True)
+    assert _strict_call(consensus_dir, 3) == 0
+    body = (consensus_dir / "3_physiologist.prompt.md").read_text(
+        encoding="utf-8")
+    assert "Prior Planner response" in body
+    assert "Prior Critic response" in body
+
+
+def test_step3_missing_critic_returns_2(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True)
+    assert _strict_call(consensus_dir, 3) == 2
+
+
+def test_step4_build_prompt_when_arbiter_response_absent(
+    tmp_path: Path,
+) -> None:
+    """Step 4 without --confirm AND without 4_arbiter.response.md
+    writes 4_arbiter.prompt.md (build sub-mode)."""
+    consensus_dir = _seed_dir(tmp_path, with_planner=True,
+                              with_critic=True, with_phys=True)
+    assert _strict_call(consensus_dir, 4) == 0
+    body = (consensus_dir / "4_arbiter.prompt.md").read_text(encoding="utf-8")
+    assert "<arbiter>" in body and "<summary_json>" in body
+
+
+def test_step4_build_prompt_missing_phys_returns_2(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True, with_critic=True)
+    assert _strict_call(consensus_dir, 4) == 2
+
+
+def test_step2_history_json_picked_up(tmp_path: Path) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True)
+    (consensus_dir / "history.json").write_text(json.dumps([{
+        "plan_entry_id": "01HABCDEFGHJKMNPQRSTVWXYZ0",
+        "context": {"ctl": 65, "phase": "BUILD"},
+        "verdict": "ACCEPT", "outcome": "consensus.ACCEPT@0.78",
+    }]), encoding="utf-8")
+    assert _strict_call(consensus_dir, 2) == 0
+    body = (consensus_dir / "2_critic.prompt.md").read_text(encoding="utf-8")
+    assert "01HABCDEFGHJKMNPQRSTVWXYZ0" in body
+
+
+def test_step2_emits_strict_step3_next_steps(tmp_path: Path,
+                                             capsys) -> None:
+    consensus_dir = _seed_dir(tmp_path, with_planner=True)
+    _strict_call(consensus_dir, 2)
+    out = capsys.readouterr().out
+    assert "--step 3" in out and "2_critic.response.md" in out
