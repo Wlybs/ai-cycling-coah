@@ -40,6 +40,7 @@ from src.coach.consensus.types import (  # noqa: E402
     ConsensusValidationError,
     CouncilVerdict,
 )
+from src.coach.ledger.reader import LedgerReader  # noqa: E402
 from src.coach.ledger.types import AthleteStateRef  # noqa: E402
 from src.coach.ledger.writer import LedgerWriter  # noqa: E402
 
@@ -187,18 +188,43 @@ def _append_to_ledger(
     ledger_path: Path,
     content_hash: str,
 ) -> int:
-    """Append one consensus_verdict entry to the ledger.
+    """Append one consensus_verdict entry to the ledger (idempotent).
 
     Pre-conditions (must all be true before this function is reached):
       - response file was read successfully
       - athlete-state JSON parsed AND schema-validated
       - council response parsed via response_parser.parse - no violations
 
+    Idempotency probe (T66.3): scan existing ledger for a prior
+    consensus_verdict entry with the same payload.content_hash. On hit,
+    print 'Already finalized: ...' and return 0 without writing. The
+    probe runs BEFORE LedgerWriter.record so the rollback contract from
+    T66.2 is preserved (no bytes mutated on duplicate).
+
     On success: prints the new entry_id; returns 0.
     On IO failure during the actual write: prints to stderr, returns 3.
     """
-    # T66.3 fills in: probe LedgerReader for content_hash, skip if dup.
+    # ---- idempotency probe ----
+    if ledger_path.exists():
+        try:
+            reader = LedgerReader(ledger_path)
+            existing = reader.query(
+                decision_type="consensus_verdict",
+                limit=None,
+            )
+        except Exception as exc:
+            print(f"ERROR: ledger read for idempotency probe failed: {exc}",
+                  file=sys.stderr)
+            return 3
+        for prior in existing:
+            if prior.payload.get("content_hash") == content_hash:
+                print(
+                    f"Already finalized: content_hash={content_hash[:12]}... "
+                    f"existing entry_id={prior.entry_id}"
+                )
+                return 0
 
+    # ---- new append ----
     payload = verdict.model_dump()
     payload["content_hash"] = content_hash
 

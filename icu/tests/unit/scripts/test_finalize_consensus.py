@@ -303,3 +303,184 @@ class TestParseValidateAppend:
         entry = json.loads(ledger.read_text(encoding="utf-8").strip())
         assert any("council.response.md" in r
                    for r in entry["evidence_refs"])
+
+
+# ---------- T66.3: idempotency ----------
+
+class TestIdempotency:
+
+    def test_second_confirm_does_not_double_append(self, tmp_path,
+                                                    capsys):
+        resp = tmp_path / "resp.md"
+        ledger = tmp_path / "ledger.jsonl"
+        state = tmp_path / "state.json"
+        _write_response(resp)
+        _write_state(state)
+
+        rc1 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc1 == 0
+
+        # Second invocation - same content
+        capsys.readouterr()  # drain
+        rc2 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc2 == 0
+        out = capsys.readouterr().out
+        assert "Already finalized" in out
+        # Ledger still has exactly one consensus_verdict line
+        lines = ledger.read_text(encoding="utf-8").strip().splitlines()
+        cv_lines = [l for l in lines
+                    if json.loads(l)["decision_type"] == "consensus_verdict"]
+        assert len(cv_lines) == 1, (
+            f"expected 1 consensus_verdict entry, got {len(cv_lines)}: "
+            f"{cv_lines}"
+        )
+
+    def test_different_response_appends_new_entry(self, tmp_path):
+        ledger = tmp_path / "ledger.jsonl"
+        state = tmp_path / "state.json"
+        _write_state(state)
+
+        # First response: REVISE @0.78
+        resp1 = tmp_path / "r1.md"
+        _write_response(resp1, _HAPPY_RESPONSE)
+        rc1 = finalize_main([
+            "--response", str(resp1),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc1 == 0
+
+        # Second response: ACCEPT @0.92 (different summary_json)
+        resp2 = tmp_path / "r2.md"
+        body2 = _HAPPY_RESPONSE.replace(
+            '{"verdict": "REVISE", "confidence": 0.78}',
+            '{"verdict": "ACCEPT", "confidence": 0.92}',
+        ).replace(
+            "REVISE\nPlan needs",
+            "ACCEPT\nPlan looks",
+        )
+        _write_response(resp2, body2)
+        rc2 = finalize_main([
+            "--response", str(resp2),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc2 == 0
+
+        # Two distinct consensus_verdict lines
+        lines = ledger.read_text(encoding="utf-8").strip().splitlines()
+        cv_lines = [l for l in lines
+                    if json.loads(l)["decision_type"] == "consensus_verdict"]
+        assert len(cv_lines) == 2
+
+    def test_dry_run_then_confirm_appends_once(self, tmp_path):
+        resp = tmp_path / "resp.md"
+        ledger = tmp_path / "ledger.jsonl"
+        state = tmp_path / "state.json"
+        _write_response(resp)
+        _write_state(state)
+
+        # Dry-run first
+        rc1 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+        ])
+        assert rc1 == 0
+        assert not ledger.exists()
+
+        # Confirm second
+        rc2 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc2 == 0
+        lines = ledger.read_text(encoding="utf-8").strip().splitlines()
+        assert len(lines) == 1
+
+    def test_content_hash_is_stable(self, tmp_path):
+        """Two CouncilVerdicts with identical content yield same hash."""
+        from scripts.finalize_consensus import _content_hash
+        from src.coach.consensus.response_parser import parse as parse_council
+
+        v1 = parse_council(_HAPPY_RESPONSE, mode="council")
+        v2 = parse_council(_HAPPY_RESPONSE, mode="council")
+        assert _content_hash(v1) == _content_hash(v2)
+        assert len(_content_hash(v1)) == 64  # sha256 hex
+
+    def test_idempotency_skip_preserves_ledger_bytes(self, tmp_path):
+        """Probe must run BEFORE record - duplicate skip leaves bytes intact."""
+        resp = tmp_path / "resp.md"
+        ledger = tmp_path / "ledger.jsonl"
+        state = tmp_path / "state.json"
+        _write_response(resp)
+        _write_state(state)
+
+        # First confirm
+        rc1 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc1 == 0
+        before = ledger.read_bytes()
+
+        # Second confirm - duplicate skip
+        rc2 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc2 == 0
+        after = ledger.read_bytes()
+        assert before == after, (
+            "Idempotency-skip must not mutate ledger - bytes diverged"
+        )
+
+    def test_idempotency_skip_prints_existing_entry_id(self, tmp_path,
+                                                       capsys):
+        """Duplicate-skip must print 'existing entry_id=...' to stdout."""
+        resp = tmp_path / "resp.md"
+        ledger = tmp_path / "ledger.jsonl"
+        state = tmp_path / "state.json"
+        _write_response(resp)
+        _write_state(state)
+
+        rc1 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc1 == 0
+        first_entry = json.loads(
+            ledger.read_text(encoding="utf-8").strip())
+        first_id = first_entry["entry_id"]
+
+        capsys.readouterr()  # drain
+        rc2 = finalize_main([
+            "--response", str(resp),
+            "--ledger", str(ledger),
+            "--athlete-state", str(state),
+            "--confirm",
+        ])
+        assert rc2 == 0
+        out = capsys.readouterr().out
+        assert "Already finalized" in out
+        assert first_id in out
