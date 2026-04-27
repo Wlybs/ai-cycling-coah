@@ -386,3 +386,63 @@ class TestDetectUnderDosedTriggers:
         out = build_council_prompt(req)
         # When no triggers, the optional sub-section is omitted entirely.
         assert "UNDER-DOSED HYPOTHESIS" not in out
+
+
+# ---------- T65.3: history triplet rendering ----------
+
+from src.coach.consensus.history_injector import HistoryTriplet, OUTCOME_PENDING
+
+
+def _triplet(**over) -> HistoryTriplet:
+    base = dict(
+        plan_entry_id="01HZZZ" + "0" * 20,
+        context={"phase": "BUILD", "total_tss": 520,
+                 "ctl": 70.0, "week_of_year": 14,
+                 "plan_period": "2026-04-06_2026-04-12"},
+        verdict="ACCEPT",
+        outcome="consensus.ACCEPT@0.82",
+    )
+    base.update(over)
+    return HistoryTriplet(**base)
+
+
+class TestSectionCRendering:
+
+    def test_renders_each_triplet_as_bullet(self):
+        triplets = [_triplet(),
+                    _triplet(plan_entry_id="01ZZZB" + "1" * 20,
+                             outcome=OUTCOME_PENDING)]
+        out = build_council_prompt(_request(), history=triplets)
+        # Both plan_entry_ids appear as backticked code spans.
+        assert "01HZZZ" in out
+        assert "01ZZZB" in out
+
+    def test_outcome_pending_marked_with_hint(self):
+        triplets = [_triplet(outcome=OUTCOME_PENDING)]
+        out = build_council_prompt(_request(), history=triplets)
+        assert OUTCOME_PENDING in out
+        # Hint string the prompt builder adds beside outcome_pending.
+        assert "awaiting follow-on entry" in out
+
+    def test_section_c_summary_count_matches_input(self):
+        triplets = [_triplet(plan_entry_id="01A" + "0" * 23),
+                    _triplet(plan_entry_id="01B" + "1" * 23),
+                    _triplet(plan_entry_id="01C" + "2" * 23)]
+        out = build_council_prompt(_request(), history=triplets)
+        # The Section C header line should report the triplet count.
+        assert "3 similar context-verdict-outcome triplet(s)" in out
+
+    def test_no_history_renders_empty_sentinel(self):
+        out_none = build_council_prompt(_request(), history=None)
+        out_empty = build_council_prompt(_request(), history=[])
+        for out in (out_none, out_empty):
+            assert "(no historical context)" in out
+            assert "context-verdict-outcome triplet(s)" not in out
+
+    def test_verdict_field_renders_safely_when_blank(self):
+        # File 06 history_injector currently always sets verdict="" (the
+        # plan-time verdict isn't emitted by Phase 2). Assert we don't crash
+        # and we render `(none)` so the LLM doesn't see an empty backtick.
+        triplets = [_triplet(verdict="")]
+        out = build_council_prompt(_request(), history=triplets)
+        assert "**verdict**: `(none)`" in out
