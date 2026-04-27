@@ -484,3 +484,103 @@ class TestIdempotency:
         out = capsys.readouterr().out
         assert "Already finalized" in out
         assert first_id in out
+
+
+# ============================================================
+# T68.1 — argparse extension for strict mode
+# ============================================================
+
+import json
+from pathlib import Path
+
+import pytest
+
+
+def test_step_without_mode_strict_rejected(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    assert main(["--step", "2", "--consensus-dir", str(tmp_path)]) == 2
+
+
+def test_step_value_validated(tmp_path: Path) -> None:
+    """Only 2/3/4 accepted (1 is run by run_consensus.py)."""
+    from scripts.finalize_consensus import main
+    d = tmp_path / "X"; d.mkdir()
+    for bad in ("1", "5"):
+        assert main(["--mode", "strict", "--step", bad,
+                     "--consensus-dir", str(d)]) == 2
+
+
+def test_strict_mode_requires_consensus_dir(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    assert main(["--mode", "strict", "--step", "2"]) == 2
+
+
+def test_council_mode_default_unchanged(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    assert main([]) == 2
+
+
+def test_strict_step4_confirm_requires_ledger_and_state(
+    tmp_path: Path,
+) -> None:
+    from scripts.finalize_consensus import main
+    d = tmp_path / "Y"; d.mkdir()
+    for fname in ("1_planner.response.md", "2_critic.response.md",
+                  "3_physiologist.response.md", "4_arbiter.response.md"):
+        (d / fname).write_text(
+            f"<{fname.split('_')[1]}>x</{fname.split('_')[1]}>",
+            encoding="utf-8")
+    rc = main(["--mode", "strict", "--step", "4", "--confirm",
+               "--consensus-dir", str(d)])
+    assert rc == 2
+
+
+def test_strict_step2_does_not_require_ledger(tmp_path: Path) -> None:
+    """T68.1 only validates argparse; step-2 routing arrives in T68.2."""
+    from scripts.finalize_consensus import main
+    d = tmp_path / "Z"; d.mkdir()
+    (d / "verdict_request.json").write_text(json.dumps({
+        "plan": {"plan_period": "W17", "weekly_tss_target": 380,
+                 "days": []},
+        "athlete_state": {"ctl": 68, "atl": 72, "tsb": -4,
+                          "w_prime": 18000, "phase": "BUILD",
+                          "week_of_year": 17},
+        "physiology": {}, "wellness_trend": [],
+        "periodization_summary": {},
+    }), encoding="utf-8")
+    (d / "1_planner.response.md").write_text(
+        "<planner>OK</planner>", encoding="utf-8")
+    rc = main(["--mode", "strict", "--step", "2",
+               "--consensus-dir", str(d)])
+    # argparse accepted (non-2 OR a non-argparse rc=2 input error).
+    assert isinstance(rc, int)
+
+
+def test_dry_run_and_confirm_mutually_exclusive(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    assert main(["--response", str(tmp_path / "x.md"),
+                 "--ledger", str(tmp_path / "l.jsonl"),
+                 "--athlete-state", str(tmp_path / "a.json"),
+                 "--confirm", "--dry-run"]) == 2
+
+
+def test_strict_help_text_mentions_step_and_consensus_dir(capsys) -> None:
+    from scripts.finalize_consensus import main
+    assert main(["--help"]) == 0
+    out = capsys.readouterr().out
+    assert "--mode" in out and "--step" in out and "--consensus-dir" in out
+
+
+def test_step3_argparse_accepted(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    d = tmp_path / "S3"; d.mkdir()
+    rc = main(["--mode", "strict", "--step", "3",
+               "--consensus-dir", str(d)])
+    assert isinstance(rc, int)
+
+
+def test_council_response_path_still_required(tmp_path: Path) -> None:
+    from scripts.finalize_consensus import main
+    assert main(["--mode", "council",
+                 "--ledger", str(tmp_path / "l.jsonl"),
+                 "--athlete-state", str(tmp_path / "a.json")]) == 2

@@ -49,24 +49,56 @@ from src.coach.ledger.writer import LedgerWriter  # noqa: E402
 
 def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description=(
-            "Phase 3 - finalize a 4-role council response into the ledger. "
-            "Default = dry-run print; pass --confirm to actually append."
-        ),
+        description="Phase 3 - finalize a council response. Default = "
+                    "dry-run; --confirm to append. --mode strict drives "
+                    "the 4-step state machine via --step + --consensus-dir.",
     )
-    p.add_argument("--response", required=True, type=Path,
-                   help="Path to council.response.md (Gemini reply).")
-    p.add_argument("--ledger", required=True, type=Path,
-                   help="Path to ledger JSONL (decisions.jsonl).")
-    p.add_argument("--athlete-state", required=True, type=Path,
-                   help="Path to AthleteStateRef JSON.")
+    p.add_argument("--mode", choices=("council", "strict"),
+                   default="council")
+    p.add_argument("--response", type=Path, default=None)
+    p.add_argument("--ledger", type=Path, default=None)
+    p.add_argument("--athlete-state", type=Path, default=None)
+    p.add_argument("--step", type=int, choices=(2, 3, 4), default=None,
+                   help="Strict mode only.")
+    p.add_argument("--consensus-dir", type=Path, default=None,
+                   help="Strict mode only.")
     gate = p.add_mutually_exclusive_group()
-    gate.add_argument("--confirm", action="store_true",
-                      help="Actually append to the ledger. "
-                           "Default = dry-run.")
-    gate.add_argument("--dry-run", action="store_true",
-                      help="Explicit dry-run (default behavior).")
+    gate.add_argument("--confirm", action="store_true")
+    gate.add_argument("--dry-run", action="store_true")
     return p.parse_args(argv)
+
+
+def _validate_args(args: argparse.Namespace) -> int | None:
+    if args.mode == "strict":
+        if args.step is None:
+            print("ERROR: --mode strict requires --step {2,3,4}.",
+                  file=sys.stderr)
+            return 2
+        if args.consensus_dir is None:
+            print("ERROR: --mode strict requires --consensus-dir <dir>.",
+                  file=sys.stderr)
+            return 2
+        if (args.step == 4 and args.confirm
+                and (args.ledger is None or args.athlete_state is None)):
+            print("ERROR: strict step 4 --confirm requires --ledger "
+                  "AND --athlete-state.", file=sys.stderr)
+            return 2
+        return None
+    if args.step is not None:
+        print("ERROR: --step requires --mode strict.", file=sys.stderr)
+        return 2
+    if (args.response is None or args.ledger is None
+            or args.athlete_state is None):
+        print("ERROR: council mode requires --response, --ledger, "
+              "--athlete-state.", file=sys.stderr)
+        return 2
+    return None
+
+
+def _strict_main(args: argparse.Namespace) -> int:
+    """T68.1 stub; T68.2/T68.3 fill in."""
+    print(f"[T68.1 stub] strict step={args.step}", file=sys.stderr)
+    return 0
 
 
 # ---------- entry helpers ----------
@@ -152,6 +184,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         args = _parse_args(argv)
     except SystemExit as exc:
         return int(exc.code) if isinstance(exc.code, int) else 2
+
+    rc = _validate_args(args)
+    if rc is not None:
+        return rc
+
+    if args.mode == "strict":
+        return _strict_main(args)
 
     # ---- Phase 1: read + parse + validate (BEFORE any ledger touch) ----
     try:
