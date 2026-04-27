@@ -177,3 +177,159 @@ class TestApiFreeInvariant:
         for needle in forbidden:
             assert needle not in text, (
                 f"run_consensus.py must remain API_FREE; found {needle!r}")
+
+
+# ============================================================
+# T67.3 — strict mode + --reuse
+# ============================================================
+
+import json
+from pathlib import Path
+
+import pytest
+
+
+_BASE_REQUEST = {
+    "plan": {
+        "plan_period": "2026-W17",
+        "weekly_tss_target": 380,
+        "days": [
+            {"day": "Mon", "training_type": "Endurance",
+             "duration_min": 90, "tier": "MEDIUM"},
+            {"day": "Wed", "training_type": "VO2max",
+             "duration_min": 75, "tier": "HIGH"},
+        ],
+    },
+    "athlete_state": {
+        "ctl": 68.0, "atl": 72.0, "tsb": -4.0,
+        "w_prime": 18000, "phase": "BUILD", "week_of_year": 17,
+    },
+    "physiology": {"cp_watts": 288, "w_prime_joules": 18000},
+    "wellness_trend": [],
+    "periodization_summary": {"phase": "BUILD"},
+}
+
+
+def _write_request(dir_: Path) -> Path:
+    p = dir_ / "verdict_request.json"
+    p.write_text(json.dumps(_BASE_REQUEST, indent=2,
+                            sort_keys=True, ensure_ascii=False),
+                 encoding="utf-8")
+    return p
+
+
+def test_strict_mode_emits_1_planner_prompt(tmp_path: Path) -> None:
+    from scripts.run_consensus import main
+    req = _write_request(tmp_path)
+    out_dir = tmp_path / "consensus_2026-04-27_1200"
+    rc = main([
+        "--mode", "strict",
+        "--verdict-request", str(req),
+        "--out", str(out_dir / "1_planner.prompt.md"),
+    ])
+    assert rc == 0
+    written = out_dir / "1_planner.prompt.md"
+    assert written.exists()
+    body = written.read_text(encoding="utf-8")
+    assert "<planner>" in body
+    # Must NOT include other roles' Section A rules
+    assert "Critic (`<critic>`)" not in body
+
+
+def test_strict_mode_persists_inputs_for_reuse(tmp_path: Path) -> None:
+    """Strict mode without --reuse must drop verdict_request.json next
+    to the prompt for later --reuse."""
+    from scripts.run_consensus import main
+    req = _write_request(tmp_path)
+    out_dir = tmp_path / "consensus_X"
+    rc = main(["--mode", "strict", "--verdict-request", str(req),
+               "--out", str(out_dir / "1_planner.prompt.md")])
+    assert rc == 0
+    assert (out_dir / "verdict_request.json").exists()
+
+
+def test_strict_reuse_reads_inputs_from_dir(tmp_path: Path) -> None:
+    from scripts.run_consensus import main
+    consensus_dir = tmp_path / "consensus_T"
+    consensus_dir.mkdir(parents=True)
+    _write_request(consensus_dir)
+    rc = main(["--mode", "strict", "--reuse", str(consensus_dir)])
+    assert rc == 0
+    body = (consensus_dir / "1_planner.prompt.md").read_text(encoding="utf-8")
+    assert "<planner>" in body
+
+
+def test_strict_reuse_missing_verdict_request_returns_2(tmp_path: Path) -> None:
+    from scripts.run_consensus import main
+    consensus_dir = tmp_path / "empty_dir"
+    consensus_dir.mkdir(parents=True)
+    rc = main(["--mode", "strict", "--reuse", str(consensus_dir)])
+    assert rc == 2
+
+
+def test_strict_reuse_with_history_json(tmp_path: Path) -> None:
+    from scripts.run_consensus import main
+    consensus_dir = tmp_path / "consensus_with_history"
+    consensus_dir.mkdir(parents=True)
+    _write_request(consensus_dir)
+    (consensus_dir / "history.json").write_text(json.dumps([{
+        "plan_entry_id": "01HXYZABCD0123456789ABCDEF",
+        "context": {"ctl": 65, "phase": "BUILD"},
+        "verdict": "ACCEPT", "outcome": "consensus.ACCEPT@0.78",
+    }]), encoding="utf-8")
+    rc = main(["--mode", "strict", "--reuse", str(consensus_dir)])
+    assert rc == 0
+    body = (consensus_dir / "1_planner.prompt.md").read_text(encoding="utf-8")
+    assert "01HXYZABCD0123456789ABCDEF" in body
+
+
+def test_strict_without_reuse_requires_verdict_request(tmp_path: Path) -> None:
+    """`--mode strict` without --reuse must require --verdict-request."""
+    from scripts.run_consensus import main
+    with pytest.raises(SystemExit):
+        # argparse exits with 2 when a required flag is missing
+        main(["--mode", "strict"])
+
+
+def test_council_mode_default_unchanged(tmp_path: Path) -> None:
+    """Regression: council mode (default) writes the original 4-role
+    prompt and ignores any strict-only flags."""
+    from scripts.run_consensus import main
+    req = _write_request(tmp_path)
+    rc = main([
+        "--verdict-request", str(req),
+        "--out", str(tmp_path / "council.prompt.md"),
+    ])
+    assert rc == 0
+    body = (tmp_path / "council.prompt.md").read_text(encoding="utf-8")
+    # Council mode emits all 4 roles in Section A
+    assert "Critic (`<critic>`)" in body
+    assert "Physiologist (`<physiologist>`)" in body
+    assert "Arbiter (`<arbiter>`)" in body
+
+
+def test_council_mode_also_persists_inputs(tmp_path: Path) -> None:
+    """Council mode persists verdict_request.json next to the council
+    prompt so a future strict --reuse invocation can pick it up."""
+    from scripts.run_consensus import main
+    req = _write_request(tmp_path)
+    out = tmp_path / "consensus_dir" / "council.prompt.md"
+    rc = main([
+        "--verdict-request", str(req),
+        "--out", str(out),
+    ])
+    assert rc == 0
+    assert (tmp_path / "consensus_dir" / "verdict_request.json").exists()
+
+
+def test_strict_reuse_emits_strict_next_steps(tmp_path: Path,
+                                              capsys) -> None:
+    from scripts.run_consensus import main
+    consensus_dir = tmp_path / "consensus_NEXT"
+    consensus_dir.mkdir(parents=True)
+    _write_request(consensus_dir)
+    rc = main(["--mode", "strict", "--reuse", str(consensus_dir)])
+    assert rc == 0
+    captured = capsys.readouterr()
+    assert "--mode strict --step 2" in captured.out
+    assert "1_planner.response.md" in captured.out
