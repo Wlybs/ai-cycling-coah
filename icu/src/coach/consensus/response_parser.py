@@ -186,8 +186,10 @@ def _check_verdict(summary_json: dict,
         violations.append(f"verdict.invalid:{sj_verdict!r}")
         return "REJECT"  # placeholder; we'll raise anyway
 
-    # Cross-check against arbiter text — first all-caps verdict-ish word
-    text_match = re.search(r"\b(ACCEPT|REVISE|REJECT)\b", arbiter_text)
+    # Cross-check against arbiter text — only the FIRST LINE (template puts
+    # verdict at start). Avoids false positives like "we should NOT REJECT this".
+    first_line = arbiter_text.splitlines()[0] if arbiter_text.strip() else ""
+    text_match = re.search(r"\b(ACCEPT|REVISE|REJECT)\b", first_line)
     if text_match and text_match.group(1) != sj_verdict:
         violations.append(
             f"verdict.mismatch:summary={sj_verdict},text={text_match.group(1)}"
@@ -203,7 +205,7 @@ def _check_confidence(summary_json: dict, violations: list[str]) -> float:
         violations.append(f"confidence.out_of_range:{raw!r}")
         return 0.0
     if not (0.0 <= c <= 1.0):
-        violations.append(f"confidence.out_of_range:{c}")
+        violations.append(f"confidence.out_of_range:{c!r}")
         return 0.0
     return c
 
