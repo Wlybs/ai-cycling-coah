@@ -41,6 +41,7 @@ from src.coach.consensus.types import (  # noqa: E402
     CouncilVerdict,
 )
 from src.coach.ledger.types import AthleteStateRef  # noqa: E402
+from src.coach.ledger.writer import LedgerWriter  # noqa: E402
 
 
 # ---------- argparse ----------
@@ -186,8 +187,39 @@ def _append_to_ledger(
     ledger_path: Path,
     content_hash: str,
 ) -> int:
-    raise NotImplementedError(
-        "T66.2 will implement ledger append; T66.1 only ships dry-run.")
+    """Append one consensus_verdict entry to the ledger.
+
+    Pre-conditions (must all be true before this function is reached):
+      - response file was read successfully
+      - athlete-state JSON parsed AND schema-validated
+      - council response parsed via response_parser.parse - no violations
+
+    On success: prints the new entry_id; returns 0.
+    On IO failure during the actual write: prints to stderr, returns 3.
+    """
+    # T66.3 fills in: probe LedgerReader for content_hash, skip if dup.
+
+    payload = verdict.model_dump()
+    payload["content_hash"] = content_hash
+
+    try:
+        writer = LedgerWriter(ledger_path)
+        entry_id = writer.record(
+            decision_type="consensus_verdict",
+            source="consensus.council",
+            athlete_state=athlete_state,
+            payload=payload,
+            evidence_refs=[str(evidence_path)],
+            confidence=verdict.confidence,
+            superseded_by=None,
+        )
+    except Exception as exc:  # IO / fcntl / fsync failure
+        print(f"ERROR: ledger write failed: {exc}", file=sys.stderr)
+        return 3
+
+    print(f"Appended consensus_verdict entry_id={entry_id} "
+          f"(content_hash={content_hash[:12]}...)")
+    return 0
 
 
 if __name__ == "__main__":
