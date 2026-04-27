@@ -112,6 +112,21 @@ def test_council_verdict_requires_four_distinct_roles():
         )
 
 
+def test_council_verdict_strict_mode_bypasses_four_role_requirement():
+    """strict 模式 (4 份独立 response 拼接) 不要求 4 个 role 都齐 — 调用方负责拼装。"""
+    cv = CouncilVerdict(
+        mode="strict",
+        verdict="ACCEPT",
+        confidence=0.9,
+        justification="strict-mode single arbiter run",
+        expert_turns=[ExpertTurn(role="arbiter", body_md="ok", cited_data=[])],
+        summary_json={"verdict": "ACCEPT", "confidence": 0.9},
+    )
+    assert cv.mode == "strict"
+    assert len(cv.expert_turns) == 1
+    assert cv.expert_turns[0].role == "arbiter"
+
+
 def test_council_verdict_revise_requires_changes():
     """REVISE 必须在 summary_json 内带 changes 列表，否则违反语义。"""
     cv = CouncilVerdict(
