@@ -213,3 +213,176 @@ class TestDetectUnderDosedStub:
     def test_returns_list(self):
         out = detect_under_dosed_triggers(_plan(), _state().model_dump())
         assert isinstance(out, list)
+
+
+# ---------- T65.2: detect_under_dosed_triggers ----------
+
+class TestDetectUnderDosedTriggers:
+
+    # ---- Trigger 1: hard-day quota ----
+
+    def test_t1_fires_when_zero_hard_days_in_BUILD(self):
+        plan = _plan()
+        for d in plan["days"]:
+            d["tier"] = "EASY"  # no hard days
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="BUILD").model_dump())
+        assert "under_dosed.hard_day_quota" in triggers
+
+    def test_t1_fires_when_one_hard_day_in_BUILD(self):
+        plan = _plan()
+        # exactly 1 HIGH-tier day in BUILD = UNDER-DOSED
+        hi = [d for d in plan["days"] if d["tier"] == "HIGH"]
+        # default _plan() has 2 HIGH days; collapse one to MID.
+        hi[0]["tier"] = "MID"
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="BUILD").model_dump())
+        assert "under_dosed.hard_day_quota" in triggers
+
+    def test_t1_does_not_fire_with_two_hard_days_in_BUILD(self):
+        # default _plan() has 2 HIGH days
+        triggers = detect_under_dosed_triggers(
+            _plan(), _state(phase="BUILD").model_dump())
+        assert "under_dosed.hard_day_quota" not in triggers
+
+    def test_t1_skipped_outside_BUILD(self):
+        plan = _plan()
+        for d in plan["days"]:
+            d["tier"] = "EASY"
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="RECOVERY").model_dump())
+        # T1 only checks BUILD specifically; outside BUILD no fire
+        assert "under_dosed.hard_day_quota" not in triggers
+
+    # ---- Trigger 2: hi-intensity work minutes ----
+
+    def test_t2_fires_when_total_hi_work_below_18min(self):
+        plan = _plan()
+        for d in plan["days"]:
+            if d["training_type"] in ("VO2max", "Threshold"):
+                d["duration_min"] = 10  # well below 18min floor
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert "under_dosed.hi_intensity_work_minutes" in triggers
+
+    def test_t2_does_not_fire_when_total_hi_work_above_18min(self):
+        # default _plan() has 75+80=155min hi (uses duration as proxy)
+        triggers = detect_under_dosed_triggers(
+            _plan(), _state().model_dump())
+        assert "under_dosed.hi_intensity_work_minutes" not in triggers
+
+    # ---- Trigger 3: weekly TSS below band ----
+
+    def test_t3_fires_when_tss_below_load_band(self):
+        plan = _plan(weekly_tss_target=300)  # CTL=70 -> band lower bound ~5*CTL=350
+        triggers = detect_under_dosed_triggers(
+            plan, _state(ctl=70.0).model_dump())
+        assert "under_dosed.weekly_tss_below_band" in triggers
+
+    def test_t3_does_not_fire_when_tss_in_band(self):
+        plan = _plan(weekly_tss_target=525)  # well within band
+        triggers = detect_under_dosed_triggers(
+            plan, _state(ctl=70.0).model_dump())
+        assert "under_dosed.weekly_tss_below_band" not in triggers
+
+    # ---- Trigger 4: PEAK phase race-sim ----
+
+    def test_t4_fires_in_PEAK_with_no_race_sim(self):
+        plan = _plan()
+        # default plan has no day named "Race-Sim"
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="PEAK").model_dump())
+        assert "under_dosed.peak_no_race_sim" in triggers
+
+    def test_t4_does_not_fire_in_PEAK_with_race_sim(self):
+        plan = _plan()
+        plan["days"][5]["name"] = "Race-Sim 90min"
+        plan["days"][5]["training_type"] = "RaceSim"
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="PEAK").model_dump())
+        assert "under_dosed.peak_no_race_sim" not in triggers
+
+    def test_t4_skipped_outside_PEAK(self):
+        # in BUILD, T4 must not fire even with no race-sim
+        triggers = detect_under_dosed_triggers(
+            _plan(), _state(phase="BUILD").model_dump())
+        assert "under_dosed.peak_no_race_sim" not in triggers
+
+    # ---- Trigger 5: stimulus_score 3-week mean ----
+
+    def test_t5_fires_when_3w_mean_below_0_45(self):
+        plan = _plan()
+        plan["recent_stimulus_scores"] = [0.4, 0.42, 0.38]
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert "under_dosed.stimulus_3w_mean" in triggers
+
+    def test_t5_does_not_fire_when_mean_above_threshold(self):
+        plan = _plan()
+        plan["recent_stimulus_scores"] = [0.55, 0.60, 0.50]
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert "under_dosed.stimulus_3w_mean" not in triggers
+
+    def test_t5_emits_insufficient_data_label_when_key_absent(self):
+        plan = _plan()
+        plan.pop("recent_stimulus_scores", None)
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert any(t.startswith("under_dosed.stimulus_3w_mean")
+                   and "insufficient data" in t for t in triggers)
+
+    # ---- Trigger 6: W' negatives 3-week count ----
+
+    def test_t6_fires_when_three_week_negatives_below_two(self):
+        plan = _plan()
+        plan["recent_w_prime_negatives"] = [0, 1, 1]  # all under 2
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert "under_dosed.w_prime_negatives_3w" in triggers
+
+    def test_t6_does_not_fire_with_two_or_more_negatives(self):
+        plan = _plan()
+        plan["recent_w_prime_negatives"] = [3, 2, 4]
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert "under_dosed.w_prime_negatives_3w" not in triggers
+
+    def test_t6_emits_insufficient_data_label_when_key_absent(self):
+        plan = _plan()
+        plan.pop("recent_w_prime_negatives", None)
+        triggers = detect_under_dosed_triggers(
+            plan, _state().model_dump())
+        assert any(t.startswith("under_dosed.w_prime_negatives_3w")
+                   and "insufficient data" in t for t in triggers)
+
+    # ---- happy path: no triggers ----
+
+    def test_no_triggers_for_well_dosed_plan(self):
+        plan = _plan(weekly_tss_target=525)
+        plan["recent_stimulus_scores"] = [0.55, 0.60, 0.55]
+        plan["recent_w_prime_negatives"] = [3, 2, 3]
+        triggers = detect_under_dosed_triggers(
+            plan, _state(phase="BUILD").model_dump())
+        assert triggers == []
+
+    # ---- prompt wiring: triggers appear in Section A ----
+
+    def test_triggers_render_in_prompt_section_a_when_present(self):
+        # request whose plan triggers T1
+        plan = _plan()
+        for d in plan["days"]:
+            d["tier"] = "EASY"
+        req = _request(plan=plan)
+        out = build_council_prompt(req)
+        assert "UNDER-DOSED HYPOTHESIS" in out
+        assert "under_dosed.hard_day_quota" in out
+
+    def test_no_under_dosed_section_when_no_triggers(self):
+        plan = _plan(weekly_tss_target=525)
+        plan["recent_stimulus_scores"] = [0.55, 0.60, 0.55]
+        plan["recent_w_prime_negatives"] = [3, 2, 3]
+        req = _request(plan=plan)
+        out = build_council_prompt(req)
+        # When no triggers, the optional sub-section is omitted entirely.
+        assert "UNDER-DOSED HYPOTHESIS" not in out
