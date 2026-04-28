@@ -78,7 +78,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         k: (str(v) if isinstance(v, Path) else v)
         for k, v in result.items()
     }
-    print(json.dumps(out, ensure_ascii=False, indent=2))
+    print(json.dumps(out, ensure_ascii=False, indent=2, default=str))
     return 0
 
 

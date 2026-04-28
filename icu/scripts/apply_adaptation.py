@@ -84,7 +84,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         k: (str(v) if isinstance(v, Path) else v)
         for k, v in result.items()
     }
-    print(json.dumps(out, ensure_ascii=False, indent=2))
+    print(json.dumps(out, ensure_ascii=False, indent=2, default=str))
     if not args.confirm:
         print(
             "\n[dry-run] no changes were sent. Re-run with --confirm to apply.",
