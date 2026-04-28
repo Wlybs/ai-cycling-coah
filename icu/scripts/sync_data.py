@@ -88,6 +88,25 @@ def main():
                ["--date", TODAY,
                 "--memory", MEMORY_DIR, "--warehouse", WAREHOUSE_DIR])
 
+    # 13. Phase 3 — Action suggester (in-process, soft-fail on ImportError)
+    try:
+        from src.coach.common.action_suggester import (
+            suggest_actions, print_suggestions,
+        )
+        from pathlib import Path as _Path
+        ledger_path = _Path(MEMORY_DIR) / "ledger" / "decisions.jsonl"
+        periodization_dir = _Path(MEMORY_DIR) / "periodization"
+        deep_analysis_dir = _Path(MEMORY_DIR) / "deep_analysis"
+        try:
+            lines = suggest_actions(ledger_path, periodization_dir,
+                                     deep_analysis_dir)
+            print_suggestions(lines, header="📌 Phase 3 建议")
+        except Exception as exc:  # noqa: BLE001 — soft-fail boundary
+            print(f"⚠️  suggester failed: {exc}; continuing.")
+            failures.append("action_suggester")
+    except ImportError:
+        print("⚠️  Phase 3 suggester unavailable; skipping.")
+
     if failures:
         print(f"\n⚠️  同步完成，但 {len(failures)} 个脚本失败:")
         for f in failures:
