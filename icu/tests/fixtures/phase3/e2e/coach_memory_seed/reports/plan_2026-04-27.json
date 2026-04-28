@@ -1,0 +1,93 @@
+{
+  "coaching_summary": null,
+  "days": [
+    {
+      "date": "2026-04-27",
+      "day_of_week": "Mon",
+      "description": "Steady aerobic ride",
+      "duration_min": 90,
+      "hr_range_bpm": "130-150",
+      "icu_type": "Ride",
+      "name": "Endurance Z2",
+      "power_range_w": "180-220",
+      "target_tss": 90,
+      "training_type": "Aerobic"
+    },
+    {
+      "date": "2026-04-28",
+      "day_of_week": "Tue",
+      "description": "5x4min @ VO2max with 4min recoveries",
+      "duration_min": 75,
+      "hr_range_bpm": "160-180",
+      "icu_type": "Ride",
+      "name": "VO2max Intervals",
+      "power_range_w": "330-360",
+      "target_tss": 110,
+      "training_type": "VO2max"
+    },
+    {
+      "date": "2026-04-29",
+      "day_of_week": "Wed",
+      "description": "Easy spin",
+      "duration_min": 45,
+      "hr_range_bpm": "110-130",
+      "icu_type": "Ride",
+      "name": "Recovery Spin",
+      "power_range_w": "120-160",
+      "target_tss": 30,
+      "training_type": "Recovery"
+    },
+    {
+      "date": "2026-04-30",
+      "day_of_week": "Thu",
+      "description": "3x12min @ FTP",
+      "duration_min": 90,
+      "hr_range_bpm": "155-170",
+      "icu_type": "Ride",
+      "name": "Threshold 3x12",
+      "power_range_w": "270-290",
+      "target_tss": 105,
+      "training_type": "Threshold"
+    },
+    {
+      "date": "2026-05-01",
+      "day_of_week": "Fri",
+      "description": "Steady aerobic",
+      "duration_min": 60,
+      "hr_range_bpm": "130-150",
+      "icu_type": "Ride",
+      "name": "Endurance Z2",
+      "power_range_w": "180-220",
+      "target_tss": 60,
+      "training_type": "Aerobic"
+    },
+    {
+      "date": "2026-05-02",
+      "day_of_week": "Sat",
+      "description": "Long aerobic ride",
+      "duration_min": 180,
+      "hr_range_bpm": "130-150",
+      "icu_type": "Ride",
+      "name": "Long Endurance",
+      "power_range_w": "180-220",
+      "target_tss": 180,
+      "training_type": "Aerobic"
+    },
+    {
+      "date": "2026-05-03",
+      "day_of_week": "Sun",
+      "description": "Off day",
+      "duration_min": 0,
+      "hr_range_bpm": null,
+      "icu_type": "Rest",
+      "name": "Rest",
+      "power_range_w": null,
+      "target_tss": 0,
+      "training_type": "Rest"
+    }
+  ],
+  "focus_theme": "VO2max + Threshold mix",
+  "week_end": "2026-05-03",
+  "week_start": "2026-04-27",
+  "weekly_tss_target": 575
+}

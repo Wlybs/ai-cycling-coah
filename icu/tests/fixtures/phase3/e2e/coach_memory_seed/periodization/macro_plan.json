@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-04-21T00:00:00+00:00",
+  "season": "2026",
+  "season_end_date": "2026-08-15",
+  "windows": [
+    {
+      "phase": "BUILD",
+      "weeks": 4
+    },
+    {
+      "phase": "PEAK",
+      "weeks": 2
+    }
+  ]
+}

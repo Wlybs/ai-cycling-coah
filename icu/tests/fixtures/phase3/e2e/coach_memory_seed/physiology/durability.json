@@ -1,0 +1,8 @@
+{
+  "computed_at": "2026-04-21T00:00:00+00:00",
+  "decay_rate_pct_per_1000kj": {
+    "300s": 2.1,
+    "60s": 1.5
+  },
+  "sample_size_rides": 24
+}

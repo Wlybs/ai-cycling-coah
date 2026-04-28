@@ -1,0 +1,17 @@
+{
+  "computed_at": "2026-04-21T00:00:00+00:00",
+  "knee_loading": {
+    "flag": false
+  },
+  "types": {
+    "Endurance": {
+      "tolerance_class": "high"
+    },
+    "Threshold": {
+      "tolerance_class": "high"
+    },
+    "VO2max": {
+      "tolerance_class": "high"
+    }
+  }
+}

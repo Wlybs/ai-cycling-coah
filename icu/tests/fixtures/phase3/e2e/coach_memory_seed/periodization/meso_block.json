@@ -1,0 +1,9 @@
+{
+  "block_end": "2026-05-24",
+  "block_id": "BUILD-2026W17",
+  "block_start": "2026-04-27",
+  "generated_at": "2026-04-21T00:00:00+00:00",
+  "pattern": "3:1",
+  "phase": "BUILD",
+  "weekly_load_multipliers": [0.9, 1.0, 1.1, 0.7]
+}

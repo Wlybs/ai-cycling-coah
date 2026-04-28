@@ -1,0 +1,9 @@
+{
+  "current_phase": "BUILD",
+  "generated_at": "2026-04-27T00:00:00+00:00",
+  "reasons": [
+    "TSB recovered to -2",
+    "CTL trending up"
+  ],
+  "transitioned_at": "2026-04-27T00:00:00+00:00"
+}

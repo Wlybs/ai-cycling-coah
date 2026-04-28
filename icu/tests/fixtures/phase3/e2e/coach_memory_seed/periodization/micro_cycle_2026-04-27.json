@@ -1,0 +1,16 @@
+{
+  "days": [
+    {"date": "2026-04-27", "intent": "Endurance", "tier": "MEDIUM"},
+    {"date": "2026-04-28", "intent": "VO2max",    "tier": "HARD"},
+    {"date": "2026-04-29", "intent": "Recovery",  "tier": "LOW"},
+    {"date": "2026-04-30", "intent": "Threshold", "tier": "HARD"},
+    {"date": "2026-05-01", "intent": "Endurance", "tier": "MEDIUM"},
+    {"date": "2026-05-02", "intent": "Long",      "tier": "MEDIUM"},
+    {"date": "2026-05-03", "intent": "Rest",      "tier": "REST"}
+  ],
+  "phase": "BUILD",
+  "week_end": "2026-05-03",
+  "week_id": "2026W17",
+  "week_start": "2026-04-27",
+  "weekly_tss_target": 380
+}
