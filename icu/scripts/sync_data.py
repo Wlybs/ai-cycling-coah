@@ -65,6 +65,29 @@ def main():
     # 10. Phase 1 — Coach Brief update (soft-fail)
     run_script("update_coach_brief.py")
 
+    # ---------------------------------------------------------------
+    # Phase 3 tail integration (steps 11–13)
+    # PHASE_1_2_IMMUTABILITY allowance per docs/superpowers/plans/
+    # phase-3/00-index.md decision lock #2: this is the ONE permitted
+    # extension point — append-only after step 10, before failures
+    # summary. Each step is soft-fail; Phase 1/2 sync never goes red
+    # because of Phase 3 (per 00-index.md execution rule #8).
+    # ---------------------------------------------------------------
+    from datetime import datetime, timezone
+    REPO_ROOT = os.path.dirname(SCRIPTS_DIR)
+    MEMORY_DIR = os.path.join(REPO_ROOT, "coach_memory")
+    WAREHOUSE_DIR = os.path.join(REPO_ROOT, "icu_data_warehouse")
+    TODAY = datetime.now(timezone.utc).date().isoformat()
+
+    # 11. Phase 3 — Ledger ingester (back-fill from Phase 2 artefacts)
+    run_script("ingest_ledger.py",
+               ["--memory", MEMORY_DIR, "--warehouse", WAREHOUSE_DIR])
+
+    # 12. Phase 3 — Daily adaptation (4-signal evaluation)
+    run_script("daily_adapt.py",
+               ["--date", TODAY,
+                "--memory", MEMORY_DIR, "--warehouse", WAREHOUSE_DIR])
+
     if failures:
         print(f"\n⚠️  同步完成，但 {len(failures)} 个脚本失败:")
         for f in failures:
