@@ -144,3 +144,15 @@ def _trigger_stimulus_score_decline(deep_analysis_dir: Path) -> str | None:
         return (f"最近 {STIMULUS_DECLINE_WINDOW} 次 deep_analysis "
                 f"stimulus_score 单调下滑；建议核查训练负荷或休息状态。")
     return None
+
+
+def print_suggestions(lines: list[str], *, header: str) -> None:
+    """Print header + indented bullets; silent when lines is empty.
+
+    Pure stdout side effect. Never raises.
+    """
+    if not lines:
+        return
+    print(header)
+    for line in lines:
+        print(f"  • {line}")

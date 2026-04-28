@@ -275,3 +275,19 @@ def test_returns_plain_list_str_no_pydantic(
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=date(2026, 4, 28))
     assert type(out) is list
+
+
+def test_print_suggestions_silent_on_empty(capsys) -> None:
+    from src.coach.common.action_suggester import print_suggestions
+    print_suggestions([], header="📌 Phase 3 建议")
+    captured = capsys.readouterr()
+    assert captured.out == ""
+
+
+def test_print_suggestions_renders_header_and_bullets(capsys) -> None:
+    from src.coach.common.action_suggester import print_suggestions
+    print_suggestions(["第一条建议", "第二条建议"], header="📌 Phase 3 建议")
+    captured = capsys.readouterr()
+    assert "📌 Phase 3 建议" in captured.out
+    assert "  • 第一条建议" in captured.out
+    assert "  • 第二条建议" in captured.out
