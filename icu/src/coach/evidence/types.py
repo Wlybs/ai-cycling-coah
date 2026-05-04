@@ -90,6 +90,7 @@ class CitationContext(BaseModel):
     query_terms: list[str] = Field(..., min_length=1)
     phase: PhaseLiteral | None = None
     applies_to_filter: list[str] = Field(default_factory=list)
+    contraindications_present: list[str] = Field(default_factory=list)
     top_k: int = Field(3, ge=1, le=10)
     min_score: float = Field(0.10, ge=0.0, le=1.0)
 
