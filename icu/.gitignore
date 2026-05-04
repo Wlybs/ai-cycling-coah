@@ -1,0 +1,32 @@
+# 虚拟环境
+.venv/
+
+# 环境变量（含 API 密钥）
+.env
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 数据仓库（本地数据，不入库）
+icu_data_warehouse/
+
+# 报告输出
+reports/
+
+# 教练记忆（含个人数据）
+coach_memory/
+
+# 测试 / 工具缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 运行时日志
+logs/
+
+# 操作系统垃圾
+.DS_Store
+*.swp
+*~
