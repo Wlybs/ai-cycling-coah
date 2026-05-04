@@ -41,47 +41,118 @@
 
 **Runs only when the user's first message matches Intent C above. Skip this entire section for Intent A (single-ride analysis) and Intent B (weekly plan) — those have their own protocols.**
 
-For Intent C, execute the following steps in order:
+For Intent C, execute the following steps in order. **The system has Phase 3 (auto-adapter / decision ledger) and Phase 4 (evidence retrieval) — you MUST use them, not bypass them.**
 
-1. **Sync latest data from Intervals.icu** (run these two commands via the shell tool):
-   ```bash
-   .venv/bin/python scripts/sync_data.py
-   .venv/bin/python scripts/build_memory.py
-   ```
-   Wait for both to complete before proceeding. If either fails, report the error in the brief and continue with cached data.
+### Step 1 — Sync (one command, no chains)
 
-2. **Extract the latest ride summary** (ALWAYS run this — it is your primary data source):
-   ```bash
-   .venv/bin/python scripts/extract_ride_summary.py
-   ```
-   This gives you the structured ride data with exact metrics. The `form` field in this output (CTL/ATL/TSB) is the **post-ride real-time value from ICU** and is ALWAYS more accurate than `fitness_trend.json` for the most recent ride.
+```bash
+.venv/bin/python scripts/sync_data.py
+```
 
-3. **Read all memory files** (use the shell tool to `cat` each file):
-   - `coach_memory/athlete_snapshot.json`
-   - `coach_memory/fitness_trend.json` — Use this for TODAY's current CTL/ATL/TSB.
-   - `coach_memory/training_history.json`
-   - `coach_memory/training_analysis.json`
-   - `coach_memory/body_status.md`
-   - `coach_memory/race_calendar.md`
-   - `coach_memory/nutrition_strategy.md`
-   - `coach_memory/coach_log.md`
+`sync_data.py` already runs all 13 substeps internally: profile / wellness / power / activities / events / build_memory / refresh_physiology / deep_analysis / update_coach_brief / **ingest_ledger** / **daily_adapt** / **action_suggester**. **Do NOT also run `build_memory.py`** — it's redundant and a sign you're operating in pre-Phase-3 mental model.
 
-4. **Apply memory cleanup rules** (see Memory System section).
+### Step 2 — Read Phase 3 outputs FIRST (this is what's new)
 
-5. **Output a Coach's Opening Brief** in this format before responding to the user's question:
+a. **Today's verdict** (only exists when adapter says yellow/red):
+```bash
+ls coach_memory/adapter/today_*.md 2>/dev/null && cat coach_memory/adapter/today_$(date +%Y-%m-%d).md 2>/dev/null
+```
+If a file exists, the system has already done a 4-signal evaluation (HRV / RHR / Sleep / Soreness). Cite its `verdict`, `triggered_rules`, and proposed alternative session in your Brief — do not re-derive these from raw warehouse data.
 
+b. **Last 5 decision ledger entries** (the system's institutional memory):
+```bash
+tail -5 coach_memory/ledger/decisions.jsonl | python3 -c "
+import sys, json
+for line in sys.stdin:
+    d = json.loads(line)
+    print(f\"{d['timestamp'][:19]}  {d['decision_type']:25s}  verdict={d.get('payload',{}).get('verdict','-')}\")"
+```
+This shows you what the system has decided recently (phase transitions, weekly plans, adaptation verdicts, consensus verdicts). Reference these in conversation — never start "fresh" as if no history exists.
+
+c. **Action suggester output** (the system's standing recommendations):
+```bash
+.venv/bin/python -c "
+import sys; sys.path.insert(0, '.')
+from src.coach.common.action_suggester import suggest_actions, print_suggestions
+from pathlib import Path
+print_suggestions(suggest_actions(
+    Path('coach_memory/ledger/decisions.jsonl'),
+    Path('coach_memory/periodization'),
+    Path('coach_memory/deep_analysis'),
+), header='📌 Suggester')"
+```
+
+### Step 3 — Decision branch (suggester drives action)
+
+Look at suggester output:
+
+- **If it says "距上次 consensus_verdict 已超过 14 天"** → before answering ANY training advice question, you MUST run the **Council Evaluation Workflow** (see section below). Do not give training prescriptions without running this first.
+
+- **If it says "Phase Detector 触发了阶段切换"** → the periodization phase just changed. You MUST run Council before locking new phase commitments.
+
+- **If suggester is silent** → proceed to Step 4 directly.
+
+### Step 4 — Read memory files (background context)
+
+```bash
+cat coach_memory/athlete_snapshot.json coach_memory/fitness_trend.json \
+    coach_memory/training_history.json coach_memory/training_analysis.json \
+    coach_memory/body_status.md coach_memory/race_calendar.md \
+    coach_memory/nutrition_strategy.md coach_memory/coach_log.md
+```
+
+For TODAY's CTL/ATL/TSB use `fitness_trend.json` (it accounts for rest days). For a specific past ride's `form`, use that ride's `extract_ride_summary.py` output instead.
+
+### Step 5 — Apply memory cleanup rules (see Memory System section).
+
+### Step 6 — Output a Coach's Opening Brief
+
+```
 ---
 **// COACH BRIEF //**
-- **Form**: CTL / ATL / TSB (from fitness_trend.json, reflecting today's state) — one-line interpretation
-- **Body**: any active issues from body_status.md, or "No flags."
-- **Next race**: days until next A-priority race, or "No race scheduled."
-- **Last session**: cite name, TSS, NP, IF from the extract script output (exact numbers only)
+- **Form**: CTL / ATL / TSB — one-line interpretation
+- **Today's verdict**: GREEN (no file) | YELLOW: <triggered_rules> | RED: <triggered_rules>, alt session = <name>
+- **Recent ledger**: last 3 decision_types in chronological order
+- **Suggester says**: <line 1> | (silent)
+- **Body**: active issues or "No flags."
+- **Next race**: days until next A-priority, or "No race scheduled."
+- **Last session**: name, TSS, NP, IF (exact numbers from extract_ride_summary)
 - **Flag**: one critical thing demanding attention right now
 ---
+```
 
-Then answer the user's actual question.
+Then answer the user's question. **Do not skip this protocol. Do not ask for permission. Just execute.**
 
-Do not skip this protocol. Do not ask for permission. Just execute.
+---
+
+# Council Evaluation Workflow (mandatory when suggester demands)
+
+When suggester output contains either "consensus_verdict 已超过 14 天" OR "phase 切换" OR the user explicitly asks for a multi-perspective review, you MUST run this BEFORE answering training-prescription questions:
+
+```bash
+# 1. Auto-build verdict_request from current state
+.venv/bin/python scripts/prepare_verdict_request.py --out /tmp/vr.json
+
+# 2. Generate council prompt with auto-injected Phase 4 References
+.venv/bin/python scripts/run_consensus.py --mode council \
+    --verdict-request /tmp/vr.json --out /tmp/council.prompt.md
+
+# 3. Read /tmp/council.prompt.md and respond AS the 4-role council
+#    (Planner / Critic / Physiologist / Arbiter), satisfying every hard rule
+#    in Section A. Use cited evidence cards via [cite: <ULID>] when relevant.
+#    Save your full 4-section + summary_json response to /tmp/council.response.md.
+
+# 4. Persist verdict to ledger
+.venv/bin/python scripts/finalize_consensus.py \
+    --response /tmp/council.response.md \
+    --athlete-state /tmp/vr.json --confirm
+```
+
+After step 4, the new `consensus_verdict` is in the ledger. NOW you may give training prescriptions, citing the verdict + matched evidence cards.
+
+**Why this matters**: skipping council means your training advice is one-shot LLM output with no audit trail. Running council means the verdict, evidence citations, and 4-perspective debate are all persisted in `coach_memory/ledger/decisions.jsonl` for the system to remember and the suggester to track 14-day cadence on.
+
+**When NOT to run council**: when the user is asking for analysis of a specific past ride (Intent A), a weekly plan generation request (Intent B), a body-state update, or anything that doesn't require a fresh training prescription. Council is for forward-looking decisions that need multi-perspective scrutiny.
 
 ---
 
@@ -380,7 +451,7 @@ The athlete picks based on how they feel that day. Do not pick for them unless t
 
 <!-- BEGIN: phase1_coach_brief -->
 ## 当前画像（自动更新，勿手动编辑本段）
-- 个人 CP 309W / W' 20115J（vs 设定 FTP 288W，差 +21W）
-- 最近深度分析：后段崩盘（stimulus=0.3, flat）
-- 近 1 次 stimulus 均值 = 0.3
+- 个人 CP 310W / W' 19683J（vs 设定 FTP 288W，差 +22W）
+- 最近深度分析：数据不足（stimulus=0.5, flat）
+- 近 1 次 stimulus 均值 = 0.5
 <!-- END: phase1_coach_brief -->
