@@ -290,13 +290,18 @@ def test_apply_adaptation_writes_adaptation_applied(
         check=True, cwd=str(REPO_ICU),
     )
     # daily_adapt has the known T71.1 datetime-print bug; tolerate rc!=0.
+    # ICU_FORCED_NOW_ISO pins captured_at to target_date so apply_adaptation's
+    # strict same-UTC-day verdict filter matches (post-2026-04-28 fix for v3.0.1).
+    import os as _os
+    adapt_env = {**_os.environ,
+                 "ICU_FORCED_NOW_ISO": f"{target_date}T12:00:00+00:00"}
     adapt_res = subprocess.run(
         [PYTHON, str(REPO_ICU / "scripts" / "daily_adapt.py"),
          "--date", target_date,
          "--memory", str(workspace["memory"]),
          "--warehouse", str(workspace["warehouse"]),
          "--ledger", str(workspace["ledger"])],
-        capture_output=True, text=True, cwd=str(REPO_ICU),
+        capture_output=True, text=True, cwd=str(REPO_ICU), env=adapt_env,
     )
     if adapt_res.returncode != 0:
         assert "Object of type datetime is not JSON serializable" \
@@ -304,9 +309,9 @@ def test_apply_adaptation_writes_adaptation_applied(
 
     # Mock ICU PATCH via PYTHONPATH sitecustomize shim (Option C #3).
     pp = _build_pythonpath_with_icu_mock(tmp_path)
-    import os as _os
     env = {**_os.environ, "PYTHONPATH": pp,
-           "API_KEY": "TEST", "ATHLETE_ID": "TEST"}
+           "API_KEY": "TEST", "ATHLETE_ID": "TEST",
+           "ICU_FORCED_NOW_ISO": f"{target_date}T12:00:00+00:00"}
     result = subprocess.run(
         [PYTHON, str(REPO_ICU / "scripts" / "apply_adaptation.py"),
          "--date", target_date,
@@ -342,14 +347,19 @@ def test_full_chain_emits_all_eight_decision_types_and_one_suggestion(
          "--ledger", str(workspace["ledger"])],
         check=True, cwd=str(REPO_ICU),
     )
-    # 2. Daily adapt (red); tolerate datetime-print bug.
+    # 2. Daily adapt (red); tolerate datetime-print bug. ICU_FORCED_NOW_ISO
+    # pins captured_at to target_date so apply_adaptation's strict same-UTC-day
+    # filter matches (post-2026-04-28 fix for v3.0.1 + date-coupled test).
+    import os as _os
+    adapt_env = {**_os.environ,
+                 "ICU_FORCED_NOW_ISO": f"{target_date}T12:00:00+00:00"}
     adapt_res = subprocess.run(
         [PYTHON, str(REPO_ICU / "scripts" / "daily_adapt.py"),
          "--date", target_date,
          "--memory", str(workspace["memory"]),
          "--warehouse", str(workspace["warehouse"]),
          "--ledger", str(workspace["ledger"])],
-        capture_output=True, text=True, cwd=str(REPO_ICU),
+        capture_output=True, text=True, cwd=str(REPO_ICU), env=adapt_env,
     )
     if adapt_res.returncode != 0:
         assert "Object of type datetime is not JSON serializable" \
@@ -375,9 +385,9 @@ def test_full_chain_emits_all_eight_decision_types_and_one_suggestion(
 
     # 4. Apply adaptation (mock ICU PATCH)
     pp = _build_pythonpath_with_icu_mock(tmp_path)
-    import os as _os
     env = {**_os.environ, "PYTHONPATH": pp,
-           "API_KEY": "TEST", "ATHLETE_ID": "TEST"}
+           "API_KEY": "TEST", "ATHLETE_ID": "TEST",
+           "ICU_FORCED_NOW_ISO": f"{target_date}T12:00:00+00:00"}
     apply_res = subprocess.run(
         [PYTHON, str(REPO_ICU / "scripts" / "apply_adaptation.py"),
          "--date", target_date,
