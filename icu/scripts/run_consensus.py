@@ -41,6 +41,12 @@ from src.coach.consensus.council_prompt import (  # noqa: E402
     build_council_prompt,
 )
 from src.coach.consensus.history_injector import HistoryTriplet  # noqa: E402
+from src.coach.evidence.corpus import CorpusReader  # noqa: E402
+from src.coach.evidence.prompt_section import render_references_section  # noqa: E402
+from src.coach.evidence.retriever import retrieve as _retrieve_evidence  # noqa: E402
+from src.coach.evidence.types import CitationContext  # noqa: E402
+
+_KNOWN_PHASES = {"base", "build", "peak", "competitive", "transition", "off_season"}
 
 # If council_prompt was already imported under a relative ICU_LOG_DIR
 # (e.g. earlier in a pytest session), rebind its module-level logger to one
@@ -82,6 +88,15 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
                    help="Default: ./council.prompt.md (council) or "
                         "./coach_memory/consensus/1_planner.prompt.md "
                         "(strict). Ignored when --reuse is set.")
+    p.add_argument("--evidence-corpus", type=Path,
+                   default=Path("evidence_corpus"),
+                   help="Path to evidence corpus dir (default: evidence_corpus)")
+    p.add_argument("--evidence-query", type=str, default=None,
+                   help="Comma-separated query terms; auto-derived if omitted")
+    p.add_argument("--evidence-top-k", type=int, default=3,
+                   help="Top-K evidence cards to inject (default 3)")
+    p.add_argument("--no-evidence", action="store_true",
+                   help="Skip evidence retrieval entirely (debug/test)")
     p.add_argument("--reuse", type=Path, default=None,
                    help="Strict only: reuse an existing consensus dir.")
     return p.parse_args(argv)
@@ -101,6 +116,52 @@ def _load_json_or_die(path: Path, label: str) -> object:
         print(f"ERROR: cannot read {label} file {path}: {exc}",
               file=sys.stderr)
         raise SystemExit(2)
+
+
+def _derive_query_terms(request: "VerdictRequest") -> list[str]:
+    """Auto-derive evidence query terms from request when --evidence-query absent."""
+    terms: list[str] = []
+    phase = getattr(request.athlete_state, "phase", None)
+    if phase:
+        terms.append(str(phase).lower())
+    focus = (request.periodization_summary or {}).get("focus_theme")
+    if isinstance(focus, str):
+        terms.extend(t for t in focus.lower().split() if t.isalnum())
+    if not terms:
+        terms = ["base", "endurance"]
+    return terms
+
+
+def _retrieve_and_render_refs(args: argparse.Namespace,
+                              request: "VerdictRequest") -> str:
+    """Retrieve top-K evidence + render markdown. Never raises; '' on any error."""
+    if args.no_evidence:
+        return ""
+    try:
+        corpus_dir: Path = args.evidence_corpus
+        if not corpus_dir.exists():
+            print(f"WARN: evidence corpus not found at {corpus_dir}; "
+                  f"skipping references", file=sys.stderr)
+            return ""
+        cards = CorpusReader(corpus_dir).load_active()
+        if args.evidence_query:
+            query_terms = [t.strip().lower() for t in args.evidence_query.split(",")
+                           if t.strip()]
+        else:
+            query_terms = _derive_query_terms(request)
+        phase_raw = getattr(request.athlete_state, "phase", None)
+        phase_low = str(phase_raw).lower() if phase_raw else None
+        phase = phase_low if phase_low in _KNOWN_PHASES else None
+        ctx = CitationContext(
+            query_terms=query_terms,
+            phase=phase,
+            top_k=args.evidence_top_k,
+        )
+        retrieved = _retrieve_evidence(context=ctx, cards=cards)
+        return render_references_section(retrieved)
+    except Exception as exc:  # never block prompt write
+        print(f"WARN: evidence retrieval failed: {exc}", file=sys.stderr)
+        return ""
 
 
 def _persist_inputs(consensus_dir: Path,
@@ -182,6 +243,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     else:
         body = build_council_prompt(request, history=history)
         next_steps = _NEXT_STEPS_COUNCIL
+
+    body = body + _retrieve_and_render_refs(args, request)
 
     try:
         out_path.parent.mkdir(parents=True, exist_ok=True)

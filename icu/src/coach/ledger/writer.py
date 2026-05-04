@@ -25,6 +25,17 @@ from .types import (
 _log = get_logger("ledger")
 
 
+def _now_utc() -> datetime:
+    """UTC now, with ICU_FORCED_NOW_ISO env override for date-coupled tests."""
+    forced = os.environ.get("ICU_FORCED_NOW_ISO")
+    if forced:
+        dt = datetime.fromisoformat(forced)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    return datetime.now(timezone.utc)
+
+
 class LedgerWriter:
     """Append-only writer for a single JSONL file."""
 
@@ -49,7 +60,7 @@ class LedgerWriter:
         """
         entry = DecisionEntry(
             entry_id=generate_ulid(),
-            timestamp=datetime.now(timezone.utc),
+            timestamp=_now_utc(),
             decision_type=decision_type,  # type: ignore[arg-type]
             source=source,
             athlete_state_ref=athlete_state,

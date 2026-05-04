@@ -55,6 +55,18 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return p.parse_args(argv)
 
 
+def _now_fn_from_env():
+    """Honor ICU_FORCED_NOW_ISO for date-coupled tests; default to real UTC now."""
+    import os
+    forced = os.environ.get("ICU_FORCED_NOW_ISO")
+    if forced:
+        dt = datetime.fromisoformat(forced)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return lambda: dt
+    return lambda: datetime.now(timezone.utc)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parse_args(argv)
     ledger_path = args.ledger or (args.memory / "ledger" / "decisions.jsonl")
@@ -67,7 +79,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             memory_dir=args.memory,
             warehouse_dir=args.warehouse,
             writer=writer, reader=reader,
-            now_fn=lambda: datetime.now(timezone.utc),
+            now_fn=_now_fn_from_env(),
             dry_run=args.dry_run,
         )
     except (FileNotFoundError, ValueError) as exc:
