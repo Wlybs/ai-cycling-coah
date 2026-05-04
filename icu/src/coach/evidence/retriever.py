@@ -24,7 +24,10 @@ _APPLIES_BONUS = 1.3
 
 
 def _card_search_terms(card: EvidenceCard) -> list[str]:
-    return list(card.tags) + list(card.body_tokens)
+    # Include phase metadata as synthetic tokens so phase-as-query-term lexically
+    # matches cards declared for that phase (e.g. query "transition" hits a card
+    # whose phase=["competitive","transition"] even when body never says it).
+    return list(card.tags) + list(card.body_tokens) + list(card.phase)
 
 
 def _build_idf(cards: list[EvidenceCard]) -> dict[str, float]:

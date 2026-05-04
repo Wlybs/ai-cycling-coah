@@ -55,12 +55,24 @@ def test_build_idf_rare_token_higher_than_common():
     assert idf["rare"] > idf["common"]
 
 
-def test_card_search_terms_concat_tags_and_body():
-    card = _card(ULID_1, tags=["taper", "peaking"], body="recovery taper")
+def test_card_search_terms_concat_tags_body_and_phase():
+    card = EvidenceCard(
+        ulid=ULID_1,
+        title="Test card title for ULID",
+        authors=["A"], year=2020, source="Test 1(2):3-4",
+        tags=["taper", "peaking"], phase=["competitive", "transition"],
+        applies_to=[],
+        finding="Some finding statement that is at least 20 characters long.",
+        dosing_hint="Some dosing hint.",
+        contraindications=[], status="active", superseded_by=None,
+        body_md="recovery taper",
+    )
     terms = _card_search_terms(card)
-    # tags + body_tokens (order = tags first, then body)
+    # tags first, then body, then phase (so phase metadata participates in TF-IDF)
     assert terms[:2] == ["taper", "peaking"]
-    assert "recovery" in terms[2:]
+    assert "recovery" in terms
+    assert "competitive" in terms
+    assert "transition" in terms
 
 
 def test_raw_score_no_match_returns_zero_and_empty_matched():
