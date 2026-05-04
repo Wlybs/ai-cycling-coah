@@ -14,6 +14,8 @@ if sys.platform == 'win32':
     sys.stdout.reconfigure(encoding='utf-8')
 
 SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+ICU_ROOT = os.path.dirname(SCRIPTS_DIR)
+sys.path.insert(0, ICU_ROOT)  # enable in-process imports for step 13 suggester
 PYTHON_EXE = sys.executable
 
 failures = []
