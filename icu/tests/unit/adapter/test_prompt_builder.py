@@ -244,3 +244,18 @@ def test_prompt_builders_no_file_io(
                       today_session=original_threshold_session)
     build_red_override(verdict=red_verdict, snapshot=signal_snapshot,
                       original=original_threshold_session, proposed=proposed_recovery_session)
+
+
+# ---------- v3.0.1: None soreness rendered as "n/a" not "None" ----------
+
+def test_signal_value_renders_none_soreness_as_na(fixed_utc_now, yellow_verdict,
+                                                  original_threshold_session):
+    """When athlete didn't log soreness, snapshot.soreness_score is None.
+    The signal table must render that as 'n/a', not the literal string 'None'."""
+    snap = SignalSnapshot(captured_at=fixed_utc_now, hrv_ms=44.0,
+                          resting_hr_bpm=58, sleep_hours=5.5, soreness_score=None)
+    md = build_yellow_nudge(verdict=yellow_verdict, snapshot=snap,
+                            today_session=original_threshold_session)
+    assert "| n/a |" in md or "n/a (soreness)" in md or "未记录" in md, \
+        f"None soreness should render as a sentinel, not as Python None. md=\n{md}"
+    assert "| None |" not in md, "Raw 'None' must not leak into markdown"

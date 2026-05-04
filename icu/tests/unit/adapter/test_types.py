@@ -52,6 +52,17 @@ def test_signal_snapshot_soreness_range(fixed_utc_now):
                        resting_hr_bpm=50, sleep_hours=7.0, soreness_score=5)
 
 
+def test_signal_snapshot_accepts_none_soreness(fixed_utc_now):
+    # v3.0.1: real ICU wellness has soreness=null when athlete didn't log it.
+    # Schema must accept None; classifier treats None as green ("no concern logged").
+    snap = SignalSnapshot(captured_at=fixed_utc_now, hrv_ms=60.0,
+                          resting_hr_bpm=50, sleep_hours=7.0, soreness_score=None)
+    assert snap.soreness_score is None
+    js = snap.model_dump_json()
+    loaded = SignalSnapshot.model_validate_json(js)
+    assert loaded == snap
+
+
 def test_signal_snapshot_rejects_negative_physiology(fixed_utc_now):
     with pytest.raises(ValidationError):
         SignalSnapshot(captured_at=fixed_utc_now, hrv_ms=-1.0,

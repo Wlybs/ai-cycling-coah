@@ -107,7 +107,7 @@ def _build_signal_snapshot(
         hrv_ms=float(today["hrv"]) if today.get("hrv") is not None else 0.0,
         resting_hr_bpm=int(today["restingHR"]) if today.get("restingHR") is not None else 0,
         sleep_hours=float(sleep_secs) / 3600.0,
-        soreness_score=int(today["soreness"]) if today.get("soreness") is not None else 0,
+        soreness_score=int(today["soreness"]) if today.get("soreness") is not None else None,
     )
 
 

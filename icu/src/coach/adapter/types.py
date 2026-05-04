@@ -35,9 +35,9 @@ class SignalSnapshot(BaseModel):
     hrv_ms: float = Field(..., ge=0.0, description="今日 HRV (rMSSD ms)")
     resting_hr_bpm: int = Field(..., ge=0, description="今日 resting HR (bpm)")
     sleep_hours: float = Field(..., ge=0.0, description="昨夜睡眠时长 (hours)")
-    soreness_score: int = Field(
-        ..., ge=1, le=4,
-        description="主观酸痛 1=worst..4=best (Intervals.icu 约定)",
+    soreness_score: int | None = Field(
+        None, ge=1, le=4,
+        description="主观酸痛 1=worst..4=best (Intervals.icu 约定)；None = athlete 未记录",
     )
 
     @field_validator("captured_at")

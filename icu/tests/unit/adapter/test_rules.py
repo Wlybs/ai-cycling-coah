@@ -83,6 +83,11 @@ def test_classify_soreness(score, expected):
     assert _classify_soreness(score=score) == expected
 
 
+def test_classify_soreness_none_returns_green():
+    # v3.0.1: real ICU wellness omits subjective soreness; treat absence as no concern.
+    assert _classify_soreness(score=None) == "green"
+
+
 # ---------- Severity weighted score ----------
 
 def test_severity_score_all_green():

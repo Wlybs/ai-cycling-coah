@@ -412,3 +412,33 @@ def test_now_fn_is_used_not_real_clock(
     # SignalSnapshot construction, not datetime.now()).
     assert result["ledger_entry_id"] is not None
     assert result["captured_at"] == weird_now
+
+
+# ---------- v3.0.1: real ICU shape (soreness=None) must not crash ----------
+
+def test_run_real_shape_wellness_with_none_subjective(
+    target_date, memory_dir, warehouse_dir, now_fn,
+):
+    """
+    Real intervals.icu wellness omits soreness/fatigue/stress for athletes who
+    never log them. Adapter must build a SignalSnapshot with soreness_score=None,
+    classify it as green, and produce a verdict — not raise ValidationError.
+    """
+    _write_plan(memory_dir, target_date, training_type="Aerobic")
+    wh_path = warehouse_dir / "2_Wellness" / "wellness_history.json"
+    history = json.loads(wh_path.read_text(encoding="utf-8"))
+    for entry in history:
+        entry["soreness"] = None  # mirror real ICU 100%-null shape
+    wh_path.write_text(json.dumps(history), encoding="utf-8")
+
+    writer = LedgerWriter(memory_dir / "ledger" / "decisions.jsonl")
+    reader = LedgerReader(memory_dir / "ledger" / "decisions.jsonl")
+    result = run(
+        target_date=target_date,
+        memory_dir=memory_dir, warehouse_dir=warehouse_dir,
+        writer=writer, reader=reader, now_fn=now_fn,
+        dry_run=False,
+    )
+    # Verdict produced (no crash); soreness silenced as green; ledger written.
+    assert result["verdict"] in ("green", "yellow", "red")
+    assert result["ledger_entry_id"] is not None

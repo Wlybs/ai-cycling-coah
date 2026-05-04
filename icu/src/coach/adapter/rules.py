@@ -105,7 +105,9 @@ def _classify_sleep(*, sleep_hours: float) -> Verdict:
     return "green"
 
 
-def _classify_soreness(*, score: int) -> Verdict:
+def _classify_soreness(*, score: int | None) -> Verdict:
+    if score is None:
+        return "green"
     if score <= SORENESS_RED_SCORE:
         return "red"
     if score <= SORENESS_YELLOW_SCORE:

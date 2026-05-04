@@ -31,7 +31,7 @@ def _signal_value(snapshot: SignalSnapshot, key: str) -> str:
     if key == "sleep":
         return f"{snapshot.sleep_hours:.1f}"
     if key == "soreness":
-        return f"{snapshot.soreness_score}"
+        return "n/a" if snapshot.soreness_score is None else f"{snapshot.soreness_score}"
     return "?"
 
 
