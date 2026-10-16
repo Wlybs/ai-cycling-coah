@@ -7,38 +7,38 @@
 
 ## 即将到来
 
-### 2026-05-17 ｜ Climbing Race 1
-
-- **优先级**: A
-- **距离 / 爬升**: TBD
-- **目标**: Podium / 5.0 W/kg
-- **Taper 起点**: 2026-05-12（5 天 taper，目标 TSB +0~+5）
-- **关键准备段**: 林峰段（pr15 KOM 目标，2026-05-08 已 rehearsal，详 [[kom-targets]]）
-- **当前风险**: 5/8 ATL 122.6 周期最高，必须 5/9 强制恢复，否则 taper 起点要前移到 5/11
-
-### 2026-05-23 ｜ Climbing Race 2
-
-- 优先级: B｜距离: TBD｜无 taper
-
-### 2026-05-24 ｜ Climbing Race 3
-
-- 优先级: B｜距离: TBD｜和 5/23 背靠背，重点疲劳抗性而非新鲜度
-
-### 2026-05-31 ｜ 太子尖 Climbing Race 4
-
-- **优先级**: A
-- **距离 / 爬升**: 47.2km / +1197m (海拔 160→1357m)
-- **架构**: 3 段 HC race (HC1 3km @ 5.6% + HC2 7km @ 4.8% sustained 22min + HC3 6.8km @ 5.4%) 含 9km 中段恢复窗
-- **终点 500m**: 200m @ 6-8% 短陡 + 100m 缓 + 50m 平 (匹配用户 5/23 counter 200m hard rule + Type-II 短陡 sprint 优势)
-- **架构难度**: 累积消耗 50-60 kJ over CP, 比 5/24 武义 +30-50%, 5 月 race block 最难
-- **车队架构**: 6 人冠军车队 + 多个类似车队 + 用户单兵
-- **Taper 起点**: 2026-05-26 (待用户确认训练块)
-- **当前风险**: HC2 sustained 22min team rotation 是用户 5/24 C4 (4:15) 时长 5 倍, 真实可能在 km 27-29 被甩开
-- 详情见: [[sessions/2026-05-26-5-31-taizijian-gpx-prep]]
+- 暂无已确认日期的比赛（2026-10-16）。2027 候选见文末「2027 候选与目标」，往届日期不得照搬。
 
 ---
 
 ## 历史比赛
+
+### 2026-05-31 ｜ 太子尖 Climbing Race 4 — **名次未记录**
+
+- 骑行记录：ICU `i152839608`（`icu/analysis/2026-10-16-peak-season-review.md` 中记为"浙西天路"，提供该日 40/60min 峰值）
+- 赛前情报（原文）：
+  - **优先级**: A
+  - **距离 / 爬升**: 47.2km / +1197m (海拔 160→1357m)
+  - **架构**: 3 段 HC race (HC1 3km @ 5.6% + HC2 7km @ 4.8% sustained 22min + HC3 6.8km @ 5.4%) 含 9km 中段恢复窗
+  - **终点 500m**: 200m @ 6-8% 短陡 + 100m 缓 + 50m 平 (匹配用户 5/23 counter 200m hard rule + Type-II 短陡 sprint 优势)
+  - **架构难度**: 累积消耗 50-60 kJ over CP, 比 5/24 武义 +30-50%, 5 月 race block 最难
+  - **车队架构**: 6 人冠军车队 + 多个类似车队 + 用户单兵
+  - **Taper 起点**: 2026-05-26 (待用户确认训练块)
+  - **当时风险**: HC2 sustained 22min team rotation 是用户 5/24 C4 (4:15) 时长 5 倍, 真实可能在 km 27-29 被甩开
+- 详情见: [[sessions/2026-05-26-5-31-taizijian-gpx-prep]]
+
+### 2026-05-24 ｜ 武义爬坡赛（Climbing Race 3，B）— **8th**
+
+- 和 5/23 背靠背；复盘见 [[sessions/2026-05-26-5-24-wuyi-race-analysis]]
+
+### 2026-05-23 ｜ 平王爬坡赛（Climbing Race 2，B）— **8th**
+
+- 复盘见 [[sessions/2026-05-25-5-23-pingwang-race-analysis]]
+
+### 2026-05-17 ｜ 千峡湖（Climbing Race 1，A）— **8th**
+
+- 名次来源：[[sessions/2026-05-26-5-31-taizijian-gpx-prep]] 赛事对照表；无单独复盘 session
+- 赛前设定（原文）：目标 Podium / 5.0 W/kg；Taper 起点 2026-05-12（5 天 taper，目标 TSB +0~+5）；关键准备段 林峰段（pr15 KOM 目标，2026-05-08 已 rehearsal，详 [[kom-targets]]）
 
 ### 2026-04-25 ｜ 王位山爬坡赛 — **6th**
 
