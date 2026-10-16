@@ -1,4 +1,5 @@
 import time
+import socket
 import requests
 import os
 from dotenv import load_dotenv
@@ -8,6 +9,20 @@ load_dotenv()
 RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 MAX_RETRIES = 3
 BASE_DELAY = 1  # seconds
+PROXY_PROBE_TIMEOUT = 1.0  # seconds
+
+# requests drops proxy keys explicitly set to None *after* merging env proxies,
+# so this forces a direct connection even when env http(s)_proxy is set.
+DIRECT_PROXIES = {"http": None, "https": None}
+
+
+def _proxy_reachable(port) -> bool:
+    """True if something is listening on 127.0.0.1:<port>."""
+    try:
+        with socket.create_connection(("127.0.0.1", int(port)), timeout=PROXY_PROBE_TIMEOUT):
+            return True
+    except (OSError, ValueError):
+        return False
 
 
 class ICUClient:
@@ -16,12 +31,20 @@ class ICUClient:
         self.athlete_id = os.getenv("ATHLETE_ID")
         self.base_url = "https://intervals.icu/api/v1"
         self.auth = ('API_KEY', self.api_key)
+        self.proxies = self._resolve_proxies(os.getenv("PROXY_PORT"))
 
-        proxy_port = os.getenv("PROXY_PORT")
-        self.proxies = {
-            "http": f"http://127.0.0.1:{proxy_port}",
-            "https": f"http://127.0.0.1:{proxy_port}"
-        } if proxy_port else None
+    @staticmethod
+    def _resolve_proxies(proxy_port):
+        """PROXY_PORT 可达则走本地代理；不可达则直连，避免整轮 sync 因代理关闭而失败。"""
+        if not proxy_port:
+            return None
+        if _proxy_reachable(proxy_port):
+            return {
+                "http": f"http://127.0.0.1:{proxy_port}",
+                "https": f"http://127.0.0.1:{proxy_port}",
+            }
+        print(f"   ⚠️  PROXY_PORT={proxy_port} 无法连接，改为直连 intervals.icu")
+        return DIRECT_PROXIES
 
     def _request(self, method, path, **kwargs):
         url = f"{self.base_url}{path}"
@@ -100,22 +123,16 @@ class ICUClient:
 
     # ── 功率 / 心率曲线 ─────────────────────────────────────────────────────────
 
-    def get_power_curves(self, oldest=None, newest=None, type="Ride"):
-        params = {"type": type}
-        if oldest:
-            params["start"] = oldest
-        if newest:
-            params["end"] = newest
+    # ICU 曲线接口忽略 start/end（会静默返回 1y），时间窗必须用 curves 指定，
+    # 如 "90d" / "1y" / "all"。响应 list[0].id 与所请求的 curves 一致。
+
+    def get_power_curves(self, curves="all", type="Ride"):
+        params = {"type": type, "curves": curves}
         return self._get(f"/athlete/{self.athlete_id}/power-curves", params=params)
 
-    def get_hr_curves(self, oldest=None, newest=None):
+    def get_hr_curves(self, curves="all"):
         """心率最佳曲线（类似功率曲线）。"""
-        params = {}
-        if oldest:
-            params["start"] = oldest
-        if newest:
-            params["end"] = newest
-        return self._get(f"/athlete/{self.athlete_id}/hr-curves", params=params)
+        return self._get(f"/athlete/{self.athlete_id}/hr-curves", params={"curves": curves})
 
     # ── 日历事件 / 训练计划 ─────────────────────────────────────────────────────
 

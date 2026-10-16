@@ -59,11 +59,46 @@ class TestInit:
         monkeypatch.setenv("API_KEY", "k")
         monkeypatch.setenv("ATHLETE_ID", "a1")
         monkeypatch.setenv("PROXY_PORT", "7890")
+        monkeypatch.setattr(icu_mod, "_proxy_reachable", lambda _port: True)
         c = ICUClient()
         assert c.proxies == {
             "http": "http://127.0.0.1:7890",
             "https": "http://127.0.0.1:7890",
         }
+
+    def test_unreachable_proxy_falls_back_to_direct(self, monkeypatch):
+        """A dead PROXY_PORT must not kill sync: go direct, ignoring env proxies.
+
+        requests drops keys explicitly set to None, so env http(s)_proxy
+        (often the same dead port) is not merged back in.
+        """
+        monkeypatch.setenv("API_KEY", "k")
+        monkeypatch.setenv("ATHLETE_ID", "a1")
+        monkeypatch.setenv("PROXY_PORT", "7890")
+        monkeypatch.setattr(icu_mod, "_proxy_reachable", lambda _port: False)
+        c = ICUClient()
+        assert c.proxies == {"http": None, "https": None}
+
+
+class TestProxyReachable:
+    def test_true_when_port_listening(self):
+        import socket
+        with socket.socket() as srv:
+            srv.bind(("127.0.0.1", 0))
+            srv.listen(1)
+            port = srv.getsockname()[1]
+            assert icu_mod._proxy_reachable(str(port)) is True
+
+    def test_false_when_port_closed(self):
+        import socket
+        with socket.socket() as srv:
+            srv.bind(("127.0.0.1", 0))
+            port = srv.getsockname()[1]
+        # socket closed → nothing listening on that port
+        assert icu_mod._proxy_reachable(str(port)) is False
+
+    def test_false_when_port_not_numeric(self):
+        assert icu_mod._proxy_reachable("not-a-port") is False
 
 
 # ── _request ───────────────────────────────────────────────────────────────
@@ -220,33 +255,32 @@ class TestEndpoints:
         client.get_hr_histogram("abc")
         assert mock_req.call_args.args[1].endswith("/activity/abc/hr-histogram")
 
-    def test_get_power_curves_without_dates(self, client, mock_req):
+    # ICU ignores start/end on curve endpoints and silently returns "1y";
+    # the window must be requested via `curves` (e.g. "90d", "all").
+
+    def test_get_power_curves_defaults_to_all_time(self, client, mock_req):
         mock_req.return_value = self._ok({})
         client.get_power_curves()
         params = mock_req.call_args.kwargs["params"]
-        assert params == {"type": "Ride"}
+        assert params == {"type": "Ride", "curves": "all"}
 
-    def test_get_power_curves_with_dates_and_type(self, client, mock_req):
+    def test_get_power_curves_with_window_and_type(self, client, mock_req):
         mock_req.return_value = self._ok({})
-        client.get_power_curves(oldest="2026-01-01", newest="2026-04-01", type="Run")
+        client.get_power_curves(curves="90d", type="Run")
         assert mock_req.call_args.kwargs["params"] == {
             "type": "Run",
-            "start": "2026-01-01",
-            "end": "2026-04-01",
+            "curves": "90d",
         }
 
-    def test_get_hr_curves_without_dates(self, client, mock_req):
+    def test_get_hr_curves_defaults_to_all_time(self, client, mock_req):
         mock_req.return_value = self._ok({})
         client.get_hr_curves()
-        assert mock_req.call_args.kwargs["params"] == {}
+        assert mock_req.call_args.kwargs["params"] == {"curves": "all"}
 
-    def test_get_hr_curves_with_dates(self, client, mock_req):
+    def test_get_hr_curves_with_window(self, client, mock_req):
         mock_req.return_value = self._ok({})
-        client.get_hr_curves(oldest="2026-01-01", newest="2026-04-01")
-        assert mock_req.call_args.kwargs["params"] == {
-            "start": "2026-01-01",
-            "end": "2026-04-01",
-        }
+        client.get_hr_curves(curves="90d")
+        assert mock_req.call_args.kwargs["params"] == {"curves": "90d"}
 
     def test_get_events_resolves(self, client, mock_req):
         mock_req.return_value = self._ok([])

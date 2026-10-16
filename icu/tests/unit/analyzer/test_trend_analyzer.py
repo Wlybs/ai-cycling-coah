@@ -138,6 +138,27 @@ class TestAnalyzeFtpTrend:
         assert result["history"][0]["eftp"] == 255
 
 
+# ─── analyze_intensity_distribution ─────────────────────────────────────────
+
+class TestIntensityDistributionStreamShapes:
+    ZONE_CFG = {"ftp": 250, "power_zone_pcts": [55, 75, 90, 105, 120, 150, 999],
+                "power_zone_names": ["Z1", "Z2", "Z3", "Z4", "Z5", "Z6", "Z7"]}
+
+    def test_accepts_legacy_list_streams(self, tmp_path, monkeypatch):
+        """Old detail files store streams as [{type, data}, ...]; must not crash."""
+        detail = tmp_path / "5_Activities_Detail"
+        detail.mkdir()
+        today = datetime.now().strftime("%Y-%m-%d")
+        (detail / f"{today}_legacy.json").write_text(json.dumps({
+            "streams": [{"type": "watts", "data": [100, 200, 300]},
+                        {"type": "heartrate", "data": [120, 130, 140]}],
+        }), encoding="utf-8")
+        monkeypatch.setattr(ta, "WAREHOUSE", str(tmp_path))
+        result = ta.analyze_intensity_distribution([], self.ZONE_CFG, weeks=8)
+        assert result["activities_analyzed"] == 1
+        assert sum(z["seconds"] for z in result["zone_distribution"]) == 3
+
+
 # ─── analyze_recovery_patterns ──────────────────────────────────────────────
 
 class TestAnalyzeRecoveryPatterns:
@@ -178,6 +199,23 @@ class TestAnalyzeRecoveryPatterns:
         }]
         result = ta.analyze_recovery_patterns(acts)
         assert result["summary"]["overtraining_risk"] is False
+
+    def test_summary_labels_last_ride_values_with_their_date(self):
+        """TSB/CTL here come from the last ride, not today — must not be called 'current'."""
+        acts = [
+            {"start_date_local": "2026-10-14T08:00:00", "icu_ctl": 70, "icu_atl": 80},
+            {"start_date_local": "2026-10-10T08:00:00", "icu_ctl": 65, "icu_atl": 60},
+        ]
+        s = ta.analyze_recovery_patterns(acts)["summary"]
+        assert s["last_ride_date"] == "2026-10-14"
+        assert s["last_ride_tsb"] == pytest.approx(-10.0)
+        assert s["last_ride_ctl"] == pytest.approx(70.0)
+        assert "current_tsb" not in s and "current_ctl" not in s
+
+    def test_summary_last_ride_fields_none_without_records(self):
+        s = ta.analyze_recovery_patterns([])["summary"]
+        assert s["last_ride_date"] is None
+        assert s["last_ride_tsb"] is None
 
 
 # ─── detect_recovery_alerts ─────────────────────────────────────────────────
