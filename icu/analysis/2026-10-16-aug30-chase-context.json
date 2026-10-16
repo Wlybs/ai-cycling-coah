@@ -1,0 +1,21 @@
+{
+  "source": "/mnt/d/Cycling/icu/analysis/2026-10-16-crazies-raw/2026-08-30_i181164446.json",
+  "user_annotation_date": "2026-10-16",
+  "user_annotation": "57km通常主动attack；未筛选完60km再次attack；74km为团骑爬坡终点，有人同行时冲刺。8/30在57km没有主动防守，想慢追但坡顶未接上；随后下坡全力追赶，60km刚接上即被attack而掉队。",
+  "segment_definition": "End of detected57km candidate to device distance60.2km; not exact annotation of chase onset/catch moment",
+  "stream_start_index": 5343,
+  "stream_end_index_exclusive": 5607,
+  "elapsed_start_s": 5823,
+  "elapsed_end_exclusive_s": 6087,
+  "recorded_seconds": 264,
+  "elapsed_seconds": 264,
+  "mean_watts": 279.53409090909093,
+  "work_kJ": 73.797,
+  "time_gt_reference_ftp_s": 132,
+  "max_sample_gap_s": 1,
+  "limitations": [
+    "User identifies tactical sequence; exact catch/drop timestamp not provided",
+    "Mechanical work is not glycogen or anaerobic work",
+    "Does not establish general physiological weakness or cause of every dropped ride"
+  ]
+}
