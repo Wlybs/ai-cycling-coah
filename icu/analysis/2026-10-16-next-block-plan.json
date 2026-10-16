@@ -1,0 +1,326 @@
+{
+  "created_date_sg": "2026-10-16",
+  "status": "Coach-proposed trial; not uploaded to ICU calendar",
+  "working_ftp_setting_W": 300,
+  "setting_source_updated_at": "2026-10-16T23:10:40.794319",
+  "weeks": [
+    {
+      "week": 1,
+      "start": "2026-10-19",
+      "end": "2026-10-25",
+      "planned_hours": 12.5,
+      "days": [
+        {
+          "date": "2026-10-19",
+          "weekday": "Monday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-10-20",
+          "weekday": "Tuesday",
+          "session": "Controlled sustained work",
+          "planned_hours": 1.5,
+          "reps": 3,
+          "work_minutes_per_rep": 12,
+          "work_total_minutes": 36,
+          "target_watts": [
+            280,
+            290
+          ],
+          "between_reps_minutes": 5,
+          "notes": "Initial low end, controlled RPE6–7;5min easy between reps;warmup/cooldown+endurance fill90min;week4reduce work only,may lower power if tired"
+        },
+        {
+          "date": "2026-10-21",
+          "weekday": "Wednesday",
+          "session": "Long endurance",
+          "planned_hours": 4.0,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-10-22",
+          "weekday": "Thursday",
+          "session": "Endurance",
+          "planned_hours": 2.0,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-10-23",
+          "weekday": "Friday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-10-24",
+          "weekday": "Saturday",
+          "session": "Endurance before Sunday",
+          "planned_hours": 2.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-10-25",
+          "weekday": "Sunday",
+          "session": "Crazies / controlled recovery-week alternative",
+          "planned_hours": 2.5,
+          "notes": "Weeks1–3 existingusual57/60attacks+74finish per tactics, no additional maximal quota;week4only if controllable,otherwise replace by endurance and/or reduce hours"
+        }
+      ],
+      "hours_note": "Normal-week upper trial schedule; sustain previous durations if recovery insufficient, not obligatory ramp"
+    },
+    {
+      "week": 2,
+      "start": "2026-10-26",
+      "end": "2026-11-01",
+      "planned_hours": 13.0,
+      "days": [
+        {
+          "date": "2026-10-26",
+          "weekday": "Monday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-10-27",
+          "weekday": "Tuesday",
+          "session": "Controlled sustained work",
+          "planned_hours": 1.5,
+          "reps": 3,
+          "work_minutes_per_rep": 15,
+          "work_total_minutes": 45,
+          "target_watts": [
+            280,
+            290
+          ],
+          "between_reps_minutes": 5,
+          "notes": "Initial low end, controlled RPE6–7;5min easy between reps;warmup/cooldown+endurance fill90min;week4reduce work only,may lower power if tired"
+        },
+        {
+          "date": "2026-10-28",
+          "weekday": "Wednesday",
+          "session": "Long endurance",
+          "planned_hours": 4.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-10-29",
+          "weekday": "Thursday",
+          "session": "Endurance",
+          "planned_hours": 2.0,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-10-30",
+          "weekday": "Friday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-10-31",
+          "weekday": "Saturday",
+          "session": "Endurance before Sunday",
+          "planned_hours": 2.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-01",
+          "weekday": "Sunday",
+          "session": "Crazies / controlled recovery-week alternative",
+          "planned_hours": 2.5,
+          "notes": "Weeks1–3 existingusual57/60attacks+74finish per tactics, no additional maximal quota;week4only if controllable,otherwise replace by endurance and/or reduce hours"
+        }
+      ],
+      "hours_note": "Normal-week upper trial schedule; sustain previous durations if recovery insufficient, not obligatory ramp"
+    },
+    {
+      "week": 3,
+      "start": "2026-11-02",
+      "end": "2026-11-08",
+      "planned_hours": 13.5,
+      "days": [
+        {
+          "date": "2026-11-02",
+          "weekday": "Monday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-11-03",
+          "weekday": "Tuesday",
+          "session": "Controlled sustained work",
+          "planned_hours": 1.5,
+          "reps": 2,
+          "work_minutes_per_rep": 25,
+          "work_total_minutes": 50,
+          "target_watts": [
+            280,
+            290
+          ],
+          "between_reps_minutes": 5,
+          "notes": "Initial low end, controlled RPE6–7;5min easy between reps;warmup/cooldown+endurance fill90min;week4reduce work only,may lower power if tired"
+        },
+        {
+          "date": "2026-11-04",
+          "weekday": "Wednesday",
+          "session": "Long endurance",
+          "planned_hours": 4.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-05",
+          "weekday": "Thursday",
+          "session": "Endurance",
+          "planned_hours": 2.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-06",
+          "weekday": "Friday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-11-07",
+          "weekday": "Saturday",
+          "session": "Endurance before Sunday",
+          "planned_hours": 2.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-08",
+          "weekday": "Sunday",
+          "session": "Crazies / controlled recovery-week alternative",
+          "planned_hours": 2.5,
+          "notes": "Weeks1–3 existingusual57/60attacks+74finish per tactics, no additional maximal quota;week4only if controllable,otherwise replace by endurance and/or reduce hours"
+        }
+      ],
+      "hours_note": "Normal-week upper trial schedule; sustain previous durations if recovery insufficient, not obligatory ramp"
+    },
+    {
+      "week": 4,
+      "start": "2026-11-09",
+      "end": "2026-11-15",
+      "planned_hours": 10.0,
+      "days": [
+        {
+          "date": "2026-11-09",
+          "weekday": "Monday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-11-10",
+          "weekday": "Tuesday",
+          "session": "Controlled sustained work",
+          "planned_hours": 1.5,
+          "reps": 2,
+          "work_minutes_per_rep": 12,
+          "work_total_minutes": 24,
+          "target_watts": [
+            280,
+            290
+          ],
+          "between_reps_minutes": 5,
+          "notes": "Initial low end, controlled RPE6–7;5min easy between reps;warmup/cooldown+endurance fill90min;week4reduce work only,may lower power if tired"
+        },
+        {
+          "date": "2026-11-11",
+          "weekday": "Wednesday",
+          "session": "Long endurance",
+          "planned_hours": 2.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-12",
+          "weekday": "Thursday",
+          "session": "Endurance",
+          "planned_hours": 1.5,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-13",
+          "weekday": "Friday",
+          "session": "Rest",
+          "planned_hours": 0
+        },
+        {
+          "date": "2026-11-14",
+          "weekday": "Saturday",
+          "session": "Endurance before Sunday",
+          "planned_hours": 2.0,
+          "endurance_reference_watts": [
+            190,
+            215
+          ],
+          "notes": "Pragmatic starting reference from current setting and completed rides, not verified LT1;RPE2–3/conversational;adjust for heat/legs/terrain"
+        },
+        {
+          "date": "2026-11-15",
+          "weekday": "Sunday",
+          "session": "Crazies / controlled recovery-week alternative",
+          "planned_hours": 2.5,
+          "notes": "Weeks1–3 existingusual57/60attacks+74finish per tactics, no additional maximal quota;week4only if controllable,otherwise replace by endurance and/or reduce hours"
+        }
+      ],
+      "hours_note": "Actual deload;replace uncontrolledSundayorreduce8–9hifneeded"
+    }
+  ],
+  "progression": "Conditional on controlled Tuesday completion AND recovery across long ride and Sunday. Repeat prior week if recovery poor. Increase duration before power;15h is capacity not obligatory target. Deload can be8–9h if needed. Prioritize Tuesday completion;do not treat interval progression and long-ride extension as both mandatory;holdWednesday4h whenneeded.",
+  "assessment": "Controlled sustained-work duration, comparable long-ride quality, labelled57/60/74 performances and postattack context;no4-weekFTPguarantee",
+  "sources": [
+    "2026-10-16-fatigued-attack-context.json",
+    "2026-10-16-aug30-chase-context.json",
+    "2026-10-16-june9-cp5-anchor.json",
+    "2026-10-16-verified-peak-anchor.json"
+  ],
+  "independent_coaching_critique": "PASS with conditionalprogression, realdeload, and no physiological diagnosis",
+  "recent_observed_cycling_hours": {
+    "2026-10-05/2026-10-11": 14.98,
+    "2026-10-12/2026-10-16_partial": 8.39,
+    "source": "2026-10-16-training-history-context.json activities moving_time sums"
+  }
+}
