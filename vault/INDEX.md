@@ -37,13 +37,15 @@
 
 ## 最近 5 次 session
 
+- 2026-10-16 — [[sessions/2026-10-16-peak-baseline-and-crazies]] — 巅峰精确4/1–6/1；5/27首爬近全力锚点核验；停训时间线、Crazies反复加速、同一功率计与室内散热补给；不虚报未来FTP保底。
 - 2026-10-16 — [[sessions/2026-10-16-power-review-and-2027-races]] — 摔车9/24、复训10/2；10–15h常态；仅45s近期全力；曲线+同课stream复核；2027赛事候选与身份资格已记。
 - 2026-10-16 — [[sessions/2026-10-16-base-training-direction]] — 最新数据同步；目标2027长期发展；基础期四骑行日候选框架，待确认赛事类型、力量经验和当前疼痛。
 - 2026-06-22 — [[sessions/2026-06-22-bike-fit-posture-map-followup]] — **骑行姿态功能定义 follow-up**：59 中坐上把，60 后坐平路，61 前坐高强度爬坡，62 TT 低趴，63 下把巡航；五姿态无明显即时不适，62/63 长时间腰疼。结论维持：鞍位先不大改，61/60 功能合理，62/63 控制持续时间并优先处理腰背耐受。
 - 2026-06-22 — [[sessions/2026-06-22-bike-fit-video-review]] — **骑行姿态视频肉眼 fitting**：5 段侧面 trainer 视频，鞍高未见明显错误；主问题为 hoods 姿势手臂偏锁、前端支撑偏硬；IMG_7962 极低趴伏髋角过闭，只建议短时间 aero 使用，不建议长爬或股四头疲劳日使用。
-- 2026-05-26 — [[sessions/2026-05-26-5-31-taizijian-gpx-prep]] — **5/31 太子尖 race prep 第二轮锁定 (战术 + 训练块 + 补给 + 装备 + 风险)**: 训练块双峰 load 模式 (5/26 Z2 120 / **5/27 BIG 3h+2×15min @ 270W ss 210 TSS 正午** / 5/28 LIGHT commute 60-80 / 5/29 Z2 130 / 5/30 REST) → race-morning TSB 预期 +13-15 (sweet spot 边缘)。5/27 不上 FTP 多组 (5 天 absorb window 不够), ss 上限拿 race-specific 神经锁定。**Race-day 战术锁**: HC1 顶住 → HC2 km 27 决策门槛 (RPE 9 = release hard rule) → 中段 2 强制补给 reset → HC3 跟集团不主动 → 终点 200m sprint counter (hard rule)。补给 6 gels + 2 bidon = 320g carb 100min。高温装备无 aero / 浅色 / cooling protocol / HR 195 热门槛红线。预测名次 base 8-10 / upside 5-7 / downside 15-20。**用户拒绝 race-day 降档触发, 全力以赴 race style 记录** (不强制改, athlete preference)
 
 ## 当前活跃旗标
+
+- **2026-10-16最新补充**：4/1–6/1为生涯最佳比较基准；7月低量、8月复训；周日Crazies计入强度。室内外同功率计，室内散热/补给与10/13主动停止原因已记；未来FTP无已证实保底数值，详见最新session。
 
 - **2026-10-16更新**：以本次power-review session为准；目标2027 Nationals，常态10–15h，身体良好。9h示例已被新信息修正；出生/国籍/执照见athlete，勿反复问。
 
