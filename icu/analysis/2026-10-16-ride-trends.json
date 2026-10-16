@@ -1,0 +1,519 @@
+{
+  "method": "ICU true stream indexes; boundary +-8 samples; 3 consecutive >=70% middle-work median onset, 3 consecutive below offset; all interior samples retained. This is a work/rest boundary threshold, not a physiological threshold.",
+  "intervals": [
+    {
+      "file": "2026-09-08_i184403505.json",
+      "device_temp_C": 29.454975,
+      "RPE": 5,
+      "reps": [
+        {
+          "rep": 1,
+          "icu_start": 2518,
+          "icu_end": 2762,
+          "det_start": 2517,
+          "det_end": 2762,
+          "delta_start_s": -1,
+          "delta_end_s": 0,
+          "FIT_lap_W": 357,
+          "ICU_lap_W": 356,
+          "det_W": 357.2,
+          "lap_s": 244,
+          "det_samples": 245,
+          "det_elapsed_s": 245,
+          "max_gap_s": 1,
+          "det_HR": 168.1,
+          "threshold": 247.1,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 472
+        },
+        {
+          "rep": 2,
+          "icu_start": 2921,
+          "icu_end": 3166,
+          "det_start": 2921,
+          "det_end": 3166,
+          "delta_start_s": 0,
+          "delta_end_s": 0,
+          "FIT_lap_W": 354,
+          "ICU_lap_W": 353,
+          "det_W": 353.7,
+          "lap_s": 245,
+          "det_samples": 245,
+          "det_elapsed_s": 245,
+          "max_gap_s": 1,
+          "det_HR": 173.3,
+          "threshold": 242.2,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 550
+        },
+        {
+          "rep": 3,
+          "icu_start": 3324,
+          "icu_end": 3580,
+          "det_start": 3323,
+          "det_end": 3580,
+          "delta_start_s": -1,
+          "delta_end_s": 0,
+          "FIT_lap_W": 333,
+          "ICU_lap_W": 333,
+          "det_W": 333.2,
+          "lap_s": 256,
+          "det_samples": 257,
+          "det_elapsed_s": 257,
+          "max_gap_s": 1,
+          "det_HR": 171.9,
+          "threshold": 231.7,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 516
+        },
+        {
+          "rep": 4,
+          "icu_start": 3740,
+          "icu_end": 3992,
+          "det_start": 3740,
+          "det_end": 3992,
+          "delta_start_s": 0,
+          "delta_end_s": 0,
+          "FIT_lap_W": 342,
+          "ICU_lap_W": 342,
+          "det_W": 342.2,
+          "lap_s": 252,
+          "det_samples": 252,
+          "det_elapsed_s": 252,
+          "max_gap_s": 1,
+          "det_HR": 174.7,
+          "threshold": 239.0,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 483
+        },
+        {
+          "rep": 5,
+          "icu_start": 4150,
+          "icu_end": 4408,
+          "det_start": 4149,
+          "det_end": 4407,
+          "delta_start_s": -1,
+          "delta_end_s": -1,
+          "FIT_lap_W": 336,
+          "ICU_lap_W": 336,
+          "det_W": 336.6,
+          "lap_s": 258,
+          "det_samples": 258,
+          "det_elapsed_s": 258,
+          "max_gap_s": 1,
+          "det_HR": 175.8,
+          "threshold": 231.0,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 482
+        }
+      ],
+      "weighted_work_W": 344.4
+    },
+    {
+      "file": "2026-10-06_i194051255.json",
+      "device_temp_C": 29.086548,
+      "RPE": 5,
+      "reps": [
+        {
+          "rep": 1,
+          "icu_start": 2678,
+          "icu_end": 2924,
+          "det_start": 2675,
+          "det_end": 2924,
+          "delta_start_s": -3,
+          "delta_end_s": 0,
+          "FIT_lap_W": 342,
+          "ICU_lap_W": 341,
+          "det_W": 340.7,
+          "lap_s": 246,
+          "det_samples": 249,
+          "det_elapsed_s": 249,
+          "max_gap_s": 1,
+          "det_HR": 172.9,
+          "threshold": 238.0,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 447
+        },
+        {
+          "rep": 2,
+          "icu_start": 3082,
+          "icu_end": 3337,
+          "det_start": 3083,
+          "det_end": 3337,
+          "delta_start_s": 1,
+          "delta_end_s": 0,
+          "FIT_lap_W": 341,
+          "ICU_lap_W": 340,
+          "det_W": 341.5,
+          "lap_s": 255,
+          "det_samples": 254,
+          "det_elapsed_s": 254,
+          "max_gap_s": 1,
+          "det_HR": 176.4,
+          "threshold": 238.7,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 493
+        },
+        {
+          "rep": 3,
+          "icu_start": 3499,
+          "icu_end": 3759,
+          "det_start": 3497,
+          "det_end": 3759,
+          "delta_start_s": -2,
+          "delta_end_s": 0,
+          "FIT_lap_W": 328,
+          "ICU_lap_W": 327,
+          "det_W": 327.6,
+          "lap_s": 260,
+          "det_samples": 262,
+          "det_elapsed_s": 262,
+          "max_gap_s": 1,
+          "det_HR": 175.7,
+          "threshold": 231.7,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 506
+        },
+        {
+          "rep": 4,
+          "icu_start": 3941,
+          "icu_end": 4201,
+          "det_start": 3940,
+          "det_end": 4200,
+          "delta_start_s": -1,
+          "delta_end_s": -1,
+          "FIT_lap_W": 334,
+          "ICU_lap_W": 333,
+          "det_W": 333.7,
+          "lap_s": 260,
+          "det_samples": 260,
+          "det_elapsed_s": 260,
+          "max_gap_s": 1,
+          "det_HR": 176.2,
+          "threshold": 232.4,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 529
+        },
+        {
+          "rep": 5,
+          "icu_start": 4375,
+          "icu_end": 4625,
+          "det_start": 4376,
+          "det_end": 4625,
+          "delta_start_s": 1,
+          "delta_end_s": 0,
+          "FIT_lap_W": 349,
+          "ICU_lap_W": 349,
+          "det_W": 350.2,
+          "lap_s": 250,
+          "det_samples": 249,
+          "det_elapsed_s": 249,
+          "max_gap_s": 1,
+          "det_HR": 180.5,
+          "threshold": 240.1,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 502
+        }
+      ],
+      "weighted_work_W": 338.6
+    },
+    {
+      "file": "2026-10-13_i196664180.json",
+      "device_temp_C": 32.394573,
+      "RPE": 5,
+      "reps": [
+        {
+          "rep": 1,
+          "icu_start": 2834,
+          "icu_end": 3077,
+          "det_start": 2834,
+          "det_end": 3078,
+          "delta_start_s": 0,
+          "delta_end_s": 1,
+          "FIT_lap_W": 353,
+          "ICU_lap_W": 353,
+          "det_W": 352.7,
+          "lap_s": 243,
+          "det_samples": 244,
+          "det_elapsed_s": 244,
+          "max_gap_s": 1,
+          "det_HR": 174.7,
+          "threshold": 244.3,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 487
+        },
+        {
+          "rep": 2,
+          "icu_start": 3237,
+          "icu_end": 3482,
+          "det_start": 3233,
+          "det_end": 3481,
+          "delta_start_s": -4,
+          "delta_end_s": -1,
+          "FIT_lap_W": 344,
+          "ICU_lap_W": 343,
+          "det_W": 343.5,
+          "lap_s": 245,
+          "det_samples": 248,
+          "det_elapsed_s": 248,
+          "max_gap_s": 1,
+          "det_HR": 177.1,
+          "threshold": 237.3,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 518
+        },
+        {
+          "rep": 3,
+          "icu_start": 3683,
+          "icu_end": 3936,
+          "det_start": 3681,
+          "det_end": 3936,
+          "delta_start_s": -2,
+          "delta_end_s": 0,
+          "FIT_lap_W": 324,
+          "ICU_lap_W": 323,
+          "det_W": 323.4,
+          "lap_s": 253,
+          "det_samples": 255,
+          "det_elapsed_s": 255,
+          "max_gap_s": 1,
+          "det_HR": 177.6,
+          "threshold": 226.1,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 433
+        },
+        {
+          "rep": 4,
+          "icu_start": 4135,
+          "icu_end": 4373,
+          "det_start": 4129,
+          "det_end": 4373,
+          "delta_start_s": -6,
+          "delta_end_s": 0,
+          "FIT_lap_W": 347,
+          "ICU_lap_W": 347,
+          "det_W": 345.8,
+          "lap_s": 238,
+          "det_samples": 244,
+          "det_elapsed_s": 244,
+          "max_gap_s": 1,
+          "det_HR": 180.2,
+          "threshold": 243.6,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 503
+        },
+        {
+          "rep": 5,
+          "icu_start": 5407,
+          "icu_end": 5612,
+          "det_start": 5408,
+          "det_end": 5604,
+          "delta_start_s": 1,
+          "delta_end_s": -43,
+          "FIT_lap_W": 342,
+          "ICU_lap_W": 340,
+          "det_W": 354.3,
+          "lap_s": 204,
+          "det_samples": 196,
+          "det_elapsed_s": 196,
+          "max_gap_s": 1,
+          "det_HR": 171.0,
+          "threshold": 261.1,
+          "onset_fallback": false,
+          "offset_fallback": false,
+          "max_W": 683
+        }
+      ],
+      "weighted_work_W": 343.3
+    }
+  ],
+  "endurance": [
+    {
+      "file": "2026-09-09_i184773300.json",
+      "type": "Ride",
+      "moving_hours": 4.006,
+      "AP": 186,
+      "NP": 197,
+      "avg_HR": 147,
+      "device_temp_C": 32.61248,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 110.7,
+          "W": 185.6,
+          "HR": 142.4,
+          "P_HR": 1.3034536360464009
+        },
+        {
+          "recorded_minutes": 110.7,
+          "W": 192.9,
+          "HR": 152.0,
+          "P_HR": 1.269098704793078
+        }
+      ],
+      "P_HR_change_percent": -2.64
+    },
+    {
+      "file": "2026-10-07_i194515784.json",
+      "type": "Ride",
+      "moving_hours": 4.157,
+      "AP": 177,
+      "NP": 189,
+      "avg_HR": 147,
+      "device_temp_C": 33.41188,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 115.1,
+          "W": 171.3,
+          "HR": 144.1,
+          "P_HR": 1.1892202099956481
+        },
+        {
+          "recorded_minutes": 115.1,
+          "W": 187.8,
+          "HR": 150.5,
+          "P_HR": 1.2479005060725823
+        }
+      ],
+      "P_HR_change_percent": 4.93
+    },
+    {
+      "file": "2026-10-01_i192260588.json",
+      "type": "VirtualRide",
+      "moving_hours": 3.171,
+      "AP": 184,
+      "NP": 186,
+      "avg_HR": 134,
+      "device_temp_C": null,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 85.2,
+          "W": 182.2,
+          "HR": 131.6,
+          "P_HR": 1.3844001118228915
+        },
+        {
+          "recorded_minutes": 85.1,
+          "W": 192.0,
+          "HR": 138.0,
+          "P_HR": 1.3914012702701168
+        }
+      ],
+      "P_HR_change_percent": 0.51
+    },
+    {
+      "file": "2026-10-02_i192592799.json",
+      "type": "VirtualRide",
+      "moving_hours": 3.17,
+      "AP": 190,
+      "NP": 192,
+      "avg_HR": 141,
+      "device_temp_C": null,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 85.1,
+          "W": 196.9,
+          "HR": 139.2,
+          "P_HR": 1.414854139763619
+        },
+        {
+          "recorded_minutes": 85.1,
+          "W": 191.2,
+          "HR": 146.0,
+          "P_HR": 1.3090796937229292
+        }
+      ],
+      "P_HR_change_percent": -7.48
+    },
+    {
+      "file": "2026-10-05_i193701720.json",
+      "type": "VirtualRide",
+      "moving_hours": 2.172,
+      "AP": 215,
+      "NP": 217,
+      "avg_HR": 144,
+      "device_temp_C": null,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 55.2,
+          "W": 220.6,
+          "HR": 147.8,
+          "P_HR": 1.4921443068451938
+        },
+        {
+          "recorded_minutes": 55.1,
+          "W": 217.7,
+          "HR": 143.5,
+          "P_HR": 1.5169230574815287
+        }
+      ],
+      "P_HR_change_percent": 1.66
+    },
+    {
+      "file": "2026-10-14_i197223842.json",
+      "type": "VirtualRide",
+      "moving_hours": 3.349,
+      "AP": 204,
+      "NP": 204,
+      "avg_HR": 137,
+      "device_temp_C": null,
+      "halves_excl_first15_last5": [
+        {
+          "recorded_minutes": 90.5,
+          "W": 205.5,
+          "HR": 133.9,
+          "P_HR": 1.5351356555826827
+        },
+        {
+          "recorded_minutes": 90.5,
+          "W": 205.4,
+          "HR": 142.4,
+          "P_HR": 1.4420757889291256
+        }
+      ],
+      "P_HR_change_percent": -6.06
+    }
+  ],
+  "sprint": {
+    "30": {
+      "W": 781.5,
+      "index": 7637,
+      "start_elapsed_s": 10596,
+      "elapsed_s": 30,
+      "max_gap": 1,
+      "max_W": 998,
+      "min_W": 582
+    },
+    "45": {
+      "W": 723.8,
+      "index": 7637,
+      "start_elapsed_s": 10596,
+      "elapsed_s": 45,
+      "max_gap": 1,
+      "max_W": 998,
+      "min_W": 562
+    },
+    "60": {
+      "W": 637.4,
+      "index": 7630,
+      "start_elapsed_s": 10589,
+      "elapsed_s": 60,
+      "max_gap": 1,
+      "max_W": 998,
+      "min_W": 138
+    }
+  }
+}

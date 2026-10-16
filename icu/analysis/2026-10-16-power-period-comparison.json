@@ -1,0 +1,432 @@
+[
+  {
+    "period": "spring",
+    "range": [
+      "2026-03-01",
+      "2026-06-30T23:59:59"
+    ],
+    "points": [
+      {
+        "seconds": 5,
+        "watts": 1202,
+        "activity_id": "i138344084",
+        "date": "2026-04-09T11:35:40",
+        "name": "三江两岸乱骑"
+      },
+      {
+        "seconds": 15,
+        "watts": 1038,
+        "activity_id": "i138344084",
+        "date": "2026-04-09T11:35:40",
+        "name": "三江两岸乱骑"
+      },
+      {
+        "seconds": 30,
+        "watts": 750,
+        "activity_id": "i138344084",
+        "date": "2026-04-09T11:35:40",
+        "name": "三江两岸乱骑"
+      },
+      {
+        "seconds": 60,
+        "watts": 551,
+        "activity_id": "i157151784",
+        "date": "2026-06-14T14:04:31",
+        "name": "中泰杭州大学生高校比赛活动"
+      },
+      {
+        "seconds": 120,
+        "watts": 466,
+        "activity_id": "i157151784",
+        "date": "2026-06-14T14:04:31",
+        "name": "中泰杭州大学生高校比赛活动"
+      },
+      {
+        "seconds": 180,
+        "watts": 420,
+        "activity_id": "i156006343",
+        "date": "2026-06-10T14:30:43",
+        "name": "顶级7w破风手助力留风4xx"
+      },
+      {
+        "seconds": 300,
+        "watts": 397,
+        "activity_id": "i155698436",
+        "date": "2026-06-09T20:22:41",
+        "name": "开启4xx！"
+      },
+      {
+        "seconds": 600,
+        "watts": 342,
+        "activity_id": "i136065211",
+        "date": "2026-03-31T09:05:16",
+        "name": "🌧️刷一下赛段"
+      },
+      {
+        "seconds": 1200,
+        "watts": 336,
+        "activity_id": "i151847174",
+        "date": "2026-05-27T10:19:58",
+        "name": "高温甜区巡山蒸桑拿"
+      },
+      {
+        "seconds": 1800,
+        "watts": 295,
+        "activity_id": "i151847174",
+        "date": "2026-05-27T10:19:58",
+        "name": "高温甜区巡山蒸桑拿"
+      },
+      {
+        "seconds": 3600,
+        "watts": 274,
+        "activity_id": "i133847457",
+        "date": "2026-03-22T10:00:06",
+        "name": "旺旺训练营之雨骑牵牛岗到失温"
+      }
+    ]
+  },
+  {
+    "period": "august",
+    "range": [
+      "2026-08-01",
+      "2026-08-31T23:59:59"
+    ],
+    "points": [
+      {
+        "seconds": 5,
+        "watts": 1066,
+        "activity_id": "i177379011",
+        "date": "2026-08-19T05:32:09",
+        "name": "first complete lolo ride🥲( slow pace…)"
+      },
+      {
+        "seconds": 15,
+        "watts": 900,
+        "activity_id": "i177380373",
+        "date": "2026-08-19T06:55:15",
+        "name": "enjoy trail ride after rain😊"
+      },
+      {
+        "seconds": 30,
+        "watts": 606,
+        "activity_id": "i176967954",
+        "date": "2026-08-18T08:18:58",
+        "name": "起晚了，空腹有氧遛一下"
+      },
+      {
+        "seconds": 60,
+        "watts": 562,
+        "activity_id": "i176967954",
+        "date": "2026-08-18T08:18:58",
+        "name": "起晚了，空腹有氧遛一下"
+      },
+      {
+        "seconds": 120,
+        "watts": 423,
+        "activity_id": "i176967954",
+        "date": "2026-08-18T08:18:58",
+        "name": "起晚了，空腹有氧遛一下"
+      },
+      {
+        "seconds": 180,
+        "watts": 395,
+        "activity_id": "i173586493",
+        "date": "2026-08-08T06:11:08",
+        "name": "🏊 ride"
+      },
+      {
+        "seconds": 300,
+        "watts": 327,
+        "activity_id": "i177379011",
+        "date": "2026-08-19T05:32:09",
+        "name": "first complete lolo ride🥲( slow pace…)"
+      },
+      {
+        "seconds": 600,
+        "watts": 304,
+        "activity_id": "i181164446",
+        "date": "2026-08-30T06:30:56",
+        "name": "😡fucked！😣  Revenge next week!🦵"
+      },
+      {
+        "seconds": 1200,
+        "watts": 288,
+        "activity_id": "i181164446",
+        "date": "2026-08-30T06:30:56",
+        "name": "😡fucked！😣  Revenge next week!🦵"
+      },
+      {
+        "seconds": 1800,
+        "watts": 282,
+        "activity_id": "i181164446",
+        "date": "2026-08-30T06:30:56",
+        "name": "😡fucked！😣  Revenge next week!🦵"
+      },
+      {
+        "seconds": 3600,
+        "watts": 268,
+        "activity_id": "i181164446",
+        "date": "2026-08-30T06:30:56",
+        "name": "😡fucked！😣  Revenge next week!🦵"
+      }
+    ]
+  },
+  {
+    "period": "sep_first",
+    "range": [
+      "2026-09-01",
+      "2026-09-15T23:59:59"
+    ],
+    "points": [
+      {
+        "seconds": 5,
+        "watts": 1107,
+        "activity_id": "i186781493",
+        "date": "2026-09-15T06:25:38",
+        "name": "3sets 15 x 30/15 + 3 x 15s sprint💪"
+      },
+      {
+        "seconds": 15,
+        "watts": 963,
+        "activity_id": "i186781493",
+        "date": "2026-09-15T06:25:38",
+        "name": "3sets 15 x 30/15 + 3 x 15s sprint💪"
+      },
+      {
+        "seconds": 30,
+        "watts": 704,
+        "activity_id": "i182878102",
+        "date": "2026-09-03T19:17:28",
+        "name": "chill ride😉\n🇸🇬 is a good place for anaerobic🦵"
+      },
+      {
+        "seconds": 60,
+        "watts": 585,
+        "activity_id": "i183730877",
+        "date": "2026-09-06T06:31:52",
+        "name": "nice attack 💪😌\nthanks to jayden and 🚥 😉"
+      },
+      {
+        "seconds": 120,
+        "watts": 404,
+        "activity_id": "i183730877",
+        "date": "2026-09-06T06:31:52",
+        "name": "nice attack 💪😌\nthanks to jayden and 🚥 😉"
+      },
+      {
+        "seconds": 180,
+        "watts": 360,
+        "activity_id": "i182878102",
+        "date": "2026-09-03T19:17:28",
+        "name": "chill ride😉\n🇸🇬 is a good place for anaerobic🦵"
+      },
+      {
+        "seconds": 300,
+        "watts": 345,
+        "activity_id": "i182878102",
+        "date": "2026-09-03T19:17:28",
+        "name": "chill ride😉\n🇸🇬 is a good place for anaerobic🦵"
+      },
+      {
+        "seconds": 600,
+        "watts": 304,
+        "activity_id": "i186781493",
+        "date": "2026-09-15T06:25:38",
+        "name": "3sets 15 x 30/15 + 3 x 15s sprint💪"
+      },
+      {
+        "seconds": 1200,
+        "watts": 288,
+        "activity_id": "i186055900",
+        "date": "2026-09-13T06:33:49",
+        "name": "two attack😉\n(too slow after sungei tengah…🫠"
+      },
+      {
+        "seconds": 1800,
+        "watts": 281,
+        "activity_id": "i186055900",
+        "date": "2026-09-13T06:33:49",
+        "name": "two attack😉\n(too slow after sungei tengah…🫠"
+      },
+      {
+        "seconds": 3600,
+        "watts": 273,
+        "activity_id": "i186055900",
+        "date": "2026-09-13T06:33:49",
+        "name": "two attack😉\n(too slow after sungei tengah…🫠"
+      }
+    ]
+  },
+  {
+    "period": "sep_second",
+    "range": [
+      "2026-09-16",
+      "2026-09-30T23:59:59"
+    ],
+    "points": [
+      {
+        "seconds": 5,
+        "watts": 1137,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      },
+      {
+        "seconds": 15,
+        "watts": 848,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      },
+      {
+        "seconds": 30,
+        "watts": 643,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      },
+      {
+        "seconds": 60,
+        "watts": 529,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      },
+      {
+        "seconds": 120,
+        "watts": 365,
+        "activity_id": "i189951196",
+        "date": "2026-09-24T19:14:29",
+        "name": "陨落💔"
+      },
+      {
+        "seconds": 180,
+        "watts": 336,
+        "activity_id": "i189951196",
+        "date": "2026-09-24T19:14:29",
+        "name": "陨落💔"
+      },
+      {
+        "seconds": 300,
+        "watts": 330,
+        "activity_id": "i189951196",
+        "date": "2026-09-24T19:14:29",
+        "name": "陨落💔"
+      },
+      {
+        "seconds": 600,
+        "watts": 308,
+        "activity_id": "i189951196",
+        "date": "2026-09-24T19:14:29",
+        "name": "陨落💔"
+      },
+      {
+        "seconds": 1200,
+        "watts": 275,
+        "activity_id": "i189951196",
+        "date": "2026-09-24T19:14:29",
+        "name": "陨落💔"
+      },
+      {
+        "seconds": 1800,
+        "watts": 257,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      },
+      {
+        "seconds": 3600,
+        "watts": 244,
+        "activity_id": "i188375483",
+        "date": "2026-09-20T06:32:14",
+        "name": "no leg🦵 ride , thanks to today’s slow pace"
+      }
+    ]
+  },
+  {
+    "period": "october",
+    "range": [
+      "2026-10-01",
+      "2026-10-16T23:59:59"
+    ],
+    "points": [
+      {
+        "seconds": 5,
+        "watts": 1078,
+        "activity_id": "i195955105",
+        "date": "2026-10-11T06:30:42",
+        "name": "two 1000w climb attacks, nice break away with jayden😎\n(jayden looked back at ntu hill too often to make me couldn't stop laughing 😂"
+      },
+      {
+        "seconds": 15,
+        "watts": 877,
+        "activity_id": "i195605523",
+        "date": "2026-10-10T06:01:40",
+        "name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      {
+        "seconds": 30,
+        "watts": 781,
+        "activity_id": "i195605523",
+        "date": "2026-10-10T06:01:40",
+        "name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      {
+        "seconds": 60,
+        "watts": 637,
+        "activity_id": "i195605523",
+        "date": "2026-10-10T06:01:40",
+        "name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      {
+        "seconds": 120,
+        "watts": 396,
+        "activity_id": "i195605523",
+        "date": "2026-10-10T06:01:40",
+        "name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      {
+        "seconds": 180,
+        "watts": 354,
+        "activity_id": "i196664180",
+        "date": "2026-10-13T08:10:45",
+        "name": "sauna ride🥵high humidity heavy haze \nfailed training day 🥲"
+      },
+      {
+        "seconds": 300,
+        "watts": 335,
+        "activity_id": "i195102040",
+        "date": "2026-10-08T19:22:23",
+        "name": "threshold training at 50km/h in group ride🥳"
+      },
+      {
+        "seconds": 600,
+        "watts": 311,
+        "activity_id": "i193197201",
+        "date": "2026-10-04T06:32:35",
+        "name": "fitness zero🫠\nthought i could not be dropped, but failed🥲\nswear to train harder to get my power back💪"
+      },
+      {
+        "seconds": 1200,
+        "watts": 295,
+        "activity_id": "i193197201",
+        "date": "2026-10-04T06:32:35",
+        "name": "fitness zero🫠\nthought i could not be dropped, but failed🥲\nswear to train harder to get my power back💪"
+      },
+      {
+        "seconds": 1800,
+        "watts": 263,
+        "activity_id": "i193197201",
+        "date": "2026-10-04T06:32:35",
+        "name": "fitness zero🫠\nthought i could not be dropped, but failed🥲\nswear to train harder to get my power back💪"
+      },
+      {
+        "seconds": 3600,
+        "watts": 250,
+        "activity_id": "i195955105",
+        "date": "2026-10-11T06:30:42",
+        "name": "two 1000w climb attacks, nice break away with jayden😎\n(jayden looked back at ntu hill too often to make me couldn't stop laughing 😂"
+      }
+    ]
+  }
+]

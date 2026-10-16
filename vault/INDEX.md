@@ -37,13 +37,15 @@
 
 ## 最近 5 次 session
 
+- 2026-10-16 — [[sessions/2026-10-16-power-review-and-2027-races]] — 摔车9/24、复训10/2；10–15h常态；仅45s近期全力；曲线+同课stream复核；2027赛事候选与身份资格已记。
 - 2026-10-16 — [[sessions/2026-10-16-base-training-direction]] — 最新数据同步；目标2027长期发展；基础期四骑行日候选框架，待确认赛事类型、力量经验和当前疼痛。
 - 2026-06-22 — [[sessions/2026-06-22-bike-fit-posture-map-followup]] — **骑行姿态功能定义 follow-up**：59 中坐上把，60 后坐平路，61 前坐高强度爬坡，62 TT 低趴，63 下把巡航；五姿态无明显即时不适，62/63 长时间腰疼。结论维持：鞍位先不大改，61/60 功能合理，62/63 控制持续时间并优先处理腰背耐受。
 - 2026-06-22 — [[sessions/2026-06-22-bike-fit-video-review]] — **骑行姿态视频肉眼 fitting**：5 段侧面 trainer 视频，鞍高未见明显错误；主问题为 hoods 姿势手臂偏锁、前端支撑偏硬；IMG_7962 极低趴伏髋角过闭，只建议短时间 aero 使用，不建议长爬或股四头疲劳日使用。
 - 2026-05-26 — [[sessions/2026-05-26-5-31-taizijian-gpx-prep]] — **5/31 太子尖 race prep 第二轮锁定 (战术 + 训练块 + 补给 + 装备 + 风险)**: 训练块双峰 load 模式 (5/26 Z2 120 / **5/27 BIG 3h+2×15min @ 270W ss 210 TSS 正午** / 5/28 LIGHT commute 60-80 / 5/29 Z2 130 / 5/30 REST) → race-morning TSB 预期 +13-15 (sweet spot 边缘)。5/27 不上 FTP 多组 (5 天 absorb window 不够), ss 上限拿 race-specific 神经锁定。**Race-day 战术锁**: HC1 顶住 → HC2 km 27 决策门槛 (RPE 9 = release hard rule) → 中段 2 强制补给 reset → HC3 跟集团不主动 → 终点 200m sprint counter (hard rule)。补给 6 gels + 2 bidon = 320g carb 100min。高温装备无 aero / 浅色 / cooling protocol / HR 195 热门槛红线。预测名次 base 8-10 / upside 5-7 / downside 15-20。**用户拒绝 race-day 降档触发, 全力以赴 race style 记录** (不强制改, athlete preference)
-- 2026-05-26 — [[sessions/2026-05-26-5-24-wuyi-race-analysis]]: 47.2km/+1197m, 真实是 **3 段 HC race (HC1 3km 5.6% + HC2 7km 4.8% sustained 22min + HC3 6.8km 5.4%) + 9km 中段恢复窗**, 旧 5/4 report 错框为 23km 单 TT。终点 500m = 200m @ 6-8% 短陡 + 100m 缓 + 50m 平（匹配 5/23 counter 200m hard rule + 用户 Type-II 短陡 sprint 优势）。**累积消耗预测 50-60 kJ over CP, 比 5/24 武义 +30-50%, 5 月 race block 最难**。HC2 22min sustained team rotation 是用户 5/24 C4 (4:15) 时长 5 倍, 真实可能 km 27-29 被甩。决策树锁: HC1 顶住进 first group → HC2 顶住决定 race → 中段 2 强制补给 reset → HC3 守集团 → 终点 200m sprint。等用户确认 4 项 (车队 6 人构成/天气/训练块/预期目标) 后展开第二轮细化
 
 ## 当前活跃旗标
+
+- **2026-10-16更新**：以本次power-review session为准；目标2027 Nationals，常态10–15h，身体良好。9h示例已被新信息修正；出生/国籍/执照见athlete，勿反复问。
 
 - **2026-10-16 当前入口**：目标为2027年长期备赛、暂无日期；不喜欢天天训练，最多每周两次3.5h以上。以下5月日期旗标是历史记录，不能作为当前课表或生理结论。
 

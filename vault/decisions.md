@@ -1,0 +1,501 @@
+# Coaching Decisions — 时间戳日志
+
+> 教练范式 / 阈值 / 处方的**结构性决策**写在这里。
+> 格式：`## YYYY-MM-DD: <一句话标题>`，下面 2-4 行说明，必须含**触发证据**和**生效条件**。
+> Append-only。后续修订**不要删历史条目**，新加一条 supersedes 即可。
+
+---
+
+## 2026-04-01: FTP 永久上调 288 → 300W
+
+- 触发：3.28 比赛 NP 302W × 26m25s + 3.31 末段 22m50s @ 295W + Riduck 算法 306W
+- ICU eFTP 319W 不采用（W' 污染），仅留作 10-15min 战术天花板
+- 生效：所有处方按 300W 算
+
+## 2026-04-01: A 赛 taper 协议永久变更
+
+- 触发：3.28 比赛 TSB 高位 → HR 飙到 204、腿空
+- 决策：A 赛 taper 目标 TSB **0 ~ +5**（不是教科书 +20）
+- 强制 openers，赛前一天**禁止纯 Z1**
+- 生效：所有 A 级比赛
+
+## 2026-04-01: 战术重心从冲刺转 Lactate Clearance
+
+- 触发：1157W 满血冲刺只在新鲜状态有效，比赛末段空心
+- 决策：训练核心 = Lactate Clearance + Fatigue-Resistance Over-Under，**不**是终点冲刺
+- Sprint micro-dose: 2-3×8-10s MAX 仅插 openers / 间歇尾巴
+
+## 2026-05-08: 5/8 林峰 KOM 数据被识别为 race-day rehearsal
+
+- 触发：今天 15:51 @ 337W、HR 188 pegged、W' 100% 榨干，事后用户披露这是昨天讨论好的 KOM 攻击
+- 决策：把今天定性为 5/17 A 赛前 9 天的 race-day rehearsal，恢复优先级 = 真实赛后
+- 处方：明天（5/9）强制 ≤60min Z1 或 off；后续 5-7 天 taper（5/12 起）
+- 生效：本周训练计划重排
+
+## 2026-05-09: 类型分类锁定 = Sprinter + Puncheur（不是 climber）
+
+- 触发：全功率曲线分析 5s/60min=4.31（sprinter）+ 5min/60min=1.39（Puncheur）+ 5min/20min=1.24（不擅长 sustained climb）
+- 5s 19.70 W/kg = 世界级冲刺；60min 4.57 W/kg = Cat 2/3 业余强
+- 决策：长期目标若是纯爬坡赛冠军，需要专项做 sustained tempo + threshold 大容量去抬 60min（目前 4.57 → 目标 5.0+ W/kg）
+- 比赛选片倾向：10-20min 短爬 + 多爬路线 > 单段长爬
+
+## 2026-05-09: 真实总无氧池 ≈ 36kJ（比 ECP 模型高 40%）
+
+- 触发：5/8 林峰 ride W' 24000→-12023 = 36kJ 总放电，远超 ECP 模型 W'=25.4kJ
+- 含义：12kJ 多出来的能量来自 AWC（无氧能量缓冲），race-day 可复制
+- 战术：比赛末段 W'-burn 窗口比模型预测多 ~40% 时间，可以在 sprint finish 多放 1 次
+
+## 2026-05-09: 升级 RED — HRV red threshold 触发
+
+- 触发：5/9 sync 后 daily_adapt verdict=RED / severity=0.4 / hrv_red_threshold
+- 决策：5/9 改为 **完全 off**（不是 ≤60min Z1）
+- 5/10 早 HRV 复测：若 <60 + RHR ≥50 同时 → 48h 强制 Z1，taper 起点前移到 5/11
+
+## 2026-05-09: 撤回"长爬能力弱"结论，类型重判
+
+- 触发：用户披露功率数据质量契约 — 只有 ≤ 20min 是 at-max 测试，55min 是 90% effort，30+ min 全部 sub-max
+- 撤回：5/9 上一条决策中的"60min 4.57 W/kg = Cat 2/3 弱"和"5min/60min = 1.39 = Puncheur"，分母 sub-max，论据无效
+- 类型修订：Sprinter + Puncheur **仍站**（用 5min/20min = 1.24 + sprint W/kg 锚），但**未测过 = 不能说不擅长长爬**
+
+## 2026-05-09: 数据质量 HARD RULE 写入 athlete.md
+
+- 触发：今天分析中我误用 60min PB 作为长爬能力的判据，被用户当场纠正
+- 规则：功率曲线 ≤ 20min 是 at-max（可计算 CP/W'/类型），55min 是 90% soft floor，30+ min 全部 sub-max（禁止用于结论）
+- 落点：`vault/athlete.md` § 功率曲线数据质量
+- 防御：每次涉及 long-duration 能力判定前，先回查这条 HARD RULE
+
+## 2026-05-09: 第二次撤回 — RPE 反推也无效，用户自评 CP60 = 290W
+
+- 触发：上一条用了 281/0.9 = 312W + ECP CP=312 + FFT 319 三方共识，造出"FTP 偏保守"乐观结论
+- 用户纠正：90% 是体感，不能数学反推；自评 CP60 ≈ 290W；体感长爬"略差"
+- 撤回：
+  - "FTP 300W 偏保守 5%" — 撤回
+  - "真实 CP60 ≈ 305-315W" — 撤回
+  - "三方共识" — 假共识，ECP/FFT 都从 ≤8.5min 外推，不独立
+- 新工作锚点：**CP60 = 290W**（用户自评，比模型外推可信）
+- 重算：60min 4.75 W/kg = Cat 2，5min/60min = 1.33（仍 Puncheur），20min/60min = 1.08（正常）
+- 新元规则：**用乐观估计给用户台阶下也是 sycophancy**。已落 athlete.md
+- FTP 维持 300W 不动；ICU eFTP 319W 仅作 10-15min 战术上限
+
+## 2026-05-09: 比赛战术修正
+
+- 单段 10-15min 爬：可复制 337W / 5.5 W/kg 模板
+- 单段 30+ min 爬：**4.75 W/kg @ 60min 比纯 climber 5.0+ 有 5-10% 差距**（与用户自评一致）
+- 赛后 CP20 + CP60 双测目的从"看是不是被低估"改为"精确锚定 290W 还是 285/295"
+
+## 2026-05-09: 地区爬坡赛节奏 = 4 段式（实测推断）
+
+- 触发：3/28 萧山天路 + 4/25 王位山双场 stream 数据 per-minute 切片对比
+- 节奏模型（适用于杭州萧山地区单爬赛 5-8km / 400-600m / 7-8.5%）：
+  - **Phase 1 (0-2min) 爆点起手**: 380-400W (1.3×FTP)，抢前 5-10 位
+  - **Phase 2 (2-8min) 集团成型**: 300-345W 稳态 sit-in
+  - **Phase 3 (mid) 拉锯**: 290-340W + 2-3 次 10-30s 冲刺 500-650W + 1-2 次战术夹缝 220-260W
+  - **Phase 4 (last 2-3min) 末段**: 300-340W + 最后 30s 冲刺 500-600W
+  - 总 W' 预算 25-27kJ = usable W' 100%
+  - HR Z5 时长占比 85-92%
+- 落点：[[sessions/2026-05-09-race-rhythm-analysis]] + [[races]] 历史比赛剖面
+
+## 2026-05-09: Phase 1 爆点起手是非常规但必须
+
+- 触发：实测两场 min 1 都是 367-396W (1.27×FTP)，HR 直冲 180+
+- 决策：**爆点起手是地区爬赛的硬要求**，否则上坡掉位 = game over（无 draft）
+- 风险：HR ceiling 可能被烧太早；缓解策略 = 赛前 25-30min 含 2×3min @ 105% + 1×30s @ 150% 暖身（开 anaerobic 通道）
+- 已纳入 5/17 比赛战术
+
+## 2026-05-09: "战术夹缝"是免费午餐，必须主动反向操作
+
+- 触发：3/28 min 15-16 出现 2min 220-237W 缓段（地形给的），用户当时 W' 已空错过机会
+- 决策：识别地形夹缝时（缓坡 / false flat）**反向攻击**，因为对手也在 W' 回血，时机对等但谁敢用谁占便宜
+- 前提：必须在 Phase 3 之前**保留** 2-3 次 W' burn 预算（不要 100% 排空）
+- 已纳入 5/17 战术
+
+## 2026-05-09: 撤回"4/25 W' 调度好 = 进步 13 名"叙事
+
+- 触发：用户指出两场 IF 都是 1.04-1.05、生理输出一样，W' 差异和名次差异都受多因素影响（4/25 集团小 + 课程短）
+- 撤回：[[sessions/2026-05-09-race-rhythm-analysis]] 中"4/25 W' 留缓冲是节奏好的证据"
+- 站住：4 段节奏模式本身（重复在两场出现，与名次无关）
+- 元规则：**用"你在变好"叙事包装数据 = sycophancy 第三种变种**，已落 [[athlete]] § 反 sycophancy 个案
+- 未来：不要为名次差异编因果链，多因素结果不能归单变量
+
+## 2026-05-09: training-plan v2 — race-rhythm-specific 化
+
+- 触发：用户要求"按比赛节奏制定个人训练"
+- 旧 v1（generic 跟车+冲刺 S1-S4）→ 新 v2（按实测 4 段定制 S1'/S2'/S3'/S4/S5）
+- 关键改动：
+  - S2' 嵌入 25s 冲刺到 500W（不是 over-under 2/2min）
+  - S3' 末段冲刺改 45s（不是 12s）
+  - 新增 S1' 冷启动爆点（旧 plan 漏了 Phase 1）
+  - 新增 S5 完整 4 段模拟（赛前 readiness 检查）
+- 落点：[[training-plan]] v2，[[sessions/2026-05-09-training-plan-v2-race-specific]]
+- 启动时机不变：5/19-5/26 轻量版周 1，6/2+ 正式 4 周块
+
+## 2026-05-09: 用户 4 条新修正 → plan v6.6 + Mountain 3 加入
+
+- 触发：用户 4 条新规
+  - (1) Mountain 2 周末 OK（用户确认无人多问题，仅 Mountain 1 是景区）
+  - (2) 工作冲突会**提前告知**（不需我假设）
+  - (3) Mountain 2 10-11min 不能完成 12min OU → **改 4×10min @ 110/90% 1/1 快循环**（提强度 + 缩时长）
+  - (4) 5/11 可以训练（5/12 work 已确定）
+  - (5) chart 时间轴仍不对应 → **移除 workout_text 里的 commute Z2，commute 在 description 解释**（chart 现在仅显示工作组）
+  - (6) Mountain 3 加入：0.8km × 8.1%，陡-缓-陡-缓-陡（陡 ~15% / 缓 ~3%），25km bike out，人少，**1 ascent = 3 reps natural 30/30**
+- v6.6 plan 结构：
+  - 5/10 Sun: Mountain 2 OU 4×10min @ 110/90% 1/1（127 TSS workout / ~207 含 commute）
+  - 5/11 Mon: Mountain 3 30/30 12 reps（60 TSS workout / ~140 含 commute，terrain-driven）
+  - 5/12 Tue: REST（work）
+  - 5/13 Wed: Mountain 1 B race-rhythm 3×3×450W（110 TSS workout / ~185 含 commute）
+  - 5/14 Thu: REST
+  - 5/15 Fri: REST
+  - 5/16 Sat: 本地平路 opener（40 TSS）
+  - 5/17 Sun: race（80 TSS）
+- ICU calendar TSS = ~417（不含 commute），真实 ride TSS = ~660（含 commute）
+- HARD RULE 修订（落 [[athlete]]）：
+  - Mountain 2 周末 OK（仅 Mountain 1 周末避）
+  - Mountain 3 加入场地清单
+  - workout_text 不再含 commute（解决 chart 渲染问题）
+  - 工作日不假设，等用户告知
+- 落点：[[sessions/2026-05-09-plan-v6.6-final]]
+
+## 2026-05-09: 补给 + commute HARD RULE 写入
+
+- 触发：用户讨论后接受
+- **Carb 自适应规则**（不强求日常 7-8g/kg）：
+  - Rest 5g/kg / 轻日 5-6 / 中训练 6-7 / 硬日 8-9 / race day 8-10
+  - 用户基线: 2 顿正餐, 轻吃 100g/餐, 重吃 180-300g/餐
+  - 高碳水耐受 (10g/kg 极限) 留给 race 周后段 + race day + carb-load
+- **Commute 功率规则**：
+  - **不严格监控**, 自然踩 AP 150-180W ("Z1.5") 即可
+  - 路况自然决定（上下坡 + 红绿灯）
+  - 真正要踩准的是 workout intervals 不是 commute
+  - Race day eve 例外: < 150W 保腿
+- 修正之前过严的 "race 周必须 Z1 commute" 建议
+- 落点: [[athlete]] § 补给库存与策略 v2 + § Commute 功率管理
+
+## 2026-05-09: HARD RULE 修订 v2 — TSB 条件化 + ICU phantom warmup 发现
+
+**修订 1：强制休触发条件**：
+- 旧规则：单日 ≥200 TSS → 次日强制休
+- 新规则：单日 >200 TSS **AND** TSB <-20 → 次日强制休（两条同时满足）
+- TSB ≥ -20 时：即使单日 200+ TSS 也可继续训练
+- 触发：用户："提高强制休的阈值，必须是在tsb低于-20并且单日tss还大于200的话才要强制休息，tsb不高的话可以继续"
+- 当前 TSB = -3.5 → 5/10 即使 200+ TSS 也不触发，5/11 30/30 保留
+
+**修订 2：ICU ZWO phantom warmup 发现**：
+- 用户："5.10 课程总时长在 ICU 上显示 4h56min 肯定不对"
+- 排查：ICU 在所有 ZWO 推送上自动 prepend 60min Z1 phantom warmup（"1power_zone" notation）
+- 即使我送 explicit `<Warmup>` 元素也没用 — ICU 仍另加 phantom
+- Workaround：workout_text 故意预留 60min phantom 作为 commute 起始段
+  - 25km commute (60min) → 完全靠 phantom，不写 commute out
+  - 30km (70min) → phantom + 10min Z1
+- v6.8 plan 应用：duration 对上 5/10 221min / 5/11 154min / 5/13 161min ✓
+- HARD RULE 落 [[athlete]] § ICU ZWO 推送陷阱
+
+## 2026-05-09: training-plan v3 — 全部代号改人话
+
+- 触发：用户："你所说的 phase 和 S 系列都是什么东西，我作为学员，完全不知道你这个教练在讲什么？"
+- 教训：我编 "Phase 1-4" + "S1'/S2'/S3'/S4/S5" 代号方便自己分析，但用户读起来是黑话
+- 改动：
+  - 比赛段改名：起跑爆点段 / 稳态主段 / 中段拉锯 / 末段冲刺
+  - 课表改名：起跑课 / 稳态加速课 ⭐ / 疲劳冲刺课 / 30 秒爆破课 / 全程模拟课
+  - vault/training-plan.md 整体重写
+- HARD RULE 落 [[athlete]] § 沟通规则：禁用内部代号，落 vault 前自检"高中生能不能直接读懂"
+
+## 2026-05-09: ICU 日历推送通道验证可用（无需 LLM API）
+
+- 触发：用户问"能否推送课表到 ICU 日历"
+- 验证：5/11-5/17 一周 7 个事件全部成功创建（event ID 109040856-109040881），sync_events 回拉确认
+- 流程：coach 直接写 WeeklyPlan JSON → `push_plan.py --push --plan-file` → ICU events
+- 关键：不需要 Gemini API（与用户无 key 的硬约束兼容）
+- 落点：[[sessions/2026-05-09-icu-push-test]] + 已推送的 plan JSON 在 `icu/coach_memory/plans/plan_20260511.json`
+
+## 2026-05-09: 推送通道升级 — 走 ZWO 文件触发 workout chart 渲染
+
+- 触发：用户："我在 icu 上无法看到你的每一天课表的具体详细课程"
+- 根因：ICU API 不解析 description 文本为 workout steps；`icu_intensity` 是从 TSS+time+FTP 反推
+- 修复：plan_generator 加 `workout_text → ZWO XML → base64 → /events/bulk?upsert=true` 流水线
+- DayPlan 加 `workout_text: Optional[str]` 字段
+- 内部 workout 语法：`- <dur> <intensity>` 单步、`Nx\n- on\n- off` 间歇组
+- 验证：5/11-5/17 重推 7 事件全部 `workout_doc.steps` 正确填充，ICU 重算 TSS 比 coach 估的更准
+- 后续惯例：所有 plan day 必须有 workout_text（race 日除外），`external_id=vault_plan_<YYYYMMDD>` 自动去重
+- 落点：[[sessions/2026-05-09-icu-push-zwo-upgrade]]
+
+## 2026-05-09: 重写 5/10-5/17 plan — 多赛季尾段维持周（不深 taper）+ 用户偏好
+
+- 触发：用户三条修正 — (1) "5月底前还有 3 场比赛，不能这周就深 taper、TSS 才 250 太少"，(2) "你没有考虑明天的课程", (3) "我不喜欢天天练、recovery 日改全休"
+- 撤回：上一版"5 天 taper TSB 0~+5"协议（4/1 决策的单 A 赛 taper 模板）—不适用 multi-race tail
+- 新原则：
+  - 5/17 是 A 赛但后面 5/23-24 + 5/31 还要 race → **维持训练负荷 ~常规 65-75%**（不能深 taper）
+  - 5/16 短开腿做临场 sharpen，**不深减 CTL**
+  - 用户偏好：少天数（4 ride + 1 race + 3 全休），无 active recovery（active recovery → 全休）
+  - Rest 日推 NOTE category（灰色标签），用户日历能看到"今天就是全休"
+- 关键 session（不能再缩）：5/12 稳态加速完整 (149 TSS)、5/14 30 秒爆破 + Z2 (104 TSS)
+- 5/10 加 HRV-gated Z2 维持骑（5/9 RED 后必要 conditional）
+- 8-day 总 TSS 446 (5/11-5/17 = 383)，约常规 600 的 74%
+- 推送验证：8 个事件全部 ZWO chart 正确渲染
+- 落点：[[sessions/2026-05-09-plan-redesign-multi-race]]
+- plan_generator 加 `_build_rest_payload` 函数支持 NOTE category Rest day
+
+## 2026-05-09: 季内 multi-race 周节奏模板（5/18-5/31 适用）
+
+- 5/18-5/24（含 5/23-24 BB 背靠背）模板：
+  - Mon 5/18 全休（5/17 race 后必须）
+  - Tue 5/19 Z2 60-90min 维持
+  - Wed 5/20 race-specific 稳态加速 ~80 TSS（缩水版，3 set 不是 4）
+  - Thu 5/21 全休
+  - Fri 5/22 短开腿 30min
+  - Sat 5/23 B race
+  - Sun 5/24 B race
+- 5/25-5/31（5/31 A 赛）模板：
+  - Mon 5/25 全休（背靠背 race 后必须）
+  - Tue 5/26 Z2 维持 + 1×3min @ 105% 短开腿
+  - Wed 5/27 30 秒爆破 缩水版
+  - Thu 5/28 全休
+  - Fri 5/29 全休 OR 30min Z2
+  - Sat 5/30 强制开腿（4/1 协议）
+  - Sun 5/31 A race
+- 待 5/17 race 完成后正式生成，并按实战反馈调整
+
+## 2026-05-09: 撤回"600 TSS 是 normal 周"假设 + 锁定真实 TSS 分级
+
+- 触发：用户 "我不认可 600 TSS 基准。高负荷 900-1000+ / 普通 600-800 / 减量 400-600 / 大单日 200-300"
+- 我的错：把 build_memory 输出的"近 4 周均 TSS=606"直接当成"normal 周基线"。实际是高/普通/低混合的均值，**不是常规周**
+- 历史数据验证：W18 1154 (高), W17/W19 485-523 (低-普通边界), W16 265 (异常恢复)
+- HARD RULE 落 [[athlete]] § TSS 负荷分级
+- 重要含义：
+  - Race week + multi-race tail = 减量上限 500-650 TSS（不是 250-400）
+  - 单 A 赛深 taper（无后续比赛）= 400-500 TSS
+  - 季中维持周 = 600-800 TSS
+  - 容量积累周 = 900+ TSS
+- 5/11-5/17 plan 重写：515 TSS（之前错误的 383）
+- 单日"中等" = 100-180 TSS（含 150，可背靠背），"大" = 200-300 TSS
+
+## 2026-05-09: 5/10-5/17 plan 第三版 — 按真 TSS 基准 + 3 日背靠背
+
+- 触发：上一条 baseline 修正
+- 结构变化：5/13 从"全休"改回"SST 长拉 4×15min @ 90% (115 TSS)"，与 5/12 race-rhythm + 5/14 W' 重建形成 3 日背靠背训练块
+- 用户偏好满足：3 日背靠背 × 中等强度（115-150 TSS）符合用户"150 TSS 可背靠背"声明，5/11+5/15 仍保留全休
+- 3 种刺激类型补全：race-rhythm (5/12) + 长 sustained (5/13) + W' 重建 (5/14)
+- 7-day TSS 515，8-day 578，落在减量周上限
+- ICU 重推 5/13 从 NOTE → WORKOUT 成功
+
+## 2026-05-09: 用户训练编排偏好 — H-A-R 循环（⚠️ 已被下条修正）
+
+- 触发：用户："强度课后连着来一天有氧课，然后再安排一天纯休息。而不是连续 3 天的强度课"
+- 我曾误读为机械 H-A-R 死规矩，**用户后续澄清不是必跟**
+- 见下条修正
+
+## 2026-05-09: 训练编排规则修正（HARD RULE 终版）
+
+- 触发：用户三条修正
+  - "明天我状态可以，为什么骑这么轻松的有氧" → 5/10 应该上大刺激不是 noodle Z2
+  - "强度日不是必跟有氧，具体是否要加有氧遵循你的安排" → A 日是 coach 判断，不死跟
+  - "单日强度没有超过 200 TSS 的话第二天仍然可以正常训练（有时候 200 也可背靠背）"
+- 规则修订：
+  - **唯一硬规则**：单日 TSS ≥200 → 次日强制全休或 active recovery
+  - 单日 <200 TSS → 次日可正常训练，包括另一个 <200 课
+  - "有时候" 200 也可背靠背，但不是默认
+  - **强度后跟有氧是 coach 判断，不是死规矩** — 是否加 A 由 race 临近 / HRV / 课表组合等决定
+- 撤回机械 H-A-R 编排
+- 落点：[[athlete]] § 训练日编排规则
+
+## 2026-05-09: 5/10-5/17 plan v5 — ⚠️ 已被 v6 替换
+
+- 触发：上一条规则修正
+- 结构：5/10 H 完整 (149) → 5/11 R → 5/12 H sub-200 (115) → 5/13 H sub-200 (104, 背靠背 OK) → 5/14/15 R R → 5/16 开腿 → 5/17 race
+- v5 问题：5/12 SST 是 generic tempo，**漏掉 ② Lactate Clearance race-specific 训练**
+
+## 2026-05-09: 5/10-5/17 plan v6 — race-specificity 审计 + TSS 拉到 600
+
+- 触发：用户："看看是否能够专项训练我的比赛能力。同时下周的 tss 太低了"
+- 审计结果：v5 race-specificity 缺 ② Lactate Clearance（race 拉扯之间快回血，你最缺的引擎）
+- v6 改动：5/11 加 Over-Under、5/14 加 Z2 + 神经维持
+- 4 引擎 race-specific 全覆盖
+- 8-day 599 TSS / 7-day 449 TSS — race week 减量中位 ✓
+- ⚠️ 5/10 race-rhythm 4set × 500W 在 W' 物理可行性上**不允许**，已被 v6.1 修正
+- 落点：[[sessions/2026-05-09-plan-v6-race-specific]]
+
+## 2026-05-09: plan v6.1 — W'/CP 物理可行性核算 + 5/10 现实版（⚠️ 见 v6.2）
+
+- 触发：用户："5.10 这个课程你真的觉得我能骑下来吗？"
+- v6 错版数学不允许，v6.1 改 3 set × 3 cycles × 450W = 92 TSS
+- ⚠️ 仍未充分核算多 set 累积 + AWC 边界，见 W' 全源核算后修正
+
+## 2026-05-09: W' 全源核算 + 双层池模型锁定（HARD RULE）
+
+- 触发：用户："详细计算 W' ... 多个平台估计的这个值也不一样"
+- 9 源核算（4 ICU 模型 + Wellness + 5 自算）跨 12-42 kJ
+- 5/8 KOM 实战 957s @ 337W 净放电 35.4 kJ 完美锁定 CP=300W
+- **双层池模型**：
+  - 真 W' (工作池) = **22-25 kJ**（多源共识）
+  - AWC (应急池) = +10-12 kJ（5/8 KOM 借出）
+  - 总池上限 = **35-36 kJ**（5/8 实测，绝对天花板）
+- 三个工作锚（落 [[athlete]] HARD RULE）：
+  - 训练 session 不开 AWC → 上限 22 kJ/set
+  - race-day max → 上限 30 kJ（开部分 AWC）
+  - 绝对天花板 → 36 kJ
+  - CP = **300 W**（5/8 反推 + FTP set 一致）
+- v6.1 5/10 重核算：21.6 kJ/set + 累积借 AWC 16 kJ（超 12 kJ AWC 池上限）→ set 3 完成不了
+- **新元规则**：多源参数 spread > 1.5× 时必须列全源 + 给共识 + 标注哪种用法用哪个值
+- 落点：[[sessions/2026-05-09-wprime-comprehensive-calc]]
+
+## 2026-05-09: 5/10 修正方案待选（A/B/C）
+
+- A 保守：3 set × 2 cycles × 450W → 14.4 kJ/set，TSS ~75
+- B 中等推荐：3 set × 3 cycles × 400W → 17.1 kJ/set，TSS ~90
+- C 极限：维持 v6.1 (3×3×450W) → 21.6 kJ/set + 借 AWC，TSS 92 名义
+
+## 2026-05-09: 用户选 C 极限版 — plan v6.2
+
+- 触发：用户回复 "C"
+- 5/10 维持 3×3×450W (92 TSS)，预期 set 3 借 AWC 4-16 kJ
+- 名称改为"Race-rhythm 极限版"，description 明确 set 3 最后 cycle 大概率 450W → 380-400W
+- **5/11 OU 自适应降到 3 set (94 TSS)** — 5/10 借 AWC 后明天恢复必然不完整，主动降组
+- 8-day TSS 516 / 7-day 424（v6.0 599 → v6.1 552 → v6.2 516，TSS 略降但更现实）
+- 用户决定 = 教练记录 + 调下游配合，不二次劝退
+
+## 2026-05-09: 路骑优先 + 功率匹配规则（HARD RULE）
+
+- 触发：用户："我倾向于路骑实现...但下坡休息功率会很低，会和计划不符合"
+- 关键认知：W' 重建只看 P_recovery vs CP 的差值时间积分，不看精确瓦数
+  - Skiba τ @ 150W = 28s, @ 50W = 22s, @ 0W = 21s
+  - 5min 任何低于 CP 都能 99% 重建
+  - **下坡滑行作为恢复完全 OK**
+- 训练效益的真正决定因素：
+  - 工作段功率 ≥ 目标 90% ✓
+  - 工作段时长 ≥ 目标 90% ✓
+  - 重复次数完成 ✓
+  - 恢复段精确瓦数 ✗（不重要）
+- 仅 3 类 session 必须上骑行台：30/30 Tabata、赛前开腿、HRV 警报后恢复
+- 落点：[[athlete]] § 训练执行环境 + § 路骑功率匹配规则
+- 5/10-5/17 plan 已附带地形建议
+
+## 2026-05-09: 家附近场地清单 + 4+2 经济性规则（HARD RULE）
+
+- 触发：用户主动告知场地信息
+- 场地清单：
+  - Mountain 1 A 面（2.23km × 5.6%, 5-6min）— 25km bike out
+  - Mountain 1 B 面（2.52km × 5.6%, 6-7min）— 25km bike out
+  - Mountain 2（3.1km × 6.6%, 10-11min）— 30km bike out
+  - 其它远坡：>30km 必须 4+2
+  - 门口平路充足
+- 4+2 决策规则：仅当单日 TSS ≥ 200 或需要特定地形才值得（成本：1h 车+油+路费）
+- race week / 减量周 → 优先 Mountain 1/2 + bike out
+- TSS 估算契约：plan 标 target_tss 必须含 commute（25km Z2 ~40-45 TSS / 30km Z2 ~50-55 TSS / 来回双倍）
+- 落点：[[athlete]] § 家附近可用爬坡场地 + § 4+2 经济性规则 + § 路骑 commute TSS 估算
+
+## 2026-05-09: plan v6.3 — 真实地形 + 路骑/trainer 混合（⚠️ 已被 v6.5 修正）
+
+- 触发：场地信息整合
+- ⚠️ v6.3 把 OU/30/30/opener 全放 trainer，违反用户后续给的 rule "室内 ≤threshold"
+
+## 2026-05-09: 用户 4 条修正 → plan v6.5 终版（⚠️ v6.6 已替换）
+
+- (1) chart 顺序、(2) 周末避 Mountain 1、(3) 室内 ≤threshold、(4) 5/12 工作
+- v6.5 把 commute Z2 显式写进 workout_text，但 chart 渲染仍有问题，被 v6.6 修正
+- v6.5 结构：
+  - 5/10 Sun 路骑 Mountain 2 OU 4×12min（180 TSS, OU fits 10-11min climb 完美）
+  - 5/11 Mon REST
+  - 5/12 Tue REST（工作）
+  - 5/13 Wed 路骑 Mountain 1 B race-rhythm 3×3×450W（175 TSS, 工作日 OK）
+  - 5/14 Thu 本地平路 30/30 + Z2（115 TSS, 5/13 sub-200 可背靠背）
+  - 5/15 Fri REST
+  - 5/16 Sat 本地平路 opener（50 TSS, 避 Mountain 1）
+  - 5/17 Sun race（80）
+- 8-day 600 TSS / 7-day 420 TSS — race week 减量上限
+- 4 条规则全部内化为 [[athlete]] HARD RULE
+- 落点：[[sessions/2026-05-09-plan-v6.5-final]]
+
+## 2026-05-09: 历史负荷上限分析（12 周数据）— ⚠️ 已被下条修正
+
+- 触发：用户问"最大能承受的负荷周/月是怎样"
+- 数据：12 周完整 TSS 分布从 W08-W19
+- 结论：单日峰值 280-285，单周峰值 1100-1200，持续高 800-900
+- ⚠️ **数据源错**：用了活动 icu_training_load 求和，漏手动登记 / 力量等
+- 修正版见下条
+
+## 2026-05-09: TSS 数据源契约修正（HARD RULE）
+
+- 触发：用户："4/13-4/19 是 468 不是 265"
+- 根因：我用了 `activity_list_clean.json` 的 `icu_training_load` 求和。这个会漏：
+  - 手动登记 TSS（如 4/14 ctlLoad=203 但活动表是 type=None / TSS=None）
+  - 力量训练（无 GPS 的 ride/strength session）
+  - 任何只在 wellness 表有记录但活动 API 无返回的训练
+- **HARD RULE**：周 TSS 必须用 `wellness_history.json` 的 `atlLoad` 或 `ctlLoad` 求和
+- 修正后近 10 周数据：
+  - 均值: 708 → **739** (+31)
+  - W08: 702 → 876
+  - W14: 885 → 994 (升级到高负荷)
+  - **W16: 265 → 468** (用户原始反馈点)
+- 修正后最大承受预测：
+  - 单日峰值: 280 → **300** (W14 4/1)
+  - 持续高上限: 800-900 → **900-1000 × 3-4 周**
+  - 4 周块上限: 3200-3400 → **3400-3700**
+  - 月均上限: ~800/周 → **~850/周**
+- 修正后频次：高负荷 2 → 3 周/10 周, 用户已经在"3:3:3:1 教科书周期化"区间运转
+- 落点：[[athlete]] § 历史负荷上限（数据源契约 + 修正值）
+- 落点：[[sessions/2026-05-09-tss-baseline-correction]]
+
+---
+
+## 2026-05-10 ｜ FTP 不动决策 + 热适应 hard rule + HRV 闸门覆盖 hard rule
+
+### FTP=300W 维持不动（再确认）
+- 触发: 5/10 OU 完成度 A 级（4 set 衰减<1%, target 330W avg 命中 329.5W）
+- ICU rolling FTP 算法估算 = **316W**（基于多窗口 power record 的算法）
+- 决策: **不动 ftp_set=300W，等 5/17 race + 5/24-5/27 双测试**
+- 理由: rolling FTP 是算法估算不是真测试；vault 已锁定 5/24 双测试 flag
+- icu_rolling_ftp=316W 信号存档作为参考（不作为锁定值）
+
+### 热适应训练架构 v2（HARD RULE，v1 同日撤回）
+- v1（已撤回）: 高温日 IF 收紧 + 避高温窗 — 把热当纯负面因子，错
+- 用户 push back: 5月赛季前需要主动训练热适应不能避热（race-specific 价值真实）
+- v2 核心: 区分高强度课（凉时段保功率）vs 热适应课（高温窗 Z2-Z3 主动暴露），**不混合**避免双折扣
+- 5/10 OU 案例验证: 高温混合做导致代谢端 dose 没拿满（W' 9/25kJ, HR Z5=0）
+- 落点: [[athlete]] § 高强度课 vs 热适应课分时段架构
+- 落点: [[sessions/2026-05-10-heat-adaptation-architecture]]
+
+### HRV 闸门覆盖规则（HARD RULE）
+- 触发: 5/10 HRV=64 主观覆盖闸门"60-64 → Z1 60min"成 OU 4 set
+- 规则: 每月最多 2 次覆盖；连续 14 天覆盖 → 闸门失效；不可覆盖 HRV <60 红色闸门；覆盖必须 4 主观依据 ≥3 项 yes
+- 落点: [[athlete]] § HRV 闸门覆盖规则
+
+### 5/11-5/17 plan 验证（v6.6 微调）
+- 5/11 30/30 保留但加 2 条硬约束: 早 6:30 出发避高温 + HRV 闸门收紧（≥66/63-65/<63/<60 四档）
+- 5/13 race-rhythm 不变（前提 5/11 没在热端炸）
+- 落点: [[sessions/2026-05-10-ou-execution-review]]
+
+---
+
+## 2026-05-10 ｜ OU 评分修正 + 课型 dose 评估标准 hard rule + 5/11 plan 再修正
+
+### OU 评分: A → A+ (修正)
+- 触发: 用户 push back "心率训练时本来就比比赛低，OU 强度不该让心率到 Z5；W' 课表你自己设计的，按要求踩当然只用这点；我不理解你不满意什么"
+- 三点 push back 全部站得住，教练 admit error
+- 教练之前用了 W' burner 课的标准评 OU 课——课型 dose 标准用错
+- OU 心率不到 Z5 + W' 不烧空 = OU 设计内的正常签名，不是 bug
+
+### 课型 dose 评估标准（HARD RULE）
+- 不同课型有不同的期望签名（OU/VO2max/W' burner/race-rhythm/SST 各异）
+- 教练评分前必先确认"这是什么课型？该看什么签名？"
+- "还有余量"≠ 没拿满，要看课型设计本意
+- 落点: [[athlete]] § 课型 dose 评估标准
+
+### 撤回的判断（5/10 同日 3 撤回）
+- ❌ "热在限速代谢端" — 错。今天功率全程命中 target，热没限速训练目标
+- ❌ "5/11 必须凉时段做 30/30" — 错，今天数据证明热里能完成 race-specific 高强度课
+- ❌ "v2 硬性分时段架构 hard rule" — 降级为推荐；用户混合负荷训练偏好为准
+
+### 5/11 plan 再修正
+- 5/11 30/30 时段用户自定（不是必须凉时段）
+- HRV 闸门保持
+- 热适应作为附加目标仍有效（周 2-3 次中午 Z2）但不强制分时段
+- 落点: [[sessions/2026-05-10-ou-rescore-correction]]
+
+### Anti-sycophancy 流程验证（成功案例）
+- 用户 push back 时教练没有立即变（先持有原立场）
+- Re-examine 数据，发现数据反向支持用户论点
+- admit error，修正 OU 评分 + 撤回相关 hard rule
+- 这是 anti-sycophancy 流程的正确执行: 不是顺从，是数据驱动的位置修正
+
+## 2026-10-16 ｜ 复训背景与基础期分析依据修正
+
+用户确认9/24摔车、10/2复训、常态可10–15h/周。撤回以伤后7–8h作为常态的判断及9h示例。只确认45s近期全力，不由5–20min近期滚动峰值下调FTP；保持账号300W作为待持续反馈校准的工作参考。基础期优先持续有氧/耐久与重复爬坡，短爆发保持；室内外结合。目标2027年6月Nationals是用户目标月份，官方日程待公布。完整证据见[[sessions/2026-10-16-power-review-and-2027-races]]。
