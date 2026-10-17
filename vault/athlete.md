@@ -60,6 +60,8 @@
 - 体重：读 `summary.icu_weight`（来自最新活动）
 - 90d PB：`snapshot.recent_pbs.<duration>min.watts_90d`，**注意是 rolling-window，不是真 all-out**，用之前先和我确认锚点
 - 校准过的爬坡 η 表：见 `~/.claude/projects/-mnt-d-Cycling/memory/calibrated_climbing_efficiency.md`，4-6%≈0.70 / 6-8%≈0.74 / 8-12%≈0.85+
+- **FTP 是随训练变化的，没有单一可信数值**（本人 2026-10-17）：`ftp_set` 只是 ICU 工作设置；ICU 算法 eFTP / rolling FTP 不作为某时期真实 FTP；本人不做、也不想做全力 FTP 测试，当前 FTP 也只是本人估计。跨时期比较强度时**不要用任何单一 FTP 换算百分比分区**，优先用绝对功率或本人实际完成的同类课（时长 × 功率 × 体感）对照。
+- **活动命名习惯**（本人 2026-10-17）：名字是随手写的。带 🐲 / 龙一 / 龙半 / 半打 的一般是在龙井骑；**这类活动若有 laps 记圈，大概率是 VO2 训练**。分类历史课型时据此判断，不按名字里的“阈值”“vo2”字面认定。
 
 ## TSS 负荷分级（用户自定义，HARD RULE 2026-05-09）
 
