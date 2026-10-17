@@ -46,7 +46,7 @@
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿（revision4：10/27改阈值课，Faber阈值版或LCK北向版本人当天二选一）；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。默认周二+周日两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿（revision5：10/27阈值课A Faber 315–325 / B LCK 3×10 305–320 / C 拉扯版三选一；LCK强度上调）；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。默认周二+周日两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
 - **教练互动偏好**：主动给有证据的判断与可检验假设，问少量真正改变方案的问题；别单向发课表或只顺从。腿酸反馈/课后恢复与Crazies角色见最新session。
