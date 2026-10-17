@@ -1,0 +1,734 @@
+{
+  "scope": "Six personally recorded LCK rides Aug4/Aug14/Sep11/Sep19/Oct8/Oct16; segment metadata from ICU, not official geometry.",
+  "method": "Time elapsed from ICU mapping; smoothed elevation 50m resampling plus 5-point/250m boxcar; grade distribution descriptive, not surveyed. Low speed <2m/s >=5sec; no cause assigned. Raw coordinates excluded.",
+  "lck_segments": [
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 547,
+      "end_index": 1256,
+      "elapsed_s": 709,
+      "distance_m": 6912.1,
+      "sample_mean_watts": 195.78420310296192,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        22.0
+      ],
+      "smoothed_gain_m": 18.5,
+      "smoothed_grade_p05_p95_pct": [
+        -1.44,
+        1.13
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 2093,
+      "end_index": 2773,
+      "elapsed_s": 680,
+      "distance_m": 6862.0,
+      "sample_mean_watts": 201.37941176470588,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        9.6,
+        21.8
+      ],
+      "smoothed_gain_m": 20.8,
+      "smoothed_grade_p05_p95_pct": [
+        -1.36,
+        1.31
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39886968,
+      "name": "LCK SB after the annoying traffic lights",
+      "start_index": 3017,
+      "end_index": 3458,
+      "elapsed_s": 441,
+      "distance_m": 4551.7,
+      "sample_mean_watts": 207.0,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.6,
+        24.6
+      ],
+      "smoothed_gain_m": 16.5,
+      "smoothed_grade_p05_p95_pct": [
+        -2.2,
+        1.66
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 3472,
+      "end_index": 4158,
+      "elapsed_s": 686,
+      "distance_m": 6864.0,
+      "sample_mean_watts": 204.8134110787172,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.4,
+        23.0
+      ],
+      "smoothed_gain_m": 19.5,
+      "smoothed_grade_p05_p95_pct": [
+        -1.36,
+        1.26
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 40053433,
+      "name": "Tour De LCK Reverse",
+      "start_index": 4160,
+      "end_index": 5529,
+      "elapsed_s": 1369,
+      "distance_m": 13762.2,
+      "sample_mean_watts": 204.88093498904308,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        25.0
+      ],
+      "smoothed_gain_m": 44.8,
+      "smoothed_grade_p05_p95_pct": [
+        -1.35,
+        1.23
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39886968,
+      "name": "LCK SB after the annoying traffic lights",
+      "start_index": 4396,
+      "end_index": 4819,
+      "elapsed_s": 423,
+      "distance_m": 4550.0,
+      "sample_mean_watts": 205.51063829787233,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.4,
+        25.0
+      ],
+      "smoothed_gain_m": 16.7,
+      "smoothed_grade_p05_p95_pct": [
+        -2.22,
+        1.48
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 4834,
+      "end_index": 5533,
+      "elapsed_s": 699,
+      "distance_m": 6864.6,
+      "sample_mean_watts": 202.60801144492132,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        22.4
+      ],
+      "smoothed_gain_m": 19.2,
+      "smoothed_grade_p05_p95_pct": [
+        -1.29,
+        1.36
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39886968,
+      "name": "LCK SB after the annoying traffic lights",
+      "start_index": 5755,
+      "end_index": 6173,
+      "elapsed_s": 418,
+      "distance_m": 4540.9,
+      "sample_mean_watts": 205.3803827751196,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.2,
+        25.4
+      ],
+      "smoothed_gain_m": 15.5,
+      "smoothed_grade_p05_p95_pct": [
+        -2.17,
+        1.61
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 6189,
+      "end_index": 6849,
+      "elapsed_s": 660,
+      "distance_m": 6864.7,
+      "sample_mean_watts": 207.45606060606062,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        22.8
+      ],
+      "smoothed_gain_m": 19.6,
+      "smoothed_grade_p05_p95_pct": [
+        -1.3,
+        1.28
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i172221671",
+      "date": "2026-08-04",
+      "segment_id": 39886968,
+      "name": "LCK SB after the annoying traffic lights",
+      "start_index": 7082,
+      "end_index": 7508,
+      "elapsed_s": 426,
+      "distance_m": 4548.7,
+      "sample_mean_watts": 214.24413145539907,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        13.2,
+        25.0
+      ],
+      "smoothed_gain_m": 14.6,
+      "smoothed_grade_p05_p95_pct": [
+        -2.06,
+        1.4
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 207,
+      "end_index": 754,
+      "elapsed_s": 547,
+      "distance_m": 6865.8,
+      "sample_mean_watts": 280.04753199268737,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        10.8,
+        22.4
+      ],
+      "smoothed_gain_m": 18.5,
+      "smoothed_grade_p05_p95_pct": [
+        -1.25,
+        1.36
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39359016,
+      "name": "LCK SOUTHBOUND",
+      "start_index": 756,
+      "end_index": 1216,
+      "elapsed_s": 460,
+      "distance_m": 5262.4,
+      "sample_mean_watts": 267.1391304347826,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.2,
+        24.4
+      ],
+      "smoothed_gain_m": 16.1,
+      "smoothed_grade_p05_p95_pct": [
+        -2.03,
+        0.81
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 1375,
+      "end_index": 1975,
+      "elapsed_s": 600,
+      "distance_m": 6858.1,
+      "sample_mean_watts": 256.875,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        22.6
+      ],
+      "smoothed_gain_m": 19.4,
+      "smoothed_grade_p05_p95_pct": [
+        -1.36,
+        1.27
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39359016,
+      "name": "LCK SOUTHBOUND",
+      "start_index": 1977,
+      "end_index": 2401,
+      "elapsed_s": 424,
+      "distance_m": 5261.0,
+      "sample_mean_watts": 272.4198113207547,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.8,
+        24.6
+      ],
+      "smoothed_gain_m": 15.2,
+      "smoothed_grade_p05_p95_pct": [
+        -1.84,
+        0.8
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 2558,
+      "end_index": 3162,
+      "elapsed_s": 604,
+      "distance_m": 6860.2,
+      "sample_mean_watts": 251.5976821192053,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.0,
+        22.2
+      ],
+      "smoothed_gain_m": 18.6,
+      "smoothed_grade_p05_p95_pct": [
+        -1.19,
+        1.05
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i175604504",
+      "date": "2026-08-14",
+      "segment_id": 39359016,
+      "name": "LCK SOUTHBOUND",
+      "start_index": 3164,
+      "end_index": 3553,
+      "elapsed_s": 389,
+      "distance_m": 5247.3,
+      "sample_mean_watts": 265.73521850899743,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        13.8,
+        25.0
+      ],
+      "smoothed_gain_m": 16.1,
+      "smoothed_grade_p05_p95_pct": [
+        -1.93,
+        0.74
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i185442926",
+      "date": "2026-09-11",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 210,
+      "end_index": 869,
+      "elapsed_s": 659,
+      "distance_m": 6861.1,
+      "sample_mean_watts": 228.62822458270105,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.4,
+        22.6
+      ],
+      "smoothed_gain_m": 17.5,
+      "smoothed_grade_p05_p95_pct": [
+        -1.17,
+        1.35
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i185442926",
+      "date": "2026-09-11",
+      "segment_id": 40053433,
+      "name": "Tour De LCK Reverse",
+      "start_index": 871,
+      "end_index": 2319,
+      "elapsed_s": 1460,
+      "distance_m": 13748.9,
+      "sample_mean_watts": 190.4468232044199,
+      "time_gap_seconds": 12,
+      "altitude_min_max_m": [
+        10.2,
+        24.8
+      ],
+      "smoothed_gain_m": 43.4,
+      "smoothed_grade_p05_p95_pct": [
+        -1.28,
+        1.24
+      ],
+      "low_speed_blocks": [
+        {
+          "start_offset_s": 772,
+          "duration_s": 16,
+          "distance_km": 6.854
+        }
+      ]
+    },
+    {
+      "activity": "i185442926",
+      "date": "2026-09-11",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 3045,
+      "end_index": 3628,
+      "elapsed_s": 583,
+      "distance_m": 6853.1,
+      "sample_mean_watts": 300.74271012006864,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        10.6,
+        22.2
+      ],
+      "smoothed_gain_m": 19.0,
+      "smoothed_grade_p05_p95_pct": [
+        -1.28,
+        1.46
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i185442926",
+      "date": "2026-09-11",
+      "segment_id": 40053433,
+      "name": "Tour De LCK Reverse",
+      "start_index": 3631,
+      "end_index": 5063,
+      "elapsed_s": 1434,
+      "distance_m": 13755.8,
+      "sample_mean_watts": 205.8840782122905,
+      "time_gap_seconds": 2,
+      "altitude_min_max_m": [
+        11.2,
+        24.2
+      ],
+      "smoothed_gain_m": 45.3,
+      "smoothed_grade_p05_p95_pct": [
+        -1.28,
+        1.38
+      ],
+      "low_speed_blocks": [
+        {
+          "start_offset_s": 580,
+          "duration_s": 6,
+          "distance_km": 5.324
+        }
+      ]
+    },
+    {
+      "activity": "i185442926",
+      "date": "2026-09-11",
+      "segment_id": 39359016,
+      "name": "LCK SOUTHBOUND",
+      "start_index": 5068,
+      "end_index": 5494,
+      "elapsed_s": 426,
+      "distance_m": 5263.0,
+      "sample_mean_watts": 292.12910798122067,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        13.4,
+        25.4
+      ],
+      "smoothed_gain_m": 16.1,
+      "smoothed_grade_p05_p95_pct": [
+        -1.75,
+        0.8
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i188237841",
+      "date": "2026-09-19",
+      "segment_id": 39567443,
+      "name": "Tour De LCK",
+      "start_index": 198,
+      "end_index": 1649,
+      "elapsed_s": 1451,
+      "distance_m": 13378.5,
+      "sample_mean_watts": 183.49896623018608,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.8,
+        26.6
+      ],
+      "smoothed_gain_m": 38.7,
+      "smoothed_grade_p05_p95_pct": [
+        -1.27,
+        1.1
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i188237841",
+      "date": "2026-09-19",
+      "segment_id": 39567443,
+      "name": "Tour De LCK",
+      "start_index": 1882,
+      "end_index": 3724,
+      "elapsed_s": 1846,
+      "distance_m": 14123.8,
+      "sample_mean_watts": 120.12214983713355,
+      "time_gap_seconds": 4,
+      "altitude_min_max_m": [
+        12.0,
+        25.2
+      ],
+      "smoothed_gain_m": 42.2,
+      "smoothed_grade_p05_p95_pct": [
+        -1.44,
+        1.2
+      ],
+      "low_speed_blocks": [
+        {
+          "start_offset_s": 184,
+          "duration_s": 11,
+          "distance_km": 1.458
+        }
+      ]
+    },
+    {
+      "activity": "i188237841",
+      "date": "2026-09-19",
+      "segment_id": 39332531,
+      "name": "New LCK Northbound - Lots of Yourinal's",
+      "start_index": 6288,
+      "end_index": 7055,
+      "elapsed_s": 767,
+      "distance_m": 6871.2,
+      "sample_mean_watts": 175.97783572359845,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.8,
+        22.8
+      ],
+      "smoothed_gain_m": 18.7,
+      "smoothed_grade_p05_p95_pct": [
+        -1.37,
+        1.26
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i195102040",
+      "date": "2026-10-08",
+      "segment_id": 39567443,
+      "name": "Tour De LCK",
+      "start_index": 6,
+      "end_index": 1386,
+      "elapsed_s": 1380,
+      "distance_m": 13598.4,
+      "sample_mean_watts": 201.3108695652174,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.2,
+        25.8
+      ],
+      "smoothed_gain_m": 38.6,
+      "smoothed_grade_p05_p95_pct": [
+        -1.27,
+        0.98
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i197967435",
+      "date": "2026-10-16",
+      "segment_id": 40192048,
+      "name": "New LCK Loop x 3",
+      "start_index": 225,
+      "end_index": 4360,
+      "elapsed_s": 4135,
+      "distance_m": 41371.5,
+      "sample_mean_watts": 225.12067714631198,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.0,
+        25.4
+      ],
+      "smoothed_gain_m": 132.6,
+      "smoothed_grade_p05_p95_pct": [
+        -1.4,
+        1.31
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i197967435",
+      "date": "2026-10-16",
+      "segment_id": 39567443,
+      "name": "Tour De LCK",
+      "start_index": 4375,
+      "end_index": 5715,
+      "elapsed_s": 1340,
+      "distance_m": 13605.5,
+      "sample_mean_watts": 227.99253731343285,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        11.2,
+        24.4
+      ],
+      "smoothed_gain_m": 42.0,
+      "smoothed_grade_p05_p95_pct": [
+        -1.27,
+        1.17
+      ],
+      "low_speed_blocks": []
+    },
+    {
+      "activity": "i197967435",
+      "date": "2026-10-16",
+      "segment_id": 39567443,
+      "name": "Tour De LCK",
+      "start_index": 5740,
+      "end_index": 7052,
+      "elapsed_s": 1312,
+      "distance_m": 13600.9,
+      "sample_mean_watts": 228.58384146341464,
+      "time_gap_seconds": 0,
+      "altitude_min_max_m": [
+        12.4,
+        25.4
+      ],
+      "smoothed_gain_m": 42.9,
+      "smoothed_grade_p05_p95_pct": [
+        -1.38,
+        1.27
+      ],
+      "low_speed_blocks": []
+    }
+  ],
+  "faber_geographic_returns": [
+    {
+      "activity": "i184403505",
+      "date": "2026-09-08",
+      "after_index": 2769,
+      "next_start_index": 2931,
+      "elapsed_s": 162,
+      "distance_m": 1504.5,
+      "sample_mean_watts": 33.68,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i184403505",
+      "date": "2026-09-08",
+      "after_index": 3157,
+      "next_start_index": 3336,
+      "elapsed_s": 179,
+      "distance_m": 1587.5,
+      "sample_mean_watts": 47.09,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i184403505",
+      "date": "2026-09-08",
+      "after_index": 3571,
+      "next_start_index": 3753,
+      "elapsed_s": 182,
+      "distance_m": 1582.3,
+      "sample_mean_watts": 47.91,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i184403505",
+      "date": "2026-09-08",
+      "after_index": 3982,
+      "next_start_index": 4162,
+      "elapsed_s": 180,
+      "distance_m": 1576.9,
+      "sample_mean_watts": 49.35,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i194051255",
+      "date": "2026-10-06",
+      "after_index": 2934,
+      "next_start_index": 3095,
+      "elapsed_s": 161,
+      "distance_m": 1481.2,
+      "sample_mean_watts": 28.87,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i194051255",
+      "date": "2026-10-06",
+      "after_index": 3330,
+      "next_start_index": 3511,
+      "elapsed_s": 181,
+      "distance_m": 1579.3,
+      "sample_mean_watts": 46.15,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i194051255",
+      "date": "2026-10-06",
+      "after_index": 3751,
+      "next_start_index": 3954,
+      "elapsed_s": 203,
+      "distance_m": 1585.8,
+      "sample_mean_watts": 40.79,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    },
+    {
+      "activity": "i194051255",
+      "date": "2026-10-06",
+      "after_index": 4193,
+      "next_start_index": 4388,
+      "elapsed_s": 195,
+      "distance_m": 1586.1,
+      "sample_mean_watts": 41.46,
+      "label": "ICU segment-end to next matched ascent-start; descriptive, not onset-calibrated physiological recovery interval"
+    }
+  ],
+  "limitations": [
+    "Barometric elevation/ICU mapping are not surveyed terrain. Full-loop mapped lengths vary, especially Sep19; repeatable Oct16 laps used for illustration.",
+    "Low-speed samples are not proof of a traffic-light location or its current state. Recorded absence of stops does not guarantee an uninterrupted future lap.",
+    "Segment mapped boundaries are not exact workout onsets. Prior onset-calibrated 4-min session evidence is in 2026-10-16-ride-trends.md.",
+    "Northernmost coordinate is used privately to identify direction reversal; no coordinates in shared output.",
+    "Training wattages and durations below are coach prescriptions, not measured physiological zone boundaries."
+  ],
+  "current_snapshot": {
+    "source": "icu/coach_memory/athlete_snapshot.json",
+    "updated_at": "2026-10-17T20:34:56.649418",
+    "ftp_set": 300
+  }
+}

@@ -33,19 +33,20 @@
 - [[training-plan]] — 2026-05 比赛块训练框架（历史参考，非当前计划）
 - [[racemap]] — 5 月 4 场赛事详细情报（GPX 路线 + 阶段功率 + 战术 + 补给 + 难度评估）
 - [[sites/mountain-3-climb]] — Mountain 3 单 climb 三段地形 (r1 陡 / r2 短陡+平路 / r3 长陡到顶)、stream 实测数据、训练适配建议（2026-05-12 锁定）
+- [[sites/lck-training-loop]] — 当前新加坡持续训练场地；本人记录地形及连续性边界
 - `sessions/` — 每次教练对话归档（按日期）
 
 ## 最近 5 次 session
 
+- 2026-10-17 — [[sessions/2026-10-17-two-hour-faber-lck-adjustment]] — 单次≥2h偏好；Faber整坡/下坡恢复；LCK地形实核，重排12.5h五骑周与赛周减天数。
 - 2026-10-17 — [[sessions/2026-10-17-faber-cp3-and-drcc-goals]] — 自查Faber双向与180s；新增拟报12/13 DRCC，八周方案替代旧四周；官方资格/GPX与段端点精度待核。
 - 2026-10-16 — [[sessions/2026-10-16-next-block-after-claude]] — Claude结果验收；用户确认57首攻/60再攻/74终点及8/30追赶掉队情境；10/19起四周持续课+Crazies试行，详见plans。
 - 2026-10-16 — [[sessions/2026-10-16-june9-peak-and-attack-role]] — 最后巅峰延至6/9，全力CP5补回；Crazies主动1–2次短进攻，偶尔持续拉扯后再加速受限；Claude算法提示词已交付。
 - 2026-10-16 — [[sessions/2026-10-16-peak-baseline-and-crazies]] — 巅峰核心窗口4/1–6/1（末期另补6/9）；5/27首爬近全力锚点核验；停训时间线、Crazies反复加速、同一功率计与室内散热补给；不虚报未来FTP保底。
-- 2026-10-16 — [[sessions/2026-10-16-power-review-and-2027-races]] — 摔车9/24、复训10/2；10–15h常态；仅45s近期全力；曲线+同课stream复核；2027赛事候选与身份资格已记。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。五骑两休、每周最多两主要质量日，测试/团骑计入；减量/比赛周可低于10h，未写ICU日历。
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17场地版：正常单次≥2h、Faber约4min整坡/下坡恢复、LCK持续；12.5h五骑两休，最多两主要质量日，测试/团骑计入。赛周减天数而非强塞短课，未写ICU日历。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
 - **算法协作偏好**：复杂批量计算先给同项目Claude Code可执行prompt，教练复核整合；Claude已完成Cycling-lth，教练已验收；后续进度仍由bd跟踪，数据结果见最新session。
