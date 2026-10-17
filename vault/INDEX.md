@@ -20,7 +20,7 @@
 | 这次教练会话的完整记录 | `sessions/YYYY-MM-DD-<slug>.md` 新建 |
 | FTP / CP / 训练范式调整 | `decisions.md` append（带时间戳） |
 | 比赛日历变更（新增/取消/优先级改） | `races.md` 替换对应段落 |
-| KOM / 段目标（活跃 + 已完成） | `kom-targets.md` 替换对应段落 |
+| KOM / 段目标（活跃 + 已完成） | `kom-targets.md`；当前Faber专页 `kom-targets-mount-faber.md` |
 | 长期身体特质 / 装备 / 受伤史 | `athlete.md` 仅在事实变化时更新 |
 | 临时 / sync 后即弃 | **不进 vault**，留在 `coach_memory/` |
 
@@ -29,7 +29,7 @@
 - [[athlete]] — 长期定性特质（Type-II / 受伤史 / 装备 / 训练偏好）
 - [[decisions]] — 教练决策日志（FTP 调整、范式转向、协议变更）
 - [[races]] — 比赛日历 + 历史结果
-- [[kom-targets]] — 活跃 KOM 段目标 + 已完成
+- [[kom-targets]] — 历史林峰目标；当前Faber双向见 [[kom-targets-mount-faber]]
 - [[training-plan]] — 2026-05 比赛块训练框架（历史参考，非当前计划）
 - [[racemap]] — 5 月 4 场赛事详细情报（GPX 路线 + 阶段功率 + 战术 + 补给 + 难度评估）
 - [[sites/mountain-3-climb]] — Mountain 3 单 climb 三段地形 (r1 陡 / r2 短陡+平路 / r3 长陡到顶)、stream 实测数据、训练适配建议（2026-05-12 锁定）
@@ -37,15 +37,16 @@
 
 ## 最近 5 次 session
 
+- 2026-10-17 — [[sessions/2026-10-17-faber-cp3-and-drcc-goals]] — 自查Faber双向与180s；新增拟报12/13 DRCC，八周方案替代旧四周；官方资格/GPX与段端点精度待核。
 - 2026-10-16 — [[sessions/2026-10-16-next-block-after-claude]] — Claude结果验收；用户确认57首攻/60再攻/74终点及8/30追赶掉队情境；10/19起四周持续课+Crazies试行，详见plans。
 - 2026-10-16 — [[sessions/2026-10-16-june9-peak-and-attack-role]] — 最后巅峰延至6/9，全力CP5补回；Crazies主动1–2次短进攻，偶尔持续拉扯后再加速受限；Claude算法提示词已交付。
 - 2026-10-16 — [[sessions/2026-10-16-peak-baseline-and-crazies]] — 巅峰核心窗口4/1–6/1（末期另补6/9）；5/27首爬近全力锚点核验；停训时间线、Crazies反复加速、同一功率计与室内散热补给；不虚报未来FTP保底。
 - 2026-10-16 — [[sessions/2026-10-16-power-review-and-2027-races]] — 摔车9/24、复训10/2；10–15h常态；仅45s近期全力；曲线+同课stream复核；2027赛事候选与身份资格已记。
-- 2026-10-16 — [[sessions/2026-10-16-base-training-direction]] — 最新数据同步；目标2027长期发展；基础期四骑行日候选框架，待确认赛事类型、力量经验和当前疼痛。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-four-week-base-and-crazies]]（10/19–11/15，正常周12.5–13.5h＋真实减量周，周一/五休、周二持续课、周日实战）；尚未写ICU日历，实际完成以新活动与反馈为准。
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。五骑两休、每周最多两主要质量日，测试/团骑计入；减量/比赛周可低于10h，未写ICU日历。
+- **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
 - **算法协作偏好**：复杂批量计算先给同项目Claude Code可执行prompt，教练复核整合；Claude已完成Cycling-lth，教练已验收；后续进度仍由bd跟踪，数据结果见最新session。
 
@@ -53,7 +54,7 @@
 
 - **2026-10-16更新**：以本次power-review session为准；目标2027 Nationals，常态10–15h，身体良好。9h示例已被新信息修正；出生/国籍/执照见athlete，勿反复问。
 
-- **2026-10-16 当前入口**：目标为2027年长期备赛、暂无日期；不喜欢天天训练，最多每周两次3.5h以上。5月比赛块的日程/状态旗标已归档至 [[archive/2026-05-race-block-flags]]，不能作为当前课表或生理结论。
+- **2026-10-16 当前入口**：长期目标为2027备赛；短期新增12/13 DRCC（10/17）；不喜欢天天训练，最多每周两次3.5h以上。5月比赛块的日程/状态旗标已归档至 [[archive/2026-05-race-block-flags]]，不能作为当前课表或生理结论。
 
 > 任何"未完结"或"需要关注"的事，写在这里，解决后划掉。
 

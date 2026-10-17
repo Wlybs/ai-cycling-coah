@@ -1,0 +1,763 @@
+{
+  "retrieved_date": "2026-10-17",
+  "scope": "Ride activities 2026-01-01 to 2026-10-17 with has_segments; 170 segment files scanned, 7 Faber rides, no request errors",
+  "method": "Mapped elapsed=time[end_index]-time[start_index]; watts uses [start,end), zeros included. Segment endpoints are those returned by ICU, not independently geospatially aligned or onset-shifted. Strict 180-s sample mean only with 1 Hz complete streams; no gap bridging. Not official Strava effort elapsed or certified all-time segment PR. GPS not published.",
+  "rows": [
+    {
+      "date": "2026-08-02",
+      "activity": "i171572929",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 10711,
+      "end_index": 10973,
+      "mapped_elapsed_s": 262,
+      "sample_mean_watts_start_inclusive_end_exclusive": 323.3893129770992,
+      "one_second_complete": true,
+      "distance_m": 1588.0099999999948,
+      "best180_within": {
+        "watts": 335.0722222222222,
+        "start_index": 10721,
+        "end_index_exclusive": 10901,
+        "start_second": 12821,
+        "seconds": 180
+      },
+      "mean_hr": 180.5114503816794
+    },
+    {
+      "date": "2026-08-08",
+      "activity": "i173586493",
+      "segment_id": 10857144,
+      "name": "Mount Faber to Faber Peak",
+      "start_index": 2546,
+      "end_index": 2836,
+      "mapped_elapsed_s": 512,
+      "sample_mean_watts_start_inclusive_end_exclusive": null,
+      "one_second_complete": false,
+      "distance_m": 1857.9400000000023,
+      "best180_within": {
+        "watts": 395.05,
+        "start_index": 2637,
+        "end_index_exclusive": 2817,
+        "start_second": 3186,
+        "seconds": 180
+      },
+      "mean_hr": 167.98620689655172
+    },
+    {
+      "date": "2026-08-08",
+      "activity": "i173586493",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 2641,
+      "end_index": 2864,
+      "mapped_elapsed_s": 223,
+      "sample_mean_watts_start_inclusive_end_exclusive": 373.2017937219731,
+      "one_second_complete": true,
+      "distance_m": 1572.4900000000016,
+      "best180_within": {
+        "watts": 392.1111111111111,
+        "start_index": 2641,
+        "end_index_exclusive": 2821,
+        "start_second": 3190,
+        "seconds": 180
+      },
+      "mean_hr": 184.457399103139
+    },
+    {
+      "date": "2026-08-08",
+      "activity": "i173586493",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3225,
+      "end_index": 3483,
+      "mapped_elapsed_s": 258,
+      "sample_mean_watts_start_inclusive_end_exclusive": 272.5813953488372,
+      "one_second_complete": true,
+      "distance_m": 1438.050000000003,
+      "best180_within": {
+        "watts": 286.5111111111111,
+        "start_index": 3291,
+        "end_index_exclusive": 3471,
+        "start_second": 4528,
+        "seconds": 180
+      },
+      "mean_hr": 166.2906976744186
+    },
+    {
+      "date": "2026-08-08",
+      "activity": "i173586493",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3650,
+      "end_index": 3970,
+      "mapped_elapsed_s": 320,
+      "sample_mean_watts_start_inclusive_end_exclusive": 203.753125,
+      "one_second_complete": true,
+      "distance_m": 1445.2000000000007,
+      "best180_within": {
+        "watts": 197.0888888888889,
+        "start_index": 3790,
+        "end_index_exclusive": 3970,
+        "start_second": 5144,
+        "seconds": 180
+      },
+      "mean_hr": 161.48125
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 2922,
+      "end_index": 3164,
+      "mapped_elapsed_s": 242,
+      "sample_mean_watts_start_inclusive_end_exclusive": 351.5123966942149,
+      "one_second_complete": true,
+      "distance_m": 1598.1100000000006,
+      "best180_within": {
+        "watts": 365.56111111111113,
+        "start_index": 2939,
+        "end_index_exclusive": 3119,
+        "start_second": 3247,
+        "seconds": 180
+      },
+      "mean_hr": 174.5495867768595
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 3588,
+      "end_index": 3826,
+      "mapped_elapsed_s": 238,
+      "sample_mean_watts_start_inclusive_end_exclusive": 352.9579831932773,
+      "one_second_complete": true,
+      "distance_m": 1595.8199999999997,
+      "best180_within": {
+        "watts": 366.7388888888889,
+        "start_index": 3588,
+        "end_index_exclusive": 3768,
+        "start_second": 3926,
+        "seconds": 180
+      },
+      "mean_hr": 179.75210084033614
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3994,
+      "end_index": 4238,
+      "mapped_elapsed_s": 244,
+      "sample_mean_watts_start_inclusive_end_exclusive": 301.99590163934425,
+      "one_second_complete": true,
+      "distance_m": 1480.2099999999991,
+      "best180_within": {
+        "watts": 304.72777777777776,
+        "start_index": 3994,
+        "end_index_exclusive": 4174,
+        "start_second": 4332,
+        "seconds": 180
+      },
+      "mean_hr": 179.28688524590163
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4447,
+      "end_index": 4681,
+      "mapped_elapsed_s": 234,
+      "sample_mean_watts_start_inclusive_end_exclusive": 325.62820512820514,
+      "one_second_complete": true,
+      "distance_m": 1484.3899999999994,
+      "best180_within": {
+        "watts": 327.1388888888889,
+        "start_index": 4447,
+        "end_index_exclusive": 4627,
+        "start_second": 4948,
+        "seconds": 180
+      },
+      "mean_hr": 177.83760683760684
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4883,
+      "end_index": 5126,
+      "mapped_elapsed_s": 243,
+      "sample_mean_watts_start_inclusive_end_exclusive": 306.4320987654321,
+      "one_second_complete": true,
+      "distance_m": 1488.3700000000026,
+      "best180_within": {
+        "watts": 307.9,
+        "start_index": 4888,
+        "end_index_exclusive": 5068,
+        "start_second": 5389,
+        "seconds": 180
+      },
+      "mean_hr": 177.63374485596708
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 2450,
+      "end_index": 2679,
+      "mapped_elapsed_s": 229,
+      "sample_mean_watts_start_inclusive_end_exclusive": 343.50655021834064,
+      "one_second_complete": true,
+      "distance_m": 1485.1599999999999,
+      "best180_within": {
+        "watts": 346.1777777777778,
+        "start_index": 2499,
+        "end_index_exclusive": 2679,
+        "start_second": 2995,
+        "seconds": 180
+      },
+      "mean_hr": 170.59825327510916
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 2835,
+      "end_index": 3097,
+      "mapped_elapsed_s": 262,
+      "sample_mean_watts_start_inclusive_end_exclusive": 314.3206106870229,
+      "one_second_complete": true,
+      "distance_m": 1657.9700000000012,
+      "best180_within": {
+        "watts": 330.75,
+        "start_index": 2849,
+        "end_index_exclusive": 3029,
+        "start_second": 3345,
+        "seconds": 180
+      },
+      "mean_hr": 170.59923664122138
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3258,
+      "end_index": 3526,
+      "mapped_elapsed_s": 268,
+      "sample_mean_watts_start_inclusive_end_exclusive": 302.50373134328356,
+      "one_second_complete": true,
+      "distance_m": 1661.2199999999975,
+      "best180_within": {
+        "watts": 315.97222222222223,
+        "start_index": 3336,
+        "end_index_exclusive": 3516,
+        "start_second": 3832,
+        "seconds": 180
+      },
+      "mean_hr": 171.6902985074627
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4066,
+      "end_index": 4306,
+      "mapped_elapsed_s": 240,
+      "sample_mean_watts_start_inclusive_end_exclusive": 300.22083333333336,
+      "one_second_complete": true,
+      "distance_m": 1487.7800000000025,
+      "best180_within": {
+        "watts": 309.09444444444443,
+        "start_index": 4066,
+        "end_index_exclusive": 4246,
+        "start_second": 5704,
+        "seconds": 180
+      },
+      "mean_hr": 169.25
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4481,
+      "end_index": 4719,
+      "mapped_elapsed_s": 238,
+      "sample_mean_watts_start_inclusive_end_exclusive": 317.3697478991597,
+      "one_second_complete": true,
+      "distance_m": 1478.7599999999948,
+      "best180_within": {
+        "watts": 328.1611111111111,
+        "start_index": 4497,
+        "end_index_exclusive": 4677,
+        "start_second": 6135,
+        "seconds": 180
+      },
+      "mean_hr": 174.1596638655462
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4946,
+      "end_index": 5228,
+      "mapped_elapsed_s": 282,
+      "sample_mean_watts_start_inclusive_end_exclusive": 259.3262411347518,
+      "one_second_complete": true,
+      "distance_m": 1485.979999999996,
+      "best180_within": {
+        "watts": 291.90555555555557,
+        "start_index": 5038,
+        "end_index_exclusive": 5218,
+        "start_second": 6676,
+        "seconds": 180
+      },
+      "mean_hr": 159.61702127659575
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 5427,
+      "end_index": 5671,
+      "mapped_elapsed_s": 244,
+      "sample_mean_watts_start_inclusive_end_exclusive": 301.1803278688525,
+      "one_second_complete": true,
+      "distance_m": 1484.0999999999985,
+      "best180_within": {
+        "watts": 311.84444444444443,
+        "start_index": 5454,
+        "end_index_exclusive": 5634,
+        "start_second": 7092,
+        "seconds": 180
+      },
+      "mean_hr": 172.8155737704918
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 5864,
+      "end_index": 6144,
+      "mapped_elapsed_s": 280,
+      "sample_mean_watts_start_inclusive_end_exclusive": 256.425,
+      "one_second_complete": true,
+      "distance_m": 1495.8500000000058,
+      "best180_within": {
+        "watts": 267.3,
+        "start_index": 5952,
+        "end_index_exclusive": 6132,
+        "start_second": 7590,
+        "seconds": 180
+      },
+      "mean_hr": 163.41785714285714
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 6648,
+      "end_index": 6921,
+      "mapped_elapsed_s": 273,
+      "sample_mean_watts_start_inclusive_end_exclusive": 305.57875457875457,
+      "one_second_complete": true,
+      "distance_m": 1589.5899999999965,
+      "best180_within": {
+        "watts": 313.97777777777776,
+        "start_index": 6699,
+        "end_index_exclusive": 6879,
+        "start_second": 8809,
+        "seconds": 180
+      },
+      "mean_hr": 162.2051282051282
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 2519,
+      "end_index": 2769,
+      "mapped_elapsed_s": 250,
+      "sample_mean_watts_start_inclusive_end_exclusive": 348.048,
+      "one_second_complete": true,
+      "distance_m": 1589.7400000000016,
+      "best180_within": {
+        "watts": 355.8833333333333,
+        "start_index": 2580,
+        "end_index_exclusive": 2760,
+        "start_second": 2960,
+        "seconds": 180
+      },
+      "mean_hr": 168.704
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 2931,
+      "end_index": 3157,
+      "mapped_elapsed_s": 226,
+      "sample_mean_watts_start_inclusive_end_exclusive": 350.51769911504425,
+      "one_second_complete": true,
+      "distance_m": 1475.9599999999991,
+      "best180_within": {
+        "watts": 347.96666666666664,
+        "start_index": 2951,
+        "end_index_exclusive": 3131,
+        "start_second": 3331,
+        "seconds": 180
+      },
+      "mean_hr": 174.358407079646
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3336,
+      "end_index": 3571,
+      "mapped_elapsed_s": 235,
+      "sample_mean_watts_start_inclusive_end_exclusive": 329.8595744680851,
+      "one_second_complete": true,
+      "distance_m": 1473.5299999999988,
+      "best180_within": {
+        "watts": 329.7888888888889,
+        "start_index": 3391,
+        "end_index_exclusive": 3571,
+        "start_second": 3771,
+        "seconds": 180
+      },
+      "mean_hr": 173.30212765957447
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3753,
+      "end_index": 3982,
+      "mapped_elapsed_s": 229,
+      "sample_mean_watts_start_inclusive_end_exclusive": 339.353711790393,
+      "one_second_complete": true,
+      "distance_m": 1480.0000000000036,
+      "best180_within": {
+        "watts": 338.9277777777778,
+        "start_index": 3802,
+        "end_index_exclusive": 3982,
+        "start_second": 4182,
+        "seconds": 180
+      },
+      "mean_hr": 176.33187772925766
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4162,
+      "end_index": 4396,
+      "mapped_elapsed_s": 234,
+      "sample_mean_watts_start_inclusive_end_exclusive": 331.88461538461536,
+      "one_second_complete": true,
+      "distance_m": 1478.2900000000009,
+      "best180_within": {
+        "watts": 329.6666666666667,
+        "start_index": 4162,
+        "end_index_exclusive": 4342,
+        "start_second": 4542,
+        "seconds": 180
+      },
+      "mean_hr": 177.33760683760684
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 2676,
+      "end_index": 2934,
+      "mapped_elapsed_s": 258,
+      "sample_mean_watts_start_inclusive_end_exclusive": 330.70542635658916,
+      "one_second_complete": true,
+      "distance_m": 1590.869999999999,
+      "best180_within": {
+        "watts": 342.9611111111111,
+        "start_index": 2743,
+        "end_index_exclusive": 2923,
+        "start_second": 3206,
+        "seconds": 180
+      },
+      "mean_hr": 173.41860465116278
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3095,
+      "end_index": 3330,
+      "mapped_elapsed_s": 235,
+      "sample_mean_watts_start_inclusive_end_exclusive": 340.17446808510635,
+      "one_second_complete": true,
+      "distance_m": 1480.5900000000001,
+      "best180_within": {
+        "watts": 338.74444444444447,
+        "start_index": 3150,
+        "end_index_exclusive": 3330,
+        "start_second": 3613,
+        "seconds": 180
+      },
+      "mean_hr": 177.9787234042553
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3511,
+      "end_index": 3751,
+      "mapped_elapsed_s": 240,
+      "sample_mean_watts_start_inclusive_end_exclusive": 325.7083333333333,
+      "one_second_complete": true,
+      "distance_m": 1478.4599999999955,
+      "best180_within": {
+        "watts": 325.00555555555553,
+        "start_index": 3513,
+        "end_index_exclusive": 3693,
+        "start_second": 3976,
+        "seconds": 180
+      },
+      "mean_hr": 177.68333333333334
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3954,
+      "end_index": 4193,
+      "mapped_elapsed_s": 239,
+      "sample_mean_watts_start_inclusive_end_exclusive": 329.8410041841004,
+      "one_second_complete": true,
+      "distance_m": 1480.8199999999997,
+      "best180_within": {
+        "watts": 328.50555555555553,
+        "start_index": 3956,
+        "end_index_exclusive": 4136,
+        "start_second": 4419,
+        "seconds": 180
+      },
+      "mean_hr": 178.60251046025104
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4388,
+      "end_index": 4618,
+      "mapped_elapsed_s": 230,
+      "sample_mean_watts_start_inclusive_end_exclusive": 345.61739130434785,
+      "one_second_complete": true,
+      "distance_m": 1478.949999999997,
+      "best180_within": {
+        "watts": 346.7111111111111,
+        "start_index": 4428,
+        "end_index_exclusive": 4608,
+        "start_second": 4891,
+        "seconds": 180
+      },
+      "mean_hr": 182.4217391304348
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "segment_id": 633867,
+      "name": "Mt Faber Rd Climb (to top)",
+      "start_index": 2834,
+      "end_index": 3086,
+      "mapped_elapsed_s": 252,
+      "sample_mean_watts_start_inclusive_end_exclusive": 343.04761904761904,
+      "one_second_complete": true,
+      "distance_m": 1590.0800000000017,
+      "best180_within": {
+        "watts": 353.2944444444444,
+        "start_index": 2834,
+        "end_index_exclusive": 3014,
+        "start_second": 3305,
+        "seconds": 180
+      },
+      "mean_hr": 174.98809523809524
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3215,
+      "end_index": 3476,
+      "mapped_elapsed_s": 261,
+      "sample_mean_watts_start_inclusive_end_exclusive": 321.39080459770116,
+      "one_second_complete": true,
+      "distance_m": 1652.3600000000006,
+      "best180_within": {
+        "watts": 340.43888888888887,
+        "start_index": 3237,
+        "end_index_exclusive": 3417,
+        "start_second": 3708,
+        "seconds": 180
+      },
+      "mean_hr": 173.60536398467434
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 3648,
+      "end_index": 3929,
+      "mapped_elapsed_s": 281,
+      "sample_mean_watts_start_inclusive_end_exclusive": 292.4128113879004,
+      "one_second_complete": true,
+      "distance_m": 1668.3099999999977,
+      "best180_within": {
+        "watts": 323.3388888888889,
+        "start_index": 3691,
+        "end_index_exclusive": 3871,
+        "start_second": 4162,
+        "seconds": 180
+      },
+      "mean_hr": 172.1138790035587
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "segment_id": 6661458,
+      "name": "RT FABER ascent",
+      "start_index": 4103,
+      "end_index": 4367,
+      "mapped_elapsed_s": 264,
+      "sample_mean_watts_start_inclusive_end_exclusive": 316.7386363636364,
+      "one_second_complete": true,
+      "distance_m": 1657.7200000000012,
+      "best180_within": {
+        "watts": 342.18333333333334,
+        "start_index": 4187,
+        "end_index_exclusive": 4367,
+        "start_second": 4658,
+        "seconds": 180
+      },
+      "mean_hr": 175.0340909090909
+    }
+  ],
+  "ride_best180": [
+    {
+      "date": "2026-08-02",
+      "activity": "i171572929",
+      "best180": {
+        "watts": 335.0722222222222,
+        "start_index": 10721,
+        "end_index_exclusive": 10901,
+        "start_second": 12821,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "activity": "i173586493",
+      "best180": {
+        "watts": 395.05,
+        "start_index": 2637,
+        "end_index_exclusive": 2817,
+        "start_second": 3186,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "activity": "i178140736",
+      "best180": {
+        "watts": 366.7388888888889,
+        "start_index": 3588,
+        "end_index_exclusive": 3768,
+        "start_second": 3926,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "activity": "i179448185",
+      "best180": {
+        "watts": 346.71666666666664,
+        "start_index": 2505,
+        "end_index_exclusive": 2685,
+        "start_second": 3001,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "best180": {
+        "watts": 355.8833333333333,
+        "start_index": 2580,
+        "end_index_exclusive": 2760,
+        "start_second": 2960,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "best180": {
+        "watts": 348.1388888888889,
+        "start_index": 4445,
+        "end_index_exclusive": 4625,
+        "start_second": 4908,
+        "seconds": 180
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "best180": {
+        "watts": 354.5388888888889,
+        "start_index": 5421,
+        "end_index_exclusive": 5601,
+        "start_second": 7051,
+        "seconds": 180
+      }
+    }
+  ],
+  "global_curve_source_raw180": {
+    "activity": "i156006343",
+    "date": "2026-06-10",
+    "best180": {
+      "watts": 420.8777777777778,
+      "start_index": 1540,
+      "end_index_exclusive": 1720,
+      "start_second": 2107,
+      "seconds": 180
+    }
+  },
+  "missing_segment_errors": [],
+  "limitations": [
+    "ICU mapped endpoints may differ: RT FABER ascent distance 1652–1668m on Oct13 versus roughly1474–1481m on Sep8/Oct6. Do not translate mapped elapsed differences into ability change.",
+    "Only mapped effort times from 2026 rides with available segment data; official Strava effort elapsed and all-history PR status are not available.",
+    "180s rolling sample peaks are not athlete-confirmed standalone all-out tests."
+  ]
+}
