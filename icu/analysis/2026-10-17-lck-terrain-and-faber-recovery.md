@@ -1,5 +1,7 @@
 # 2026-10-17：LCK地形、Faber恢复与实际课型
 
+> 后续本人反馈与真实work恢复复核已补充至2026-10-17-faber-actual-recovery-review.md；下文4–5min为旧教练试行建议，不是自然恢复规律。当前以方案revision3为准，LCK常规只考虑U-turn。
+
 ## 数据及方法
 本轮重新运行原生sync成功。snapshot更新2026-10-17T20:34:56，ftp_set300W，fitness当日CTL73.9/ATL92.5/TSB−18.6；wellness HRV71/RHR47/睡7h31。描述性路线结果来自本人Garmin来源ICU活动及已关联Strava segment，不是网络路线模板。
 

@@ -1,0 +1,266 @@
+{
+  "updated_date_sg": "2026-10-17",
+  "method": "Recomputed original time/watts streams using previously onset/offset-calibrated workout indexes in 2026-10-16-ride-trends.json, not geographic segment endpoints or FIT cumulative array indexes. All interior samples/zeros retained. Recovery=[preceding work end,next work onset). Oct13 uses first4 contiguous-course reps, excludes later unrelated effort.",
+  "source_boundary_method": "ICU true stream indexes; boundary +-8 samples; 3 consecutive >=70% middle-work median onset, 3 consecutive below offset; all interior samples retained. This is a work/rest boundary threshold, not a physiological threshold.",
+  "rides": [
+    {
+      "date": "2026-09-08",
+      "activity": "i184403505",
+      "work": [
+        {
+          "rep": 1,
+          "start_index": 2517,
+          "end_index_exclusive": 2762,
+          "elapsed_s": 245,
+          "mean_watts": 357.23673469387757,
+          "first30_watts": 370.9,
+          "last60_watts": 368.3833333333333
+        },
+        {
+          "rep": 2,
+          "start_index": 2921,
+          "end_index_exclusive": 3166,
+          "elapsed_s": 245,
+          "mean_watts": 353.7061224489796,
+          "first30_watts": 382.46666666666664,
+          "last60_watts": 362.45
+        },
+        {
+          "rep": 3,
+          "start_index": 3323,
+          "end_index_exclusive": 3580,
+          "elapsed_s": 257,
+          "mean_watts": 333.1945525291829,
+          "first30_watts": 343.46666666666664,
+          "last60_watts": 344.05
+        },
+        {
+          "rep": 4,
+          "start_index": 3740,
+          "end_index_exclusive": 3992,
+          "elapsed_s": 252,
+          "mean_watts": 342.17063492063494,
+          "first30_watts": 356.96666666666664,
+          "last60_watts": 350.85
+        },
+        {
+          "rep": 5,
+          "start_index": 4149,
+          "end_index_exclusive": 4407,
+          "elapsed_s": 258,
+          "mean_watts": 336.5968992248062,
+          "first30_watts": 379.73333333333335,
+          "last60_watts": 350.35
+        }
+      ],
+      "recovery": [
+        {
+          "after_rep": 1,
+          "start_index": 2762,
+          "end_index_exclusive": 2921,
+          "elapsed_s": 159,
+          "sample_mean_watts": 8.81132075471698,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 2,
+          "start_index": 3166,
+          "end_index_exclusive": 3323,
+          "elapsed_s": 157,
+          "sample_mean_watts": 3.8853503184713376,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 3,
+          "start_index": 3580,
+          "end_index_exclusive": 3740,
+          "elapsed_s": 160,
+          "sample_mean_watts": 2.65625,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 4,
+          "start_index": 3992,
+          "end_index_exclusive": 4149,
+          "elapsed_s": 157,
+          "sample_mean_watts": 0.8152866242038217,
+          "max_recording_step_s": 1
+        }
+      ],
+      "recovery_median_s": 158.0
+    },
+    {
+      "date": "2026-10-06",
+      "activity": "i194051255",
+      "work": [
+        {
+          "rep": 1,
+          "start_index": 2675,
+          "end_index_exclusive": 2924,
+          "elapsed_s": 249,
+          "mean_watts": 340.714859437751,
+          "first30_watts": 330.1333333333333,
+          "last60_watts": 351.4
+        },
+        {
+          "rep": 2,
+          "start_index": 3083,
+          "end_index_exclusive": 3337,
+          "elapsed_s": 254,
+          "mean_watts": 341.46062992125985,
+          "first30_watts": 353.1666666666667,
+          "last60_watts": 346.1166666666667
+        },
+        {
+          "rep": 3,
+          "start_index": 3497,
+          "end_index_exclusive": 3759,
+          "elapsed_s": 262,
+          "mean_watts": 327.62595419847327,
+          "first30_watts": 361.6666666666667,
+          "last60_watts": 332.26666666666665
+        },
+        {
+          "rep": 4,
+          "start_index": 3940,
+          "end_index_exclusive": 4200,
+          "elapsed_s": 260,
+          "mean_watts": 333.6923076923077,
+          "first30_watts": 359.23333333333335,
+          "last60_watts": 340.5833333333333
+        },
+        {
+          "rep": 5,
+          "start_index": 4376,
+          "end_index_exclusive": 4625,
+          "elapsed_s": 249,
+          "mean_watts": 350.16064257028114,
+          "first30_watts": 367.96666666666664,
+          "last60_watts": 355.6666666666667
+        }
+      ],
+      "recovery": [
+        {
+          "after_rep": 1,
+          "start_index": 2924,
+          "end_index_exclusive": 3083,
+          "elapsed_s": 159,
+          "sample_mean_watts": 6.2578616352201255,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 2,
+          "start_index": 3337,
+          "end_index_exclusive": 3497,
+          "elapsed_s": 160,
+          "sample_mean_watts": 5.11875,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 3,
+          "start_index": 3759,
+          "end_index_exclusive": 3940,
+          "elapsed_s": 181,
+          "sample_mean_watts": 2.1270718232044197,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 4,
+          "start_index": 4200,
+          "end_index_exclusive": 4376,
+          "elapsed_s": 176,
+          "sample_mean_watts": 4.079545454545454,
+          "max_recording_step_s": 1
+        }
+      ],
+      "recovery_median_s": 168.0
+    },
+    {
+      "date": "2026-10-13",
+      "activity": "i196664180",
+      "work": [
+        {
+          "rep": 1,
+          "start_index": 2834,
+          "end_index_exclusive": 3078,
+          "elapsed_s": 244,
+          "mean_watts": 352.70081967213116,
+          "first30_watts": 377.96666666666664,
+          "last60_watts": 350.3666666666667
+        },
+        {
+          "rep": 2,
+          "start_index": 3233,
+          "end_index_exclusive": 3481,
+          "elapsed_s": 248,
+          "mean_watts": 343.4717741935484,
+          "first30_watts": 379.06666666666666,
+          "last60_watts": 354.81666666666666
+        },
+        {
+          "rep": 3,
+          "start_index": 3681,
+          "end_index_exclusive": 3936,
+          "elapsed_s": 255,
+          "mean_watts": 323.3764705882353,
+          "first30_watts": 340.93333333333334,
+          "last60_watts": 324.4166666666667
+        },
+        {
+          "rep": 4,
+          "start_index": 4129,
+          "end_index_exclusive": 4373,
+          "elapsed_s": 244,
+          "mean_watts": 345.7745901639344,
+          "first30_watts": 341.26666666666665,
+          "last60_watts": 374.5
+        }
+      ],
+      "recovery": [
+        {
+          "after_rep": 1,
+          "start_index": 3078,
+          "end_index_exclusive": 3233,
+          "elapsed_s": 155,
+          "sample_mean_watts": 5.987096774193549,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 2,
+          "start_index": 3481,
+          "end_index_exclusive": 3681,
+          "elapsed_s": 200,
+          "sample_mean_watts": 16.045,
+          "max_recording_step_s": 1
+        },
+        {
+          "after_rep": 3,
+          "start_index": 3936,
+          "end_index_exclusive": 4129,
+          "elapsed_s": 193,
+          "sample_mean_watts": 12.73056994818653,
+          "max_recording_step_s": 1
+        }
+      ],
+      "recovery_median_s": 193
+    }
+  ],
+  "athlete_report": {
+    "finish": "fixed route endpoint, not fixed 240s cap",
+    "recovery_control": "athlete varies descent pace with fatigue; does not imply recovery length is an independent treatment",
+    "bottom": "breathing fully recovered, legs slightly sore; soreness accumulates and later repeats harder to maintain",
+    "lck": "almost no lights relevant; U-turns are the usual constraint",
+    "interaction": "coach should proactively offer independent hypotheses and verify with user",
+    "after_session": "usually recovered that evening or next day, subsequent endurance unaffected",
+    "crazies_preference": "accept yielding for target preparation but keep where possible; can control by threshold lead instead of attacks"
+  },
+  "interpretation_limits": [
+    "Workouts around4min include reps >240s in raw streams and device lap durations; do not recode all as <=4min.",
+    "Recovery length is self-selected with fatigue; no causal comparison of long vs short recovery from these days.",
+    "Soreness not evidence by itself for lactate clearance, muscle fibre type, depleted Wprime, or limiting oxygen delivery.",
+    "Higher first30 power can also reflect terrain; no proof that starts caused the accumulating soreness.",
+    "Oct6 final rep rises to about350W; subjective progressive difficulty is not a monotonic power fall."
+  ],
+  "proposed_coaching_trial": "Keep4 full-ascent reps initially335–345W from low end; use natural descent, typically about2:40–3:00, without speeding downhill to meet a stopwatch or mandatory4–5min waiting. If later effort quality deteriorates, try extra30–60s recovery, lower power or reduce reps. Do not progress simultaneously to5 reps. This is a trial, not a proven optimum.",
+  "plan_integration": "Default Tue+Sun quality; sustained lead counts quality and replaces Thu LCK. B-week Tue+Thu only when Sun truly yields. Some key continuous-specific/deload Sundays remain preferred standalone/low intensity."
+}

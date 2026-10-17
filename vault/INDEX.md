@@ -38,16 +38,18 @@
 
 ## 最近 5 次 session
 
+- 2026-10-17 — [[sessions/2026-10-17-recovery-dialogue-and-crazies-balance]] — 固定终点/真实恢复复核；腿酸累加但次日恢复；默认周二+周日质量、lead替代周四硬课，尽量保留Crazies。
 - 2026-10-17 — [[sessions/2026-10-17-two-hour-faber-lck-adjustment]] — 单次≥2h偏好；Faber整坡/下坡恢复；LCK地形实核，重排12.5h五骑周与赛周减天数。
 - 2026-10-17 — [[sessions/2026-10-17-faber-cp3-and-drcc-goals]] — 自查Faber双向与180s；新增拟报12/13 DRCC，八周方案替代旧四周；官方资格/GPX与段端点精度待核。
 - 2026-10-16 — [[sessions/2026-10-16-next-block-after-claude]] — Claude结果验收；用户确认57首攻/60再攻/74终点及8/30追赶掉队情境；10/19起四周持续课+Crazies试行，详见plans。
 - 2026-10-16 — [[sessions/2026-10-16-june9-peak-and-attack-role]] — 最后巅峰延至6/9，全力CP5补回；Crazies主动1–2次短进攻，偶尔持续拉扯后再加速受限；Claude算法提示词已交付。
-- 2026-10-16 — [[sessions/2026-10-16-peak-baseline-and-crazies]] — 巅峰核心窗口4/1–6/1（末期另补6/9）；5/27首爬近全力锚点核验；停训时间线、Crazies反复加速、同一功率计与室内散热补给；不虚报未来FTP保底。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17场地版：正常单次≥2h、Faber约4min整坡/下坡恢复、LCK持续；12.5h五骑两休，最多两主要质量日，测试/团骑计入。赛周减天数而非强塞短课，未写ICU日历。
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。默认周二+周日两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
+
+- **教练互动偏好**：主动给有证据的判断与可检验假设，问少量真正改变方案的问题；别单向发课表或只顺从。腿酸反馈/课后恢复与Crazies角色见最新session。
 
 - **算法协作偏好**：复杂批量计算先给同项目Claude Code可执行prompt，教练复核整合；Claude已完成Cycling-lth，教练已验收；后续进度仍由bd跟踪，数据结果见最新session。
 
