@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-17 — [[sessions/2026-10-17-peak-gap-and-recovery-status]] — 现状vs巅峰(4/1–6/9)：恢复指标良好；CTL约巅峰74%；≤1min已追平，3–20min滚动PB为生涯87–91%（非全力上限估计）；待确认10/4 20min是否全力。
 - 2026-10-17 — [[sessions/2026-10-17-recovery-dialogue-and-crazies-balance]] — 固定终点/真实恢复复核；腿酸累加但次日恢复；默认周二+周日质量、lead替代周四硬课，尽量保留Crazies。
 - 2026-10-17 — [[sessions/2026-10-17-two-hour-faber-lck-adjustment]] — 单次≥2h偏好；Faber整坡/下坡恢复；LCK地形实核，重排12.5h五骑周与赛周减天数。
 - 2026-10-17 — [[sessions/2026-10-17-faber-cp3-and-drcc-goals]] — 自查Faber双向与180s；新增拟报12/13 DRCC，八周方案替代旧四周；官方资格/GPX与段端点精度待核。
 - 2026-10-16 — [[sessions/2026-10-16-next-block-after-claude]] — Claude结果验收；用户确认57首攻/60再攻/74终点及8/30追赶掉队情境；10/19起四周持续课+Crazies试行，详见plans。
-- 2026-10-16 — [[sessions/2026-10-16-june9-peak-and-attack-role]] — 最后巅峰延至6/9，全力CP5补回；Crazies主动1–2次短进攻，偶尔持续拉扯后再加速受限；Claude算法提示词已交付。
 
 ## 当前活跃旗标
 
