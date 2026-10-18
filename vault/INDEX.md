@@ -38,7 +38,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-18 — [[sessions/2026-10-18-faber-three-three-and-oct20]] — 本人确认Faber可3min工作/3min恢复，撤回必到顶假设；周日质量符合原预算，10/20首选保留4整坡、按实际恢复调整。
+- 2026-10-18 — [[sessions/2026-10-18-faber-three-three-and-oct20]] — 本人确认Faber可3min工作/3min恢复，撤回必到顶假设；今日骑时更轻但骑后更酸、57km小attack后自觉Z2；10/20首选保留4整坡，按实际恢复调整。
 - 2026-10-18 — [[sessions/2026-10-18-claude-independent-review]] — 已读Claude最终稿并复核；今日18:48@288W本人RPE6–7有余量；32min是扩窗口径、严格筛选约26min；早先余坡限制已被后续本人现场信息纠正；补近三年力量证据。
 - 2026-10-17 — [[sessions/2026-10-17-recovery-dialogue-and-crazies-balance]] — 固定终点/真实恢复复核；腿酸累加但次日恢复；默认周二+周日质量、lead替代周四硬课，尽量保留Crazies。
 - 2026-10-17 — [[sessions/2026-10-17-two-hour-faber-lck-adjustment]] — 单次≥2h偏好；Faber整坡/下坡恢复；LCK地形实核，重排12.5h五骑周与赛周减天数。
