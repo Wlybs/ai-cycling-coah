@@ -39,3 +39,8 @@ Claude32.25min算法每个选择器run前扩59样本，共6段多354s；严格60
 复核原始算法与均值见icu/analysis/2026-10-18-claude-independent-review-data.json；完整分歧、来源/年份/DOI/全文或摘要状态及integrity pass见同目录2026-10-18-claude-independent-review.md。任务Cycling-pms。本轮只写复核与必要偏好，不替用户改ICU日历。
 
 独立critique PASS，已消除“不同周叠加”措辞歧义，写明两种质量格式替代、不在同周叠加。
+
+
+## 同日后续纠正：3/3在本人熟悉的Faber路线可执行
+
+用户随后确认3min工作后可少下一段或轻微荡腿实现3min恢复。前文“余坡导致无法严格3/3”的限制仅基于教练假设，现撤回；不继续要求必须到顶再下。处方取舍与10/20条件见vault/sessions/2026-10-18-faber-three-three-and-oct20.md；不因此自动加组数或瓦数。

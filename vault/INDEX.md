@@ -38,15 +38,15 @@
 
 ## 最近 5 次 session
 
-- 2026-10-18 — [[sessions/2026-10-18-claude-independent-review]] — 已读Claude最终稿并复核；今日18:48@288W本人RPE6–7有余量；32min是扩窗口径、严格筛选约26min；3min恢复需算余坡，补近三年力量证据。
+- 2026-10-18 — [[sessions/2026-10-18-faber-three-three-and-oct20]] — 本人确认Faber可3min工作/3min恢复，撤回必到顶假设；周日质量符合原预算，10/20首选保留4整坡、按实际恢复调整。
+- 2026-10-18 — [[sessions/2026-10-18-claude-independent-review]] — 已读Claude最终稿并复核；今日18:48@288W本人RPE6–7有余量；32min是扩窗口径、严格筛选约26min；早先余坡限制已被后续本人现场信息纠正；补近三年力量证据。
 - 2026-10-17 — [[sessions/2026-10-17-recovery-dialogue-and-crazies-balance]] — 固定终点/真实恢复复核；腿酸累加但次日恢复；默认周二+周日质量、lead替代周四硬课，尽量保留Crazies。
 - 2026-10-17 — [[sessions/2026-10-17-two-hour-faber-lck-adjustment]] — 单次≥2h偏好；Faber整坡/下坡恢复；LCK地形实核，重排12.5h五骑周与赛周减天数。
 - 2026-10-17 — [[sessions/2026-10-17-faber-cp3-and-drcc-goals]] — 自查Faber双向与180s；新增拟报12/13 DRCC，八周方案替代旧四周；官方资格/GPX与段端点精度待核。
-- 2026-10-16 — [[sessions/2026-10-16-next-block-after-claude]] — Claude结果验收；用户确认57首攻/60再攻/74终点及8/30追赶掉队情境；10/19起四周持续课+Crazies试行，详见plans。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。默认周二+周日两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。10/18本人另确认计时3/3可行（少下一段/轻微荡腿），非必须到顶；10/20首选原4整坡。默认周二+周日两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
 - **教练互动偏好**：给有证据的首选/理由/条件，本人按当天状态决定，不主动推ICU；只问已发生体感/真实疑点，不问未来身体状态。
