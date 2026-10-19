@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-19 — [[sessions/2026-10-19-workout-library-and-frontier-review]] — 课表库按A–G归类统一%FTP，补回5月OU/30/30/race-rhythm等；近三年补充：耐久性、受控大体积阈值、30/15、力量、补给。根因：5月vault文件主仓untracked，worktree缺失。
 - 2026-10-19 — [[sessions/2026-10-19-workout-catalog-and-self-assessment]] — 汇总当前六类课型完整形式；自评：场地/恢复/日程定制高，强度锚点（300W工作设定、280–290W、VO2剂量）为试行未验证。无新处方。
 - 2026-10-19 — [[sessions/2026-10-19-low-burden-ftp-calibration]] — 提出两次原质量位受控持续校准290→300W，不力竭；用于工作设定验证、非精准FTP认证，未改ICU。
 - 2026-10-19 — [[sessions/2026-10-19-current-versus-peak-gap]] — 本人撤销CP5猜测依据、>1min未全力；短爆发强，持续记录差≠能力损失；近期两周总量已恢复，CTL不当能力百分比。
 - 2026-10-18 — [[sessions/2026-10-18-vo2-dose-and-floating-quality-days]] — 认可两种VO2可调范围、区分大剂量；质量日默认周二可浮动，后移替换长骑/周日机会，不补债；本人明确睡眠/起床或实际腿乏触发。
-- 2026-10-18 — [[sessions/2026-10-18-faber-format-and-sustained-work]] — 4min有完成记录/配速优势，未证优于3min；本人近期无可比较长课；若周日attack缺持续工作，10/27优先LCK替代Faber。
 
 ## 当前活跃旗标
 
