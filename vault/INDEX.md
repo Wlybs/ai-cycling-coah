@@ -38,15 +38,18 @@
 
 ## 最近 5 次 session
 
-- 2026-10-19 — [[sessions/2026-10-19-workout-library-and-frontier-review]] — 课表库按A–G归类统一%FTP，补回5月OU/30/30/race-rhythm等；近三年补充：耐久性、受控大体积阈值、30/15、力量、补给。根因：5月vault文件主仓untracked，worktree缺失。
-- 2026-10-19 — [[sessions/2026-10-19-workout-catalog-and-self-assessment]] — 汇总当前六类课型完整形式；自评：场地/恢复/日程定制高，强度锚点（300W工作设定、280–290W、VO2剂量）为试行未验证。无新处方。
-- 2026-10-19 — [[sessions/2026-10-19-low-burden-ftp-calibration]] — 提出两次原质量位受控持续校准290→300W，不力竭；用于工作设定验证、非精准FTP认证，未改ICU。
-- 2026-10-19 — [[sessions/2026-10-19-current-versus-peak-gap]] — 本人撤销CP5猜测依据、>1min未全力；短爆发强，持续记录差≠能力损失；近期两周总量已恢复，CTL不当能力百分比。
-- 2026-10-18 — [[sessions/2026-10-18-vo2-dose-and-floating-quality-days]] — 认可两种VO2可调范围、区分大剂量；质量日默认周二可浮动，后移替换长骑/周日机会，不补债；本人明确睡眠/起床或实际腿乏触发。
+- 2026-10-19 — [[sessions/2026-10-19-workout-library-and-frontier-review]] — 课表库精简为7类+现阶段大方向：主线拉长持续时间（DRCC约1h40–1h55连续上坡），支线Faber VO2+Crazies；力量/补给支撑；Faber末趟不刻意all-out。
+- 2026-10-19 — [[sessions/2026-10-19-high-ctl-benefits-followup]] — 本人明确高CTL时主要是阈值/爬坡更强及整体有力/自信（选2和3），后续并列跟踪持续表现与骑感。
+- 2026-10-19 — [[sessions/2026-10-19-ctl100-tss-and-awe]] — 本人希望12/13CTL>100；42日模型核减量代价，建设周700–800作观察预算、不硬追分；AWE可全程Z2draft，撤频繁轮换假设。
+- 2026-10-19 — [[sessions/2026-10-19-lsd-crazies-awe-evidence-review]] — 近三年证据核对；强度后LSD可保留，实际间隔30h；Crazies常态优先、记周四AWE，本周撤周四Faber而非周日，TSS非进步目标。
+- 2026-10-19 — [[sessions/2026-10-19-oct20-priority-and-week-adjustment]] — 今日酸感已退；首选周二持续校准、周四条件Faber，B周周日高强度让位一次；若保留Crazies则撤周四，第二次300不抢本周。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] revision8（10/19精简为7类：有氧/Faber VO2/LCK持续/耐久长骑/Crazies/PR/力量；删30/15与5月专项；PR前偏VO2、PR后偏持续耐久；rev7日期自调）；替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。10/18本人另确认计时3/3可行（少下一段/轻微荡腿），非必须到顶；10/20首选原4整坡；若10/25attack且缺持续工作，10/27优先LCK替代Faber，见最新session。revision5默认周中浮动质量（周二至周四优先）+周日，后移替换长骑/周末机会、不补债；每周约两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
+- **CTL目标/负荷参考**：本人希望12/13>100，主要体感优势是阈值/爬坡及整体有力自信；教练条件性支持建设、反对比赛日硬守数字挤掉减量。模型示例见最新session；700–800建设周为观察预算，非每周最低任务。AWE可全程Z2，按实际工作分类。
+
+- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] revision7覆盖同日revision6：10/20受控持续30min约290W兼校准，总2–2.5h；三3.5–4h低强度LSD（恢复正常），四晚AWE有氧含往返2h，六2–2.5h轻松，日Crazies保留2–2.5h，一/五休，总11.5–13.5h。Faber下个合适周中质量位、默认10/27；第二校准不抢日程。两主质量是默认非生理上限；AWE可承接持续任务，不能自动叠完整第三硬课。未推ICU。
+- **课表库与大方向**：见plan「10/19补充①–④」；课型以补充③为准、表内格子仅参考，日期本人自调。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
 - **教练互动偏好**：给有证据的首选/理由/条件，本人按当天状态决定，不主动推ICU；只问已发生体感/真实疑点，不问未来身体状态。

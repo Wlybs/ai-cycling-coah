@@ -58,3 +58,6 @@ DOI：10.1007/s00421-025-05885-0；10.3389/fspor.2025.1530162；10.1002/ejsc.700
 
 ## 追加：针对DRCC与Faber PR精简课表库
 本人问课表库增减与简化。数据：10/19 14:03 snapshot ftp_set300W，今日无新骑行，未重新sync。结论写入plan revision8：保留7类（有氧/VO2-Faber/LCK持续家族/耐久长骑/Crazies/Faber PR/力量+激活），删30/15与全部5月比赛专项课；PR前周中偏VO2，PR后偏持续+耐久。依据Støa 2025（2–3min TT与MAP相关、与MAOD无关）。DRCC爬坡时长待GPX。
+
+## 追加：大方向（DRCC剖面已知后）
+本人：路线已拿到（见drcc-route分支session，剖面数字化非GPX）；Faber末趟加速=榨干自己。合并master后plan定为revision9，新增「补充④大方向」：主线拉长持续时间（约1h40–1h55连续上坡），支线Faber VO2+Crazies，支撑补给/力量；Faber末趟不刻意all-out、撤PR配速末趟修饰。
