@@ -11,7 +11,7 @@
 
 - 用户10/17新增意向，未报名/付款；周日07:30，怡保Symphony Suites Hotel→Blue Valley Cameron Highlands（主办方设计海报转载可核）。
 - 用户比赛日23岁，海报Men Open A18–23范围相符；中国籍、暂无UCI执照能否参赛需正式规则，不能因International就保证。
-- 路线61.51km/+1462m来自二手汇总，未核GPX；不引用28.9%极值。海报late bird列截至11/1，实际余位/截止待报名系统确认。12/12周六11–20点领物，中间13–14休息。
+- 路线（10/19官方页可读，剖面图数字化，非GPX）：0–14km平路含4km中立；14–16.25km陡墙约7.7%；16.25–52km长缓坡约3.2%；52–58.5km山顶平台；末3km约2–3%。所有组别同时发车，单车道不得越线，每组前10名获奖。2483m总爬升/28.9%极值推断为制图噪声。详见`icu/analysis/2026-10-19-drcc-route-profile.md`。海报late bird列截至11/1，实际余位/截止待报名系统确认。
 - 教练建议优先级：该赛短期A，Faber/CP3为中途检验，2027目标保留。最后一周12/7起专门减量，12/6不全力Crazies；当前方案[[plans/2026-10-19-faber-and-drcc-eight-week]]，尚未推ICU。
 - 核查、来源与未知项见 `icu/analysis/2026-10-17-drcc-event-verification.md`。官方 https://checkpointspot.asia/event/drcc-international-kom-challenge-2026 访问受限；没有代联系或报名。
 

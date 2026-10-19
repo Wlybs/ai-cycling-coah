@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-19 — [[sessions/2026-10-19-drcc-route-and-demands]] — 官方剖面数字化：14km后2km约7.7%陡墙+36km约3.2%长缓坡+山顶6.5km平台；核心需求是约2h持续爬坡与跟集团，非3–5min；GPX仍缺。
 - 2026-10-19 — [[sessions/2026-10-19-low-burden-ftp-calibration]] — 提出两次原质量位受控持续校准290→300W，不力竭；用于工作设定验证、非精准FTP认证，未改ICU。
 - 2026-10-19 — [[sessions/2026-10-19-current-versus-peak-gap]] — 本人撤销CP5猜测依据、>1min未全力；短爆发强，持续记录差≠能力损失；近期两周总量已恢复，CTL不当能力百分比。
 - 2026-10-18 — [[sessions/2026-10-18-vo2-dose-and-floating-quality-days]] — 认可两种VO2可调范围、区分大剂量；质量日默认周二可浮动，后移替换长骑/周日机会，不补债；本人明确睡眠/起床或实际腿乏触发。
 - 2026-10-18 — [[sessions/2026-10-18-faber-format-and-sustained-work]] — 4min有完成记录/配速优势，未证优于3min；本人近期无可比较长课；若周日attack缺持续工作，10/27优先LCK替代Faber。
-- 2026-10-18 — [[sessions/2026-10-18-faber-three-three-and-oct20]] — 本人确认Faber可3min工作/3min恢复，撤回必到顶假设；今日骑时更轻但骑后更酸、57km小attack后自觉Z2；10/20首选保留4整坡，按实际恢复调整。
 
 ## 当前活跃旗标
 
