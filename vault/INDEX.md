@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-20 — [[sessions/2026-10-20-eight-by-three-vo2-review]] — 原定30min持续改做8×3min：stream均357W、无掉功率、后4组HR186–190；比5×4“更累”有剂量+14%工作/+5%功率/更热因素，不能证明组短更累；持续校准取消不补。
 - 2026-10-19 — [[sessions/2026-10-19-high-ctl-benefits-followup]] — 本人明确高CTL时主要是阈值/爬坡更强及整体有力/自信（选2和3），后续并列跟踪持续表现与骑感。
 - 2026-10-19 — [[sessions/2026-10-19-ctl100-tss-and-awe]] — 本人希望12/13CTL>100；42日模型核减量代价，建设周700–800作观察预算、不硬追分；AWE可全程Z2draft，撤频繁轮换假设。
 - 2026-10-19 — [[sessions/2026-10-19-lsd-crazies-awe-evidence-review]] — 近三年证据核对；强度后LSD可保留，实际间隔30h；Crazies常态优先、记周四AWE，本周撤周四Faber而非周日，TSS非进步目标。
 - 2026-10-19 — [[sessions/2026-10-19-oct20-priority-and-week-adjustment]] — 今日酸感已退；首选周二持续校准、周四条件Faber，B周周日高强度让位一次；若保留Crazies则撤周四，第二次300不抢本周。
-- 2026-10-19 — [[sessions/2026-10-19-low-burden-ftp-calibration]] — 提出两次原质量位受控持续校准290→300W，不力竭；用于工作设定验证、非精准FTP认证，未改ICU。
 
 ## 当前活跃旗标
 
