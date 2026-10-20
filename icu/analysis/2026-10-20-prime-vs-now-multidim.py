@@ -2,7 +2,8 @@
 import json, os, statistics as st, math, glob
 
 S = os.path.dirname(os.path.abspath(__file__))
-RAW = os.path.join(S, "multidim")
+# git-ignored raw ICU streams (GET 2026-10-20), kept permanently
+RAW = r"D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-prime-vs-now-multidim"
 WELL_CTX = r"D:/Cycling/icu/analysis/2026-10-16-training-history-context.json"
 WELL_LIVE = r"D:/Cycling/icu/icu_data_warehouse/2_Wellness/wellness_history.json"
 PEAK = ("2026-04-01", "2026-06-09")
@@ -148,7 +149,7 @@ def main():
     recs = [analyse(a) for a in acts if period(a["start_date_local"][:10])]
     for r in recs:
         r["period"] = period(r["date"])
-    json.dump(recs, open(os.path.join(S, "multidim_records.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(recs, open(os.path.join(S, "2026-10-20-prime-vs-now-multidim-records.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     well = wellness()
     out = {}
     for P, (lo, hi) in (("peak", PEAK), ("now", NOW)):
@@ -193,7 +194,7 @@ def main():
         o["hrv_mean"], o["rhr_mean"] = f("hrv"), f("restingHR")
         o["sleep_h_mean"] = round(st.mean([x["sleepSecs"] / 3600 for x in ws if x.get("sleepSecs")]), 2)
         out[P] = o
-    json.dump(out, open(os.path.join(S, "multidim_summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(out, open(os.path.join(S, "2026-10-20-prime-vs-now-multidim-summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(out, ensure_ascii=False, indent=1))
 
 
