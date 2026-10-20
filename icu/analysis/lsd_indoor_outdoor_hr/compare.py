@@ -101,11 +101,13 @@ def adjusted_early_hr(rides: list[dict], level: str, slopes: dict, lo_s: int, hi
     return out
 
 
-def ride_drift(r: dict, level: str, band_halfwidth: float = 12.0, tail_exclude_s: int = 1800,
+def ride_drift(r: dict, level: str, band_halfwidth: float = 12.0, tail_exclude_s: int = 600,
                max_start_s: int | None = None) -> dict:
-    """同 ride：以早段窗口中位功率为参考带，带内窗口 HR 对经过时间回归（含功率项）。排除最后30min。
+    """同 ride：以早段窗口中位功率为参考带，带内窗口 HR 对经过时间回归（含功率项）。
 
-    max_start_s 限定窗口起点上限，用于在共同时间跨度内比较室内（较短）与户外（较长）。
+    只排除最后10min整理段；低功率返程已被参考功率带(±12W)本身排除。
+    （初版排除最后30min，误把室内3.2–3.35h课的2.75h后同带数据砍掉，2026-10-20订正。）
+    max_start_s 限定窗口起点上限，用于在共同时间跨度内比较。
     """
     ws = [w for w in r["windows"][level] if w["start_elapsed_s"] >= 1200
           and w["end_elapsed_s"] <= r["elapsed_s"] - tail_exclude_s
@@ -123,7 +125,12 @@ def ride_drift(r: dict, level: str, band_halfwidth: float = 12.0, tail_exclude_s
     X = np.column_stack([np.ones_like(t), t, p - ref_p])
     beta, *_ = np.linalg.lstsq(X, h, rcond=None)
     first, last = band[0], band[-1]
-    return {"usable": True, "ref_P": round(ref_p, 1), "n_band": len(band),
+    seg = {}
+    for name, (lo, hi) in {"0.33-1.0h": (0.33, 1.0), "2.5-3.25h": (2.5, 3.25), "3.25-4.5h": (3.25, 4.5)}.items():
+        sel = [w for w, tt in zip(band, t) if lo <= tt < hi]
+        seg[name] = {"n": len(sel), "HR": round(float(np.mean([w["HR_settled"] for w in sel])), 1) if sel else None,
+                     "P": round(float(np.mean([w["P"] for w in sel])), 1) if sel else None}
+    return {"usable": True, "ref_P": round(ref_p, 1), "n_band": len(band), "band_HR_by_period": seg,
             "t_span_h": [round(float(t.min()), 2), round(float(t.max()), 2)],
             "slope_bpm_per_h": round(float(beta[1]), 2), "intercept_at_t0_refP": round(float(beta[0]), 1),
             "first_band_window": {k: first[k] for k in ("start_elapsed_s", "P", "cad", "HR_settled")},

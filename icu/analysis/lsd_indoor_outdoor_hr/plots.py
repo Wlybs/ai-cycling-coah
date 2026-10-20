@@ -93,13 +93,13 @@ def matched_and_drift(R: dict) -> Path:
             continue
         g = gkey(r["group"])
         band = [w for w in r["windows"]["medium"] if abs(w["P"] - d["ref_P"]) <= 12 and w["start_elapsed_s"] >= 1200
-                and w["end_elapsed_s"] <= r["elapsed_s"] - 1800]
+                and w["end_elapsed_s"] <= r["elapsed_s"] - 600]
         xs = [w["start_elapsed_s"] / 3600 for w in band]
         ys = [w["HR_settled"] for w in band]
         a2.plot(xs, ys, color=COLORS[g], marker=MARKERS[g], ms=4, lw=1.2)
         a2.annotate(f'{r["date"][5:]} {d["ref_P"]:.0f}W', (xs[-1], ys[-1]), xytext=(4, 0), textcoords="offset points",
                     fontsize=8, color=MUTED, va="center")
-    a2.set_xlabel("经过时间 h（不含最后30min）")
+    a2.set_xlabel("经过时间 h（不含最后10min整理）")
     a2.set_ylabel("参考功率带±12W 内窗口心率 bpm")
     a2.set_title("同 ride 同功率带的心率随时间", loc="left", fontsize=10, color=INK)
     for g in ("indoor", "outdoor_island_lsd"):

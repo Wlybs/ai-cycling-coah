@@ -102,17 +102,17 @@
   "i172551710": "08-05 1h短骑",
   "i173586493": "08-08 含游泳/长停，VI1.41",
   "i174224817": "08-10 本人标'二三区混骑'，含tempo；未拉streams",
-  "i174973149": "08-12 trainer=True但无距离、记录内静止2659s/85次停顿且重启峰值多次>FTP，室内/户外无法确认→不进任一组",
+  "i174973149": "08-12 本人确认为户外路骑（trainer标记有误），无GPS/距离，HR可能来自手表、可靠性不明→排除",
   "i175604504": "08-14 1h单飞测试强度",
   "i175615811": "08-14 恢复骑1h",
-  "i176271292": "08-16 breakfast ride，VI1.22，疑似团骑未核",
+  "i176271292": "08-16 breakfast ride：streams 0.75–1.5h 段均功率192–231W、30s峰543W、HR162–171，后段返程，混合强度→排除",
   "i176967954": "08-18 1h空腹短骑，VI2.1",
   "i177335731": "08-19 团练去程",
   "i177379011": "08-19 团骑",
   "i177380373": "08-19 trail ride",
   "i178140736": "08-21 heavy leg训练，VI1.43",
   "i178739363": "08-23 Crazies",
-  "i179448185": "08-25 3.6h但VI1.37、用途不明（标题仅表情）——待本人确认是否LSD",
+  "i179448185": "08-25 streams显示0.75–2.25h为间歇块（每15min p90 324–373W、30s峰356–463W），之后3.0–4.25h base 156–189W返程；先间歇后base→排除（后段不是新鲜早段）",
   "i180391356": "08-27 校内荡腿刷爬升",
   "i180846018": "08-29 KOM冲刺",
   "i181164446": "08-30 团骑/比赛型",
@@ -18418,13 +18418,30 @@
    "loose": {
     "usable": true,
     "ref_P": 194.1,
-    "n_band": 14,
+    "n_band": 16,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 5,
+      "HR": 146.1,
+      "P": 196.4
+     },
+     "2.5-3.25h": {
+      "n": 2,
+      "HR": 149.4,
+      "P": 198.9
+     },
+     "3.25-4.5h": {
+      "n": 4,
+      "HR": 156.9,
+      "P": 198.5
+     }
+    },
     "t_span_h": [
      0.33,
-     4.0
+     4.17
     ],
-    "slope_bpm_per_h": 2.55,
-    "intercept_at_t0_refP": 142.4,
+    "slope_bpm_per_h": 3.18,
+    "intercept_at_t0_refP": 141.8,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 186.8,
@@ -18432,23 +18449,40 @@
      "HR_settled": 144.4
     },
     "last_band_window": {
-     "start_elapsed_s": 14415,
-     "P": 203.0,
-     "cad": 88.7,
-     "HR_settled": 157.1
+     "start_elapsed_s": 15015,
+     "P": 189.1,
+     "cad": 83.6,
+     "HR_settled": 156.7
     },
     "cad_first_last": [
      83.6,
-     88.7
+     83.6
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 197.4,
-    "n_band": 15,
+    "n_band": 16,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 2,
+      "HR": 145.9,
+      "P": 197.4
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 7,
+      "HR": 156.4,
+      "P": 204.6
+     }
+    },
     "t_span_h": [
      0.37,
-     4.04
+     4.12
     ],
     "slope_bpm_per_h": 4.36,
     "intercept_at_t0_refP": 139.6,
@@ -18459,20 +18493,37 @@
      "HR_settled": 144.0
     },
     "last_band_window": {
-     "start_elapsed_s": 14535,
-     "P": 204.8,
-     "cad": 87.4,
-     "HR_settled": 157.6
+     "start_elapsed_s": 14835,
+     "P": 200.9,
+     "cad": 83.4,
+     "HR_settled": 157.5
     },
     "cad_first_last": [
      84.1,
-     87.4
+     83.4
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 197.4,
     "n_band": 9,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 2,
+      "HR": 145.9,
+      "P": 197.4
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
      2.47
@@ -18502,6 +18553,23 @@
     "usable": true,
     "ref_P": 182.1,
     "n_band": 9,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 3,
+      "HR": 147.9,
+      "P": 183.3
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
      2.22
@@ -18528,13 +18596,30 @@
    "medium": {
     "usable": true,
     "ref_P": 186.9,
-    "n_band": 10,
+    "n_band": 11,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 1,
+      "HR": 145.0,
+      "P": 186.9
+     },
+     "2.5-3.25h": {
+      "n": 2,
+      "HR": 152.3,
+      "P": 195.9
+     },
+     "3.25-4.5h": {
+      "n": 2,
+      "HR": 154.7,
+      "P": 196.9
+     }
+    },
     "t_span_h": [
      0.37,
-     4.28
+     4.72
     ],
     "slope_bpm_per_h": 1.38,
-    "intercept_at_t0_refP": 143.2,
+    "intercept_at_t0_refP": 143.3,
     "first_band_window": {
      "start_elapsed_s": 1335,
      "P": 186.9,
@@ -18542,20 +18627,37 @@
      "HR_settled": 145.0
     },
     "last_band_window": {
-     "start_elapsed_s": 15405,
-     "P": 196.3,
-     "cad": 84.4,
-     "HR_settled": 155.2
+     "start_elapsed_s": 17010,
+     "P": 198.0,
+     "cad": 84.1,
+     "HR_settled": 155.7
     },
     "cad_first_last": [
      86.9,
-     84.4
+     84.1
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 186.9,
     "n_band": 6,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 1,
+      "HR": 145.0,
+      "P": 186.9
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
      2.44
@@ -18585,6 +18687,23 @@
     "usable": true,
     "ref_P": 187.3,
     "n_band": 4,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 3,
+      "HR": 139.6,
+      "P": 187.3
+     },
+     "2.5-3.25h": {
+      "n": 1,
+      "HR": 146.6,
+      "P": 191.5
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
      3.16
@@ -18624,13 +18743,30 @@
    "loose": {
     "usable": true,
     "ref_P": 202.5,
-    "n_band": 14,
+    "n_band": 18,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 7,
+      "HR": 155.4,
+      "P": 202.9
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.44,
-     1.52
+     1.85
     ],
-    "slope_bpm_per_h": 0.62,
-    "intercept_at_t0_refP": 154.6,
+    "slope_bpm_per_h": 2.64,
+    "intercept_at_t0_refP": 153.0,
     "first_band_window": {
      "start_elapsed_s": 1575,
      "P": 198.2,
@@ -18638,26 +18774,43 @@
      "HR_settled": 151.4
     },
     "last_band_window": {
-     "start_elapsed_s": 5475,
-     "P": 204.7,
-     "cad": 89.4,
-     "HR_settled": 156.6
+     "start_elapsed_s": 6675,
+     "P": 205.3,
+     "cad": 88.1,
+     "HR_settled": 160.0
     },
     "cad_first_last": [
      85.7,
-     89.4
+     88.1
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 202.8,
-    "n_band": 15,
+    "n_band": 19,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 155.1,
+      "P": 202.7
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.4,
-     1.57
+     1.9
     ],
-    "slope_bpm_per_h": 1.81,
-    "intercept_at_t0_refP": 153.7,
+    "slope_bpm_per_h": 2.75,
+    "intercept_at_t0_refP": 153.0,
     "first_band_window": {
      "start_elapsed_s": 1455,
      "P": 197.1,
@@ -18665,26 +18818,43 @@
      "HR_settled": 151.6
     },
     "last_band_window": {
-     "start_elapsed_s": 5655,
-     "P": 208.1,
-     "cad": 91.9,
-     "HR_settled": 159.2
+     "start_elapsed_s": 6855,
+     "P": 207.8,
+     "cad": 87.9,
+     "HR_settled": 159.7
     },
     "cad_first_last": [
      86.5,
-     91.9
+     87.9
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 202.8,
-    "n_band": 15,
+    "n_band": 19,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 155.1,
+      "P": 202.7
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.4,
-     1.57
+     1.9
     ],
-    "slope_bpm_per_h": 1.81,
-    "intercept_at_t0_refP": 153.7,
+    "slope_bpm_per_h": 2.75,
+    "intercept_at_t0_refP": 153.0,
     "first_band_window": {
      "start_elapsed_s": 1455,
      "P": 197.1,
@@ -18692,14 +18862,14 @@
      "HR_settled": 151.6
     },
     "last_band_window": {
-     "start_elapsed_s": 5655,
-     "P": 208.1,
-     "cad": 91.9,
-     "HR_settled": 159.2
+     "start_elapsed_s": 6855,
+     "P": 207.8,
+     "cad": 87.9,
+     "HR_settled": 159.7
     },
     "cad_first_last": [
      86.5,
-     91.9
+     87.9
     ]
    }
   },
@@ -18707,13 +18877,30 @@
    "loose": {
     "usable": true,
     "ref_P": 184.2,
-    "n_band": 13,
+    "n_band": 15,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 4,
+      "HR": 140.2,
+      "P": 183.0
+     },
+     "2.5-3.25h": {
+      "n": 3,
+      "HR": 147.0,
+      "P": 187.6
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.52,
-     2.5
+     2.67
     ],
-    "slope_bpm_per_h": 2.85,
-    "intercept_at_t0_refP": 137.1,
+    "slope_bpm_per_h": 2.95,
+    "intercept_at_t0_refP": 137.0,
     "first_band_window": {
      "start_elapsed_s": 1860,
      "P": 179.7,
@@ -18721,26 +18908,43 @@
      "HR_settled": 141.0
     },
     "last_band_window": {
-     "start_elapsed_s": 9015,
-     "P": 174.9,
-     "cad": 80.7,
-     "HR_settled": 145.8
+     "start_elapsed_s": 9615,
+     "P": 194.4,
+     "cad": 84.9,
+     "HR_settled": 148.2
     },
     "cad_first_last": [
      87.1,
-     80.7
+     84.9
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 186.8,
-    "n_band": 6,
+    "n_band": 9,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 2,
+      "HR": 140.2,
+      "P": 184.2
+     },
+     "2.5-3.25h": {
+      "n": 3,
+      "HR": 147.1,
+      "P": 190.1
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.53,
-     2.37
+     2.67
     ],
-    "slope_bpm_per_h": 1.89,
-    "intercept_at_t0_refP": 139.1,
+    "slope_bpm_per_h": 2.95,
+    "intercept_at_t0_refP": 137.9,
     "first_band_window": {
      "start_elapsed_s": 1920,
      "P": 181.6,
@@ -18748,20 +18952,37 @@
      "HR_settled": 141.1
     },
     "last_band_window": {
-     "start_elapsed_s": 8520,
-     "P": 192.1,
-     "cad": 86.5,
-     "HR_settled": 145.5
+     "start_elapsed_s": 9630,
+     "P": 197.2,
+     "cad": 85.7,
+     "HR_settled": 148.5
     },
     "cad_first_last": [
      86.8,
-     86.5
+     85.7
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 186.8,
     "n_band": 6,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 2,
+      "HR": 140.2,
+      "P": 184.2
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.53,
      2.37
@@ -18790,13 +19011,30 @@
    "loose": {
     "usable": true,
     "ref_P": 197.1,
-    "n_band": 14,
+    "n_band": 18,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.4,
+      "P": 196.5
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     1.42
+     1.75
     ],
-    "slope_bpm_per_h": -3.61,
-    "intercept_at_t0_refP": 150.2,
+    "slope_bpm_per_h": -2.33,
+    "intercept_at_t0_refP": 149.3,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 197.2,
@@ -18804,26 +19042,43 @@
      "HR_settled": 147.8
     },
     "last_band_window": {
-     "start_elapsed_s": 5100,
-     "P": 190.5,
-     "cad": 81.6,
-     "HR_settled": 145.8
+     "start_elapsed_s": 6300,
+     "P": 186.6,
+     "cad": 80.5,
+     "HR_settled": 144.5
     },
     "cad_first_last": [
      86.7,
-     81.6
+     80.5
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 196.6,
-    "n_band": 13,
+    "n_band": 17,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.5,
+      "P": 197.0
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     1.42
+     1.75
     ],
-    "slope_bpm_per_h": -4.51,
-    "intercept_at_t0_refP": 150.9,
+    "slope_bpm_per_h": -2.55,
+    "intercept_at_t0_refP": 149.4,
     "first_band_window": {
      "start_elapsed_s": 1320,
      "P": 195.7,
@@ -18831,26 +19086,43 @@
      "HR_settled": 147.6
     },
     "last_band_window": {
-     "start_elapsed_s": 5100,
-     "P": 190.5,
-     "cad": 81.6,
-     "HR_settled": 145.8
+     "start_elapsed_s": 6300,
+     "P": 186.6,
+     "cad": 80.5,
+     "HR_settled": 144.5
     },
     "cad_first_last": [
      85.4,
-     81.6
+     80.5
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 196.6,
-    "n_band": 13,
+    "n_band": 17,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.5,
+      "P": 197.0
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     1.42
+     1.75
     ],
-    "slope_bpm_per_h": -4.51,
-    "intercept_at_t0_refP": 150.9,
+    "slope_bpm_per_h": -2.55,
+    "intercept_at_t0_refP": 149.4,
     "first_band_window": {
      "start_elapsed_s": 1320,
      "P": 195.7,
@@ -18858,14 +19130,14 @@
      "HR_settled": 147.6
     },
     "last_band_window": {
-     "start_elapsed_s": 5100,
-     "P": 190.5,
-     "cad": 81.6,
-     "HR_settled": 145.8
+     "start_elapsed_s": 6300,
+     "P": 186.6,
+     "cad": 80.5,
+     "HR_settled": 144.5
     },
     "cad_first_last": [
      85.4,
-     81.6
+     80.5
     ]
    }
   },
@@ -18879,25 +19151,42 @@
    "medium": {
     "usable": false,
     "reason": "早段或全程合格窗口不足",
-    "n_windows": 7
+    "n_windows": 10
    },
    "medium_common_span_le2.5h": {
     "usable": false,
     "reason": "早段或全程合格窗口不足",
-    "n_windows": 7
+    "n_windows": 10
    }
   },
   "i197967435": {
    "loose": {
     "usable": true,
     "ref_P": 228.3,
-    "n_band": 12,
+    "n_band": 16,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 7,
+      "HR": 146.8,
+      "P": 226.8
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     1.37
+     1.7
     ],
-    "slope_bpm_per_h": 1.92,
-    "intercept_at_t0_refP": 145.9,
+    "slope_bpm_per_h": 3.09,
+    "intercept_at_t0_refP": 145.0,
     "first_band_window": {
      "start_elapsed_s": 1335,
      "P": 227.9,
@@ -18905,26 +19194,43 @@
      "HR_settled": 146.2
     },
     "last_band_window": {
-     "start_elapsed_s": 4935,
-     "P": 228.2,
-     "cad": 89.7,
-     "HR_settled": 149.3
+     "start_elapsed_s": 6135,
+     "P": 224.3,
+     "cad": 87.3,
+     "HR_settled": 150.3
     },
     "cad_first_last": [
      89.5,
-     89.7
+     87.3
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 228.3,
-    "n_band": 12,
+    "n_band": 16,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 7,
+      "HR": 146.7,
+      "P": 227.5
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.41,
-     1.41
+     1.74
     ],
-    "slope_bpm_per_h": 2.28,
-    "intercept_at_t0_refP": 145.4,
+    "slope_bpm_per_h": 3.82,
+    "intercept_at_t0_refP": 144.2,
     "first_band_window": {
      "start_elapsed_s": 1470,
      "P": 230.1,
@@ -18932,26 +19238,43 @@
      "HR_settled": 147.3
     },
     "last_band_window": {
-     "start_elapsed_s": 5070,
-     "P": 232.8,
-     "cad": 88.8,
-     "HR_settled": 149.3
+     "start_elapsed_s": 6270,
+     "P": 230.0,
+     "cad": 88.4,
+     "HR_settled": 151.9
     },
     "cad_first_last": [
      88.2,
-     88.8
+     88.4
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 228.3,
-    "n_band": 12,
+    "n_band": 16,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 7,
+      "HR": 146.7,
+      "P": 227.5
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.41,
-     1.41
+     1.74
     ],
-    "slope_bpm_per_h": 2.28,
-    "intercept_at_t0_refP": 145.4,
+    "slope_bpm_per_h": 3.82,
+    "intercept_at_t0_refP": 144.2,
     "first_band_window": {
      "start_elapsed_s": 1470,
      "P": 230.1,
@@ -18959,14 +19282,14 @@
      "HR_settled": 147.3
     },
     "last_band_window": {
-     "start_elapsed_s": 5070,
-     "P": 232.8,
-     "cad": 88.8,
-     "HR_settled": 149.3
+     "start_elapsed_s": 6270,
+     "P": 230.0,
+     "cad": 88.4,
+     "HR_settled": 151.9
     },
     "cad_first_last": [
      88.2,
-     88.8
+     88.4
     ]
    }
   },
@@ -18975,6 +19298,23 @@
     "usable": true,
     "ref_P": 180.6,
     "n_band": 25,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 131.9,
+      "P": 181.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.34,
      2.42
@@ -19002,6 +19342,23 @@
     "usable": true,
     "ref_P": 180.7,
     "n_band": 24,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 131.9,
+      "P": 181.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.34,
      2.42
@@ -19029,6 +19386,23 @@
     "usable": true,
     "ref_P": 180.7,
     "n_band": 24,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 131.9,
+      "P": 181.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.34,
      2.42
@@ -19057,13 +19431,30 @@
    "loose": {
     "usable": true,
     "ref_P": 197.3,
-    "n_band": 26,
+    "n_band": 30,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 138.8,
+      "P": 196.6
+     },
+     "2.5-3.25h": {
+      "n": 4,
+      "HR": 150.1,
+      "P": 188.1
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     2.45
+     2.87
     ],
-    "slope_bpm_per_h": 2.96,
-    "intercept_at_t0_refP": 136.4,
+    "slope_bpm_per_h": 3.89,
+    "intercept_at_t0_refP": 135.4,
     "first_band_window": {
      "start_elapsed_s": 1320,
      "P": 190.1,
@@ -19071,26 +19462,43 @@
      "HR_settled": 140.9
     },
     "last_band_window": {
-     "start_elapsed_s": 8820,
-     "P": 189.4,
-     "cad": 82.6,
-     "HR_settled": 145.5
+     "start_elapsed_s": 10320,
+     "P": 188.4,
+     "cad": 82.7,
+     "HR_settled": 151.7
     },
     "cad_first_last": [
      82.1,
-     82.6
+     82.7
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 197.7,
-    "n_band": 26,
+    "n_band": 30,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 138.8,
+      "P": 196.6
+     },
+     "2.5-3.25h": {
+      "n": 4,
+      "HR": 149.9,
+      "P": 188.0
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.36,
-     2.45
+     2.86
     ],
-    "slope_bpm_per_h": 3.04,
-    "intercept_at_t0_refP": 136.4,
+    "slope_bpm_per_h": 3.92,
+    "intercept_at_t0_refP": 135.3,
     "first_band_window": {
      "start_elapsed_s": 1305,
      "P": 189.7,
@@ -19098,20 +19506,37 @@
      "HR_settled": 140.4
     },
     "last_band_window": {
-     "start_elapsed_s": 8805,
-     "P": 190.1,
-     "cad": 82.6,
-     "HR_settled": 145.8
+     "start_elapsed_s": 10305,
+     "P": 188.0,
+     "cad": 82.8,
+     "HR_settled": 151.6
     },
     "cad_first_last": [
      82.0,
-     82.6
+     82.8
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 197.7,
     "n_band": 26,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 138.8,
+      "P": 196.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.36,
      2.45
@@ -19140,13 +19565,30 @@
    "loose": {
     "usable": true,
     "ref_P": 205.4,
-    "n_band": 30,
+    "n_band": 34,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 132.9,
+      "P": 205.5
+     },
+     "2.5-3.25h": {
+      "n": 8,
+      "HR": 145.1,
+      "P": 205.5
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     2.75
+     3.08
     ],
-    "slope_bpm_per_h": 4.45,
-    "intercept_at_t0_refP": 129.6,
+    "slope_bpm_per_h": 5.69,
+    "intercept_at_t0_refP": 128.1,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 205.8,
@@ -19154,26 +19596,43 @@
      "HR_settled": 134.1
     },
     "last_band_window": {
-     "start_elapsed_s": 9900,
-     "P": 205.8,
-     "cad": 83.3,
-     "HR_settled": 143.7
+     "start_elapsed_s": 11100,
+     "P": 205.5,
+     "cad": 83.1,
+     "HR_settled": 149.8
     },
     "cad_first_last": [
      81.4,
-     83.3
+     83.1
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 205.4,
-    "n_band": 30,
+    "n_band": 34,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 132.9,
+      "P": 205.5
+     },
+     "2.5-3.25h": {
+      "n": 8,
+      "HR": 145.1,
+      "P": 205.5
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     2.75
+     3.08
     ],
-    "slope_bpm_per_h": 4.45,
-    "intercept_at_t0_refP": 129.6,
+    "slope_bpm_per_h": 5.69,
+    "intercept_at_t0_refP": 128.1,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 205.8,
@@ -19181,20 +19640,37 @@
      "HR_settled": 134.1
     },
     "last_band_window": {
-     "start_elapsed_s": 9900,
-     "P": 205.8,
-     "cad": 83.3,
-     "HR_settled": 143.7
+     "start_elapsed_s": 11100,
+     "P": 205.5,
+     "cad": 83.1,
+     "HR_settled": 149.8
     },
     "cad_first_last": [
      81.4,
-     83.3
+     83.1
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 205.4,
     "n_band": 27,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 132.9,
+      "P": 205.5
+     },
+     "2.5-3.25h": {
+      "n": 1,
+      "HR": 141.2,
+      "P": 204.8
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
      2.5
@@ -19223,12 +19699,29 @@
    "loose": {
     "usable": true,
     "ref_P": 179.9,
-    "n_band": 20,
+    "n_band": 24,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 129.2,
+      "P": 179.5
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     1.92
+     2.25
     ],
-    "slope_bpm_per_h": -0.27,
+    "slope_bpm_per_h": -0.31,
     "intercept_at_t0_refP": 129.4,
     "first_band_window": {
      "start_elapsed_s": 1200,
@@ -19237,26 +19730,43 @@
      "HR_settled": 129.2
     },
     "last_band_window": {
-     "start_elapsed_s": 6900,
-     "P": 179.1,
-     "cad": 79.0,
-     "HR_settled": 128.4
+     "start_elapsed_s": 8100,
+     "P": 178.1,
+     "cad": 78.8,
+     "HR_settled": 128.7
     },
     "cad_first_last": [
      79.2,
-     79.0
+     78.8
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 178.9,
-    "n_band": 19,
+    "n_band": 23,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 129.4,
+      "P": 179.4
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.39,
-     1.89
+     2.23
     ],
-    "slope_bpm_per_h": -0.28,
-    "intercept_at_t0_refP": 129.3,
+    "slope_bpm_per_h": -0.39,
+    "intercept_at_t0_refP": 129.4,
     "first_band_window": {
      "start_elapsed_s": 1410,
      "P": 180.5,
@@ -19264,26 +19774,43 @@
      "HR_settled": 129.8
     },
     "last_band_window": {
-     "start_elapsed_s": 6810,
-     "P": 179.0,
-     "cad": 79.0,
-     "HR_settled": 129.2
+     "start_elapsed_s": 8010,
+     "P": 177.8,
+     "cad": 78.9,
+     "HR_settled": 129.0
     },
     "cad_first_last": [
      79.0,
-     79.0
+     78.9
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 178.9,
-    "n_band": 19,
+    "n_band": 23,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 129.4,
+      "P": 179.4
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.39,
-     1.89
+     2.23
     ],
-    "slope_bpm_per_h": -0.28,
-    "intercept_at_t0_refP": 129.3,
+    "slope_bpm_per_h": -0.39,
+    "intercept_at_t0_refP": 129.4,
     "first_band_window": {
      "start_elapsed_s": 1410,
      "P": 180.5,
@@ -19291,14 +19818,14 @@
      "HR_settled": 129.8
     },
     "last_band_window": {
-     "start_elapsed_s": 6810,
-     "P": 179.0,
-     "cad": 79.0,
-     "HR_settled": 129.2
+     "start_elapsed_s": 8010,
+     "P": 177.8,
+     "cad": 78.9,
+     "HR_settled": 129.0
     },
     "cad_first_last": [
      79.0,
-     79.0
+     78.9
     ]
    }
   },
@@ -19306,13 +19833,30 @@
    "loose": {
     "usable": true,
     "ref_P": 209.8,
-    "n_band": 12,
+    "n_band": 13,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 134.2,
+      "P": 209.8
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     1.58
+     1.92
     ],
-    "slope_bpm_per_h": -1.06,
-    "intercept_at_t0_refP": 134.8,
+    "slope_bpm_per_h": -0.15,
+    "intercept_at_t0_refP": 134.1,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 214.9,
@@ -19320,26 +19864,43 @@
      "HR_settled": 138.1
     },
     "last_band_window": {
-     "start_elapsed_s": 5700,
-     "P": 221.4,
-     "cad": 66.6,
-     "HR_settled": 139.1
+     "start_elapsed_s": 6900,
+     "P": 221.3,
+     "cad": 63.3,
+     "HR_settled": 140.0
     },
     "cad_first_last": [
      66.0,
-     66.6
+     63.3
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 209.2,
-    "n_band": 12,
+    "n_band": 13,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 133.5,
+      "P": 208.7
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     1.37
+     1.62
     ],
-    "slope_bpm_per_h": -0.96,
-    "intercept_at_t0_refP": 134.3,
+    "slope_bpm_per_h": 0.24,
+    "intercept_at_t0_refP": 133.5,
     "first_band_window": {
      "start_elapsed_s": 1320,
      "P": 214.0,
@@ -19347,26 +19908,43 @@
      "HR_settled": 136.0
     },
     "last_band_window": {
-     "start_elapsed_s": 4920,
-     "P": 210.8,
-     "cad": 59.8,
-     "HR_settled": 134.2
+     "start_elapsed_s": 5820,
+     "P": 218.7,
+     "cad": 66.2,
+     "HR_settled": 138.9
     },
     "cad_first_last": [
      68.8,
-     59.8
+     66.2
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 209.2,
-    "n_band": 12,
+    "n_band": 13,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 133.5,
+      "P": 208.7
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.37,
-     1.37
+     1.62
     ],
-    "slope_bpm_per_h": -0.96,
-    "intercept_at_t0_refP": 134.3,
+    "slope_bpm_per_h": 0.24,
+    "intercept_at_t0_refP": 133.5,
     "first_band_window": {
      "start_elapsed_s": 1320,
      "P": 214.0,
@@ -19374,14 +19952,14 @@
      "HR_settled": 136.0
     },
     "last_band_window": {
-     "start_elapsed_s": 4920,
-     "P": 210.8,
-     "cad": 59.8,
-     "HR_settled": 134.2
+     "start_elapsed_s": 5820,
+     "P": 218.7,
+     "cad": 66.2,
+     "HR_settled": 138.9
     },
     "cad_first_last": [
      68.8,
-     59.8
+     66.2
     ]
    }
   },
@@ -19389,13 +19967,30 @@
    "loose": {
     "usable": true,
     "ref_P": 221.8,
-    "n_band": 16,
+    "n_band": 20,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.4,
+      "P": 221.2
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.33,
-     1.58
+     1.92
     ],
-    "slope_bpm_per_h": -4.49,
-    "intercept_at_t0_refP": 151.4,
+    "slope_bpm_per_h": -3.54,
+    "intercept_at_t0_refP": 150.6,
     "first_band_window": {
      "start_elapsed_s": 1200,
      "P": 221.9,
@@ -19403,26 +19998,43 @@
      "HR_settled": 149.3
     },
     "last_band_window": {
-     "start_elapsed_s": 5700,
-     "P": 217.7,
-     "cad": 79.7,
+     "start_elapsed_s": 6900,
+     "P": 216.4,
+     "cad": 78.4,
      "HR_settled": 143.2
     },
     "cad_first_last": [
      80.1,
-     79.7
+     78.4
     ]
    },
    "medium": {
     "usable": true,
     "ref_P": 221.3,
-    "n_band": 15,
+    "n_band": 19,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.0,
+      "P": 220.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.41,
-     1.57
+     1.91
     ],
-    "slope_bpm_per_h": -4.64,
-    "intercept_at_t0_refP": 151.6,
+    "slope_bpm_per_h": -3.6,
+    "intercept_at_t0_refP": 150.7,
     "first_band_window": {
      "start_elapsed_s": 1470,
      "P": 221.2,
@@ -19430,26 +20042,43 @@
      "HR_settled": 149.1
     },
     "last_band_window": {
-     "start_elapsed_s": 5670,
-     "P": 217.4,
-     "cad": 79.4,
-     "HR_settled": 143.5
+     "start_elapsed_s": 6870,
+     "P": 216.2,
+     "cad": 78.3,
+     "HR_settled": 143.2
     },
     "cad_first_last": [
      79.8,
-     79.4
+     78.3
     ]
    },
    "medium_common_span_le2.5h": {
     "usable": true,
     "ref_P": 221.3,
-    "n_band": 15,
+    "n_band": 19,
+    "band_HR_by_period": {
+     "0.33-1.0h": {
+      "n": 8,
+      "HR": 148.0,
+      "P": 220.6
+     },
+     "2.5-3.25h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     },
+     "3.25-4.5h": {
+      "n": 0,
+      "HR": null,
+      "P": null
+     }
+    },
     "t_span_h": [
      0.41,
-     1.57
+     1.91
     ],
-    "slope_bpm_per_h": -4.64,
-    "intercept_at_t0_refP": 151.6,
+    "slope_bpm_per_h": -3.6,
+    "intercept_at_t0_refP": 150.7,
     "first_band_window": {
      "start_elapsed_s": 1470,
      "P": 221.2,
@@ -19457,14 +20086,14 @@
      "HR_settled": 149.1
     },
     "last_band_window": {
-     "start_elapsed_s": 5670,
-     "P": 217.4,
-     "cad": 79.4,
-     "HR_settled": 143.5
+     "start_elapsed_s": 6870,
+     "P": 216.2,
+     "cad": 78.3,
+     "HR_settled": 143.2
     },
     "cad_first_last": [
      79.8,
-     79.4
+     78.3
     ]
    }
   }

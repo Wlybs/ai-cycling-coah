@@ -38,7 +38,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-20 — [[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]] — Claude原始流复核完成：户外早段同功率HR偏高可重复（中心约+9、+5～+14 bpm），少停绕圈课同样偏高→非停脚所致，原因未定；前2.5h漂移户外不更快，2.4–2.7h后台阶；跨岛踩踏占经过78–80%。不改明日室内4h/180W首选。报告 icu/analysis/2026-10-20-lsd-indoor-outdoor-hr-review.md。
+- 2026-10-20 — [[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]] — Claude原始流复核完成：户外早段同功率HR偏高可重复（中心约+9、+5～+14 bpm），少停绕圈课同样偏高→非停脚所致，原因未定；同一心率带；后段漂移室内外相近（2.5–3.25h同带+7～12），两边都有台阶（初版"室内无>2.75h"已订正）；跨岛踩踏占经过78–80%。不改明日室内4h/180W首选。报告 icu/analysis/2026-10-20-lsd-indoor-outdoor-hr-review.md。
 - 2026-10-20 — [[sessions/2026-10-20-lsd-indoor-outdoor-route-and-hr]] — 接受明日纯LSD，首选室内4h约180W（165–185可用）；45g/h已长期耐受。LSD实际环岛非LCK；10/7 GPS140km及早段174W/HR143对室内179W/HR129仅初筛，原因未定；Claude匹配分析prompt已写。
 - 2026-10-20 — [[sessions/2026-10-20-lsd-dose-fueling-and-drcc-scenario]] — 加餐125g碳水；纠正四香蕉携带，4h用2L100PLUS+2包40g胶=180g；骑中66.6g/h已确认舒服，可试75再90。首选室内4h纯有氧，B可有意替代（不再绝对排除连续质量）；4h非收益上限。未来5.2W/kg×61–63=317–328W；条件模型约2h–2h20，非成绩保证。
 - 2026-10-20 — [[sessions/2026-10-20-low-cost-banana-fueling-and-long-ride-options]] — 早餐可大份、耐受好，建议250g面包+500ml奶=150g碳水；4h改4根120g带皮香蕉+2L100PLUS，约165g碳水（香蕉去皮率假设）。省胶/成本优先；仍4h纯有氧，不返程加阈值。
