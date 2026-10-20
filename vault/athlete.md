@@ -56,6 +56,11 @@
 - **赛前一天不开腿**（HARD RULE 2026-05-11）。race-1 习惯是休息或随便骑（commute），不要正式开腿课（30s × N short bursts 也不要）。race day morning warmup 自带激活。
 - **race calendar 整体优先于单点 peaking**（HARD RULE 2026-05-11）。多场 race 块（如 5/17 → 5/31 这种 20 天连续 race）时拒绝为单场 A 赛牺牲后续 race 的 W' adaptation 准备。Coach 设计 plan 必须把整个 race block 的 adaptation 窗口纳入考虑，不要只盯下一场。
 
+## 长骑与比赛补给补充（2026-10-20本人确认）
+
+- 五月平王、武义、浙西天路：每只胶45g碳水，赛前10min一只、比赛30min一只、60min一只；1100ml电解质饮料6g/100ml，赛中均匀喝完，比赛通常不超过2h。因此赛中66+2×45=156g；若2h则78g/h，若1.5h则104g/h，具体每场仍按实际时长。赛前45g另列，起跑前至完赛总201g，不能把三只全算赛中。本人报告这些补给一直无GI问题；是摄入耐受经历，不是测得最大吸收/氧化能力。
+- 室内外同功率计；Claude本轮会话记录本人确认同一条心率带。配对观察支持户外早段心率较高、两边后段均漂移，但原因未分离；不以固定bpm换算室内外、不追求室内心率达到户外。
+
 ## 数据契约
 
 - 所有"今天 FTP 多少"的问题：读 `icu/coach_memory/athlete_snapshot.json` `ftp_set` 字段
