@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-20 — [[sessions/2026-10-20-endurance-breakfast-and-on-bike-fueling]] — 明早早餐同款面包120g+奶300ml=75g碳水，已确认耐受；骑中45g/h，500ml100PLUS+40g面包/h，3.5–4h约158–180g；饮水按体感另调。
 - 2026-10-20 — [[sessions/2026-10-20-morning-endurance-reschedule]] — Wed实验移Thu早上，改Wed早上路骑3.5–4h、185–205W长有氧；时间无限不等于加量，不加后置阈值。现体感很好，两顿米饭鸡肉均已吃完，未另吃晚饭。
 - 2026-10-20 — [[sessions/2026-10-20-threshold-history-and-preferred-format]] — 回查5/27、五一三天与清明三天原始流；确认长骑中持续输出经验，分清各日剂量及缺采。偏好10–15min、心理难度C<B<A；撤A→B→C门槛，B首选90min后3×12@285–290，A分段290起，长连续单独渐进。
 - 2026-10-20 — [[sessions/2026-10-20-drcc-flexible-menus-and-periodization]] — 给出长持续/后置持续/疲劳后重复/AWE具体W与进阶；完整菜单择一+Crazies，不额外堆三硬课；减少固定VO2而非停到末期，54天按反馈进阶。
 - 2026-10-20 — [[sessions/2026-10-20-drcc-endurance-and-wednesday-lsd]] — DRCC主线长持续+疲劳后回应，VO2保留；目前疲劳低。Wed上午实验，下午3.5h室内首选，较22:30夜骑收早5h；Thu AWE可纯有氧或受控lead，无拉扯。
-- 2026-10-20 — [[sessions/2026-10-20-vo2-dose-progression-and-full-nutrition]] — 10/6主课7与ICU整趟5分开；VO2优先下次复现8×3约355W，Faber备选5×4从350W试行，比较6×4/8×4。早餐75g、乳清21g、两顿主食与180mg咖啡因耐受已补齐。
 
 ## 当前活跃旗标
 
