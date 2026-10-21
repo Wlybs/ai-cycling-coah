@@ -1,9 +1,9 @@
 """
 公共工具函数，供所有脚本共享使用。
 """
-import sys
-import os
 import json
+import os
+import sys
 
 
 def setup_encoding():
@@ -29,7 +29,7 @@ def save_json(data, folder, filename):
 def load_json(filepath):
     """读取 JSON 文件，失败时返回 None。"""
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return None

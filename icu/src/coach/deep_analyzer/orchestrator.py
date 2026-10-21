@@ -1,13 +1,12 @@
 import json
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from ..common.logging import get_logger
-from . import feature_detector, router, report_composer
-from .sub_analyzers import pacing, w_balance, durability, climbing, target_align, historical_cmp
-from .types import SummaryLatest, StateFile
+from . import feature_detector, report_composer, router
+from .sub_analyzers import climbing, durability, historical_cmp, pacing, target_align, w_balance
+from .types import StateFile, SummaryLatest
 
 LOG = get_logger("deep_analyzer")
 SUB_FUNCS = {
@@ -62,8 +61,8 @@ def _next_plan_hints(findings_list) -> list[str]:
 
 def analyze_one(
     activity: dict,
-    streams: Optional[dict],
-    wbal_series: Optional[dict],
+    streams: dict | None,
+    wbal_series: dict | None,
     physiology_bundle: dict,
     athlete: dict,
     history: list,
@@ -117,7 +116,7 @@ def analyze_one(
     headline = next((findings_by_analyzer[a].verdict for a in _HEADLINE_PRIORITY if a in findings_by_analyzer), "分析完成")
     summary = SummaryLatest(
         activity_id=activity["id"],
-        analyzed_at=datetime.now(timezone.utc).isoformat(),
+        analyzed_at=datetime.now(UTC).isoformat(),
         sub_analyzers_run=sorted(activated),
         headline_verdict=headline,
         stimulus_score=_stimulus_score(findings_list),
@@ -171,6 +170,6 @@ def analyze_new(
         results.append({"activity_id": activity["id"], **res})
         last_seen = activity["id"]
     state.last_analyzed_activity_id = last_seen
-    state.last_analyzed_at = datetime.now(timezone.utc).isoformat()
+    state.last_analyzed_at = datetime.now(UTC).isoformat()
     state_path.write_text(state.model_dump_json(indent=2), encoding="utf-8")
     return results

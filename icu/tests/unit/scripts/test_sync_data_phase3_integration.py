@@ -5,8 +5,6 @@ import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
-import pytest
-
 
 def _import_main():
     """Import sync_data.main fresh each call — module is a script."""

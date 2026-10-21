@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 from src.coach.common.logging import get_logger
 

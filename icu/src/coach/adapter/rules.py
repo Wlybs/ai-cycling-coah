@@ -12,8 +12,8 @@
 """
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
-from typing import Iterable
+from collections.abc import Iterable
+from datetime import UTC, datetime, timedelta
 
 from src.coach.common.logging import get_logger
 from src.coach.ledger.types import AthleteStateRef, DecisionEntry
@@ -129,7 +129,7 @@ def _consecutive_red_count(history: Iterable[DecisionEntry]) -> int:
     """Count `adaptation_verdict` entries with verdict='red' in the last
     `_RED_LOOKBACK_DAYS` days.
     """
-    cutoff = datetime.now(timezone.utc) - timedelta(days=_RED_LOOKBACK_DAYS)
+    cutoff = datetime.now(UTC) - timedelta(days=_RED_LOOKBACK_DAYS)
     count = 0
     for entry in history:
         if entry.decision_type != "adaptation_verdict":

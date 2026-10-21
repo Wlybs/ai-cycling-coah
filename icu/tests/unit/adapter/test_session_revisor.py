@@ -6,9 +6,8 @@ from datetime import date
 import pytest
 
 from src.coach.adapter.session_revisor import revise_session
-from src.coach.periodization.types import IntensityTier, SessionType
+from src.coach.periodization.types import SessionType
 from src.coach.session_designer.types import DesignedSession
-
 
 # ---------- Shared fixtures ----------
 

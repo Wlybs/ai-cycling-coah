@@ -1,4 +1,5 @@
-from src.coach.periodization.types import Phase, IntensityTier, SessionType
+from src.coach.periodization.types import IntensityTier, Phase, SessionType
+
 
 def test_phase_enum_values():
     expected = {"BASE", "BUILD", "PEAK", "TAPER", "RACE", "TRANSITION"}
@@ -19,12 +20,18 @@ def test_session_type_matches_legacy_training_type():
 
 
 from datetime import date
+
 import pytest
 from pydantic import ValidationError
 
 from src.coach.periodization.types import (
-    PhaseIntent, MacroPlan, MacroWindow, MesoBlock, MicroCycle, DayIntent,
-    PeriodizationSnapshot, Phase, IntensityTier,
+    DayIntent,
+    MacroPlan,
+    MacroWindow,
+    MesoBlock,
+    MicroCycle,
+    PeriodizationSnapshot,
+    PhaseIntent,
 )
 
 

@@ -9,7 +9,6 @@ import pytest
 from src.coach.evidence.corpus import CorpusReader, lint_corpus
 from src.coach.evidence.types import EvidenceCard
 
-
 # Fixed valid ULIDs for fixtures
 ULID_T = "01HXR0NM8KT0000000000000A1"
 ULID_S = "01HXR0NM8KS0000000000000B2"

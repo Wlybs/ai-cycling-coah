@@ -1,8 +1,8 @@
 from datetime import date, timedelta
 
 from src.coach.periodization.ctl_slope import CTLSlope
-from src.coach.periodization.race_calendar import RaceEntry
 from src.coach.periodization.phase_detector import detect_phase
+from src.coach.periodization.race_calendar import RaceEntry
 from src.coach.periodization.types import Phase
 
 

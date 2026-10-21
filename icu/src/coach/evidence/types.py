@@ -6,7 +6,6 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, computed_field, model_validator
 
-
 # ---------- regex constants ----------
 
 ULID_PATTERN = re.compile(r"^[0-9A-HJKMNP-TV-Z]{26}$")
@@ -44,27 +43,27 @@ class EvidenceCard(BaseModel):
     body_md: str = Field(..., description="Markdown body after frontmatter")
 
     @model_validator(mode="after")
-    def _validate_ulid(self) -> "EvidenceCard":
+    def _validate_ulid(self) -> EvidenceCard:
         if not ULID_PATTERN.match(self.ulid):
             raise ValueError(f"ulid not Crockford-26: {self.ulid!r}")
         return self
 
     @model_validator(mode="after")
-    def _validate_tags(self) -> "EvidenceCard":
+    def _validate_tags(self) -> EvidenceCard:
         for t in self.tags:
             if not SNAKE_CASE_TAG_PATTERN.match(t):
                 raise ValueError(f"tag must be snake_case lowercase: {t!r}")
         return self
 
     @model_validator(mode="after")
-    def _validate_applies_to(self) -> "EvidenceCard":
+    def _validate_applies_to(self) -> EvidenceCard:
         for a in self.applies_to:
             if not SNAKE_CASE_APPLIES_PATTERN.match(a):
                 raise ValueError(f"applies_to must be snake_case lowercase: {a!r}")
         return self
 
     @model_validator(mode="after")
-    def _validate_status_supersede_consistency(self) -> "EvidenceCard":
+    def _validate_status_supersede_consistency(self) -> EvidenceCard:
         if self.status == "active" and self.superseded_by is not None:
             raise ValueError("active cards must have superseded_by=None")
         if self.status == "deprecated" and self.superseded_by is None:

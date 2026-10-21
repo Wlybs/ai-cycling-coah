@@ -2,18 +2,24 @@
 from __future__ import annotations
 
 import json
-from datetime import date as DateT, timedelta
+from datetime import date as DateT
+from datetime import timedelta
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from ..periodization.types import (
-    DayIntent, IntensityTier, MicroCycle, SessionType,
+    IntensityTier,
+    MicroCycle,
+    SessionType,
 )
 from .composer import compose_session
 from .intent_translator import translate_intent
 from .safety_guards import SafetyViolation, check_weekly_plan
 from .types import (
-    DayPlanV2, DesignedSession, SessionIntent, WeeklyPlan,
+    DayPlanV2,
+    DesignedSession,
+    SessionIntent,
+    WeeklyPlan,
 )
 
 DOW_DATES = {"Mon": 0, "Tue": 1, "Wed": 2, "Thu": 3,
@@ -24,7 +30,7 @@ TSS_EASY_SHAVE_RATIO = 0.7     # tss_budget_overflow: cut last EASY day's TSS to
 DEFAULT_REST_DAY_INDEX = 4     # Fri — used only when missing_rest_day violation lacks day_index
 
 
-def _load_json(path: Path) -> Optional[dict]:
+def _load_json(path: Path) -> dict | None:
     if not path.exists():
         return None
     try:

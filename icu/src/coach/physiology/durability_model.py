@@ -1,5 +1,4 @@
-from datetime import datetime, timezone
-from typing import List
+from datetime import UTC, datetime
 
 from .types import DurabilityCurve
 
@@ -35,7 +34,7 @@ def _index_at_cumulative_kj(stream, target_kj):
 def fit_durability(rides: list) -> DurabilityCurve:
     if not rides:
         return DurabilityCurve(
-            generated_at=datetime.now(timezone.utc).isoformat(),
+            generated_at=datetime.now(UTC).isoformat(),
             sample_size_rides=0,
             fresh_mmp_w={f"{d}s": 0 for d in DURATIONS_S},
             fatigued_mmp_w={f"{k}kj": {f"{d}s": 0 for d in DURATIONS_S} for k in CHECKPOINTS_KJ[1:]},
@@ -79,7 +78,7 @@ def fit_durability(rides: list) -> DurabilityCurve:
         decay[f"{d}s"] = round(delta_pct, 2)
 
     return DurabilityCurve(
-        generated_at=datetime.now(timezone.utc).isoformat(),
+        generated_at=datetime.now(UTC).isoformat(),
         sample_size_rides=len(rides),
         fresh_mmp_w=fresh_mmp,
         fatigued_mmp_w=fatigued_out,

@@ -1,10 +1,6 @@
 """Unit tests for plan_preview.py."""
 import json
-from datetime import date
-from pathlib import Path
 from unittest.mock import patch
-
-import pytest
 
 from scripts.plan_preview import main as preview_main
 from src.coach.session_designer.generator_v2 import GeneratePlanV2Result

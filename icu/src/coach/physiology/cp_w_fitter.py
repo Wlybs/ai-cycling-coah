@@ -1,8 +1,8 @@
 import hashlib
 import json
-from datetime import datetime, timezone
+from collections.abc import Sequence
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import List, Sequence
 
 import numpy as np
 from scipy.optimize import curve_fit
@@ -46,7 +46,7 @@ def fit_cp_w(mmp: MMP, athlete_ftp: int, window_days: int) -> CPWModel:
     cp, w_prime, t_k, r2, model_name = _fit_best(t, p)
 
     return CPWModel(
-        generated_at=datetime.now(timezone.utc).isoformat(),
+        generated_at=datetime.now(UTC).isoformat(),
         window_days=window_days,
         cp_watts=int(round(cp)),
         w_prime_joules=int(round(w_prime)),
