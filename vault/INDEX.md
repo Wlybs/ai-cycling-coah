@@ -46,6 +46,8 @@
 
 ## 当前活跃旗标
 
+- **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
+
 - **10/21完成与接下来3天（最新）**：10/21 4h ERG195完成，HRV/RHR正常，TSB−25.1。周四夜骑3h（90min Z2→AWE领骑285→310W共30–40min→30min Z2），周五休，周六3h含2×20@225–235W与75g/h补给；细节与每段理由见[[plans/2026-10-19-faber-and-drcc-eight-week]] revision11。饮食模板仍按[[plans/2026-10-21-fueling-and-body-composition]]。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
