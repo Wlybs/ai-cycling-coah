@@ -1,10 +1,7 @@
 """Unit tests for LedgerReader: query, query_similar, trace_chain, corruption tolerance."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
-from pathlib import Path
-
-import pytest
+from datetime import UTC, datetime
 
 from src.coach.ledger.reader import LedgerReader
 from src.coach.ledger.types import AthleteStateRef
@@ -57,7 +54,7 @@ def test_query_filters_by_time_window(ledger_path, sample_state):
     w.record(decision_type="phase_transition", source="x",
              athlete_state=sample_state, payload={"n": 1})
     time.sleep(0.005)
-    middle_time = datetime.now(timezone.utc)
+    middle_time = datetime.now(UTC)
     time.sleep(0.005)
     w.record(decision_type="phase_transition", source="x",
              athlete_state=sample_state, payload={"n": 2})
@@ -169,13 +166,12 @@ def test_trace_chain_detects_cycle(ledger_path, sample_state):
     id_b = w.record(decision_type="phase_transition", source="t",
                     athlete_state=sample_state, payload={"n": 2},
                     superseded_by=id_a)
-    from pathlib import Path as _P
     import json as _json
-    from datetime import datetime as _dt, timezone as _tz
+    from datetime import datetime as _dt
     cycled = {
         "schema_version": 1,
         "entry_id": id_a,
-        "timestamp": _dt.now(_tz.utc).isoformat(),
+        "timestamp": _dt.now(UTC).isoformat(),
         "decision_type": "phase_transition",
         "source": "t",
         "athlete_state_ref": sample_state.model_dump(),

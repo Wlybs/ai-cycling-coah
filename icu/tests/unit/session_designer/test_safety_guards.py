@@ -1,5 +1,5 @@
 from src.coach.session_designer.safety_guards import (
-    check_weekly_plan, SafetyViolation,
+    check_weekly_plan,
 )
 
 

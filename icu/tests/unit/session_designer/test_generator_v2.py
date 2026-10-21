@@ -5,18 +5,13 @@ TDD workflow: test first (RED), then implement (GREEN), then refactor.
 """
 
 import json
-from datetime import date, datetime, timezone
+from datetime import date
 from pathlib import Path
-from typing import Any
 from unittest import mock
 
-import pytest
-
 from src.coach.session_designer.generator_v2 import (
-    GeneratePlanV2Result,
     generate_plan_v2,
 )
-
 
 # === Module-level test fixtures (not pytest fixtures — keep test file self-contained) ===
 

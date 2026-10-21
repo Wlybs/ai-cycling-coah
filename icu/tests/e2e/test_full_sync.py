@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from src.coach.physiology.refresher import refresh_all
 from src.coach.deep_analyzer.orchestrator import analyze_new
+from src.coach.physiology.refresher import refresh_all
 
 FIXTURE_DIR = Path(__file__).resolve().parents[1] / "fixtures" / "rides"
 

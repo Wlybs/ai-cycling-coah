@@ -1,6 +1,8 @@
 import gzip
 import io
+
 import fitdecode
+
 
 def parse_fit_laps(fit_content):
     """

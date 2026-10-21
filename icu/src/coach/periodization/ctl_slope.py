@@ -2,22 +2,22 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Literal, Optional
+from typing import Literal
 
 import numpy as np
 from pydantic import BaseModel
 
 
 class CTLSlope(BaseModel):
-    slope_per_day: Optional[float]
+    slope_per_day: float | None
     interpretation: Literal["increasing", "flat", "decreasing", "unknown"]
     sample_size: int
-    window_start: Optional[date] = None
-    window_end: Optional[date] = None
-    last_ctl: Optional[float] = None
+    window_start: date | None = None
+    window_end: date | None = None
+    last_ctl: float | None = None
 
 
-def _parse_date(v: str) -> Optional[date]:
+def _parse_date(v: str) -> date | None:
     try:
         return datetime.strptime(v[:10], "%Y-%m-%d").date()
     except (ValueError, TypeError):

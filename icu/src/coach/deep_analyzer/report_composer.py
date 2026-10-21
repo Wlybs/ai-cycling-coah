@@ -1,8 +1,8 @@
 import json
 import re
+from collections.abc import Iterable
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable
 
 from .types import Findings
 

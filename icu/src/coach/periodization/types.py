@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import date
 from enum import Enum
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -135,7 +135,7 @@ class NextRace(BaseModel):
     name: str
     race_date: date
     priority: str = Field(..., pattern="^(A|B|C)$")
-    course_hint: Optional[str] = None
+    course_hint: str | None = None
 
 
 class PeriodizationSnapshot(BaseModel):
@@ -145,4 +145,4 @@ class PeriodizationSnapshot(BaseModel):
     macro: MacroPlan
     meso: MesoBlock
     micro: MicroCycle
-    next_race: Optional[NextRace] = None
+    next_race: NextRace | None = None

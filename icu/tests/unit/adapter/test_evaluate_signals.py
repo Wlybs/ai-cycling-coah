@@ -1,13 +1,11 @@
 """End-to-end tests for evaluate_signals — happy path + 4 boundary scenarios."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
-
-import pytest
+from datetime import datetime, timedelta
 
 from src.coach.adapter.rules import evaluate_signals
 from src.coach.adapter.types import SignalSnapshot
-from src.coach.ledger.types import AthleteStateRef, DecisionEntry, generate_ulid
+from src.coach.ledger.types import DecisionEntry, generate_ulid
 
 
 def _snap(fixed_utc_now: datetime, *,

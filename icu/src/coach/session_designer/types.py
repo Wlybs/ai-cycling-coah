@@ -8,7 +8,8 @@ File 06 adds workout-design models without modifying the File 09 stubs.
 """
 from __future__ import annotations
 
-from typing import Any, Literal, Optional
+from typing import Any, Literal
+
 from pydantic import BaseModel, Field, model_validator
 
 from src.coach.periodization.types import IntensityTier, SessionType
@@ -30,8 +31,8 @@ class DayPlanV2(BaseModel):
     description: str
     duration_min: int
     target_tss: int
-    power_range_w: Optional[str] = None
-    hr_range_bpm: Optional[str] = None
+    power_range_w: str | None = None
+    hr_range_bpm: str | None = None
 
 
 class WeeklyPlan(BaseModel):
@@ -42,7 +43,7 @@ class WeeklyPlan(BaseModel):
     weekly_tss_target: int
     # NOTE: spec said `str` (required) but File 09 stub locked this as Optional.
     # Keeping Optional to preserve File 09's save_weekly_plan(coaching_summary=None) default.
-    coaching_summary: Optional[str] = None
+    coaching_summary: str | None = None
     days: list[DayPlanV2]
 
 
@@ -50,12 +51,12 @@ class WorkoutStep(BaseModel):
     """A single step within a structured workout."""
     label: str
     duration_s: int = Field(..., ge=5)
-    target_w_low: Optional[int] = None
-    target_w_high: Optional[int] = None
-    target_hr_low: Optional[int] = None
-    target_hr_high: Optional[int] = None
-    target_rpm_low: Optional[int] = None
-    target_rpm_high: Optional[int] = None
+    target_w_low: int | None = None
+    target_w_high: int | None = None
+    target_hr_low: int | None = None
+    target_hr_high: int | None = None
+    target_rpm_low: int | None = None
+    target_rpm_high: int | None = None
     zone: str = Field(..., pattern=r"^(Z1|Z2|Z3|Z4|Z5|Z6|Z7)$")
 
     @model_validator(mode="after")
@@ -111,6 +112,6 @@ class DesignedSession(BaseModel):
     duration_min: int = Field(..., ge=0, le=600)
     target_tss: int = Field(..., ge=0, le=400)
     structure: SessionStructure
-    power_range_w: Optional[str] = None
-    hr_range_bpm: Optional[str] = None
-    trace: Optional[dict[str, Any]] = None
+    power_range_w: str | None = None
+    hr_range_bpm: str | None = None
+    trace: dict[str, Any] | None = None

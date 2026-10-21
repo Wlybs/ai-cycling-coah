@@ -1,11 +1,12 @@
 """Threshold golden-value tests for adapter.rules — 4 signals × 3 verdicts + 2 guardrails."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 
 import pytest
 
 from src.coach.adapter.rules import (
+    CONSECUTIVE_RED_LIMIT,
     HRV_DEVIATION_RED_PCT,
     HRV_DEVIATION_YELLOW_PCT,
     RESTING_HR_RED_DELTA_BPM,
@@ -15,18 +16,15 @@ from src.coach.adapter.rules import (
     SORENESS_RED_SCORE,
     SORENESS_YELLOW_SCORE,
     TSB_ANOMALY_THRESHOLD,
-    CONSECUTIVE_RED_LIMIT,
     _classify_hrv,
     _classify_resting_hr,
     _classify_sleep,
     _classify_soreness,
     _consecutive_red_count,
-    _tsb_anomaly_hit,
     _severity_score,
+    _tsb_anomaly_hit,
 )
-from src.coach.adapter.types import SignalSnapshot
 from src.coach.ledger.types import AthleteStateRef, DecisionEntry, generate_ulid
-
 
 # ---------- HRV ----------
 

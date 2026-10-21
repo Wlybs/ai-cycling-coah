@@ -1,12 +1,17 @@
 import pytest
 from pydantic import ValidationError
 
-from src.coach.session_designer.types import (
-    SessionIntent, WorkoutStep, SessionStructure, DesignedSession,
-    WeeklyPlan, DayPlanV2,
-)
 from src.coach.periodization.types import (
-    IntensityTier, SessionType,
+    IntensityTier,
+    SessionType,
+)
+from src.coach.session_designer.types import (
+    DayPlanV2,
+    DesignedSession,
+    SessionIntent,
+    SessionStructure,
+    WeeklyPlan,
+    WorkoutStep,
 )
 
 

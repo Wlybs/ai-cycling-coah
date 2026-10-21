@@ -2,7 +2,10 @@ from datetime import date
 
 from src.coach.periodization.micro_cycle import build_micro_cycle
 from src.coach.periodization.types import (
-    Phase, PhaseIntent, MesoBlock, IntensityTier,
+    IntensityTier,
+    MesoBlock,
+    Phase,
+    PhaseIntent,
 )
 
 
