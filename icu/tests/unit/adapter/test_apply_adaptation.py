@@ -2,8 +2,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timedelta, timezone
-from pathlib import Path
+from datetime import UTC, date, datetime, timedelta
 from unittest.mock import MagicMock
 
 import pytest
@@ -14,7 +13,6 @@ from src.coach.ledger.reader import LedgerReader
 from src.coach.ledger.types import AthleteStateRef
 from src.coach.ledger.writer import LedgerWriter
 
-
 # ---------- Build a red-verdict day end-to-end via daily_adapt ----------
 
 @pytest.fixture
@@ -22,12 +20,12 @@ def target_date() -> date:
     # LedgerWriter.record stamps with the real wall clock (T58 invariant);
     # the apply_adaptation same-day verdict filter then requires the target
     # date to match today, otherwise no-fallback would (correctly) raise.
-    return datetime.now(timezone.utc).date()
+    return datetime.now(UTC).date()
 
 
 @pytest.fixture
 def fixed_now(target_date) -> datetime:
-    return datetime.combine(target_date, datetime.min.time(), tzinfo=timezone.utc).replace(hour=6)
+    return datetime.combine(target_date, datetime.min.time(), tzinfo=UTC).replace(hour=6)
 
 
 @pytest.fixture

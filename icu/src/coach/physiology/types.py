@@ -1,5 +1,6 @@
-from typing import List, Literal, Optional
-from pydantic import BaseModel, Field
+from typing import Literal
+
+from pydantic import BaseModel
 
 
 class CPWModel(BaseModel):
@@ -10,7 +11,7 @@ class CPWModel(BaseModel):
     t_k_seconds: float
     model: Literal["3-param-hyperbolic", "2-param-hyperbolic"]
     fit_r_squared: float
-    data_points_used: List[List[float]]
+    data_points_used: list[list[float]]
     athlete_ftp_set: int
     cp_vs_ftp_delta_w: int
     stale: bool = False
@@ -33,8 +34,8 @@ class WBalanceSeries(BaseModel):
     min_w_bal_pct: float
     min_w_bal_timestamp_s: int
     seconds_below_15pct: int
-    laps: List[LapWBal]
-    w_bal_series_1hz: List[int]
+    laps: list[LapWBal]
+    w_bal_series_1hz: list[int]
 
 
 class DurabilityCurve(BaseModel):
@@ -43,7 +44,7 @@ class DurabilityCurve(BaseModel):
     fresh_mmp_w: dict
     fatigued_mmp_w: dict
     decay_rate_pct_per_1000kj: dict
-    percentile_vs_class_estimate: Optional[str] = None
+    percentile_vs_class_estimate: str | None = None
 
 
 class ResponseTypeStats(BaseModel):
@@ -59,7 +60,7 @@ class ResponseTypeStats(BaseModel):
 class KneeLoading(BaseModel):
     standing_climb_minutes_90d: int
     avg_hr_drift_bpm_standing: float
-    flag: Optional[Literal["watch", "caution"]] = None
+    flag: Literal["watch", "caution"] | None = None
 
 
 class ResponseProfile(BaseModel):
@@ -70,6 +71,6 @@ class ResponseProfile(BaseModel):
 
 
 class PhysiologyBundle(BaseModel):
-    cp_w: Optional[CPWModel] = None
-    durability: Optional[DurabilityCurve] = None
-    response: Optional[ResponseProfile] = None
+    cp_w: CPWModel | None = None
+    durability: DurabilityCurve | None = None
+    response: ResponseProfile | None = None

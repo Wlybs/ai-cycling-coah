@@ -183,10 +183,7 @@ class TestApiFreeInvariant:
 # T67.3 — strict mode + --reuse
 # ============================================================
 
-import json
-from pathlib import Path
 
-import pytest
 
 
 _BASE_REQUEST = {

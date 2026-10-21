@@ -5,7 +5,12 @@ from datetime import date, timedelta
 from typing import Final
 
 from .types import (
-    DayIntent, IntensityTier, MesoBlock, MicroCycle, Phase, PhaseIntent,
+    DayIntent,
+    IntensityTier,
+    MesoBlock,
+    MicroCycle,
+    Phase,
+    PhaseIntent,
 )
 
 DOW: Final = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

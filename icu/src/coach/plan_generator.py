@@ -10,17 +10,18 @@
 推送 ICU 日历的逻辑保留在 _push_to_icu()，由 scripts/push_plan.py 在
 `--push --plan-file <path>` 时读取用户保存的 LLM 响应并推送。
 """
-import sys
-import os
 import json
+import os
+import sys
 from datetime import datetime, timedelta
-from typing import Optional, Literal
+from typing import Literal
+
 from pydantic import BaseModel
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from src.utils.common import setup_encoding, get_warehouse_dir, load_json
-from src.fetcher.icu_client import ICUClient
 from src.coach.phase1_injection import inject_phase1_context
+from src.fetcher.icu_client import ICUClient
+from src.utils.common import get_warehouse_dir, load_json, setup_encoding
 
 setup_encoding()
 
@@ -44,8 +45,8 @@ class DayPlan(BaseModel):
     duration_min: int
     target_tss: int
     indoor: bool
-    power_range_w: Optional[str] = None
-    hr_range_bpm: Optional[str] = None
+    power_range_w: str | None = None
+    hr_range_bpm: str | None = None
 
 
 class WeeklyPlan(BaseModel):
@@ -280,7 +281,7 @@ DayPlan:
     return inject_phase1_context(prompt)
 
 
-def generate_plan(week_start=None, week_end=None, output_path: Optional[str] = None) -> str:
+def generate_plan(week_start=None, week_end=None, output_path: str | None = None) -> str:
     """构建 prompt 并保存到 `coach_memory/plans/<week>_prompt.md`（或显式路径）。
     返回写入文件的绝对路径。用户再手动粘贴到 Gemini CLI / Claude Code 教练模式。
     """

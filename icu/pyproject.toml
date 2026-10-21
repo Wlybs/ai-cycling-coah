@@ -20,10 +20,15 @@ select = [
 ignore = [
     "E501",  # line too long (handled by formatter)
     "B008",  # function calls in argument defaults
+    "E731",  # lambda assignment (used for small local key functions)
+    "E741",  # ambiguous name `l` (used for lap/list loop variables)
+    "B905",  # zip(strict=) would change behaviour on unequal-length streams
+    "UP042", # StrEnum changes str() output of existing enums
+    "UP028", # yield-from rewrite of generator loops
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**/*.py" = ["B011"]
+"tests/**/*.py" = ["B011", "B007", "E402", "E701", "E702"]
 
 [tool.pytest.ini_options]
 markers = [

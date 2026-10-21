@@ -8,16 +8,15 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from datetime import date as DateT, datetime, timezone
+from datetime import UTC, datetime
+from datetime import date as DateT
 from pathlib import Path
-from typing import Optional
 
 from src.coach.periodization import engine as periodization_engine
 from src.coach.periodization.snapshot_io import load_periodization_snapshot
 from src.coach.session_designer.assembler import design_week, write_plan_trace
 from src.coach.session_designer.plan_writer import save_weekly_plan
 from src.coach.session_designer.prose_io import render_prose_prompt
-
 
 DEFAULT_FALLBACK_FTP = 280
 PHYS_KEYS = ("cp_watts", "w_prime_joules", "durability_60s_pct", "knee_flag")
@@ -37,11 +36,11 @@ class GeneratePlanV2Result:
         violations: List of dicts (SafetyViolation.model_dump())
     """
     status: str
-    plan_json_path: Optional[str] = None
-    plan_md_path: Optional[str] = None
-    trace_path: Optional[str] = None
-    prose_prompt_path: Optional[str] = None
-    error: Optional[str] = None
+    plan_json_path: str | None = None
+    plan_md_path: str | None = None
+    trace_path: str | None = None
+    prose_prompt_path: str | None = None
+    error: str | None = None
     violations: list = field(default_factory=list)
 
 
@@ -141,7 +140,7 @@ def generate_plan_v2(
     reports_dir = Path(reports_dir)
 
     # 1. Deterministic timestamp
-    now_iso = datetime.now(timezone.utc).isoformat(timespec="seconds") + "Z"
+    now_iso = datetime.now(UTC).isoformat(timespec="seconds") + "Z"
 
     # 2. Refresh periodization
     refresh = periodization_engine.refresh_periodization(

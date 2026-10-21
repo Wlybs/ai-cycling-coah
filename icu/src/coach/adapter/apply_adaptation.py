@@ -10,10 +10,11 @@ On any PUT exception, the ledger stays untouched and the exception propagates.
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
+from datetime import UTC, datetime
 from datetime import date as DateT
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from src.coach.common.logging import get_logger
 from src.coach.ledger.reader import LedgerReader
@@ -39,7 +40,7 @@ def _find_today_verdict(reader: LedgerReader, target_date: DateT) -> DecisionEnt
     failure. Tests that need a same-day verdict must construct one via injected
     `now_fn` and same-day ledger entries.
     """
-    day_start = datetime.combine(target_date, datetime.min.time(), tzinfo=timezone.utc)
+    day_start = datetime.combine(target_date, datetime.min.time(), tzinfo=UTC)
     day_end = day_start.replace(hour=23, minute=59, second=59)
     same_day = reader.query(
         decision_type="adaptation_verdict",
@@ -123,7 +124,7 @@ def run(
     Raises if PUT fails under confirm=True (ledger then NOT appended).
     """
     if now_fn is None:
-        now_fn = lambda: datetime.now(timezone.utc)
+        now_fn = lambda: datetime.now(UTC)
     applied_at = now_fn()
     if client_factory is None:
         client_factory = lambda: ICUClient()

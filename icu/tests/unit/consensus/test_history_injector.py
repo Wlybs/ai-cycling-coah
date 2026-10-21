@@ -1,7 +1,6 @@
 """Unit tests for HistoryInjector: empty, sparse, saturated, outcome_pending."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest

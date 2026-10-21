@@ -3,10 +3,13 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Optional
 
 from .types import (
-    MacroPlan, MesoBlock, MicroCycle, PeriodizationSnapshot, Phase,
+    MacroPlan,
+    MesoBlock,
+    MicroCycle,
+    PeriodizationSnapshot,
+    Phase,
 )
 
 PHASE_CURRENT = "phase_current.json"
@@ -80,7 +83,7 @@ def write_periodization_snapshot(
     return str(path)
 
 
-def load_periodization_snapshot(base_dir: Path) -> Optional[PeriodizationSnapshot]:
+def load_periodization_snapshot(base_dir: Path) -> PeriodizationSnapshot | None:
     path = Path(base_dir) / SNAPSHOT
     if not path.exists():
         return None

@@ -1,8 +1,8 @@
 import json
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 
 class JSONLLogger:
@@ -16,14 +16,14 @@ class JSONLLogger:
         self,
         action: str,
         *,
-        activity_id: Optional[str] = None,
-        duration_ms: Optional[int] = None,
+        activity_id: str | None = None,
+        duration_ms: int | None = None,
         status: str = "ok",
-        error: Optional[str] = None,
+        error: str | None = None,
         **extra: Any,
     ) -> None:
         rec: dict[str, Any] = {
-            "ts": datetime.now(timezone.utc).isoformat(),
+            "ts": datetime.now(UTC).isoformat(),
             "module": self.module,
             "activity_id": activity_id,
             "action": action,

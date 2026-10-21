@@ -14,11 +14,11 @@ from typing import Literal
 from src.coach.common.logging import get_logger
 
 from .types import (
+    EXPERT_ROLES,
+    VERDICTS,
     ConsensusValidationError,
     CouncilVerdict,
-    EXPERT_ROLES,
     ExpertTurn,
-    VERDICTS,
 )
 
 _log = get_logger("consensus")

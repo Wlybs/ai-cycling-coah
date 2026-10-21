@@ -1,7 +1,7 @@
 """Shared fixtures for adapter unit tests."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pytest
 
@@ -10,7 +10,7 @@ from src.coach.ledger.types import AthleteStateRef
 
 @pytest.fixture
 def fixed_utc_now() -> datetime:
-    return datetime(2026, 4, 19, 10, 0, 0, tzinfo=timezone.utc)
+    return datetime(2026, 4, 19, 10, 0, 0, tzinfo=UTC)
 
 
 @pytest.fixture

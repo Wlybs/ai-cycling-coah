@@ -47,7 +47,6 @@ def _maintain_between(
     prev_race: RaceEntry, next_race: RaceEntry, baseline_ctl: float
 ) -> list[MacroWindow]:
     """两赛间隔短的情况：仅 Peak(缩) + Taper。"""
-    gap_days = (next_race.race_date - prev_race.race_date).days
     # 保留前赛后 3 天的微恢复 → 然后 Peak → Taper
     peak_start = prev_race.race_date + timedelta(days=3)
     taper_start = next_race.race_date - timedelta(days=TAPER_DAYS)

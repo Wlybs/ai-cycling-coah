@@ -1,7 +1,7 @@
+from src.coach.periodization.types import IntensityTier
 from src.coach.session_designer.intent_translator import (
     translate_intent,
 )
-from src.coach.periodization.types import IntensityTier
 
 
 def test_rest_always_rest_day():

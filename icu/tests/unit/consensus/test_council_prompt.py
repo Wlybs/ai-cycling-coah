@@ -11,7 +11,6 @@ from src.coach.consensus.council_prompt import (
 )
 from src.coach.ledger.types import AthleteStateRef
 
-
 # ---------- helpers ----------
 
 def _state(**over) -> AthleteStateRef:
@@ -78,7 +77,7 @@ def _wellness_trend() -> list[dict]:
     ]
 
 
-def _request(**over) -> "VerdictRequest":
+def _request(**over) -> VerdictRequest:
     base = dict(
         plan=_plan(),
         athlete_state=_state(),
@@ -390,7 +389,7 @@ class TestDetectUnderDosedTriggers:
 
 # ---------- T65.3: history triplet rendering ----------
 
-from src.coach.consensus.history_injector import HistoryTriplet, OUTCOME_PENDING
+from src.coach.consensus.history_injector import OUTCOME_PENDING, HistoryTriplet
 
 
 def _triplet(**over) -> HistoryTriplet:
