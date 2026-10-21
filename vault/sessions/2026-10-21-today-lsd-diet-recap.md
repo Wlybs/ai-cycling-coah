@@ -32,3 +32,8 @@ ERG全程195W，实录主体约190W；末段高踏频是跟看环法视频的节
 
 ## 记忆漏洞复盘（revision11）
 本人10/20已在会话“训练课表类型和形式”中回答过健身条件（可去健身房、无不适、只有保加利亚蹲/腿屈伸/腿弯举/倒蹬机），但那次只写进分支claude/training-schedule-types-45c0a2（PR#2，未合并master），本worktree看不到，于是又问了一遍。已把健身条件和100PLUS供应写进共享auto memory athlete_profile。价格（FairPrice快照，未核实时价）：100PLUS Original 24×325ml S$16.81（约S$0.70/罐，另有S$2.40押金）；SIS细砂糖2kg S$4.50。
+
+## revision12（本人第四轮批评）
+- 100PLUS本人买的是3L两瓶装约S$5（不是325ml罐装），已写入auto memory。按5g/100ml，约S$1.0每60g碳水。
+- 价格快照（2026-10-21网页，未核时价）：SIS细砂糖2kg S$4.50（FairPrice）；麦芽糊精Better4u.sg 500g S$6（Maltrin M100，DE9–12，美玉米，页面未写食品级，WhatsApp下单）；Myprotein SG 100%麦芽糊精2.5kg S$39.04（当时缺货）；iHerb Nutricost有机麦芽糊精454g S$25.13；果糖FairPrice Green Earth 500g S$5.80（页面未列成分）；iHerb NOW Foods果糖1361g S$20.78（满S$60免运）。每60g碳水：糖约S$0.14，麦芽糊精/果糖约S$0.7–0.8，100PLUS约S$1.0，胶（S$1/35g）约S$1.7。
+- 分支记忆漏洞：cycling-coach技能新增Step 0.5（提问前查auto memory、所有分支、会话记录）与Step 5“会话结束合并vault进master”；5个遗留分支已并入（PR#5）。
