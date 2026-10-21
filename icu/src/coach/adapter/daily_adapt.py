@@ -14,10 +14,11 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Callable
+from datetime import UTC, datetime, timedelta
 from datetime import date as DateT
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from pydantic import ValidationError
 
@@ -230,7 +231,7 @@ def run(
     Pure orchestrator: NO sys.exit, NO argv parse, NO print.
     """
     if now_fn is None:
-        now_fn = lambda: datetime.now(timezone.utc)
+        now_fn = lambda: datetime.now(UTC)
     now = now_fn()
     wellness_path = warehouse_dir / "2_Wellness" / "wellness_history.json"
     history = _read_json(wellness_path)

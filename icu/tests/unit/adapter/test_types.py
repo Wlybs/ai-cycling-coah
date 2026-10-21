@@ -1,18 +1,17 @@
 """Unit tests for adapter types: SignalSnapshot, AdaptationVerdict."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime
 
 import pytest
 from pydantic import ValidationError
 
 from src.coach.adapter.types import (
-    AdaptationVerdict,
     RECOMMENDED_ACTIONS,
-    SignalSnapshot,
     VERDICT_VALUES,
+    AdaptationVerdict,
+    SignalSnapshot,
 )
-
 
 # ---------- SignalSnapshot ----------
 

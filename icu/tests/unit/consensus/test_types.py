@@ -6,13 +6,12 @@ from pydantic import ValidationError
 
 from src.coach.consensus.types import (
     EXPERT_ROLES,
-    VERDICTS,
     MODES,
+    VERDICTS,
     ConsensusValidationError,
     CouncilVerdict,
     ExpertTurn,
 )
-
 
 # ---------- ExpertTurn ----------
 

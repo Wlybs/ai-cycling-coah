@@ -2,16 +2,13 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 import pytest
 
 from src.coach.ledger.ingester import LedgerIngester
 from src.coach.ledger.reader import LedgerReader
-from src.coach.ledger.types import AthleteStateRef
 from src.coach.ledger.writer import LedgerWriter
-
 
 # ---------- helpers to fabricate minimal Phase 2 artefacts ----------
 

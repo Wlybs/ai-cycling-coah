@@ -1,8 +1,8 @@
 import json
 import time
-from datetime import datetime, timezone
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Iterable
 
 from ..common.logging import get_logger
 from . import cp_w_fitter, durability_model, response_profile
@@ -76,7 +76,7 @@ def refresh_all(
             raise RuntimeError("no MMP data available")
         model = cp_w_fitter.fit_cp_w(mmp, athlete_ftp=ftp, window_days=90)
         cp_w_fitter.write_snapshot(
-            model, physiology_dir, now_iso=datetime.now(timezone.utc).isoformat()
+            model, physiology_dir, now_iso=datetime.now(UTC).isoformat()
         )
 
     result["cp_w"] = _safe("cp_w", fit_cp)

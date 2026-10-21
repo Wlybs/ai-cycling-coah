@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 
 from src.coach.periodization.ctl_slope import (
-    CTLSlope, analyze_ctl_slope,
+    analyze_ctl_slope,
 )
 
 

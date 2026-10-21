@@ -6,7 +6,6 @@ from typing import Literal, get_args
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-
 # ---------- 锁定枚举 ----------
 
 Verdict = Literal["green", "yellow", "red"]
@@ -66,7 +65,7 @@ class AdaptationVerdict(BaseModel):
     notes: str | None = None
 
     @model_validator(mode="after")
-    def _check_signal_summary_keys(self) -> "AdaptationVerdict":
+    def _check_signal_summary_keys(self) -> AdaptationVerdict:
         missing = set(SIGNAL_KEYS) - set(self.signal_summary)
         if missing:
             raise ValueError(

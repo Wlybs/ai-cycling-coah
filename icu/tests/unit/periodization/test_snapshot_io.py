@@ -3,13 +3,20 @@ from datetime import date
 from pathlib import Path
 
 from src.coach.periodization.snapshot_io import (
-    write_phase_current, write_macro_plan, write_meso_block,
-    write_micro_cycle, write_periodization_snapshot,
     load_periodization_snapshot,
+    write_periodization_snapshot,
+    write_phase_current,
 )
 from src.coach.periodization.types import (
-    Phase, PhaseIntent, MacroPlan, MacroWindow, MesoBlock, MicroCycle,
-    DayIntent, IntensityTier, PeriodizationSnapshot,
+    DayIntent,
+    IntensityTier,
+    MacroPlan,
+    MacroWindow,
+    MesoBlock,
+    MicroCycle,
+    PeriodizationSnapshot,
+    Phase,
+    PhaseIntent,
 )
 
 
@@ -65,7 +72,7 @@ def test_write_and_load_snapshot_roundtrip(tmp_path):
         generated_at="2026-04-18T00:00:00Z",
         current_phase=Phase.BUILD, macro=macro, meso=meso, micro=micro,
     )
-    path = write_periodization_snapshot(base, snap)
+    write_periodization_snapshot(base, snap)
     loaded = load_periodization_snapshot(base)
     assert loaded is not None
     assert loaded.current_phase is Phase.BUILD

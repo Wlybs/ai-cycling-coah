@@ -8,7 +8,6 @@ from typing import Any, Literal, get_args
 
 from pydantic import BaseModel, Field, field_validator
 
-
 # ---------- decision_type 白名单 ----------
 
 DecisionType = Literal[

@@ -1,11 +1,8 @@
 """Unit tests for src.utils.common."""
 import json
-from unittest.mock import MagicMock, patch
-
-import pytest
+from unittest.mock import MagicMock
 
 from src.utils import common
-
 
 # ── setup_encoding ─────────────────────────────────────────────────────────
 
@@ -47,7 +44,7 @@ class TestSaveJson:
         folder = tmp_path / "nested" / "dir"
         out = common.save_json({"a": 1, "b": [2, 3]}, str(folder), "data.json")
         assert out == str(folder / "data.json")
-        with open(out, "r", encoding="utf-8") as f:
+        with open(out, encoding="utf-8") as f:
             loaded = json.load(f)
         assert loaded == {"a": 1, "b": [2, 3]}
 
@@ -59,7 +56,7 @@ class TestSaveJson:
 
     def test_preserves_unicode_without_escaping(self, tmp_path):
         common.save_json({"name": "张三", "emoji": "🚴"}, str(tmp_path), "u.json")
-        with open(tmp_path / "u.json", "r", encoding="utf-8") as f:
+        with open(tmp_path / "u.json", encoding="utf-8") as f:
             raw = f.read()
         assert "张三" in raw
         assert "🚴" in raw

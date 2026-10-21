@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -54,7 +54,7 @@ def test_no_triggers_returns_empty_list(empty_dirs: dict[str, Path]) -> None:
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(0))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -66,7 +66,7 @@ def test_trigger1_phase_transition_within_7_days_fires(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=2),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="phase_transition", ts=ts,
                         payload={"new_phase": "PEAK"}, entry_id=_ulid(1))
@@ -80,7 +80,7 @@ def test_trigger1_phase_transition_older_than_7_days_silent(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=20),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="phase_transition", ts=ts,
                         payload={"new_phase": "PEAK"}, entry_id=_ulid(2))
@@ -97,7 +97,7 @@ def test_trigger2_safety_violation_in_latest_plan_fires(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=1),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="weekly_plan_assembled", ts=ts,
                         payload={"violations": ["LOAD_SPIKE", "BACK_TO_BACK_HARD"]},
@@ -107,7 +107,7 @@ def test_trigger2_safety_violation_in_latest_plan_fires(
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(4))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -119,7 +119,7 @@ def test_trigger2_silent_when_violations_empty(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=1),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="weekly_plan_assembled", ts=ts,
                         payload={"violations": []}, entry_id=_ulid(5))
@@ -127,7 +127,7 @@ def test_trigger2_silent_when_violations_empty(
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(6))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -148,7 +148,7 @@ def test_trigger3_consensus_overdue_after_14d(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=20),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="consensus_verdict", ts=ts,
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(7))
@@ -162,7 +162,7 @@ def test_trigger3_consensus_recent_silent(
     from src.coach.common.action_suggester import suggest_actions
     today = date(2026, 4, 28)
     ts = datetime.combine(today - timedelta(days=3),
-                          datetime.min.time(), tzinfo=timezone.utc)
+                          datetime.min.time(), tzinfo=UTC)
     _write_ledger_entry(empty_dirs["ledger"],
                         decision_type="consensus_verdict", ts=ts,
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(8))
@@ -188,7 +188,7 @@ def test_trigger4_stimulus_decline_fires(empty_dirs: dict[str, Path]) -> None:
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(9))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -211,7 +211,7 @@ def test_trigger4_silent_when_increasing(
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(10))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -230,7 +230,7 @@ def test_trigger4_silent_when_fewer_than_3_summaries(
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(11))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)
@@ -252,7 +252,7 @@ def test_trigger4_skips_summary_latest_json(
                         decision_type="consensus_verdict",
                         ts=datetime.combine(today - timedelta(days=2),
                                             datetime.min.time(),
-                                            tzinfo=timezone.utc),
+                                            tzinfo=UTC),
                         payload={"verdict": "ACCEPT"}, entry_id=_ulid(12))
     out = suggest_actions(empty_dirs["ledger"], empty_dirs["periodization"],
                           empty_dirs["deep_analysis"], today=today)

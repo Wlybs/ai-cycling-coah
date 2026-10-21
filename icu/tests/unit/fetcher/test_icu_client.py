@@ -4,7 +4,7 @@ The client is a thin wrapper over `requests.request`. Tests here patch
 the module-level `requests` symbol so no real HTTP is issued, and patch
 `time.sleep` so retry paths don't actually wait.
 """
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
 import requests as real_requests

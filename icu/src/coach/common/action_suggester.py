@@ -10,7 +10,7 @@ Phase 3 LedgerReader only.
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import UTC, date, datetime, time, timedelta
 from pathlib import Path
 
 from src.coach.common.logging import get_logger
@@ -70,9 +70,9 @@ def _trigger_phase_transition_this_week(
     if reader is None:
         return None
     since = datetime.combine(today - timedelta(days=7), time.min,
-                             tzinfo=timezone.utc)
+                             tzinfo=UTC)
     until = datetime.combine(today + timedelta(days=1), time.min,
-                             tzinfo=timezone.utc)
+                             tzinfo=UTC)
     hits = reader.query(decision_type="phase_transition",
                         since=since, until=until)
     if not hits:
