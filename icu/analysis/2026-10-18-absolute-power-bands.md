@@ -1,6 +1,6 @@
 # 绝对功率带时间：巅峰期 vs 现在（2026-10-18）
 
-不用任何 FTP 值。所有数字由本目录同名 `.json` 的 `activities[]` 逐活动明细重算，聚合口径见 JSON `method`。生成脚本：同名 `.py`。
+不用任何 FTP 值。所有数字由本目录同名 `.json` 的 `activities[]` 逐活动明细重算，聚合口径见 JSON `method`。生成脚本：同名 `.py`。本地没有逐秒流、经 ICU API GET 补的原始数据存在主仓 `icu_data_warehouse/9_Coach_Raw/2026-10-18-absolute-power-bands/`（git 忽略）。
 
 ## 1. 两期对照（按 7 天折算）
 

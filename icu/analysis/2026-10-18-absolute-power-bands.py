@@ -8,7 +8,8 @@ Inputs (read-only):
 Outputs: 2026-10-18-absolute-power-bands.{json,md} next to this script.
 
 Usage:
-  python 2026-10-18-absolute-power-bands.py --icu D:/Cycling/icu --cache <dir>
+  python 2026-10-18-absolute-power-bands.py --icu D:/Cycling/icu
+  (--cache defaults to icu_data_warehouse/9_Coach_Raw/2026-10-18-absolute-power-bands)
 """
 import argparse
 import bisect
@@ -283,7 +284,8 @@ def render_md(data):
     L = []
     L.append("# 绝对功率带时间：巅峰期 vs 现在（2026-10-18）\n")
     L.append("不用任何 FTP 值。所有数字由本目录同名 `.json` 的 `activities[]` 逐活动明细重算，"
-             "聚合口径见 JSON `method`。生成脚本：同名 `.py`。\n")
+             "聚合口径见 JSON `method`。生成脚本：同名 `.py`。"
+             f"本地没有逐秒流、经 ICU API GET 补的原始数据存在主仓 `{data['raw_api_data_dir']}`（git 忽略）。\n")
     L.append("## 1. 两期对照（按 7 天折算）\n")
     L.append("折算 = 期内总量 × 7 / 期内天数。巅峰窗 70 天、现在窗 47 天。\n")
     L.append(HDR.format("时期"))
@@ -385,12 +387,13 @@ def is_work_lap(x):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--icu", default="D:/Cycling/icu")
-    ap.add_argument("--cache", required=True)
+    ap.add_argument("--cache", default="D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-18-absolute-power-bands")
     args = ap.parse_args()
     local = load_local_details(args.icu)
     records = [analyse_activity(a, local, args.cache) for a in load_activities(args.icu, args.cache)]
     data = {
         "generated": dt.datetime.now().isoformat(timespec="seconds"),
+        "raw_api_data_dir": "icu_data_warehouse/9_Coach_Raw/2026-10-18-absolute-power-bands/",
         "method": {
             "ftp_used": False,
             "bands_w": BANDS,
