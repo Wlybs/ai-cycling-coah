@@ -28,3 +28,6 @@ related: [[plans/2026-10-19-faber-and-drcc-eight-week]]
 
 ## 触发器
 若本人说主要是腿烧且前30s是有意冲的，下次先控起步再比较；要检验“组短更累”需同功率同总时长对比。
+
+## 数据与复算
+原始流：`icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-eight-by-three-vo2/`（4个活动）；脚本与输出：`icu/analysis/2026-10-20-eight-by-three-vo2-review-{reps,compare}.py` 与 `.txt`。本会话3个体感问题未在此会话回答，后续见同日 [[sessions/2026-10-20-codex-vo2-fast-start-followup]]。
