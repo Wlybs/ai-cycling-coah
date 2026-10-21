@@ -1,7 +1,7 @@
 """Shared fixtures for ledger unit tests."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pytest
 
@@ -24,4 +24,4 @@ def ledger_path(tmp_path):
 
 @pytest.fixture
 def fixed_utc_now():
-    return datetime(2026, 4, 19, 10, 0, 0, tzinfo=timezone.utc)
+    return datetime(2026, 4, 19, 10, 0, 0, tzinfo=UTC)

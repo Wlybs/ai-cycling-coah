@@ -1,7 +1,6 @@
 from src.coach.deep_analyzer.report_composer import build_prompt, validate_report
 from src.coach.deep_analyzer.types import Findings
 
-
 FAKE_REPORT = """# 活动 i123 深度分析 — 2026-04-15 vo2max
 
 **Session 概要** · 60 分钟 · NP 285 W · TSS 95 · IF 0.95 · 810 kJ

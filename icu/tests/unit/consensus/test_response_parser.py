@@ -9,7 +9,6 @@ from src.coach.consensus.types import (
     CouncilVerdict,
 )
 
-
 # ---------- happy ----------
 
 def test_parse_happy_path_returns_council_verdict(happy_response):

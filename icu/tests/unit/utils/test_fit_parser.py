@@ -6,11 +6,10 @@ pre-decode path is exercised by feeding a gzip-wrapped payload; the
 actual bytes are opaque to the mocked reader.
 """
 import gzip
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest.mock import patch
 
 import fitdecode
-import pytest
 
 from src.utils import fit_parser
 
@@ -50,7 +49,7 @@ def _patch_reader(frames):
 
 class TestParseFitLaps:
     def test_extracts_lap_fields(self):
-        ts = datetime(2026, 4, 18, 10, 0, 0, tzinfo=timezone.utc)
+        ts = datetime(2026, 4, 18, 10, 0, 0, tzinfo=UTC)
         frames = [
             FakeFrame(
                 fitdecode.FIT_FRAME_DATA,
@@ -114,7 +113,7 @@ class TestParseFitLaps:
         assert laps[0]["timestamp_iso"] is None  # None start_time handled
 
     def test_skips_non_lap_frames(self):
-        ts = datetime(2026, 4, 18, tzinfo=timezone.utc)
+        ts = datetime(2026, 4, 18, tzinfo=UTC)
         frames = [
             FakeFrame(fitdecode.FIT_FRAME_DATA, "record", {"power": 100}),
             FakeFrame(fitdecode.FIT_FRAME_HEADER, "hdr"),  # non-data frame

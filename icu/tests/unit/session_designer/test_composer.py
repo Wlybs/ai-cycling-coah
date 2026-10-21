@@ -1,8 +1,8 @@
 from datetime import date
 
+from src.coach.periodization.types import IntensityTier, SessionType
 from src.coach.session_designer.composer import compose_session
 from src.coach.session_designer.types import SessionIntent
-from src.coach.periodization.types import IntensityTier, SessionType
 
 
 def _physiology(cp=280, w_prime=22000):

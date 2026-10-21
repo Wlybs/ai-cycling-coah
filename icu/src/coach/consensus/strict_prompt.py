@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from src.coach.common.logging import get_logger
 from src.coach.consensus.council_prompt import (
-    VerdictRequest, _section_b, _section_c,
+    VerdictRequest,
+    _section_b,
+    _section_c,
     detect_under_dosed_triggers,
 )
 from src.coach.consensus.history_injector import HistoryTriplet

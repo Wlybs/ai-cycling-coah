@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+
 from src.coach.periodization.macro_planner import plan_macro
 from src.coach.periodization.race_calendar import RaceEntry
 from src.coach.periodization.types import Phase
@@ -71,7 +72,6 @@ def test_generated_windows_are_sorted_and_non_overlapping():
         races=[race], generated_at="2026-04-18T00:00:00Z",
     )
     starts = [w.start_date for w in plan.windows]
-    ends = [w.end_date for w in plan.windows]
     assert starts == sorted(starts)
     # 相邻窗口不重叠（允许 end_n == start_{n+1}）
     for i in range(len(plan.windows) - 1):

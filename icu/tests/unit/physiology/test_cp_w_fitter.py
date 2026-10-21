@@ -1,7 +1,6 @@
 import json
-from pathlib import Path
 
-from src.coach.physiology.cp_w_fitter import fit_cp_w, write_snapshot, _iter_curve_points
+from src.coach.physiology.cp_w_fitter import _iter_curve_points, fit_cp_w, write_snapshot
 
 
 def synthetic_mmp(cp=280, w_prime=22000, t_k=-10.0, durations=None):
@@ -30,7 +29,7 @@ def test_2_param_fallback_when_3_param_fit_poor():
 def test_snapshot_writes_current_and_history(tmp_path):
     mmp = synthetic_mmp()
     model = fit_cp_w(mmp, athlete_ftp=288, window_days=90)
-    written = write_snapshot(model, base_dir=tmp_path, now_iso="2026-04-16T00:00:00Z")
+    write_snapshot(model, base_dir=tmp_path, now_iso="2026-04-16T00:00:00Z")
     current = tmp_path / "cp_w_current.json"
     history = tmp_path / "history" / "cp_w_2026-04.json"
     assert current.exists() and history.exists()

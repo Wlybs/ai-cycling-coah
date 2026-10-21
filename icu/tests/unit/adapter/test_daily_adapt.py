@@ -2,25 +2,22 @@
 from __future__ import annotations
 
 import json
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import pytest
 
 from src.coach.adapter.daily_adapt import run
-from src.coach.adapter.types import AdaptationVerdict
 from src.coach.ledger.reader import LedgerReader
-from src.coach.ledger.types import AthleteStateRef
 from src.coach.ledger.writer import LedgerWriter
 from src.coach.periodization.types import SessionType
 from src.coach.session_designer.types import DesignedSession
-
 
 # ---------- shared fixtures ----------
 
 @pytest.fixture
 def fixed_now() -> datetime:
-    return datetime(2026, 4, 19, 6, 0, tzinfo=timezone.utc)
+    return datetime(2026, 4, 19, 6, 0, tzinfo=UTC)
 
 
 @pytest.fixture
@@ -397,7 +394,7 @@ def test_now_fn_is_used_not_real_clock(
     target_date, memory_dir, warehouse_dir,
 ):
     """Pass an obviously-wrong now_fn; SignalSnapshot.captured_at must reflect it."""
-    weird_now = datetime(2099, 1, 1, 0, 0, tzinfo=timezone.utc)
+    weird_now = datetime(2099, 1, 1, 0, 0, tzinfo=UTC)
     _write_plan(memory_dir, target_date)
     writer = LedgerWriter(memory_dir / "ledger" / "decisions.jsonl")
     reader = LedgerReader(memory_dir / "ledger" / "decisions.jsonl")

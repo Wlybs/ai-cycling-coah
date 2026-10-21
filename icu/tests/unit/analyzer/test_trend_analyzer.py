@@ -6,7 +6,6 @@ import pytest
 
 from src.analyzer import trend_analyzer as ta
 
-
 # ─── classify_power_zone ────────────────────────────────────────────────────
 
 class TestClassifyPowerZone:

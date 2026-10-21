@@ -18,7 +18,6 @@ from collections import Counter
 
 from src.coach.evidence.types import CitationContext, EvidenceCard, RetrievedCard
 
-
 _PHASE_BONUS = 1.5
 _APPLIES_BONUS = 1.3
 

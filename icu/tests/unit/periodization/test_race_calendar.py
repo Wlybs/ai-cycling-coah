@@ -1,8 +1,9 @@
 from datetime import date
-from pathlib import Path
 
 from src.coach.periodization.race_calendar import (
-    RaceEntry, load_race_calendar, next_race_after,
+    RaceEntry,
+    load_race_calendar,
+    next_race_after,
 )
 
 

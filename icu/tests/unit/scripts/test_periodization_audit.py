@@ -1,15 +1,20 @@
 """Unit tests for periodization_audit.py."""
-import json
 from datetime import date
 from pathlib import Path
 
-import pytest
-
-from src.coach.periodization.types import (
-    DayIntent, IntensityTier, MacroPlan, MacroWindow, MesoBlock, MicroCycle,
-    NextRace, Phase, PhaseIntent, PeriodizationSnapshot,
-)
 from scripts.periodization_audit import main as audit_main
+from src.coach.periodization.types import (
+    DayIntent,
+    IntensityTier,
+    MacroPlan,
+    MacroWindow,
+    MesoBlock,
+    MicroCycle,
+    NextRace,
+    PeriodizationSnapshot,
+    Phase,
+    PhaseIntent,
+)
 
 
 def _seed_snapshot(mem: Path):

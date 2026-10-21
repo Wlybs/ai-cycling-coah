@@ -3,7 +3,11 @@ from datetime import date
 from pathlib import Path
 
 from src.coach.periodization.types import (
-    MicroCycle, DayIntent, IntensityTier, Phase, PhaseIntent,
+    DayIntent,
+    IntensityTier,
+    MicroCycle,
+    Phase,
+    PhaseIntent,
 )
 from src.coach.session_designer.assembler import design_week
 from src.coach.session_designer.types import WeeklyPlan

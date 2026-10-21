@@ -1,11 +1,14 @@
 import pytest
 from pydantic import ValidationError
 
+from src.coach.periodization.types import IntensityTier, SessionType
 from src.coach.session_designer.workout_library import (
-    WORKOUT_TEMPLATES, WorkoutTemplate, WorkoutTemplateStep, get_template,
+    WORKOUT_TEMPLATES,
+    WorkoutTemplate,
+    WorkoutTemplateStep,
+    get_template,
     list_templates_for_tier,
 )
-from src.coach.periodization.types import IntensityTier, SessionType
 
 
 def test_required_templates_present():
