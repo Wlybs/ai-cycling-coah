@@ -166,6 +166,12 @@ def test_ulid_monotonic_across_ms():
     assert b[:10] > a[:10]
 
 
+def test_ulid_monotonic_within_burst():
+    # Same-millisecond IDs must sort in creation order; LedgerReader orders by entry_id.
+    ulids = [generate_ulid() for _ in range(10_000)]
+    assert ulids == sorted(ulids)
+
+
 def test_is_valid_ulid():
     assert is_valid_ulid(generate_ulid()) is True
     assert is_valid_ulid("TOO_SHORT") is False

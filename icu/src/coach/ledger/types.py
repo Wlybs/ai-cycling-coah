@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import secrets
+import threading
 import time
 from datetime import datetime
 from typing import Any, Literal, get_args
@@ -41,14 +42,29 @@ def _encode_crockford(value: int, length: int) -> str:
     return "".join(reversed(out))
 
 
+_RAND_MAX = (1 << 80) - 1
+_ulid_lock = threading.Lock()
+_last_ms = -1
+_last_rand = 0
+
+
 def generate_ulid() -> str:
-    """Return a 26-char ULID (48-bit ms timestamp + 80-bit randomness).
+    """Return a 26-char monotonic ULID (48-bit ms timestamp + 80-bit randomness).
 
     Time encoded in first 10 chars (lexicographically sortable by ms).
-    Random encoded in last 16 chars (80 bits from secrets.randbits).
+    Random encoded in last 16 chars (80 bits from secrets.randbits). Within the
+    same millisecond the random part is incremented instead of redrawn, so IDs
+    from one process stay in creation order (entries are sorted by entry_id).
     """
-    ms = time.time_ns() // 1_000_000
-    rand = secrets.randbits(80)
+    global _last_ms, _last_rand
+    with _ulid_lock:
+        ms = time.time_ns() // 1_000_000
+        if ms <= _last_ms and _last_rand < _RAND_MAX:
+            ms = _last_ms
+            rand = _last_rand + 1
+        else:
+            rand = secrets.randbits(80)
+        _last_ms, _last_rand = ms, rand
     return _encode_crockford(ms, 10) + _encode_crockford(rand, 16)
 
 
