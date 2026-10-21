@@ -46,6 +46,8 @@
 
 ## 当前活跃旗标
 
+- **已答事实速查表（必读，勿再问）**：[[athlete-quick-facts]]——补给产品（三种胶与咖啡因规则、100PLUS 3L、户外不带面包）、作息（周四AWE夜骑、周日06:30出门）、健身器械、教练互动方式。
+
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
 - **10/21完成与接下来3天（最新）**：10/21 4h ERG195完成，HRV/RHR正常，TSB−25.1。周四夜骑3h（90min Z2→AWE领骑285→310W共30–40min→30min Z2），周五休，周六3h含2×20@225–235W与75g/h补给；细节与每段理由见[[plans/2026-10-19-faber-and-drcc-eight-week]] revision11。饮食模板仍按[[plans/2026-10-21-fueling-and-body-composition]]。

@@ -37,3 +37,7 @@ ERG全程195W，实录主体约190W；末段高踏频是跟看环法视频的节
 - 100PLUS本人买的是3L两瓶装约S$5（不是325ml罐装），已写入auto memory。按5g/100ml，约S$1.0每60g碳水。
 - 价格快照（2026-10-21网页，未核时价）：SIS细砂糖2kg S$4.50（FairPrice）；麦芽糊精Better4u.sg 500g S$6（Maltrin M100，DE9–12，美玉米，页面未写食品级，WhatsApp下单）；Myprotein SG 100%麦芽糊精2.5kg S$39.04（当时缺货）；iHerb Nutricost有机麦芽糊精454g S$25.13；果糖FairPrice Green Earth 500g S$5.80（页面未列成分）；iHerb NOW Foods果糖1361g S$20.78（满S$60免运）。每60g碳水：糖约S$0.14，麦芽糊精/果糖约S$0.7–0.8，100PLUS约S$1.0，胶（S$1/35g）约S$1.7。
 - 分支记忆漏洞：cycling-coach技能新增Step 0.5（提问前查auto memory、所有分支、会话记录）与Step 5“会话结束合并vault进master”；5个遗留分支已并入（PR#5）。
+
+## revision13（本人第五轮批评）
+- 遗忘原因：项目CLAUDE.md从未提交进git，所有worktree会话都没自动加载vault；主目录那份又用WSL路径，Windows会话加载失败。athlete.md虽写了两种无咖啡因胶，但它有1000多行，我又只从单个旧session取了咖啡因胶。修复：新建vault/athlete-quick-facts.md集中记录已答事实，提交带相对路径导入的CLAUDE.md，技能新增Step 0.4（开处方前对照速查表）。
+- 白糖：大包装最便宜的是Sheng Siong S23细砂糖5kg约S$7.25–8.25（约S$1.5/kg，GroceryHunt快照）；FairPrice SIS 3kg S$6。没查到10/25kg零售价。
