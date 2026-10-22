@@ -38,7 +38,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-22 — [[sessions/2026-10-22-supplement-continuity-before-drcc]] — 本人一水肌酸、体重约61→63kg（ICU无体重记录）→今起停肌酸，4–6周水分回落正好赶在赛前并检验来源；β-丙氨酸不停，继续4g/d，本人无刺痛可一次随餐吃，赛日约12周累计。库存更新：无电解质粉，100PLUS 1.5L、Myprotein乳清、FairPrice 3kg细白糖、咖啡因粉200mg、甜菜根粉（未标硝酸盐）。
+- 2026-10-22 — [[sessions/2026-10-22-supplement-continuity-before-drcc]] — 本人一水肌酸、体重约61→63kg（ICU无体重记录）；教练曾建议停，本人反驳后复核：无证据肌酸提FTP，但15s冲刺有益、跟车缓坡+2kg约+6W/2%，利弊接近→继续3g/d不加量；β-丙氨酸不停，继续4g/d，本人无刺痛可一次随餐吃，赛日约12周累计。库存更新：无电解质粉，100PLUS 1.5L、Myprotein乳清、FairPrice 3kg细白糖、咖啡因粉200mg、甜菜根粉（未标硝酸盐）。
 - 2026-10-22 — [[sessions/2026-10-22-friday-evening-durability-and-threshold-rpe]] — 新增周六可撤、夜练通常不影响入睡；周五17点先2h有氧再3×10min290–295W，总约3h15；周六默认休。末组RPE8–9且稳定可接受，FTP设置不替代体感/输出校准，见revision17。
 - 2026-10-22 — [[sessions/2026-10-22-intensity-fatigue-base-and-threshold-progression]] — 研究：受控训练有实践支持，全力不等于永久耗base；Z2平台不证明必须VO2突破。周五轻松时按revision16互斥选择延后两组至12min或仅试300W，不同时加时加瓦。
 - 2026-10-22 — [[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]] — 本人参加师姐毕业聚餐，取消AWE、今天全休；疲惫3/10腿不很酸。周五改先3×10min290/295/295W、后2h有氧，总约3h；优先LCK、允许自然偏差，明早按体感确认；周六仍2–2.5h185W，见plan revision15。
