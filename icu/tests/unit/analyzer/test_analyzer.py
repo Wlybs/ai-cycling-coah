@@ -10,7 +10,6 @@ from src.analyzer.analyzer import (
     get_latest_file,
 )
 
-
 # ─── MetricsCalculator.calculate_np ─────────────────────────────────────────
 
 class TestCalculateNP:

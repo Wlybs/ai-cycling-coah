@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from datetime import date
-from typing import Optional
 
 from .ctl_slope import CTLSlope
 from .race_calendar import RaceEntry, next_race_after
@@ -21,7 +20,7 @@ TRANSITION_RACE_WINDOW_DAYS = 28
 CTL_BASE_PROTECT = 75.0  # 底盘保护阈值（用户决策 2026-04-18）
 
 
-def _next_a_race(races: list[RaceEntry], ref: date) -> Optional[RaceEntry]:
+def _next_a_race(races: list[RaceEntry], ref: date) -> RaceEntry | None:
     a_races = [r for r in races if r.priority.upper() == "A"]
     nxt = next_race_after(a_races, ref)
     if nxt is None:
@@ -33,8 +32,8 @@ def detect_phase(
     reference_date: date,
     ctl_slope: CTLSlope,
     races: list[RaceEntry],
-    ctl_90d_peak: Optional[float],
-    recent_stimulus_median: Optional[float],
+    ctl_90d_peak: float | None,
+    recent_stimulus_median: float | None,
 ) -> tuple[Phase, list[str]]:
     """返回 (Phase, reasons)。reasons 供 phase_current.json 记录。"""
     reasons: list[str] = []

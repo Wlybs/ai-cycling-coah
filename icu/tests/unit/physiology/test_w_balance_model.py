@@ -1,4 +1,4 @@
-from src.coach.physiology.w_balance_model import compute_w_balance, compute_tau
+from src.coach.physiology.w_balance_model import compute_tau, compute_w_balance
 
 
 def test_tau_formula_skiba_2012():

@@ -1,5 +1,5 @@
 import math
-from typing import Iterable, Sequence
+from collections.abc import Iterable, Sequence
 
 from .types import LapWBal, WBalanceSeries
 

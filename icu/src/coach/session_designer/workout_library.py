@@ -1,12 +1,9 @@
 """可复用训练模板。steps 只记录\"强度占比\"，composer 在 T39 把占比代入 CP 转成瓦特。"""
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import BaseModel, Field, model_validator
 
 from ..periodization.types import IntensityTier, SessionType
-
 
 # Helper defaults (named constants for clarity and maintainability)
 DEFAULT_WU_S = 900       # 15-minute warmup
@@ -17,11 +14,11 @@ DEFAULT_REST_S = 180     # 3-minute active rest between reps
 class WorkoutTemplateStep(BaseModel):
     label: str
     duration_s: int = Field(..., ge=5)
-    target_w_low: Optional[int] = None
-    target_w_high: Optional[int] = None
-    pct_of_cp_low: Optional[float] = None
-    pct_of_cp_high: Optional[float] = None
-    w_prime_deplete_pct_max: Optional[float] = None
+    target_w_low: int | None = None
+    target_w_high: int | None = None
+    pct_of_cp_low: float | None = None
+    pct_of_cp_high: float | None = None
+    w_prime_deplete_pct_max: float | None = None
     zone: str = Field(..., pattern=r"^(Z1|Z2|Z3|Z4|Z5|Z6|Z7)$")
     rep_count: int = Field(
         default=1,
@@ -59,9 +56,9 @@ class WorkoutTemplate(BaseModel):
         return self
 
 
-def _step(label: str, duration_s: int, pct_low: Optional[float],
-          pct_high: Optional[float], zone: str,
-          w_prime_max: Optional[float] = None) -> WorkoutTemplateStep:
+def _step(label: str, duration_s: int, pct_low: float | None,
+          pct_high: float | None, zone: str,
+          w_prime_max: float | None = None) -> WorkoutTemplateStep:
     return WorkoutTemplateStep(
         label=label, duration_s=duration_s,
         pct_of_cp_low=pct_low, pct_of_cp_high=pct_high,
@@ -83,7 +80,7 @@ def _rest_interval(dur_s=DEFAULT_REST_S) -> WorkoutTemplateStep:
 
 def _build_intervals(label_fmt: str, rep: int, work_s: int,
                      rest_s: int, pct_low: float, pct_high: float,
-                     zone: str, w_prime_max: Optional[float]
+                     zone: str, w_prime_max: float | None
                      ) -> list[WorkoutTemplateStep]:
     steps: list[WorkoutTemplateStep] = []
     for i in range(rep):

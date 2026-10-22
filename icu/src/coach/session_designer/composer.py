@@ -3,20 +3,24 @@ from __future__ import annotations
 
 import math
 from datetime import date as DateT
-from typing import Any, Optional
+from typing import Any
 
-from ..periodization.types import SessionType
 from .types import (
-    DesignedSession, SessionIntent, SessionStructure, WorkoutStep,
+    DesignedSession,
+    SessionIntent,
+    SessionStructure,
+    WorkoutStep,
 )
 from .workout_library import (
-    WorkoutTemplate, WorkoutTemplateStep, get_template,
+    WorkoutTemplate,
+    WorkoutTemplateStep,
+    get_template,
 )
 
 TSS_STEP_COEF = 100.0
 
 
-def _mid(low: Optional[float], high: Optional[float]) -> Optional[float]:
+def _mid(low: float | None, high: float | None) -> float | None:
     """Compute midpoint of two optional floats."""
     if low is None or high is None:
         return None
@@ -25,7 +29,7 @@ def _mid(low: Optional[float], high: Optional[float]) -> Optional[float]:
 
 def _step_watts(
     step: WorkoutTemplateStep, cp: int
-) -> tuple[Optional[int], Optional[int]]:
+) -> tuple[int | None, int | None]:
     """Convert pct_of_cp to absolute watts."""
     if step.pct_of_cp_low is None or step.pct_of_cp_high is None:
         return (None, None)
@@ -105,7 +109,7 @@ def _scale_long_ride_to_tss(
     return converted, stretch
 
 
-def _power_range_summary(steps: list[WorkoutStep]) -> Optional[str]:
+def _power_range_summary(steps: list[WorkoutStep]) -> str | None:
     """Extract min-max watts from main (non-WU/CD) steps."""
     main = [s for s in steps if s.label not in ("WU", "CD", "rest")
             and s.target_w_low is not None and s.target_w_high is not None]

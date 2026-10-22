@@ -38,18 +38,30 @@
 
 ## 最近 5 次 session
 
-- 2026-10-19 — [[sessions/2026-10-19-rest-day-overeating]] — 休息日约4000kcal：影响小，次日增重多为糖原/水；不补救、不空腹不加量；体重无记录未精算。
-- 2026-10-19 — [[sessions/2026-10-19-low-burden-ftp-calibration]] — 提出两次原质量位受控持续校准290→300W，不力竭；用于工作设定验证、非精准FTP认证，未改ICU。
-- 2026-10-19 — [[sessions/2026-10-19-current-versus-peak-gap]] — 本人撤销CP5猜测依据、>1min未全力；短爆发强，持续记录差≠能力损失；近期两周总量已恢复，CTL不当能力百分比。
-- 2026-10-18 — [[sessions/2026-10-18-vo2-dose-and-floating-quality-days]] — 认可两种VO2可调范围、区分大剂量；质量日默认周二可浮动，后移替换长骑/周日机会，不补债；本人明确睡眠/起床或实际腿乏触发。
-- 2026-10-18 — [[sessions/2026-10-18-faber-format-and-sustained-work]] — 4min有完成记录/配速优势，未证优于3min；本人近期无可比较长课；若周日attack缺持续工作，10/27优先LCK替代Faber。
+- 2026-10-22 — [[sessions/2026-10-22-supplement-continuity-before-drcc]] — 肌酸可停，但若要赛日饱和最迟约11/15恢复3–5g/d（或赛前5天加载）；β-丙氨酸不停，继续4g/d，本人无刺痛可一次随餐吃，赛日约12周累计。库存更新：无电解质粉，100PLUS 1.5L、Myprotein乳清、FairPrice 3kg细白糖、咖啡因粉200mg、甜菜根粉（未标硝酸盐）。
+- 2026-10-22 — [[sessions/2026-10-22-friday-evening-durability-and-threshold-rpe]] — 新增周六可撤、夜练通常不影响入睡；周五17点先2h有氧再3×10min290–295W，总约3h15；周六默认休。末组RPE8–9且稳定可接受，FTP设置不替代体感/输出校准，见revision17。
+- 2026-10-22 — [[sessions/2026-10-22-intensity-fatigue-base-and-threshold-progression]] — 研究：受控训练有实践支持，全力不等于永久耗base；Z2平台不证明必须VO2突破。周五轻松时按revision16互斥选择延后两组至12min或仅试300W，不同时加时加瓦。
+- 2026-10-22 — [[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]] — 本人参加师姐毕业聚餐，取消AWE、今天全休；疲惫3/10腿不很酸。周五改先3×10min290/295/295W、后2h有氧，总约3h；优先LCK、允许自然偏差，明早按体感确认；周六仍2–2.5h185W，见plan revision15。
+- 2026-10-21 — [[sessions/2026-10-21-supplements-and-condiment-storage]] — 本人肌酸/β-丙氨酸均3–5g每日约1月；建议肌酸3g/day、β分次4g/day；甜菜根粉未标硝酸盐，暂不按克数开处方；咖啡因延续赛前180mg。酱料开盖短促声复核：不仅凭声响丢弃，持续起泡/鼓胀/溢出才按变质处理，未认证安全。
 
 ## 当前活跃旗标
 
-- **当前训练建议**：[[plans/2026-10-19-faber-and-drcc-eight-week]] 替代10/16四周稿；短期A拟报12/13 DRCC，Faber双向PR/CP3为中途检验，2027目标保留。10/17 revision3：单次≥2h、Faber固定终点/自然下坡恢复约2:40–3:00起步（非强制等4–5min）、LCK主要U-turn。10/18本人另确认计时3/3可行（少下一段/轻微荡腿），非必须到顶；10/20首选原4整坡；若10/25attack且缺持续工作，10/27优先LCK替代Faber，见最新session。revision5默认周中浮动质量（周二至周四优先）+周日，后移替换长骑/周末机会、不补债；每周约两质量，threshold lead替代周四硬课，Crazies尽量保留；关键专项/减量周必要让位。12.5h五骑两休，赛周减天数，未写ICU。
+- **已答事实速查表（必读，勿再问）**：[[athlete-quick-facts]]——补给产品（三种胶与咖啡因规则、100PLUS 3L、户外不带面包）、作息（周四AWE夜骑、周日06:30出门）、健身器械、教练互动方式。
+
+- **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
+
+- **10/22最新日程覆盖旧版**：今天取消AWE、全休参加师姐毕业聚餐；10/23约17点先2h有氧再3×10min290–295W，总约3h15，周六默认休，周日按恢复Crazies。历史阈值末组RPE8–9可接受但不追求，夜练通常不影响本人入睡。取消旧固定周六量和revision16同堂进阶，详plan revision17及[[sessions/2026-10-22-friday-evening-durability-and-threshold-rpe]]；未推ICU。
+
+- **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
+
+- **CTL目标/负荷参考**：本人希望12/13>100，主要体感优势是阈值/爬坡及整体有力自信；教练条件性支持建设、反对比赛日硬守数字挤掉减量。模型示例见最新session；700–800建设周为观察预算，非每周最低任务。AWE可全程Z2，按实际工作分类。
+
+- **当前训练建议**：以[[plans/2026-10-19-faber-and-drcc-eight-week]]最新revision（当前revision17）为准，只排未来约3天、滚动更新；菜单A/B/C仍见[[plans/2026-10-20-drcc-flexible-endurance-progression]]。周负荷不得无理由低于近两周（851/670）。
+- **课表库与大方向**：见plan「10/19补充①–④」；课型以补充③为准、表内格子仅参考，日期本人自调。
+- **力量课（10/20本人已答，勿再问）**：可去健身房、膝无不适；无深蹲/硬拉条件，只有保加利亚蹲、倒蹬机、腿屈伸、腿弯举。每周1次，放有氧日之后、不放质量课前一天，赛前一周停；动作组次见plan「10/19补充」。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
 
-- **教练互动偏好**：给有证据的首选/理由/条件，本人按当天状态决定，不主动推ICU；只问已发生体感/真实疑点，不问未来身体状态。
+- **教练互动偏好（10/21更新）**：课表由教练直接定（日期/课型/瓦数/补给），写成分步结构并给每段理由，课型要有变化；只问体感/状态与已发生的数据疑点；不主动推ICU。已答过的事实（健身器械、100PLUS供应）勿再问。
 - **10/18证据规则**：只引用近三年运动科学；10/19本人明确CP5只是无把握猜测、>1min未全力，不能计算损失；90d非上限；中高踏频已订正。Claude原稿在独立worktree，完整复核见最新session，未合并分支。
 
 - **算法协作偏好**：复杂批量计算先给同项目Claude Code可执行prompt，教练复核整合；Claude已完成Cycling-lth，教练已验收；后续进度仍由bd跟踪，数据结果见最新session。

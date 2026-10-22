@@ -1,7 +1,7 @@
 """Unit tests for adapter.prompt_builder — yellow nudge + red override markdown."""
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+from datetime import date
 
 import pytest
 
@@ -11,7 +11,6 @@ from src.coach.adapter.types import AdaptationVerdict, SignalSnapshot
 from src.coach.periodization.types import SessionType
 from src.coach.session_designer.composer import compose_session
 from src.coach.session_designer.types import DesignedSession, SessionIntent
-
 
 # ---------- Shared fixtures ----------
 

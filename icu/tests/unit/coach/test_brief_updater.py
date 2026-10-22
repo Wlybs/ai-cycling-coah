@@ -1,7 +1,6 @@
 import json
-from pathlib import Path
 
-from src.coach.brief_updater import update_brief, BEGIN, END
+from src.coach.brief_updater import BEGIN, END, update_brief
 
 
 def test_inserts_block_between_markers(tmp_path):

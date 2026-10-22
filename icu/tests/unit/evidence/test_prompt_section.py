@@ -4,7 +4,6 @@ from __future__ import annotations
 from src.coach.evidence.prompt_section import render_references_section
 from src.coach.evidence.types import EvidenceCard, RetrievedCard
 
-
 U1 = "01HXR0NM8K000000000000000A"
 U2 = "01HXR0NM8K000000000000000B"
 U3 = "01HXR0NM8K000000000000000C"

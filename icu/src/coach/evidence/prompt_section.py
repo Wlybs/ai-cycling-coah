@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from src.coach.evidence.types import RetrievedCard
 
-
 _HEADER = "## References (auto-retrieved by Phase 4 evidence retriever)"
 _EMPTY_MARKER = "(none directly applicable for this context)"
 

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import fcntl
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -31,9 +31,9 @@ def _now_utc() -> datetime:
     if forced:
         dt = datetime.fromisoformat(forced)
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(tzinfo=UTC)
         return dt
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 class LedgerWriter:

@@ -8,7 +8,6 @@ import pytest
 
 from scripts.finalize_consensus import main as finalize_main
 
-
 # ---------- canned valid council response ----------
 
 _HAPPY_RESPONSE = """\
@@ -490,10 +489,7 @@ class TestIdempotency:
 # T68.1 — argparse extension for strict mode
 # ============================================================
 
-import json
-from pathlib import Path
 
-import pytest
 
 
 def test_step_without_mode_strict_rejected(tmp_path: Path) -> None:

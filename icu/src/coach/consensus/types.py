@@ -5,7 +5,6 @@ from typing import Any, Literal, get_args
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-
 # ---------- 枚举（与 00-index.md naming conventions 对齐） ----------
 
 ExpertRole = Literal["planner", "critic", "physiologist", "arbiter"]
@@ -62,7 +61,7 @@ class CouncilVerdict(BaseModel):
     summary_json: dict[str, Any] = Field(default_factory=dict)
 
     @model_validator(mode="after")
-    def _council_requires_four_roles(self) -> "CouncilVerdict":
+    def _council_requires_four_roles(self) -> CouncilVerdict:
         if self.mode == "council":
             roles = {t.role for t in self.expert_turns}
             missing = set(EXPERT_ROLES) - roles
