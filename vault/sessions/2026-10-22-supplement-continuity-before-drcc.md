@@ -44,3 +44,10 @@ related: [[athlete]] [[races]] [[athlete-quick-facts]] [[sessions/2026-10-21-sup
 - 结论：利弊接近，证据不偏向任一方。接受本人继续：一水肌酸3g/d随餐，不加量、不赛前加载。β-丙氨酸4g/d照常。
 - 称重：同意单日波动大（盐/碳水/水）。改为每周固定3个早晨空腹称，看周平均，不看单日。
 - Sources: https://pubmed.ncbi.nlm.nih.gov/36877404/ ；https://pmc.ncbi.nlm.nih.gov/articles/PMC11876829/
+
+## 第四轮：肌酸“肌肉更好、恢复更好”对不对
+- 判定：不算错，但说大了。
+- 肌肉：Desai 2024 JSCR（12项、<50岁）肌酸+力量训练比单练力量多约1.14kg瘦体重、体脂−0.73kg；证据针对力量训练，不是单纯骑车。本人每周健身房约1次（quick-facts）。瘦体重增量中水分占比本次未核。
+- 恢复：2021 IJSNEM meta（13 RCT，超3年）肌力/酸痛恢复不加快，仅48h CK更低；Kerksick 2026 JISSN叙述性综述称可能利于恢复和糖原再合成，但为叙述综述、“新兴证据”。
+- 对骑车：间接益处（力量课、短冲刺），不提FTP。维持继续3g/d的决定不变。
+- Sources: Desai 2024 doi 10.1519/JSC.0000000000004862；Kerksick 2026 https://pubmed.ncbi.nlm.nih.gov/41870601/
