@@ -38,11 +38,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-22 — [[sessions/2026-10-22-friday-three-versions-compared]] — 比较Faber SST版/3h Z2版/原版：明天仍按revision22；Faber无连续10min、往返约1h40、19点后天黑，留作另日“Faber巡航爬坡”。
 - 2026-10-22 — [[sessions/2026-10-22-sst-watts-and-2025-reference]] — 250–265主要tempo；前两块3×5改以275W为中心，第二块有余量280–285，后置三组与实际体感调整保留；去年4×20均244W、末组本人RPE7.5作持续容量参考，见revision22。
 - 2026-10-22 — [[sessions/2026-10-22-short-sst-intervals-preference]] — 本人短组和起伏都比连续15min巡航舒服；前段改两块3×5min250–265W、组内1min有氧，工作仍30min，整趟约3h；不认证SST边界，见revision21。
 - 2026-10-22 — [[sessions/2026-10-22-mixed-preload-substitution-clarified]] — 本人澄清以2h混合前段替换3h纯Z2，不是叠加；周五约3h含2×15min250–265巡航、之后3×10min290–295，保留体感调整。非已证比长Z2更累/适应更好；见revision20。
 - 2026-10-22 — [[sessions/2026-10-22-rpe-context-and-mixed-long-ride-rationale]] — 撤RPE3–4/5–6机械进阶门槛；本人阈值末组8–9可正常。维持4h后置主课，前段不加SST是容量优先级选择，非混合长骑劣效证据；见revision19。
-- 2026-10-22 — [[sessions/2026-10-22-long-durability-autoregulation-and-preload]] — 本人4–5h可用，撤3h默认上限；周五约4h，先3h有氧再三组，按体感互斥延至34–37min或300→305W，不叠tempo/低踏频；Sat休、Sun按恢复，见revision18。
 
 ## 当前活跃旗标
 
