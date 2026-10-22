@@ -38,7 +38,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-22 — [[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]] — 本人参加师姐毕业聚餐，取消AWE、今天全休；疲惫3/10腿不很酸。周五改3h含3×10min290/295/295W，明早按体感确认；周六仍2–2.5h185W，见plan revision14。
+- 2026-10-22 — [[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]] — 本人参加师姐毕业聚餐，取消AWE、今天全休；疲惫3/10腿不很酸。周五改先3×10min290/295/295W、后2h有氧，总约3h；优先LCK、允许自然偏差，明早按体感确认；周六仍2–2.5h185W，见plan revision15。
 - 2026-10-21 — [[sessions/2026-10-21-supplements-and-condiment-storage]] — 本人肌酸/β-丙氨酸均3–5g每日约1月；建议肌酸3g/day、β分次4g/day；甜菜根粉未标硝酸盐，暂不按克数开处方；咖啡因延续赛前180mg。酱料开盖短促声复核：不仅凭声响丢弃，持续起泡/鼓胀/溢出才按变质处理，未认证安全。
 - 2026-10-21 — [[sessions/2026-10-21-today-lsd-diet-recap]] — 4h ERG195（实录约190W）复盘：第2小时vs最后1小时漂移2.2%，“必须解耦”无证据；本人定4h开200W、3h开210W。课表改由教练定、只排3天、分步写理由；补给用100PLUS（可加糖）。
 - 2026-10-20 — [[sessions/2026-10-20-fixed-portions-meat-options-and-breakfast]] — 本人固定每餐2–3蛋、鸡胸生重200g整包，撤上一版拆份；牛肉可轮换，牛肝偶尔≤每周1次。酸奶新标签P4/C7每100，早餐首选200g面包+2蛋+75g蓝莓+300ml酸奶约120gC；干燕麦版可用，约90–100gC。
@@ -50,7 +50,7 @@
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
-- **10/22最新日程覆盖10/21**：今天因师姐毕业聚餐取消AWE、全休（本人疲惫3/10，非已恢复）；10/23改3h含3×10min290/295/295W，热身190W异常费劲则不做间歇；10/24仍2–2.5h185W，给10/25 06:30 Crazies留恢复时间。详[[plans/2026-10-19-faber-and-drcc-eight-week]] revision14及[[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]]；不改长期作息，未推ICU。
+- **10/22最新日程覆盖10/21**：今天因师姐毕业聚餐取消AWE、全休（本人疲惫3/10，非已恢复）；10/23改较新鲜3×10min290/295/295W后2h有氧，总约3h，优先LCK；热身190W异常费劲则不做间歇；10/24仍2–2.5h185W，给10/25 06:30 Crazies留恢复时间。详[[plans/2026-10-19-faber-and-drcc-eight-week]] revision15及[[sessions/2026-10-22-awe-cancelled-rest-and-friday-training]]；不改长期作息，未推ICU。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
 
