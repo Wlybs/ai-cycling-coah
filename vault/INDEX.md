@@ -39,7 +39,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-23 — [[sessions/2026-10-23-faber-lck-mixed-ride-review]] — 混合课复盘：Faber六趟加权281W（目标280）；LCK 296/303(12′)/306W，加时加瓦两样都做、做功约+10%；末组在3.5h后仅低90d滚动10min最佳5W；TSS203+TSB−25.4→周六强制休；3问待答。
+- 2026-10-23 — [[sessions/2026-10-23-faber-lck-mixed-ride-review]] — 混合课复盘：Faber六趟加权281W（目标280）；LCK 296/303(12′)/306W，加时加瓦两样都做、做功约+10%；末组在3.5h后仅低90d滚动10min最佳5W；TSS203+TSB−25.4→周六强制休。本人反馈末组RPE8.5、Faber有意低踏频、骑中约220g；200W心率正常而踏频偏低；碳水假设对一半（与前日全休/HRV高混杂），revision29定Sat/Sun与下次3×12@300。
 - 2026-10-23 — [[sessions/2026-10-23-big-preride-carb-meal]] — 骑前2h约400g碳水（约6.2g/kg）：骑中照吃，仅前60min放慢、首蕉推后，干糖默认30g，覆盖revision28第一小时节奏。
 - 2026-10-23 — [[sessions/2026-10-23-sugar-bottle-and-carbon-rail-carrier-shopping]] — 新加坡Maymom150ml单3.50/八瓶12.56；碳轨+尾包尾灯已确认，Topeak PRO I/V为候选、国内140仅导购线索未核成交；未改revision28课表/未购买。
 - 2026-10-23 — [[sessions/2026-10-23-reusable-sugar-minimal-gel-and-resupply]] — 各70g白糖+清水不动，双蕉/另80g干糖/一胶备用，途中1.5L原味；4h备用糖30g、5h80g，复用食品旋盖小瓶与新加坡替代调研，revision28覆盖旧打包。
@@ -53,13 +53,13 @@
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
-- **10/23混合课已完成**：Faber六趟加权281W；LCK 296/303(12′)/306W（计划290/295/295×10′、加时加瓦二选一，实际两样都做，做功约+10%）；TSS203且TSB−25.4→10/24周六强制全休，周日Crazies按早上恢复定。复盘[[sessions/2026-10-23-faber-lck-mixed-ride-review]]，末组RPE/Faber低踏频原因/实际补给3问待答；路线与补给计划见[[sessions/2026-10-23-faber-mandai-lck-mixed-route]]、[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）。
+- **10/23混合课已完成**：Faber六趟加权281W；LCK 296/303(12′)/306W（计划290/295/295×10′、加时加瓦二选一，实际两样都做，做功约+10%）；TSS203且TSB−25.4→10/24周六强制全休（碳水约5g/kg多放晚餐），周日Crazies正常角色（早上腿仍酸或HRV/静息心率明显变差则只跟车）；下次长课后段阈值3×12@300只加时；低踏频按65–70rpm起步。复盘[[sessions/2026-10-23-faber-lck-mixed-ride-review]]，膝盖待答；路线与补给计划见[[sessions/2026-10-23-faber-mandai-lck-mixed-route]]、[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
 
 - **CTL目标/负荷参考**：本人希望12/13>100，主要体感优势是阈值/爬坡及整体有力自信；教练条件性支持建设、反对比赛日硬守数字挤掉减量。模型示例见最新session；700–800建设周为观察预算，非每周最低任务。AWE可全程Z2，按实际工作分类。
 
-- **当前训练建议**：以[[plans/2026-10-19-faber-and-drcc-eight-week]]最新revision（当前revision28）为准，只排未来约3天、滚动更新；菜单A/B/C仍见[[plans/2026-10-20-drcc-flexible-endurance-progression]]。周负荷不得无理由低于近两周（851/670）。
+- **当前训练建议**：以[[plans/2026-10-19-faber-and-drcc-eight-week]]最新revision（当前revision29）为准，只排未来约3天、滚动更新；菜单A/B/C仍见[[plans/2026-10-20-drcc-flexible-endurance-progression]]。周负荷不得无理由低于近两周（851/670）。
 - **课表库与大方向**：见plan「10/19补充①–④」；课型以补充③为准、表内格子仅参考，日期本人自调。
 - **力量课（10/20本人已答，勿再问）**：可去健身房、膝无不适；无深蹲/硬拉条件，只有保加利亚蹲、倒蹬机、腿屈伸、腿弯举。每周1次，放有氧日之后、不放质量课前一天，赛前一周停；动作组次见plan「10/19补充」。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
