@@ -39,11 +39,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-23 — [[sessions/2026-10-23-faber-lck-mixed-ride-review]] — 混合课复盘：Faber六趟加权281W（目标280）；LCK 296/303(12′)/306W，加时加瓦两样都做、做功约+10%；末组在3.5h后仅低90d滚动10min最佳5W；TSS203+TSB−25.4→周六强制休；3问待答。
 - 2026-10-23 — [[sessions/2026-10-23-big-preride-carb-meal]] — 骑前2h约400g碳水（约6.2g/kg）：骑中照吃，仅前60min放慢、首蕉推后，干糖默认30g，覆盖revision28第一小时节奏。
 - 2026-10-23 — [[sessions/2026-10-23-sugar-bottle-and-carbon-rail-carrier-shopping]] — 新加坡Maymom150ml单3.50/八瓶12.56；碳轨+尾包尾灯已确认，Topeak PRO I/V为候选、国内140仅导购线索未核成交；未改revision28课表/未购买。
 - 2026-10-23 — [[sessions/2026-10-23-reusable-sugar-minimal-gel-and-resupply]] — 各70g白糖+清水不动，双蕉/另80g干糖/一胶备用，途中1.5L原味；4h备用糖30g、5h80g，复用食品旋盖小瓶与新加坡替代调研，revision28覆盖旧打包。
 - 2026-10-23 — [[sessions/2026-10-23-mixed-route-fueling-and-feast-weight]] — 实际壶2×720；打包约1.4L原味/白糖125g/香蕉1/无咖啡因胶4支，4h约265g/5h约330g，饮水按实际计；聚餐后不补偿性空腹，全天吃法已整理，见revision27。
-- 2026-10-23 — [[sessions/2026-10-23-faber-mandai-lck-mixed-route]] — 本人具体环线与无聊成本：今日选NTU→Faber六SST→Mandai/NewTiew→LCK末三组→NTU。仍保留独立SS，按4–5h备补给不报精确ETA，见revision26。
 
 ## 当前活跃旗标
 
@@ -53,7 +53,7 @@
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
-- **10/23最新日程覆盖旧版**：骑行沿Faber六SST→Mandai/NewTiew→LCK末三组→NTU混合课；17点出、按4–5h准备。新打包及全天饮食见[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）；壶实际2×720，聚餐后体重不作脂肪结论，不削减车上糖；Sat休/Sun按恢复，未推ICU。
+- **10/23混合课已完成**：Faber六趟加权281W；LCK 296/303(12′)/306W（计划290/295/295×10′、加时加瓦二选一，实际两样都做，做功约+10%）；TSS203且TSB−25.4→10/24周六强制全休，周日Crazies按早上恢复定。复盘[[sessions/2026-10-23-faber-lck-mixed-ride-review]]，末组RPE/Faber低踏频原因/实际补给3问待答；路线与补给计划见[[sessions/2026-10-23-faber-mandai-lck-mixed-route]]、[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
 
