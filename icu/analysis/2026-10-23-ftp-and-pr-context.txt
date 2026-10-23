@@ -1,0 +1,80 @@
+== 10/4 最佳20min窗口
+均功率 295.4W  NP 307.1W  VI 1.039  >350W 400s  <200W 237s  HR均 186.7  HR最高 194  起点 43.3min
+全趟最高心率 196  名称: fitness zero🫠
+thought i could not be dropped, but failed🥲
+swear to train harder to get my power back💪 | 描述: 又tmd 25min 300w掉队了….不想骑了
+不是，为什么台子上感觉还可以 路骑直接死了啊…
+想念我的n4
+◾️ 4, October Training status ◾️
+😐 Low-Load Tapering (336)
+🌳 Fitness 54, Fatigue 55, Balance 0
+
+◾️ Ride Summary ◾️
+🐶 Free Training (moderate intensity)
+🏷️ Motivational effect, Sustained, Amused
+🚵 Concentrated Ride
+📊 RP 246, Int 0.82, Vol 84
+✨ Recovery time 13 hour
+
+◾️ Peak power ◾️
+⚡ 15sec 452w (47%) 
+⚡ 1min 379w (65%) 
+⚡ 2min 349w (82%) 
+⚡ 5min 325w (94%) 
+⚡ 10min 312w (101%) 🏆 PR
+⚡ 20min 295w (102%) 🏆 PR
+⚡ 40min 226w (80%) 
+⚡ 1hour 207w (75%) 
+
+◾️ Power zone ◾️
+⚪ 1zone 26% (-3%)
+🔵 2zone 44% (-5%)
+🟢 3zone 8% (-2%)
+🟡 4zone 6% (+1%)
+🟠 5zone 5% (+2%)
+🔴 6zone 8% (+5%)
+⭕ 7zone 3% (+2%)
+
+◾️ Heartrate zone ◾️
+🤍 1zone 3%
+💙 2zone 24%
+💚 3zone 39%
+💛 4zone 16%
+🧡 5zone 18%
+
+◾️ Anaerobic work ◾️
+🕯️ Matches 11.8
+⌛ AWC duration 14m 57s
+🏋 AWC energy 88.8kJ
+🔋 Maximum discharge 100%
+
+◾️ Energy metabolism ◾️
+🔥 Calories burned 915
+🧀 Fat 54.9%
+🍞 Carb 45.1%
+⏲ Fat loss 54g
+
+
+
+🔗https://www.strava.com/clubs/riduck
+🔗https://riduck.com
+
+== 持续段心率爬升（第3分钟起）
+2026-10-18 13.0min 297W NP298 HR 166→174 斜率 +0.80 bpm/min
+2026-10-23 10.0min 296W NP295 HR 169→176 斜率 +0.88 bpm/min
+2026-10-23 12.0min 302W NP303 HR 172→182 斜率 +1.00 bpm/min
+2026-10-23 10.0min 305W NP305 HR 175→181 斜率 +0.76 bpm/min
+
+== Faber PR 日前后负荷（wellness）
+2026-08-04 CTL  53.1 ATL  48.1 TSB   +5.0 HRV 72.0 RHR 46
+2026-08-05 CTL  57.5 ATL  73.5 TSB  -16.0 HRV 62.0 RHR 49
+2026-08-06 CTL  56.1 ATL  63.7 TSB   -7.6 HRV 66.0 RHR 48
+2026-08-07 CTL  54.8 ATL  55.2 TSB   -0.4 HRV 63.0 RHR 46
+2026-08-08 CTL  56.1 ATL  62.5 TSB   -6.4 HRV 75.0 RHR 45
+2026-08-09 CTL  54.8 ATL  55.1 TSB   -0.4 HRV 53.0 RHR 49
+2026-09-04 CTL  62.9 ATL  73.9 TSB  -10.9 HRV 77.0 RHR 45
+2026-09-05 CTL  63.5 ATL  75.5 TSB  -12.0 HRV 76.0 RHR 44
+2026-09-06 CTL  65.6 ATL  85.8 TSB  -20.2 HRV 77.0 RHR 44
+2026-09-07 CTL  64.0 ATL  74.4 TSB  -10.3 HRV 84.0 RHR 42
+2026-09-08 CTL  65.6 ATL  81.9 TSB  -16.3 HRV 88.0 RHR 42
+2026-09-09 CTL  68.1 ATL  94.0 TSB  -25.9 HRV 75.0 RHR 45
