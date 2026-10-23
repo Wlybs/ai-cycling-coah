@@ -53,7 +53,7 @@
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
-- **10/23混合课已完成**：Faber六趟加权281W；LCK 296/303(12′)/306W（计划290/295/295×10′、加时加瓦二选一，实际两样都做，做功约+10%）；TSS203且TSB−25.4→10/24周六强制全休（碳水约5g/kg多放晚餐），周日Crazies正常角色（早上腿仍酸或HRV/静息心率明显变差则只跟车）；下次长课后段阈值3×12@300只加时；低踏频按65–70rpm起步。复盘[[sessions/2026-10-23-faber-lck-mixed-ride-review]]，膝盖待答；路线与补给计划见[[sessions/2026-10-23-faber-mandai-lck-mixed-route]]、[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）。
+- **10/23混合课已完成**：Faber六趟加权281W；LCK 296/303(12′)/306W（计划290/295/295×10′、加时加瓦二选一，实际两样都做，做功约+10%）；TSS203且TSB−25.4→10/24周六强制全休（碳水约5g/kg多放晚餐），周日Crazies正常角色（早上腿仍酸或HRV/静息心率明显变差则只跟车）；下次长课后段阈值3×12@300只加时；低踏频以10/23剂量为耐受参考（膝盖完全无感觉），暂不压到50–60。复盘[[sessions/2026-10-23-faber-lck-mixed-ride-review]]；路线与补给计划见[[sessions/2026-10-23-faber-mandai-lck-mixed-route]]、[[plans/2026-10-23-faber-mixed-ride-fueling]]（revision28）。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
 
