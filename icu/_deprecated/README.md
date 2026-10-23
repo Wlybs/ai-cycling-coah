@@ -22,6 +22,13 @@
 | `print_summaries.py` | Deprecated | 依赖 `latest_6_rides.json`（UTF-16 临时 dump）。数据源已不再维护。 |
 | `latest_6_rides.json` | Deprecated | 一次性数据 dump（UTF-16，165KB）。不应 check-in。 |
 | `temp_summary.json` | Deprecated | 临时调试 dump（24KB）。 |
+| `push_plan_v6.9.py` | Deprecated（2026-10-23 归档） | 一次性：按写死的 ICU event id PUT 5/13–5/15 计划。通用推送已在 `src/coach/plan_generator.py`。 |
+| `push_plan_race_week_5_31.py` | Deprecated（2026-10-23 归档） | 一次性：PUT 5/26–5/31 太子尖赛周 6 个事件，写死 event id。 |
+| `fix_527_529_swap.py` | Deprecated（2026-10-23 归档） | 一次性：5/27、5/29 互换为 plan v7.1。 |
+| `fix_528_529_v72.py` | Deprecated（2026-10-23 归档） | 一次性：5/28、5/29 改为 plan v7.2。 |
+| `fix_race_week_charts.py` | Deprecated（2026-10-23 归档） | 一次性：用 ZWO 重 PUT 5/26、5/29 修 ICU 图表。 |
+
+上面五个 2026-10-23 归档的脚本仍用 `..` 指向 `icu/`，从本目录运行也能 import `src`；但事件 id 只对 5 月那几天有效，不要再跑。
 
 ## 处置建议
 
