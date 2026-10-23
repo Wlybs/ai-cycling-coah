@@ -6,23 +6,22 @@ FIT 的 duration_sec 是 total_elapsed_time（含暂停），streams 按样本�
 再在 streams.time 上二分查找得到 [start, end) 样本索引。
 """
 import bisect
-from datetime import datetime, timezone
-from typing import Optional
+from datetime import UTC, datetime
 
 
 def _parse_utc(iso: str) -> datetime:
     dt = datetime.fromisoformat(iso.replace("Z", "+00:00"))
     if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
+        dt = dt.replace(tzinfo=UTC)
     return dt
 
 
 def lap_stream_window(
-    lap_start_iso: Optional[str],
-    duration_sec: Optional[float],
-    activity_start_utc: Optional[str],
+    lap_start_iso: str | None,
+    duration_sec: float | None,
+    activity_start_utc: str | None,
     stream_time: list,
-) -> Optional[tuple[int, int]]:
+) -> tuple[int, int] | None:
     """返回 lap 在 streams 里的 [start, end) 索引；信息不全时返回 None。"""
     if not lap_start_iso or duration_sec is None or not activity_start_utc or not stream_time:
         return None
@@ -32,7 +31,7 @@ def lap_stream_window(
     return start, end
 
 
-def align_laps_to_streams(laps: list, stream_time: list, activity_start_utc: Optional[str]) -> list:
+def align_laps_to_streams(laps: list, stream_time: list, activity_start_utc: str | None) -> list:
     """给每个 lap 写入 stream_start_index / stream_end_index（原地修改并返回同一列表）。
 
     对不齐的 lap（缺起始时间或时长）索引写 None，下游会退回用 FIT 自带的均值。
