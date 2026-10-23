@@ -39,11 +39,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-23 — [[sessions/2026-10-23-sugar-bottle-and-carbon-rail-carrier-shopping]] — 新加坡Maymom150ml单3.50/八瓶12.56；碳轨+尾包尾灯已确认，Topeak PRO I/V为候选、国内140仅导购线索未核成交；未改revision28课表/未购买。
 - 2026-10-23 — [[sessions/2026-10-23-reusable-sugar-minimal-gel-and-resupply]] — 各70g白糖+清水不动，双蕉/另80g干糖/一胶备用，途中1.5L原味；4h备用糖30g、5h80g，复用食品旋盖小瓶与新加坡替代调研，revision28覆盖旧打包。
 - 2026-10-23 — [[sessions/2026-10-23-mixed-route-fueling-and-feast-weight]] — 实际壶2×720；打包约1.4L原味/白糖125g/香蕉1/无咖啡因胶4支，4h约265g/5h约330g，饮水按实际计；聚餐后不补偿性空腹，全天吃法已整理，见revision27。
 - 2026-10-23 — [[sessions/2026-10-23-faber-mandai-lck-mixed-route]] — 本人具体环线与无聊成本：今日选NTU→Faber六SST→Mandai/NewTiew→LCK末三组→NTU。仍保留独立SS，按4–5h备补给不报精确ETA，见revision26。
 - 2026-10-23 — [[sessions/2026-10-23-short-sst-venue-and-sun-preference]] — 80min改8×10/短休合理，今天17点LCK户外首选、约3h40；室内心率效率不等于体感，避晒五类出发窗口已持久化，见revision25。
-- 2026-10-23 — [[sessions/2026-10-23-sst-main-vs-mixed-durability]] — 二选一以DRCC长缓坡持续容量排序，今天优先4×20SS中心275W、后100min有氧含冷身，总3h45，替代混合课；非研究已证优效，见revision24。
 
 ## 当前活跃旗标
 
