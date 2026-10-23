@@ -1,0 +1,92 @@
+name: z2 base + ntu hill (failed into 45s…😭
+description: cp1已经10w了么 回国狠狠拉扯一下
+◾️ 10, October Training status ◾️
+😄 Gradually improving (765)
+🌳 Fitness 62, Fatigue 88, Balance -26
+
+◾️ Ride Summary ◾️
+🐶 Free Training (moderate intensity)
+🏷️ Motivational effect, Sustained, Amused
+🚵 Hillclimb Ride
+📊 RP 227, Int 0.76, Vol 125
+✨ Recovery time 20 hour
+
+◾️ Peak power ◾️
+⚡ 15sec 877w (91%) 
+⚡ 1min 637w (109%) 🏆 PR
+⚡ 2min 396w (93%) 
+⚡ 5min 263w (76%) 
+⚡ 10min 228w (73%) 
+⚡ 20min 218w (74%) 
+⚡ 40min 173w (62%) 
+⚡ 1hour 162w (59%) 
+⚡ 2hour 139w (61%) 
+
+◾️ Power zone ◾️
+⚪ 1zone 30% (+3%)
+🔵 2zone 42% (-8%)
+🟢 3zone 18% (+7%)
+🟡 4zone 7% (+2%)
+🟠 5zone 2% (-1%)
+🔴 6zone 1% (-2%)
+⭕ 7zone 1% 
+
+◾️ Heartrate zone ◾️
+🤍 1zone 11%
+💙 2zone 46%
+💚 3zone 40%
+💛 4zone 2%
+🧡 5zone 0%
+
+◾️ Anaerobic work ◾️
+🕯️ Matches 4.2
+⌛ AWC duration 9m 27s
+🏋 AWC energy 42kJ
+🔋 Maximum discharge 76.6%
+
+◾️ Energy metabolism ◾️
+🔥 Calories burned 1329
+🧀 Fat 61.4%
+🍞 Carb 38.6%
+⏲ Fat loss 87.7g
+
+
+
+🔗https://www.strava.com/clubs/riduck
+🔗https://riduck.com
+device Garmin Edge 540 power_meter 666 2 temp 29.67794 RPE 2 feel 2
+best60 637.4W at elapsed 10589s (176.5min)；best30 781.5W at 10596s
+60s 内：单秒最高 998W  >1500W 的秒数 0  踏频中位 98.0  海拔 18.0→53.8m  距离 574m
+全趟单秒最高功率 998  全趟最高心率 188
+
+每 5s（从窗口前 30s 到窗口后 60s）：功率 / 踏频 / 速度km/h / 心率 / 海拔
+  t10559    169W   90rpm  32.8 158   28.6
+  t10564    140W   94rpm  41.8 157   27.6
+  t10569     75W   79rpm  46.4 160   25.4
+  t10574     84W   86rpm  48.7 164   22.4
+  t10579     50W   70rpm  49.5 163   20.0
+  t10584     85W   79rpm  46.6 162   18.6
+* t10589    206W   85rpm  45.2 162   18.0
+* t10594    657W   96rpm  40.8 162   18.2
+* t10599    868W  100rpm  39.3 164   19.6
+* t10604    880W  103rpm  38.1 167   23.0
+* t10609    838W  100rpm  35.9 171   27.0
+* t10614    694W  101rpm  33.8 175   31.6
+* t10619    641W   97rpm  30.9 179   35.6
+* t10624    626W  103rpm  30.4 182   39.4
+* t10629    599W  101rpm  30.2 183   43.2
+* t10634    603W   97rpm  28.6 185   46.0
+* t10639    591W   95rpm  27.6 186   49.2
+* t10644    447W  101rpm  32.3 187   52.2
+  t10649     27W   74rpm  39.3 188   53.8
+  t10654      0W    8rpm  47.0 187   51.8
+  t10659      0W    4rpm  53.0 185   46.8
+  t10664      0W   16rpm  50.5 184   40.6
+  t10669      0W   36rpm  31.9 182   35.2
+  t10674      0W   13rpm  36.5 181   35.6
+  t10679      0W   10rpm  41.9 178   32.8
+  t10684      0W    5rpm  43.1 178   29.0
+  t10689      0W    0rpm  42.1 177   26.4
+  t10694     14W   28rpm  37.8 176   24.8
+  t10699    105W   78rpm  35.7 174   23.8
+  t10704    170W   91rpm  35.2 172   23.4
