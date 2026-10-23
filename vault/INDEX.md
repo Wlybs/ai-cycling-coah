@@ -35,6 +35,7 @@
 - [[sites/mountain-3-climb]] — Mountain 3 单 climb 三段地形 (r1 陡 / r2 短陡+平路 / r3 长陡到顶)、stream 实测数据、训练适配建议（2026-05-12 锁定）
 - [[sites/lck-training-loop]] — 当前新加坡持续训练场地；本人记录地形及连续性边界
 - `sessions/` — 每次教练对话归档（按日期）
+- `training-explainers/` — 外部训练科普（抖音等）的逐条核查与对本人的适用判定；`research/` 则是针对本人问题的证据核查
 
 ## 最近 5 次 session
 
