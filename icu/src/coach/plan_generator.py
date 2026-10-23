@@ -630,7 +630,7 @@ def _push_to_icu(plan: dict):
         desc_len = len(e.get("description") or "")
         mt = (e.get('moving_time') or 0) // 60
         print(f"  - {e.get('start_date_local','?')[:10]} | TSS={e.get('icu_training_load')} | dur={mt}m | steps={steps} | desc={desc_len}c | {e.get('name','')[:35]}")
-    print(f"\n✅ 推送完成")
+    print("\n✅ 推送完成")
 
 
 def update_plan_in_icu(plan: dict, event_ids: dict) -> dict:
@@ -649,7 +649,7 @@ def update_plan_in_icu(plan: dict, event_ids: dict) -> dict:
             continue
         event = _build_event_payload(day)
         try:
-            result = icu.update_event(event_id, event)
+            icu.update_event(event_id, event)
             print(f"  ✓ {day['date']} {day['day_of_week']} — {day['name']} (id={event_id})")
             updated += 1
         except Exception as e:
