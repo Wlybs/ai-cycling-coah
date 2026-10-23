@@ -39,11 +39,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-23 — [[sessions/2026-10-23-early-sst-long-endurance-late-threshold]] — 本人满血；30min热身→6×5约280W/1min有氧→100minZ2→3×10阈值→20min回程，总3h45。旧4×20对DRCC持续巡航有针对性，非完整模拟，见revision23。
 - 2026-10-22 — [[sessions/2026-10-22-friday-three-versions-compared]] — 比较Faber SST版/3h Z2版/原版：明天仍按revision22；Faber无连续10min、往返约1h40、19点后天黑，留作另日“Faber巡航爬坡”。
 - 2026-10-22 — [[sessions/2026-10-22-sst-watts-and-2025-reference]] — 250–265主要tempo；前两块3×5改以275W为中心，第二块有余量280–285，后置三组与实际体感调整保留；去年4×20均244W、末组本人RPE7.5作持续容量参考，见revision22。
 - 2026-10-22 — [[sessions/2026-10-22-short-sst-intervals-preference]] — 本人短组和起伏都比连续15min巡航舒服；前段改两块3×5min250–265W、组内1min有氧，工作仍30min，整趟约3h；不认证SST边界，见revision21。
 - 2026-10-22 — [[sessions/2026-10-22-mixed-preload-substitution-clarified]] — 本人澄清以2h混合前段替换3h纯Z2，不是叠加；周五约3h含2×15min250–265巡航、之后3×10min290–295，保留体感调整。非已证比长Z2更累/适应更好；见revision20。
-- 2026-10-22 — [[sessions/2026-10-22-rpe-context-and-mixed-long-ride-rationale]] — 撤RPE3–4/5–6机械进阶门槛；本人阈值末组8–9可正常。维持4h后置主课，前段不加SST是容量优先级选择，非混合长骑劣效证据；见revision19。
 
 ## 当前活跃旗标
 
@@ -53,13 +53,13 @@
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
 
-- **10/22最新日程覆盖旧版**：今天全休取消AWE；周五约17点起前2h含两块3×5min，首块275W、第二有余量280–285W（组内1min有氧），后3×10min290–295W，总约3h，按实际余量调整。本人偏好短组/起伏，4–5h可用不变。Sat默认休、Sun按恢复。详revision22及[[sessions/2026-10-22-sst-watts-and-2025-reference]]，未推ICU。
+- **10/23最新日程覆盖旧版**：10/22取消AWE全休；本人今早满血。周五约17点起30min热身、6×5约280W（5次1min有氧恢复）、100minZ2，后3×10min290–295，总约3h45，实际余量调整保留。Sat默认休、Sun按恢复。详revision23及[[sessions/2026-10-23-early-sst-long-endurance-late-threshold]]，未推ICU。
 
 - **10/20实际执行覆盖当日计划**：完成8×3min高强度，非30min持续校准；原校准不补课。本周主要质量为今天+周日Crazies、周四AWE按有氧意图；明日LSD根据实际恢复决定。本人有意快起步，第7/8趟RPE9/9.5，不据末组仍363W判有余量，也不单凭RPE判过量。若单堂主任务选VO2，可复现8×3约350–360W（先355），Faber备选5趟约4min从350W试行；近匀速先比较，快起步留选项，不声称已证效果优劣。6×4/8×4与营养细节见最新session。
 
 - **CTL目标/负荷参考**：本人希望12/13>100，主要体感优势是阈值/爬坡及整体有力自信；教练条件性支持建设、反对比赛日硬守数字挤掉减量。模型示例见最新session；700–800建设周为观察预算，非每周最低任务。AWE可全程Z2，按实际工作分类。
 
-- **当前训练建议**：以[[plans/2026-10-19-faber-and-drcc-eight-week]]最新revision（当前revision22）为准，只排未来约3天、滚动更新；菜单A/B/C仍见[[plans/2026-10-20-drcc-flexible-endurance-progression]]。周负荷不得无理由低于近两周（851/670）。
+- **当前训练建议**：以[[plans/2026-10-19-faber-and-drcc-eight-week]]最新revision（当前revision23）为准，只排未来约3天、滚动更新；菜单A/B/C仍见[[plans/2026-10-20-drcc-flexible-endurance-progression]]。周负荷不得无理由低于近两周（851/670）。
 - **课表库与大方向**：见plan「10/19补充①–④」；课型以补充③为准、表内格子仅参考，日期本人自调。
 - **力量课（10/20本人已答，勿再问）**：可去健身房、膝无不适；无深蹲/硬拉条件，只有保加利亚蹲、倒蹬机、腿屈伸、腿弯举。每周1次，放有氧日之后、不放质量课前一天，赛前一周停；动作组次见plan「10/19补充」。
 - **Faber与赛事边界**：双向映射时间不是官方PR，10/13反向端点存在匹配差异；Faber180s与生涯180s分开。DRCC主办海报列末档11/1，当前余位/资格、GPX待核，未报名；见最新session及races。
