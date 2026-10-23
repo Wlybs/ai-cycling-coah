@@ -29,7 +29,7 @@ status: evidence-reviewed
 | ② 强度分布 | 已有更严谨版本 | 见 [[research/2026-10-22-intensity-fatigue-base-and-threshold-progression]] 的 Rosenblat 2025：没有全人群统一最优分布 |
 | ③ IMT 48 周 FTP +6% | 未核实 | 查到的 48 周研究为 Ricci & Bouverot 2025 预印本（Zenodo 16645438），10 名精英骑手/铁三，未报告 FTP 数值；「Andrew Sellers」研究未检索到 |
 | ④ 力量训练涨 FTP 2–5% | 原文不支持 | Llanos-Lagos, Ramirez-Campillo & Sáez de Villarreal 2025, Eur J Appl Physiol 126(1):193–222, doi 10.1007/s00421-025-05883-2（PMC12881108）Abstract：17 项 262 人；重力量训练显著改善踩踏效率、无氧功率和骑行表现（力竭时间+计时赛合并），VO2max、pVO2max、最大代谢稳态（MMSS）均无显著变化；证据确定性低。原文没有 FTP / 20min 测试 +2–5% |
-| ⑤ 热服维持血红蛋白质量 | 对得上，与本人关系小 | Urianstad, Rønnestad 等，ECSS 2024 会议摘要（lida 4093829）：18 名精英男骑手高原集训后，热服组每周 3×50min，Hbmass 维持（+0.2%），对照组 −3.3%；每组 9 人。本人无高原集训，常住湿热环境，热适应规则见 [[decisions]] 2026-05-10 |
+| ⑤ 热服维持血红蛋白质量 | 对得上，与本人关系小 | Urianstad, Rønnestad 等，ECSS 2024 会议摘要（lida 4093829）：18 名精英男骑手高原集训后，热服组每周 3×50min，Hbmass 维持（+0.2%），对照组 −3.3%；每组 9 人。本人无高原集训，在新加坡骑车，不安排额外热适应（见 [[athlete-quick-facts]]） |
 | 「叠加 2–3 个方法 FTP 涨 15–30W」 | 不采纳 | 没有研究验证方法叠加的加和效果 |
 
 ## 对本人的应用（教练判断）
