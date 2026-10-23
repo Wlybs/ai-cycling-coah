@@ -16,7 +16,7 @@ from src.coach.deep_analyzer.orchestrator import analyze_new
 
 
 def _load_activity_list(warehouse):
-    path = warehouse / "4_Activities_List" / "activities.json"
+    path = warehouse / "4_Activities_List" / "activity_list_clean.json"
     if not path.exists():
         return []
     return json.loads(path.read_text())
