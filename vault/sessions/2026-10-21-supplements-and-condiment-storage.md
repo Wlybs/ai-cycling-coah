@@ -62,3 +62,19 @@ related: [[athlete]] [[races]]
 
 ### 追问答案与最终边界
 本人确认：蚝油玻璃瓶，生抽塑料瓶，刚从冰箱取出即开盖，只有短促声，无泡沫或酱汁带出及其他异常。此时不把声响等同持续产气，收回“仅凭声音一律丢弃”的结论；瓶内外压差/密封松开声是可考虑的物理解释，未测量气流方向。因立即开盖，不能直接归因为已经回温膨胀；若确实向外排气，单纯气体降温不足以解释。并未因此认证安全。明显持续起泡、鼓胀、溢出等才会增强异常产气判断。本轮不要求用户重复已答问题。
+
+## 后续：牛肝与胡萝卜的维生素A
+用户问牛肝限量是否与胡萝卜冲突。已回读2026-10-20-fixed-portions-meat-options-and-breakfast.md及现行饮食plan：此前为控制牛肝长期摄入，不是诊断本人维A过量，也未保证150g每周一次在所有饮食背景下安全。
+
+正常份量胡萝卜可与牛肝同餐，无需错开或因吃肝停胡萝卜。牛肝主要提供预成型维生素A（视黄醇/其酯），过量可蓄积；胡萝卜主要提供维A原类胡萝卜素（尤其β-胡萝卜素），不具有相同的维A过量风险。成人预成型维A UL为3000µg/day，不能把胡萝卜折算RAE与牛肝简单相加后套此上限。未估算本人实际摄入量或诊断过量。
+
+来源核对：NIH ODS Vitamin A and Carotenoids Consumer，https://ods.od.nih.gov/factsheets/VitaminA-Consumer/ ，sources、supplement safety及upper limits段；专业版 https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/ ，Tolerable upper intake levels段。建议为指南应用，非本人血检结论。本轮无新训练分析，沿用本会话已同步数据。
+
+## 150g每周一次：长期安排与风险沟通
+
+> 后续已按本人常见食谱及澳洲AUSNUT原始数据重算，最新结论见[[2026-10-21-beef-liver-dose-calculation]]；下段“每月一次默认”保留为会话历史，已被后续定量建议覆盖。
+本人追问每次150g、一周一次是否可以；自述营养摄入很大、耐受强，希望避免过度警示。此为沟通偏好及主观体验，不等于经验证可耐受更高的视黄醇累积量。
+
+复核新增原始资料：EFSA 2024 Scientific opinion on the tolerable upper intake level for preformed vitamin A and β-carotene，https://efsa.onlinelibrary.wiley.com/doi/abs/10.2903/j.efsa.2024.8814 ，§3.8.1指出，基于欧洲人群摄入数据，将肝/内脏及其制品限制在每月一次或更少时预计不超过预成维A UL；更频繁或高剂量补剂可导致超限。该结论是人群暴露评估，不能反推每周吃必然伤害，也不能认证本人150g这款牛肝的含量。NHS https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-a/ L59、66为每周不超过一次及每周吃肝时避免含维A补剂；这是频率指导，不是对150g的个体安全保证。
+
+本轮建议：偶尔吃一次150g不视为需要紧急处理；不把150g每周一次背书为长期固定安全方案。本人份量按此前已确认生重理解。若保留150g单份，首选每月一次作为更保守默认；胡萝卜照常。训练量和胃肠耐受未提供提高预成维A安全上限的依据。风险重点是长期累积，不用单次高于日参考值推断已经中毒。该建议较此前“最多每周一次”更具体，变化来自新核对2024 EFSA风险评估，不是因本人质疑而无证据翻转。

@@ -47,6 +47,8 @@
 
 ## 当前活跃旗标
 
+- **牛肝与风险沟通（10/21最新计算覆盖机械频率建议）**：以[[sessions/2026-10-21-beef-liver-dose-calculation]]为准。澳洲AUSNUT生牛肝13600µg视黄醇/100g，150g/周配常见6–8蛋背景，按烹调保留75–80%约2600–2850µg/d、无损失约3300–3450，接近UL而非必然超量；批次/酸奶强化/完整周摄入未知。可100g/周或150g隔10–14天留余量，不再机械每月一次。500g冻重未解冻、疑冷冻不到−18，先测温分装，不建议一周赶吃。本人偏好少低风险警示，自述耐受不当更高维A上限证据；胡萝卜照常。
+
 - **已答事实速查表（必读，勿再问）**：[[athlete-quick-facts]]——补给产品（三种胶与咖啡因规则、100PLUS 3L、户外不带面包）、作息（周四AWE夜骑、周日06:30出门）、健身器械、教练互动方式。
 
 - **10/21补并入master的分支记录（之前其他会话看不到）**：DRCC赛道剖面与需求[[sessions/2026-10-19-drcc-route-and-demands]]；室内外LSD心率原始流复核[[sessions/2026-10-20-lsd-indoor-outdoor-hr-analysis]]；现状vs巅峰[[sessions/2026-10-17-peak-gap-and-recovery-status]]；Crazies领骑复核[[sessions/2026-10-18-crazies-threshold-lead-review]]；8×3 VO2复盘[[sessions/2026-10-20-eight-by-three-vo2-review]]。
