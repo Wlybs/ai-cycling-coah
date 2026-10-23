@@ -39,11 +39,11 @@
 
 ## 最近 5 次 session
 
+- 2026-10-23 — [[sessions/2026-10-23-rider-profile-deep-dive]] — 骑手画像：短坡爆发型爬坡手。30s/1min此刻生涯最好（1min国内职业档）、W′22–26kJ未变；有氧端2–20min较6月巅峰低6–13%（FTP约300优秀档）；稳态耐久好、反复爆发后易见底；DRCC长缓坡正考短板，训练重点不变。
 - 2026-10-23 — [[sessions/2026-10-23-one-minute-power-and-anaerobic-profile]] — 1min 637W（10/10 NTU坡约55s，3h后）核实为真实输出；W′24.8kJ+300W粗算上限约700W，未超出；比例大是因30s/1min处生涯最好而5–20min低9–13%。追问订正：按Coggan分级1min 10.1–10.4W/kg属国内职业档（≥10.6世界级），FTP 4.8–4.9W/kg属优秀业余档；表为2010经验分档，仅作参考。
 - 2026-10-23 — [[sessions/2026-10-23-garmin-ftp-drop-and-november-deload]] — Garmin FTP 307→280不采用：280反映10/4掉队日，现估约300（295–305），ftp_set不变；明天按规则全休（ATL104为90天最高）；减量周11/6–11/12，Faber测试定11/6早（11/5放轻，首分钟功率封顶）；低踏频订正为最陡段约50rpm。
 - 2026-10-23 — [[sessions/2026-10-23-faber-lck-mixed-ride-review]] — 混合课复盘：Faber六趟加权281W（目标280）；LCK 296/303(12′)/306W，加时加瓦两样都做、做功约+10%；末组在3.5h后仅低90d滚动10min最佳5W；TSS203+TSB−25.4→周六强制休。本人反馈末组RPE8.5、Faber有意低踏频、骑中约220g；200W心率正常而踏频偏低；碳水假设对一半（与前日全休/HRV高混杂），revision29定Sat/Sun与下次3×12@300。
 - 2026-10-23 — [[sessions/2026-10-23-big-preride-carb-meal]] — 骑前2h约400g碳水（约6.2g/kg）：骑中照吃，仅前60min放慢、首蕉推后，干糖默认30g，覆盖revision28第一小时节奏。
-- 2026-10-23 — [[sessions/2026-10-23-sugar-bottle-and-carbon-rail-carrier-shopping]] — 新加坡Maymom150ml单3.50/八瓶12.56；碳轨+尾包尾灯已确认，Topeak PRO I/V为候选、国内140仅导购线索未核成交；未改revision28课表/未购买。
 
 ## 当前活跃旗标
 
