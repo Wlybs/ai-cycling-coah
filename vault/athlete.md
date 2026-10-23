@@ -1029,3 +1029,6 @@ Phase C — 控场保护
 - 户外LSD偏好周常环岛/跨岛路线，有较多红灯/停脚/功率变化；不是LCK。LCK仍是threshold等持续课偏好场地。
 - 本人观察同功率室外HR较室内高，从开骑早段已有；后半程漂移室内外都有。之前选户外有适应这一差异的意图，原因未确定，不能直接归因户外骑少。
 - 10/7 LSD140.25km GPS已核跨岛往返；详细初筛和Claude分析prompt见[[sessions/2026-10-20-lsd-indoor-outdoor-route-and-hr]]。
+
+## 2026-10-23｜户外补给携带偏好补充
+可带两根香蕉，能量胶尽量少带；途中通常买1.5L原味100PLUS。希望长期以可复用容器携带干糖，尚未选购/实装；器材建议见[[research/2026-10-23-reusable-sugar-and-roadside-fuel]]，当日配方见[[plans/2026-10-23-faber-mixed-ride-fueling]]。覆盖旧的一蕉四胶/起步各25g糖方案；不据此固定未来每次糖量。
