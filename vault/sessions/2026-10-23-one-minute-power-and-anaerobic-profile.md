@@ -21,3 +21,9 @@ related: [[athlete]] [[sessions/2026-10-23-garmin-ftp-drop-and-november-deload]]
 
 ## 触发器
 11/6 新鲜状态的 Faber 测试后，用 3–5 分钟全力结果重看有氧端与无氧端的比例。
+
+## 追问与订正（约23:55）
+- 本人：1min 10 W/kg 是见过的人里最顶尖一档，为什么没有数据源。
+- 订正：上一轮"缺人群数据不下结论"是没查现成参照。Coggan 式功率分级（Cyclists Hub 转载，标明为估计、持续修订）男子 1min：World class ≥10.6、Exceptional（国内职业）9.9–10.8、Excellent（一级）9.2–10.1、Very good 8.5–9.4 W/kg。本人 637W 按 61–63 kg 为 10.1–10.4 W/kg，属国内职业档、接近世界级门槛。
+- 对照阈值：Garmin FTP 分级（依据 Allen & Coggan 2010）男子 Superior ≥5.05、Excellent 3.93–5.04；FTP 300 按 61–63 kg 为 4.76–4.92，属 Excellent。结构为无氧端明显强于阈值端，与"差距在 5–20 分钟"一致。
+- 局限：分级表出自 2010 年书籍，为经验分档、非严格抽样，且超出近三年证据规则，只作档位参考；Valenzuela 等 2022 IJSPP 17(5):701–710（144 名男职业）摘要无 1min 数值，全文 403 未读。ICU 功率曲线 ranks 字段为空，无平台人群百分位。
