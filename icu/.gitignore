@@ -30,3 +30,12 @@ logs/
 .DS_Store
 *.swp
 *~
+
+# 教练记忆备份（含个人数据，同 coach_memory/）
+coach_memory_backup_*/
+
+# 分析用的原始下载表格（体积大、可按笔记里的来源重新下载）
+analysis/**/*.xlsx
+
+# Claude Code 运行时锁文件
+.claude/scheduled_tasks.lock
