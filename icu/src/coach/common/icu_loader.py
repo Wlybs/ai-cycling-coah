@@ -123,11 +123,19 @@ def _compute_gradient(
     return grad
 
 
-def normalize_streams(streams: dict) -> dict:
+def normalize_streams(streams: dict | list) -> dict:
     """Return streams dict with Phase 1 keys: power, hr, gradient, cadence, altitude, time.
 
     Preserves w_bal and velocity_smooth for downstream use.
     """
+    if isinstance(streams, list):
+        # Convert legacy list format to dict
+        streams_dict = {}
+        for s in streams:
+            if isinstance(s, dict) and 'type' in s and 'data' in s:
+                streams_dict[s['type']] = s['data']
+        streams = streams_dict
+
     altitude = streams.get("altitude") or []
     velocity_smooth = streams.get("velocity_smooth") or []
     return {
