@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta, timezone
-from typing import Iterable, Literal
+from collections.abc import Iterable
+from datetime import UTC, datetime, timedelta
+from typing import Literal
 
 from .types import KneeLoading, ResponseProfile, ResponseTypeStats
 
@@ -80,7 +81,7 @@ def build_profile(
         flag = "watch"
 
     return ResponseProfile(
-        generated_at=datetime.now(timezone.utc).isoformat(),
+        generated_at=datetime.now(UTC).isoformat(),
         window_days=window_days,
         types=types_out,
         knee_loading=KneeLoading(

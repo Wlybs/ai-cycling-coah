@@ -1,0 +1,451 @@
+{
+  "date": "2026-10-19",
+  "periods": {
+    "peak": [
+      "2026-04-01",
+      "2026-06-09"
+    ],
+    "current": [
+      "2026-10-02",
+      "2026-10-19"
+    ]
+  },
+  "method": "Verified API range id; strict continuous rolling mean only within each API-winning activity, not all-stream exhaustive scan. Exact N non-null samples with adjacent time step1s; zeros retained; pauses not compressed or filled. API and raw values separate. All deltas are observed-record deltas, not measured capacity losses. No model fit.",
+  "rows": [
+    {
+      "seconds": 5,
+      "peak": {
+        "api_watts": 1202,
+        "strict_best_in_api_winning_activity": {
+          "watts": 1202.4,
+          "seconds": 5,
+          "activity_id": "i138344084",
+          "date": "2026-04-09T11:35:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-04-09_i138344084.json",
+          "start_index": 8033,
+          "end_index_exclusive": 8038,
+          "elapsed_start": 10420.0,
+          "elapsed_end_inclusive": 10424.0,
+          "mean_hr": 156.2,
+          "recorded_mechanical_work_before_kj": 1267.11
+        },
+        "activity_name": "三江两岸乱骑"
+      },
+      "current": {
+        "api_watts": 1078,
+        "strict_best_in_api_winning_activity": {
+          "watts": 1078.8,
+          "seconds": 5,
+          "activity_id": "i195955105",
+          "date": "2026-10-11T06:30:42",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-11_i195955105.json",
+          "start_index": 5803,
+          "end_index_exclusive": 5808,
+          "elapsed_start": 6190.0,
+          "elapsed_end_inclusive": 6194.0,
+          "mean_hr": 173.4,
+          "recorded_mechanical_work_before_kj": 1313.93
+        },
+        "activity_name": "two 1000w climb attacks, nice break away with jayden😎\n(jayden looked back at ntu hill too often to make me couldn't stop laughing 😂"
+      },
+      "observed_record_delta_w": -123.6,
+      "observed_record_delta_pct": -10.28
+    },
+    {
+      "seconds": 15,
+      "peak": {
+        "api_watts": 1038,
+        "strict_best_in_api_winning_activity": {
+          "watts": 1038.4,
+          "seconds": 15,
+          "activity_id": "i138344084",
+          "date": "2026-04-09T11:35:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-04-09_i138344084.json",
+          "start_index": 5711,
+          "end_index_exclusive": 5726,
+          "elapsed_start": 7867.0,
+          "elapsed_end_inclusive": 7881.0,
+          "mean_hr": 168.0,
+          "recorded_mechanical_work_before_kj": 1025.53
+        },
+        "activity_name": "三江两岸乱骑"
+      },
+      "current": {
+        "api_watts": 877,
+        "strict_best_in_api_winning_activity": {
+          "watts": 877.4,
+          "seconds": 15,
+          "activity_id": "i195605523",
+          "date": "2026-10-10T06:01:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-10_i195605523.json",
+          "start_index": 7639,
+          "end_index_exclusive": 7654,
+          "elapsed_start": 10598.0,
+          "elapsed_end_inclusive": 10612.0,
+          "mean_hr": 168.13,
+          "recorded_mechanical_work_before_kj": 1273.4
+        },
+        "activity_name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      "observed_record_delta_w": -161.0,
+      "observed_record_delta_pct": -15.5
+    },
+    {
+      "seconds": 30,
+      "peak": {
+        "api_watts": 750,
+        "strict_best_in_api_winning_activity": {
+          "watts": 750.5,
+          "seconds": 30,
+          "activity_id": "i138344084",
+          "date": "2026-04-09T11:35:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-04-09_i138344084.json",
+          "start_index": 5701,
+          "end_index_exclusive": 5731,
+          "elapsed_start": 7857.0,
+          "elapsed_end_inclusive": 7886.0,
+          "mean_hr": 164.1,
+          "recorded_mechanical_work_before_kj": 1021.93
+        },
+        "activity_name": "三江两岸乱骑"
+      },
+      "current": {
+        "api_watts": 781,
+        "strict_best_in_api_winning_activity": {
+          "watts": 781.5,
+          "seconds": 30,
+          "activity_id": "i195605523",
+          "date": "2026-10-10T06:01:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-10_i195605523.json",
+          "start_index": 7637,
+          "end_index_exclusive": 7667,
+          "elapsed_start": 10596.0,
+          "elapsed_end_inclusive": 10625.0,
+          "mean_hr": 172.33,
+          "recorded_mechanical_work_before_kj": 1271.73
+        },
+        "activity_name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      "observed_record_delta_w": 31.0,
+      "observed_record_delta_pct": 4.13
+    },
+    {
+      "seconds": 45,
+      "peak": {
+        "api_watts": 563,
+        "strict_best_in_api_winning_activity": {
+          "watts": 563.6,
+          "seconds": 45,
+          "activity_id": "i137513392",
+          "date": "2026-04-06T10:29:03",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-04-06_i137513392.json",
+          "start_index": 5015,
+          "end_index_exclusive": 5060,
+          "elapsed_start": 6796.0,
+          "elapsed_end_inclusive": 6840.0,
+          "mean_hr": 155.22,
+          "recorded_mechanical_work_before_kj": 883.38
+        },
+        "activity_name": "清明DAY3 千岛湖亚运路线逆时针精简版"
+      },
+      "current": {
+        "api_watts": 723,
+        "strict_best_in_api_winning_activity": {
+          "watts": 723.8222,
+          "seconds": 45,
+          "activity_id": "i195605523",
+          "date": "2026-10-10T06:01:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-10_i195605523.json",
+          "start_index": 7637,
+          "end_index_exclusive": 7682,
+          "elapsed_start": 10596.0,
+          "elapsed_end_inclusive": 10640.0,
+          "mean_hr": 176.4,
+          "recorded_mechanical_work_before_kj": 1271.73
+        },
+        "activity_name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      "observed_record_delta_w": 160.2222,
+      "observed_record_delta_pct": 28.43
+    },
+    {
+      "seconds": 60,
+      "peak": {
+        "api_watts": 471,
+        "strict_best_in_api_winning_activity": {
+          "watts": 471.6333,
+          "seconds": 60,
+          "activity_id": "i137513392",
+          "date": "2026-04-06T10:29:03",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-04-06_i137513392.json",
+          "start_index": 5003,
+          "end_index_exclusive": 5063,
+          "elapsed_start": 6784.0,
+          "elapsed_end_inclusive": 6843.0,
+          "mean_hr": 152.78,
+          "recorded_mechanical_work_before_kj": 880.96
+        },
+        "activity_name": "清明DAY3 千岛湖亚运路线逆时针精简版"
+      },
+      "current": {
+        "api_watts": 637,
+        "strict_best_in_api_winning_activity": {
+          "watts": 637.4333,
+          "seconds": 60,
+          "activity_id": "i195605523",
+          "date": "2026-10-10T06:01:40",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-10_i195605523.json",
+          "start_index": 7630,
+          "end_index_exclusive": 7690,
+          "elapsed_start": 10589.0,
+          "elapsed_end_inclusive": 10648.0,
+          "mean_hr": 176.1,
+          "recorded_mechanical_work_before_kj": 1270.05
+        },
+        "activity_name": "z2 base + ntu hill (failed into 45s…😭"
+      },
+      "observed_record_delta_w": 165.8,
+      "observed_record_delta_pct": 35.15
+    },
+    {
+      "seconds": 180,
+      "peak": {
+        "api_watts": 408,
+        "strict_best_in_api_winning_activity": {
+          "watts": 408.7611,
+          "seconds": 180,
+          "activity_id": "i155698436",
+          "date": "2026-06-09T20:22:41",
+          "source": "analysis/2026-10-16-june9-cp5-anchor.json",
+          "start_index": 9,
+          "end_index_exclusive": 189,
+          "elapsed_start": 9.0,
+          "elapsed_end_inclusive": 188.0,
+          "mean_hr": 181.89,
+          "recorded_mechanical_work_before_kj": 1.92
+        },
+        "activity_name": "开启4xx！"
+      },
+      "current": {
+        "api_watts": 354,
+        "strict_best_in_api_winning_activity": {
+          "watts": 354.5389,
+          "seconds": 180,
+          "activity_id": "i196664180",
+          "date": "2026-10-13T08:10:45",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-13_i196664180.json",
+          "start_index": 5421,
+          "end_index_exclusive": 5601,
+          "elapsed_start": 7051.0,
+          "elapsed_end_inclusive": 7230.0,
+          "mean_hr": 173.21,
+          "recorded_mechanical_work_before_kj": 874.0
+        },
+        "activity_name": "sauna ride🥵high humidity heavy haze \nfailed training day 🥲"
+      },
+      "observed_record_delta_w": -54.2222,
+      "observed_record_delta_pct": -13.27
+    },
+    {
+      "seconds": 300,
+      "peak": {
+        "api_watts": 397,
+        "strict_best_in_api_winning_activity": {
+          "watts": 397.5667,
+          "seconds": 300,
+          "activity_id": "i155698436",
+          "date": "2026-06-09T20:22:41",
+          "source": "analysis/2026-10-16-june9-cp5-anchor.json",
+          "start_index": 9,
+          "end_index_exclusive": 309,
+          "elapsed_start": 9.0,
+          "elapsed_end_inclusive": 308.0,
+          "mean_hr": 185.73,
+          "recorded_mechanical_work_before_kj": 1.92
+        },
+        "activity_name": "开启4xx！"
+      },
+      "current": {
+        "api_watts": 335,
+        "strict_best_in_api_winning_activity": {
+          "watts": 335.25,
+          "seconds": 300,
+          "activity_id": "i195102040",
+          "date": "2026-10-08T19:22:23",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-08_i195102040.json",
+          "start_index": 4140,
+          "end_index_exclusive": 4440,
+          "elapsed_start": 5821.0,
+          "elapsed_end_inclusive": 6120.0,
+          "mean_hr": 177.99,
+          "recorded_mechanical_work_before_kj": 774.56
+        },
+        "activity_name": "threshold training at 50km/h in group ride🥳"
+      },
+      "observed_record_delta_w": -62.3167,
+      "observed_record_delta_pct": -15.67
+    },
+    {
+      "seconds": 1200,
+      "peak": {
+        "api_watts": 336,
+        "strict_best_in_api_winning_activity": {
+          "watts": 336.4633,
+          "seconds": 1200,
+          "activity_id": "i151847174",
+          "date": "2026-05-27T10:19:58",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-05-27_i151847174.json",
+          "start_index": 1660,
+          "end_index_exclusive": 2860,
+          "elapsed_start": 1693.0,
+          "elapsed_end_inclusive": 2892.0,
+          "mean_hr": 176.11,
+          "recorded_mechanical_work_before_kj": 316.23
+        },
+        "activity_name": "高温甜区巡山蒸桑拿"
+      },
+      "current": {
+        "api_watts": 295,
+        "strict_best_in_api_winning_activity": {
+          "watts": 295.4317,
+          "seconds": 1200,
+          "activity_id": "i193197201",
+          "date": "2026-10-04T06:32:35",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-04_i193197201.json",
+          "start_index": 2074,
+          "end_index_exclusive": 3274,
+          "elapsed_start": 2598.0,
+          "elapsed_end_inclusive": 3797.0,
+          "mean_hr": 186.67,
+          "recorded_mechanical_work_before_kj": 424.77
+        },
+        "activity_name": "fitness zero🫠\nthought i could not be dropped, but failed🥲\nswear to train harder to get my power back💪"
+      },
+      "observed_record_delta_w": -41.0316,
+      "observed_record_delta_pct": -12.19
+    },
+    {
+      "seconds": 1800,
+      "peak": {
+        "api_watts": 295,
+        "strict_best_in_api_winning_activity": {
+          "watts": 285.4483,
+          "seconds": 1800,
+          "activity_id": "i151847174",
+          "date": "2026-05-27T10:19:58",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-05-27_i151847174.json",
+          "start_index": 5269,
+          "end_index_exclusive": 7069,
+          "elapsed_start": 5581.0,
+          "elapsed_end_inclusive": 7380.0,
+          "mean_hr": 168.61,
+          "recorded_mechanical_work_before_kj": 997.58
+        },
+        "activity_name": "高温甜区巡山蒸桑拿"
+      },
+      "current": {
+        "api_watts": 267,
+        "strict_best_in_api_winning_activity": {
+          "watts": 267.7678,
+          "seconds": 1800,
+          "activity_id": "i198487369",
+          "date": "2026-10-18T06:32:14",
+          "source": "icu_data_warehouse/5_Activities_Detail/2026-10-18_i198487369.json",
+          "start_index": 3161,
+          "end_index_exclusive": 4961,
+          "elapsed_start": 3320.0,
+          "elapsed_end_inclusive": 5119.0,
+          "mean_hr": 162.02,
+          "recorded_mechanical_work_before_kj": 665.7
+        },
+        "activity_name": "heavy haze, only three guys crazies…🥲"
+      },
+      "observed_record_delta_w": -17.6805,
+      "observed_record_delta_pct": -6.19
+    },
+    {
+      "seconds": 3600,
+      "peak": {
+        "api_watts": 270,
+        "strict_best_in_api_winning_activity": {
+          "watts": 270.4069,
+          "seconds": 3600,
+          "activity_id": "i152839608",
+          "date": "2026-05-31T09:05:57",
+          "source": "analysis/2026-10-16-peak-season-review.json:api_streams_for_missing_local",
+          "start_index": 1324,
+          "end_index_exclusive": 4924,
+          "elapsed_start": 1324.0,
+          "elapsed_end_inclusive": 4923.0,
+          "mean_hr": 177.63,
+          "recorded_mechanical_work_before_kj": 177.01
+        },
+        "activity_name": "耻辱浙西天路16th 掉出第一集团"
+      },
+      "current": {
+        "api_watts": 253,
+        "strict_best_in_api_winning_activity": null,
+        "activity_name": "heavy haze, only three guys crazies…🥲"
+      }
+    }
+  ],
+  "known_confirmations": {
+    "peak_cp5": "6/9 all-out397.5667W",
+    "peak_long_climb": "5/27 22:36 near-all-out336.2987W",
+    "current_45s": "10/10 all-out723.8222W",
+    "current_18m48": "10/18 288.125W RPE6–7 controlled",
+    "current_cp5": "User2026-10-19:350–360W only conservative guess, no clear basis; not an estimate fit for gap calculation."
+  },
+  "limitations": [
+    "Current max efforts absent for most durations; no true current FTP test.",
+    "Period sample opportunities differ; comparison is descriptive.",
+    "Current60min API winner has no strict continuous3600s window. Peak30min API winner raw differs due recording gaps; use prior exhaustive peak30min286.99W source if needed.",
+    "Current body mass pending user confirmation.",
+    "Environment/route/intent/preload not matched; do not infer VO2max/FTP/anaerobic capacity from these deltas.",
+    "Peak window70calendar days vs current18calendar days, with no ride yetOct19: unequal opportunities and intents. Period maxima are not paired tests."
+  ],
+  "training_context": {
+    "peak_core_period": "2026-04-01 to2026-06-01 only, not extended toJun9",
+    "peak_known_hours_per_seven_days": 13.42453853046595,
+    "peak_volume_source": "analysis/2026-10-16-peak-season-review.json:volume_totals",
+    "recent_complete_weeks": [
+      {
+        "start": "2026-10-05",
+        "end": "2026-10-11",
+        "hours": 14.9789,
+        "rides": 6,
+        "load": 851
+      },
+      {
+        "start": "2026-10-12",
+        "end": "2026-10-18",
+        "hours": 13.0331,
+        "rides": 5,
+        "load": 670
+      }
+    ],
+    "recent_source": "icu_data_warehouse/4_Activities_List/activity_list_clean.json",
+    "interpretation": "Recent hours already comparable; continuity/quality distribution and capacity not proven by hours. Summer layoff andSep24 crash interrupt history."
+  },
+  "user_followup_2026_10_19": {
+    "current_max_intent": "No recent all-out effort longer than1min; current >1min capacity unknown.",
+    "subjective_difference": "May higherCTL and more confidence on bike; now only short bursts more confident.",
+    "environment": "Does not feel Singapore weather has a large effect; do not use heat as main explanation for peak gap. Oct13 specific heat/haze report remains.",
+    "weight": "Peak and current both approximately61–63kg; not measured precisely, no exactW/kg comparison."
+  },
+  "fresh_state": {
+    "snapshot_updated_at": "2026-10-19T13:48:22.079596",
+    "ftp_set": 300,
+    "fitness_current": {
+      "date": "2026-10-19",
+      "ctl": 73.8,
+      "atl": 86.5,
+      "tsb": -12.7,
+      "ramp_rate": 3.71
+    },
+    "wellness_date": "2026-10-19",
+    "hrv": 81.0,
+    "rhr": 44,
+    "sleep_seconds": 26580
+  }
+}

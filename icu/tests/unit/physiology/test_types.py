@@ -1,4 +1,4 @@
-from src.coach.physiology.types import CPWModel, DurabilityCurve, ResponseProfile, PhysiologyBundle
+from src.coach.physiology.types import CPWModel, PhysiologyBundle
 
 
 def test_cpw_model_roundtrip():

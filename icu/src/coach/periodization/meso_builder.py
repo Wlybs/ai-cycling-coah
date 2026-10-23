@@ -4,9 +4,12 @@ from __future__ import annotations
 from collections.abc import Mapping
 from datetime import date, timedelta
 from types import MappingProxyType
-from typing import Literal, Optional
+from typing import TYPE_CHECKING, Literal
 
 from .types import Phase
+
+if TYPE_CHECKING:
+    from .types import MacroWindow, MesoBlock
 
 KneeFlag = Literal["caution", "watch"]
 MesoPatternName = Literal["3:1", "2:1", "polarized", "linear"]
@@ -21,7 +24,7 @@ MESO_PATTERNS: Mapping[str, tuple[float, ...]] = MappingProxyType({
 
 def select_meso_pattern(
     phase: Phase,
-    knee_flag: Optional[KneeFlag] = None,
+    knee_flag: KneeFlag | None = None,
     recent_atl_delta: float = 0.0,
     response_high_responder: bool = False,
 ) -> MesoPatternName:
@@ -56,9 +59,9 @@ def _monday_of(d: date) -> date:
 
 def build_meso_block(
     reference_date: date,
-    macro: "MacroWindow",
+    macro: MacroWindow,
     pattern: str,
-) -> "MesoBlock":
+) -> MesoBlock:
     """Build the current meso block aligned to the Monday of ``reference_date``.
 
     - ``block_start``: the later of ``reference_date``'s Monday and ``macro.start_date``.

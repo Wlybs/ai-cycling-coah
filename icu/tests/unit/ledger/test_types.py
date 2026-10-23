@@ -1,19 +1,18 @@
 """Unit tests for ledger types: AthleteStateRef, DecisionEntry, ULID helper."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pytest
 from pydantic import ValidationError
 
 from src.coach.ledger.types import (
+    DECISION_TYPES,
     AthleteStateRef,
     DecisionEntry,
-    DECISION_TYPES,
     generate_ulid,
     is_valid_ulid,
 )
-
 
 # ---------- AthleteStateRef ----------
 
@@ -60,7 +59,7 @@ def _sample_state() -> AthleteStateRef:
 def test_decision_entry_minimal_fields():
     entry = DecisionEntry(
         entry_id=generate_ulid(),
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
         decision_type="adaptation_verdict",
         source="adapter.daily",
         athlete_state_ref=_sample_state(),
@@ -76,7 +75,7 @@ def test_decision_entry_roundtrip_all_decision_types():
     for dt in DECISION_TYPES:
         entry = DecisionEntry(
             entry_id=generate_ulid(),
-            timestamp=datetime.now(timezone.utc),
+            timestamp=datetime.now(UTC),
             decision_type=dt,
             source=f"test.{dt}",
             athlete_state_ref=_sample_state(),
@@ -94,7 +93,7 @@ def test_decision_entry_rejects_unknown_decision_type():
     with pytest.raises(ValidationError):
         DecisionEntry(
             entry_id=generate_ulid(),
-            timestamp=datetime.now(timezone.utc),
+            timestamp=datetime.now(UTC),
             decision_type="made_up_type",
             source="test",
             athlete_state_ref=_sample_state(),
@@ -117,7 +116,7 @@ def test_decision_entry_rejects_naive_timestamp():
 def test_decision_entry_confidence_range():
     base = dict(
         entry_id=generate_ulid(),
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
         decision_type="consensus_verdict",
         source="test",
         athlete_state_ref=_sample_state(),
@@ -135,7 +134,7 @@ def test_decision_entry_superseded_by_accepts_ulid():
     other = generate_ulid()
     entry = DecisionEntry(
         entry_id=generate_ulid(),
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
         decision_type="phase_transition",
         source="test",
         athlete_state_ref=_sample_state(),
@@ -165,6 +164,12 @@ def test_ulid_monotonic_across_ms():
     time.sleep(0.002)
     b = generate_ulid()
     assert b[:10] > a[:10]
+
+
+def test_ulid_monotonic_within_burst():
+    # Same-millisecond IDs must sort in creation order; LedgerReader orders by entry_id.
+    ulids = [generate_ulid() for _ in range(10_000)]
+    assert ulids == sorted(ulids)
 
 
 def test_is_valid_ulid():

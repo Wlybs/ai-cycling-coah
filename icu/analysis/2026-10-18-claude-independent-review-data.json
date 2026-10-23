@@ -1,0 +1,180 @@
+{
+  "review_date_sg": "2026-10-18",
+  "claude_report_path": "/mnt/d/Cycling/.claude/worktrees/crazies-threshold-analysis-58dd7e/vault/sessions/2026-10-18-crazies-threshold-lead-review.md",
+  "claude_report_commit": "cb31d0d0d3efc8adf00b232b0c8bb9bb90b915c6",
+  "claude_report_sha256": "023c437965d71a395549f42b2f717f94f96819ce9b4bb7644fa131276bbf2c5c",
+  "activity_source": "icu/icu_data_warehouse/5_Activities_Detail/2026-10-18_i198487369.json",
+  "snapshot_source": "icu/coach_memory/athlete_snapshot.json",
+  "snapshot_updated_at": "2026-10-18T23:11:13.218522",
+  "ftp_working_setting_w": 300,
+  "self_estimated_cp5_w": [
+    350,
+    360
+  ],
+  "self_estimated_cp5_status": "Human self-estimate in Claude session, explicitly not tested, not an upper bound",
+  "verified_windows": [
+    {
+      "label": "reported13min",
+      "source_index_start": 1830,
+      "source_index_end_exclusive": 2634,
+      "elapsed_start_s": 1984,
+      "elapsed_end_s": 2788,
+      "start_sg": "2026-10-18 07:05:18",
+      "end_sg": "2026-10-18 07:18:42",
+      "duration_elapsed_s": 804,
+      "sample_count": 804,
+      "mean_watts": 287.7014925373134,
+      "seconds_samples_ge_250w": 650,
+      "mean_watts_when_ge250": 315.4907692307692,
+      "raw_seconds_samples_lt200": 84,
+      "five_sec_smoothing_low_runs_ge3s_count": 8,
+      "five_sec_smoothing_low_runs_ge3s_total_samples": 64,
+      "max_recording_gap_s": 1
+    },
+    {
+      "label": "reported5.5min",
+      "source_index_start": 3150,
+      "source_index_end_exclusive": 3480,
+      "elapsed_start_s": 3309,
+      "elapsed_end_s": 3639,
+      "start_sg": "2026-10-18 07:27:23",
+      "end_sg": "2026-10-18 07:32:53",
+      "duration_elapsed_s": 330,
+      "sample_count": 330,
+      "mean_watts": 285.8818181818182,
+      "seconds_samples_ge_250w": 296,
+      "mean_watts_when_ge250": 304.56418918918916,
+      "raw_seconds_samples_lt200": 25,
+      "five_sec_smoothing_low_runs_ge3s_count": 2,
+      "five_sec_smoothing_low_runs_ge3s_total_samples": 18,
+      "max_recording_gap_s": 1
+    },
+    {
+      "label": "reported18.8min",
+      "source_index_start": 4128,
+      "source_index_end_exclusive": 5256,
+      "elapsed_start_s": 4287,
+      "elapsed_end_s": 5415,
+      "start_sg": "2026-10-18 07:43:41",
+      "end_sg": "2026-10-18 08:02:29",
+      "duration_elapsed_s": 1128,
+      "sample_count": 1128,
+      "mean_watts": 288.125,
+      "seconds_samples_ge_250w": 1001,
+      "mean_watts_when_ge250": 302.4755244755245,
+      "raw_seconds_samples_lt200": 56,
+      "five_sec_smoothing_low_runs_ge3s_count": 6,
+      "five_sec_smoothing_low_runs_ge3s_total_samples": 49,
+      "max_recording_gap_s": 1
+    }
+  ],
+  "independent_smoothing_method": "60-s sample mean; reject smoothing windows spanning timestamp gaps; center labeling; keep selector runs >=120s. Different centering/merging from Claude may shift labels. Not measured physiological threshold minutes.",
+  "independent_smoothed_ge95pct_runs": [
+    {
+      "index_start": 1894,
+      "index_end_exclusive": 2166,
+      "sample_duration_s": 272,
+      "mean_watts": 329.90441176470586
+    },
+    {
+      "index_start": 2368,
+      "index_end_exclusive": 2599,
+      "sample_duration_s": 231,
+      "mean_watts": 298.85714285714283
+    },
+    {
+      "index_start": 3184,
+      "index_end_exclusive": 3446,
+      "sample_duration_s": 262,
+      "mean_watts": 304.9541984732824
+    },
+    {
+      "index_start": 4195,
+      "index_end_exclusive": 4319,
+      "sample_duration_s": 124,
+      "mean_watts": 304.78225806451616
+    },
+    {
+      "index_start": 4379,
+      "index_end_exclusive": 4946,
+      "sample_duration_s": 567,
+      "mean_watts": 299.0811287477954
+    },
+    {
+      "index_start": 5052,
+      "index_end_exclusive": 5177,
+      "sample_duration_s": 125,
+      "mean_watts": 298.432
+    }
+  ],
+  "independent_selected_sample_seconds_total": 1581,
+  "timestamp_note": "Claude labels68.8–87.6 refer to stream sample index minutes, not elapsed ride minutes. Original time maps [4128,5256) to 07:43:41–08:02:29. Means reproduce after this conversion; no numerical disagreement on288W.",
+  "work_duration_minutes": {
+    "four_by_four": 16,
+    "five_by_four": 20,
+    "six_by_three": 18,
+    "eight_by_three": 24,
+    "six_by_seven": 42
+  },
+  "limitations": [
+    "95% of working FTP is a software selector, not measured LT2/VO2max or maximal5min ability.",
+    "Self-selected pace, terrain, drafting, traffic and recovery preclude causal diagnosis from these rides.",
+    "Quoted60s selector minutes are algorithm-dependent; not equivalent to uninterrupted2x20min.",
+    "Raw coordinates and full ride routes are excluded."
+  ],
+  "claude_selector_code_audit": {
+    "source": "Claude transcript Write tool scratchpad/crazies.py, roll(60), blocks start-59",
+    "selector_runs": [
+      {
+        "selector_start_index": 1923,
+        "selector_end_exclusive": 2195,
+        "selector_duration_samples": 272,
+        "expanded_start_index": 1864,
+        "expanded_duration_samples": 331
+      },
+      {
+        "selector_start_index": 2397,
+        "selector_end_exclusive": 2628,
+        "selector_duration_samples": 231,
+        "expanded_start_index": 2338,
+        "expanded_duration_samples": 290
+      },
+      {
+        "selector_start_index": 3213,
+        "selector_end_exclusive": 3475,
+        "selector_duration_samples": 262,
+        "expanded_start_index": 3154,
+        "expanded_duration_samples": 321
+      },
+      {
+        "selector_start_index": 4224,
+        "selector_end_exclusive": 4348,
+        "selector_duration_samples": 124,
+        "expanded_start_index": 4165,
+        "expanded_duration_samples": 183
+      },
+      {
+        "selector_start_index": 4408,
+        "selector_end_exclusive": 4975,
+        "selector_duration_samples": 567,
+        "expanded_start_index": 4349,
+        "expanded_duration_samples": 626
+      },
+      {
+        "selector_start_index": 5081,
+        "selector_end_exclusive": 5206,
+        "selector_duration_samples": 125,
+        "expanded_start_index": 5022,
+        "expanded_duration_samples": 184
+      }
+    ],
+    "selector_minutes": 26.35,
+    "expanded_raw_window_minutes": 32.25,
+    "explanation": "Each retained trailing-smoothing selector run is expanded backwards by59 raw samples. Six runs add354s to the reported span. Expanded span is not all selector-qualified time, and neither quantity measures physiological threshold time."
+  },
+  "athlete_current_reply": {
+    "window": "07:43–08:02/42–55km",
+    "rpe_report": "6–7 of10, controlled with clear reserve",
+    "implication": "supports controlled near-threshold training, not a maximal FTP test"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "as_of": "2026-10-19",
+  "ctl_start": 73.8253,
+  "time_constant_days": 42,
+  "daily_retention": 0.9764716866522433,
+  "actual_retention_check": 0.9764716588271488,
+  "end": "2026-12-12",
+  "n_days": 54,
+  "warning": "Illustrative arithmetic only. Daily even load averaging smooths real ride/rest schedule; no down weeks in build. Excludes race-day load and does not predict physiology.",
+  "constant_weekly_scenarios": [
+    {
+      "weekly_load": 650,
+      "ctl_race_eve": 87.59573191631058
+    },
+    {
+      "weekly_load": 700,
+      "ctl_race_eve": 92.76392444038513
+    },
+    {
+      "weekly_load": 750,
+      "ctl_race_eve": 97.93211696445965
+    },
+    {
+      "weekly_load": 800,
+      "ctl_race_eve": 103.1003094885342
+    },
+    {
+      "weekly_load": 850,
+      "ctl_race_eve": 108.26850201260874
+    }
+  ],
+  "last7_days_taper_scenarios": [
+    {
+      "taper_weekly_load": 250,
+      "build_days": 47,
+      "required_mean_build_weekly_load": 910.0521557648608,
+      "ctl_before_taper": 111.65888368422009,
+      "ctl_race_eve": 100
+    },
+    {
+      "taper_weekly_load": 350,
+      "build_days": 47,
+      "required_mean_build_weekly_load": 883.1204800502785,
+      "ctl_before_taper": 109.0680206432823,
+      "ctl_race_eve": 100
+    }
+  ],
+  "no_taper_required_weekly_load": 770.005863035362,
+  "if_examples": [
+    {
+      "hours": 2,
+      "if": 0.65,
+      "ftp_used": 300,
+      "NP_assumed": 195.0,
+      "TSS_example": 84.50000000000001
+    },
+    {
+      "hours": 3.5,
+      "if": 0.65,
+      "ftp_used": 300,
+      "NP_assumed": 195.0,
+      "TSS_example": 147.87500000000003
+    },
+    {
+      "hours": 1,
+      "if": 0.95,
+      "ftp_used": 300,
+      "NP_assumed": 285.0,
+      "TSS_example": 90.25
+    },
+    {
+      "hours": 14,
+      "if": 0.7559289460184544,
+      "ftp_used": 300,
+      "NP_assumed": 226.77868380553633,
+      "TSS_example": 799.9999999999998
+    },
+    {
+      "hours": 15,
+      "if": 0.7745966692414834,
+      "ftp_used": 300,
+      "NP_assumed": 232.379000772445,
+      "TSS_example": 900.0000000000001
+    }
+  ],
+  "sources": {
+    "ctl_start": "icu_data_warehouse/2_Wellness/wellness_history.json id=2026-10-19 ctl",
+    "retention_check": "same file,2026-10-18 ctl=75.60414; 10-19 load=0",
+    "ftp": "coach_memory/athlete_snapshot.json updated2026-10-19T18:51:26.094930 ftp_set300",
+    "formula_documentation": "https://help.trainingpeaks.com/hc/en-us/articles/204071884-Fitness-CTL ; 42day time constant; Intervals actual decay verified as exponential",
+    "historical_peak": "icu_data_warehouse/5_Activities_Detail/2026-05-27_i151847174.json summary icu_ctl100.96807,icu_ftp300"
+  },
+  "recent_weeks": [
+    {
+      "dates": "2026-10-05/11",
+      "hours": 14.9789,
+      "load": 851,
+      "rides": 6,
+      "all_icu_ftp": 300
+    },
+    {
+      "dates": "2026-10-12/18",
+      "hours": 13.0331,
+      "load": 670,
+      "rides": 5,
+      "all_icu_ftp": 300
+    }
+  ],
+  "ftp_setting_example": {
+    "same_power_and_duration": "FTPsetting300to315",
+    "tss_ratio": 0.9070294784580498,
+    "meaning": "illustrative normalization effect,not recommendation to changeFTP"
+  }
+}

@@ -2,3 +2,6 @@
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+
+# 原始 FIT 文件（含 GPS 轨迹，仓库公开，不入库）
+vault/sessions/raw-fit/

@@ -7,7 +7,7 @@ import logging
 import re
 from datetime import date, datetime
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, field_validator
 
@@ -20,8 +20,8 @@ class RaceEntry(BaseModel):
     name: str
     race_date: date
     priority: Literal["A", "B", "C"] = "A"
-    course_hint: Optional[str] = None
-    days_out: Optional[int] = None
+    course_hint: str | None = None
+    days_out: int | None = None
 
     @field_validator("priority", mode="before")
     @classmethod
@@ -35,7 +35,7 @@ class RaceEntry(BaseModel):
         return "C"
 
 
-def _parse_event_date(raw: str) -> Optional[date]:
+def _parse_event_date(raw: str) -> date | None:
     try:
         return datetime.strptime(raw[:10], "%Y-%m-%d").date()
     except (ValueError, TypeError):
@@ -121,7 +121,7 @@ def load_race_calendar(
 
 def next_race_after(
     races: list[RaceEntry], reference_date: date
-) -> Optional[RaceEntry]:
+) -> RaceEntry | None:
     future = [r for r in races if r.race_date >= reference_date]
     if not future:
         return None

@@ -1,10 +1,13 @@
-import pytest
 from datetime import date, timedelta
 
+import pytest
+
 from src.coach.periodization.meso_builder import (
-    select_meso_pattern, MESO_PATTERNS, build_meso_block,
+    MESO_PATTERNS,
+    build_meso_block,
+    select_meso_pattern,
 )
-from src.coach.periodization.types import Phase, MacroWindow, PhaseIntent
+from src.coach.periodization.types import MacroWindow, Phase, PhaseIntent
 
 
 def test_base_phase_uses_polarized():

@@ -1,4 +1,3 @@
-from typing import Optional
 
 from .types import Features
 
@@ -7,8 +6,8 @@ _CLIMBING_RUN_SAMPLES = 180  # 3 min at 1 Hz stream resolution
 
 def detect_features(
     activity: dict,
-    streams: Optional[dict],
-    physiology: Optional[dict],
+    streams: dict | None,
+    physiology: dict | None,
     athlete: dict,
 ) -> Features:
     hr_max = int(athlete.get("hr_max") or 0) or None

@@ -1,0 +1,88 @@
+90天 ATL 最高: {'date': '2026-10-23', 'ctl': 78.6, 'atl': 104.0, 'tsb': -25.4, 'ramp_rate': 5.03, 'hrv': None, 'rhr': 42, 'weight': 61.0, 'sleep_score': 91.0, 'fatigue': None, 'motivation': None}
+90天 TSB 最低: {'date': '2026-10-14', 'ctl': 74.3, 'atl': 103.6, 'tsb': -29.3, 'ramp_rate': 6.7, 'hrv': None, 'rhr': 48, 'weight': None, 'sleep_score': 82.0, 'fatigue': None, 'motivation': None}
+
+### 2026-09-08 5x4min vo2max😌 | Ride trainer=None 29.454975°C TSS131 RPE5 feel3 移动1.94h
+  best  5min 314.5W  HR均164.0 末分钟177.9 踏频 94 前置  389kJ/0.79h
+  best  8min 252.6W  HR均154.0 末分钟177.9 踏频 92 前置  363kJ/0.74h
+  best 10min 263.3W  HR均166.8 末分钟181.0 踏频 95 前置  411kJ/0.82h
+  best 12min 257.5W  HR均163.7 末分钟181.5 踏频 95 前置  386kJ/0.79h
+
+### 2026-09-09 perfect lsd route😍 still dec | Ride trainer=None 32.61248°C TSS173 RPE3 feel3 移动4.01h
+
+### 2026-10-01 Zwift - ZONE 2 base enduranc | VirtualRide trainer=False None°C TSS122 RPENone feelNone 移动3.17h
+
+### 2026-10-02 Zwift - 3h ZONE 2 endurance  | VirtualRide trainer=True None°C TSS130 RPENone feelNone 移动3.17h
+
+### 2026-10-04 fitness zero🫠 thought i coul | Ride trainer=None 25.978184°C TSS84 RPE7 feel5 移动1.25h
+  best  5min 324.5W  HR均189.7 末分钟191.0 踏频107 前置  614kJ/0.91h
+  best  8min 323.9W  HR均190.5 末分钟191.8 踏频107 前置  624kJ/0.92h
+  best 10min 311.5W  HR均189.1 末分钟191.8 踏频105 前置  592kJ/0.89h
+  best 12min 303.6W  HR均188.3 末分钟191.8 踏频103 前置  561kJ/0.85h
+  best 20min 295.4W  HR均186.7 末分钟191.8 踏频102 前置  425kJ/0.72h
+  best 30min 263.2W  HR均179.6 末分钟151.7 踏频100 前置  333kJ/0.63h
+
+### 2026-10-05 Zwift - 2h high z2 | VirtualRide trainer=True None°C TSS114 RPENone feelNone 移动2.17h
+
+### 2026-10-06 5 x 4min vo2max intervals | Ride trainer=None 29.086548°C TSS118 RPE5 feel3 移动1.95h
+  best  5min 312.2W  HR均167.1 末分钟182.0 踏频 91 前置  441kJ/0.86h
+  best 10min 253.1W  HR均169.7 末分钟185.5 踏频 90 前置  470kJ/0.89h
+  best 12min 252.5W  HR均166.5 末分钟185.8 踏频 90 前置  440kJ/0.86h
+
+### 2026-10-07 lsd | Ride trainer=None 33.41188°C TSS165 RPE3 feel3 移动4.16h
+
+### 2026-10-08 threshold training at 50km/h | Ride trainer=None 30.562508°C TSS159 RPE4 feel3 移动2.50h
+  best  5min 335.2W  HR均178.0 末分钟183.0 踏频 98 前置  775kJ/1.62h
+  best  8min 304.9W  HR均174.8 末分钟184.9 踏频 97 前置  755kJ/1.59h
+  best 10min 287.8W  HR均175.3 末分钟174.0 踏频 95 前置 1343kJ/2.37h
+  best 12min 281.9W  HR均173.6 末分钟178.2 踏频 95 前置 1327kJ/2.35h
+
+### 2026-10-10 z2 base + ntu hill (failed i | Ride trainer=None 29.67794°C TSS124 RPE2 feel2 移动2.16h
+  best  5min 262.9W  HR均156.7 末分钟176.1 踏频 92 前置 1229kJ/2.87h
+
+### 2026-10-11 two 1000w climb attacks, nic | Ride trainer=None 27.47034°C TSS171 RPE5 feel3 移动2.04h
+  best  5min 311.2W  HR均175.6 末分钟177.9 踏频 98 前置 1207kJ/1.62h
+  best  8min 297.4W  HR均177.0 末分钟178.4 踏频 98 前置 1208kJ/1.62h
+  best 10min 283.8W  HR均175.9 末分钟172.3 踏频 97 前置 1212kJ/1.63h
+  best 12min 280.7W  HR均175.2 末分钟171.9 踏频 97 前置 1213kJ/1.63h
+  best 20min 272.7W  HR均173.8 末分钟166.5 踏频 97 前置 1212kJ/1.63h
+  best 30min 262.7W  HR均166.8 末分钟175.9 踏频 95 前置  312kJ/0.60h
+
+### 2026-10-13 sauna ride🥵high humidity hea | Ride trainer=None 32.394573°C TSS165 RPE5 feel3 移动3.01h
+  best  5min 316.6W  HR均168.1 末分钟182.9 踏频 92 前置  425kJ/0.90h
+  best  8min 242.0W  HR均165.9 末分钟171.1 踏频 94 前置  434kJ/0.92h
+  best 10min 259.0W  HR均169.2 末分钟183.4 踏频 94 前置  434kJ/0.92h
+  best 12min 254.2W  HR均168.0 末分钟186.6 踏频 93 前置  424kJ/0.90h
+
+### 2026-10-14 3h z2 base hate haze😕 | VirtualRide trainer=False None°C TSS155 RPENone feelNone 移动3.35h
+
+### 2026-10-16 2h z2 top | Ride trainer=None 28.135487°C TSS114 RPE2 feelNone 移动2.03h
+  best  5min 240.1W  HR均152.2 末分钟151.9 踏频 92 前置 1419kJ/1.78h
+
+### 2026-10-17 Zwift - easy ride | VirtualRide trainer=True None°C TSS89 RPENone feelNone 移动2.53h
+
+### 2026-10-18 heavy haze, only three guys  | Ride trainer=None 26.738655°C TSS147 RPE3 feel3 移动2.11h
+  best  5min 327.5W  HR均167.9 末分钟177.2 踏频102 前置  343kJ/0.56h
+  best  8min 299.2W  HR均164.4 末分钟168.6 踏频 98 前置  323kJ/0.54h
+  best 10min 299.3W  HR均169.5 末分钟173.4 踏频100 前置  966kJ/1.25h
+  best 12min 297.5W  HR均167.6 末分钟172.2 踏频 98 前置  916kJ/1.21h
+  best 20min 281.6W  HR均165.8 末分钟170.3 踏频 97 前置  889kJ/1.17h
+  best 30min 267.8W  HR均162.0 末分钟173.6 踏频 95 前置  666kJ/0.92h
+  WORK  13.0min 297W HR均168 最高175 踏频98 起点1.21h
+
+### 2026-10-20 8x3min vo2 intervals harder  | Ride trainer=None 31.223883°C TSS141 RPE7 feel4 移动2.13h
+  best  5min 284.9W  HR均164.7 末分钟165.8 踏频 90 前置  340kJ/0.78h
+  best  8min 245.7W  HR均171.9 末分钟183.0 踏频 94 前置  827kJ/1.42h
+  best 10min 256.0W  HR均161.8 末分钟181.6 踏频 91 前置  343kJ/0.78h
+
+### 2026-10-21 Zwift - 4h ZONE 2 | VirtualRide trainer=True None°C TSS159 RPENone feelNone 移动4.01h
+
+### 2026-10-23 Singapore 公路骑行 | Ride trainer=None 31.47381°C TSS203 RPE7 feel4 移动3.61h
+  best  5min 307.8W  HR均173.8 末分钟177.2 踏频 94 前置 2070kJ/3.57h
+  best  8min 305.1W  HR均175.9 末分钟180.0 踏频 94 前置 2070kJ/3.57h
+  best 10min 305.8W  HR均176.9 末分钟181.0 踏频 94 前置 2070kJ/3.57h
+  best 12min 302.8W  HR均175.8 末分钟181.9 踏频 94 前置 1820kJ/3.29h
+  best 20min 263.2W  HR均170.8 末分钟181.9 踏频 91 前置 1721kJ/3.16h
+  best 30min 260.8W  HR均168.6 末分钟181.9 踏频 91 前置 1568kJ/2.99h
+  WORK  10.0min 296W HR均170 最高177 踏频91 起点3.04h
+  WORK  12.0min 302W HR均175 最高183 踏频94 起点3.29h
+  WORK  10.0min 305W HR均176 最高182 踏频94 起点3.57h

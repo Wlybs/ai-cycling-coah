@@ -10,17 +10,18 @@
 推送 ICU 日历的逻辑保留在 _push_to_icu()，由 scripts/push_plan.py 在
 `--push --plan-file <path>` 时读取用户保存的 LLM 响应并推送。
 """
-import sys
-import os
 import json
+import os
+import sys
 from datetime import datetime, timedelta
-from typing import Optional, Literal
+from typing import Literal
+
 from pydantic import BaseModel
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from src.utils.common import setup_encoding, get_warehouse_dir, load_json
-from src.fetcher.icu_client import ICUClient
 from src.coach.phase1_injection import inject_phase1_context
+from src.fetcher.icu_client import ICUClient
+from src.utils.common import get_warehouse_dir, load_json, setup_encoding
 
 setup_encoding()
 
@@ -44,8 +45,9 @@ class DayPlan(BaseModel):
     duration_min: int
     target_tss: int
     indoor: bool
-    power_range_w: Optional[str] = None
-    hr_range_bpm: Optional[str] = None
+    power_range_w: str | None = None
+    hr_range_bpm: str | None = None
+    workout_text: str | None = None  # ICU 原生 workout 文本（步数定义），格式: "- 15m 55% Warmup\n3x\n- 1m 150%\n- 1m 50%\n- 10m Z2 Cooldown"
 
 
 class WeeklyPlan(BaseModel):
@@ -280,7 +282,7 @@ DayPlan:
     return inject_phase1_context(prompt)
 
 
-def generate_plan(week_start=None, week_end=None, output_path: Optional[str] = None) -> str:
+def generate_plan(week_start=None, week_end=None, output_path: str | None = None) -> str:
     """构建 prompt 并保存到 `coach_memory/plans/<week>_prompt.md`（或显式路径）。
     返回写入文件的绝对路径。用户再手动粘贴到 Gemini CLI / Claude Code 教练模式。
     """
@@ -362,30 +364,298 @@ def _save_plan_markdown(plan: dict, path: str):
 
 # ─── ICU 日历同步 ─────────────────────────────────────────────────────────────
 
+_ZONE_PCT = {  # 用区间中位数转 %FTP
+    "Z1": 0.50, "Z2": 0.65, "Z3": 0.825,
+    "Z4": 0.975, "Z5": 1.125, "Z6": 1.35, "Z7": 1.75,
+}
+
+
+def _parse_duration(s: str) -> int:
+    """'30m' → 1800, '8s' → 8, '1h' → 3600"""
+    s = s.strip().lower()
+    if s.endswith("h"):
+        return int(float(s[:-1]) * 3600)
+    if s.endswith("m"):
+        return int(float(s[:-1]) * 60)
+    if s.endswith("s"):
+        return int(float(s[:-1]))
+    return int(s)
+
+
+def _parse_intensity(s: str) -> float:
+    """'150%' → 1.50, 'Z1' → 0.50, 'Z4' → 0.975
+
+    ZWO 只支持 %FTP；其它写法（如 '200W'）直接报错，不静默当成 50%。"""
+    s = s.strip()
+    if s.endswith("%"):
+        return float(s[:-1]) / 100.0
+    if s.upper() in _ZONE_PCT:
+        return _ZONE_PCT[s.upper()]
+    raise ValueError(f"无法解析强度 {s!r}：workout_text 只支持 'NN%' 或 Z1–Z7")
+
+
+def _workout_text_to_zwo(text: str, name: str = "Workout", description: str = "") -> str:
+    """把内部 workout_text 转成 ZWO XML。
+
+    Workout text 语法：
+      - <dur> <intensity> [文字注释]      → SteadyState
+      Nx                                    → 接下来 2 行作为 on/off 重复 N 次
+      - <dur1> <int1>                       → on
+      - <dur2> <int2>                       → off
+    其它内容（空行、非 - 开头）忽略。
+    """
+    import re
+    lines = [ln.rstrip() for ln in text.strip().splitlines()]
+    parts: list[str] = []
+    i = 0
+    while i < len(lines):
+        ln = lines[i].strip()
+        if not ln:
+            i += 1
+            continue
+        m = re.match(r"^(\d+)x\s*$", ln)
+        if m:
+            reps = int(m.group(1))
+            on = lines[i + 1].strip() if i + 1 < len(lines) else ""
+            off = lines[i + 2].strip() if i + 2 < len(lines) else ""
+            on_m = re.match(r"^-\s*(\S+)\s+(\S+)", on)
+            off_m = re.match(r"^-\s*(\S+)\s+(\S+)", off)
+            if on_m and off_m:
+                on_d = _parse_duration(on_m.group(1))
+                on_p = _parse_intensity(on_m.group(2))
+                off_d = _parse_duration(off_m.group(1))
+                off_p = _parse_intensity(off_m.group(2))
+                parts.append(
+                    f'<IntervalsT Repeat="{reps}" '
+                    f'OnDuration="{on_d}" OffDuration="{off_d}" '
+                    f'OnPower="{on_p:.3f}" OffPower="{off_p:.3f}"/>'
+                )
+                i += 3
+                continue
+            raise ValueError(f"重复块 {ln!r} 后必须紧跟两行 '- <时长> <强度>'（on / off）")
+        m = re.match(r"^-\s*(\S+)\s+(\S+)", ln)
+        if m:
+            d = _parse_duration(m.group(1))
+            p = _parse_intensity(m.group(2))
+            parts.append(f'<SteadyState Duration="{d}" Power="{p:.3f}"/>')
+        i += 1
+
+    # 把首/尾的 SteadyState 转成 explicit Warmup/Cooldown，只影响图表分段显示。
+    # 不能阻止 ICU 自动加 60min Z1 phantom warmup（实测无视 <Warmup>，
+    # 见 vault/athlete.md「ICU ZWO 推送陷阱」），workout_text 设计时需预留。
+    if parts:
+        import re as _re
+        m_first = _re.match(r'<SteadyState Duration="(\d+)" Power="([\d.]+)"/>', parts[0])
+        if m_first:
+            d, p = m_first.groups()
+            parts[0] = f'<Warmup Duration="{d}" PowerLow="{p}" PowerHigh="{p}"/>'
+        if len(parts) > 1:
+            m_last = _re.match(r'<SteadyState Duration="(\d+)" Power="([\d.]+)"/>', parts[-1])
+            if m_last:
+                d, p = m_last.groups()
+                parts[-1] = f'<Cooldown Duration="{d}" PowerLow="{p}" PowerHigh="{p}"/>'
+
+    inner = "\n        ".join(parts)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        "<workout_file>\n"
+        "    <author>AI Coach</author>\n"
+        f"    <name>{_xml_escape(name)}</name>\n"
+        f"    <description>{_xml_escape(description)}</description>\n"
+        "    <sportType>bike</sportType>\n"
+        "    <tags></tags>\n"
+        "    <workout>\n"
+        f"        {inner}\n"
+        "    </workout>\n"
+        "</workout_file>\n"
+    )
+
+
+def _xml_escape(s: str) -> str:
+    return (
+        s.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def _workout_external_id(date: str, slot: int = 1) -> str:
+    """同一天第 1 个训练沿用旧 id（已推送事件仍能 upsert），第 2 个起加 _2/_3 后缀。"""
+    base = f"vault_plan_{date.replace('-', '')}"
+    return base if slot == 1 else f"{base}_{slot}"
+
+
+def _build_event_payload(day: dict, slot: int = 1) -> dict:
+    """构建 ICU 事件 payload。若 day 含 workout_text，则用 ZWO 文件方式上传以触发
+    `workout_doc.steps` 正确解析（ICU 不接受纯 description text 解析为 steps）。
+    slot：同一天第几个训练，用来区分 external_id。"""
+    import base64
+    workout_text = (day.get("workout_text") or "").strip()
+    notes = (day.get("description") or "").strip()
+    name = day["name"]
+    date = day["date"]
+
+    # event.description 只放 notes（不 append workout_text）
+    # 否则 ICU 会解析 workout_text-format 行成 phantom steps
+    event: dict = {
+        "category": "WORKOUT",
+        "type": day.get("icu_type", "Ride"),
+        "name": name,
+        "start_date_local": f"{date}T09:00:00",
+        "description": notes,
+        "indoor": day.get("indoor", False),
+        "external_id": _workout_external_id(date, slot),
+    }
+    if day.get("target_tss"):
+        event["icu_training_load"] = day["target_tss"]
+
+    if workout_text:
+        # 关键: ICU 用 ZWO 的 <description> 作为 event.description 源 (覆盖 PUT body).
+        # 但 ICU 又会把 description 内的 "Nm/Nmin/Ns" 数字+单位错认为额外 workout steps,
+        # 产生 phantom (e.g., "595m 海拔" → 595 分钟 phantom step). 中文化避免双解析.
+        safe_notes = _sanitize_for_zwo_description(notes)
+        zwo = _workout_text_to_zwo(workout_text, name=name, description=safe_notes)
+        event["filename"] = f"{date}_{name[:24]}.zwo".replace(" ", "_")
+        event["file_contents_base64"] = base64.b64encode(zwo.encode("utf-8")).decode("ascii")
+    return event
+
+
+def _sanitize_for_zwo_description(text: str) -> str:
+    """ICU 解析 ZWO <description> 时把 N(s|m|min|h) 当 workout 步数, 产生 phantom steps.
+    把这些 token 中文化 (米/秒/分钟/小时), parser 不识别就不会创建 phantom.
+
+    保留数字本身 (用户可读), 仅替换单位:
+      - "595m" → "595米", "777m / 1 圈" → "777米 / 1 圈" (海拔/距离)
+      - "30min" → "30分钟", "1h" → "1小时"
+      - "30s 140%" → "30秒 140%" (workout 行内片段)
+      - "9-10 min" → "9-10 分钟"
+
+    workout_text 块本身不会过这里 (走 _workout_text_to_zwo 解析路径)."""
+    import re
+    if not text:
+        return text
+    # min 必须在 m 之前替换 (避免 "30min" 先匹配 "m" → "30i米")
+    # 顺序: min → h → s → m
+    text = re.sub(r'(\d+(?:[.\-]\d+)?)\s*min\b', r'\1分钟', text)
+    text = re.sub(r'(\d+(?:[.\-]\d+)?)\s*h\b', r'\1小时', text)
+    text = re.sub(r'(\d+)\s*s\b', r'\1秒', text)  # 30s, 但避开 W/kg 之类
+    # m 单独使用 (海拔/距离): 数字后空格/斜杠/标点/末尾, 避免 "m@" 这种
+    text = re.sub(r'(\d+(?:\.\d+)?)\s*m(?=\s|/|$|，|。|,|;|:|\)|\*|、)', r'\1米', text)
+    # km 不动 (km 后面字母不会被 ICU 当 minute 单位)
+    return text
+
+
+def _build_rest_payload(day: dict) -> dict:
+    """Rest 日推送为 NOTE 标记，让 ICU 日历显示"完全休息"标签。"""
+    return {
+        "category": "NOTE",
+        "name": day.get("name", "完全休息"),
+        "description": day.get("description", "完全休息日，主动减少训练频率"),
+        "start_date_local": f"{day['date']}T09:00:00",
+        # 与训练事件分开命名，避免同日 upsert 互相覆盖
+        "external_id": f"vault_rest_{day['date'].replace('-', '')}",
+        "color": "gray",
+    }
+
+
 def _push_to_icu(plan: dict):
+    """两步推送 (ICU 量化 quirk workaround):
+    1) bulk upsert (notes 嵌入 ZWO description) - chart + desc OK, TSS 可能 phantom-inflated
+    2) 对每个 WORKOUT event re-PUT 同 ZWO + target_tss - 强制 TSS 重算到 plan target
+    Rest 日推送为 NOTE category。"""
+    import requests
     icu = ICUClient()
-    print("\n📤 推送到 ICU 日历...")
-    created = 0
+    print("\n📤 步骤 1/2: bulk upsert (chart + notes)...")
+    payload = []
+    payload_to_day = []  # 平行列表, 索引对齐
+    slots: dict[str, int] = {}  # date → 当天已排的训练数
+    for day in plan.get("days", []):
+        if day.get("training_type") == "Rest":
+            payload.append(_build_rest_payload(day))
+            payload_to_day.append(None)  # NOTE 不需要 step 2
+        else:
+            slots[day["date"]] = slots.get(day["date"], 0) + 1
+            payload.append(_build_event_payload(day, slots[day["date"]]))
+            payload_to_day.append(day)
+    if not payload:
+        print("  无可推送事件")
+        return
+    url = f"https://intervals.icu/api/v1/athlete/{icu.athlete_id}/events/bulk?upsert=true"
+    r = requests.post(url, json=payload, auth=("API_KEY", icu.api_key), timeout=30)
+    r.raise_for_status()
+    results = r.json()
+    print(f"  ✓ ICU 返回 {len(results)} 个事件")
+
+    # 步骤 2: 重 PUT WORKOUT events (TSS 重算到 plan target)
+    workout_results = [(r_e, day) for r_e, day in zip(results, payload_to_day) if day is not None]
+    if workout_results:
+        print(f"\n🔄 步骤 2/2: re-PUT {len(workout_results)} workouts (TSS 校准)...")
+        import base64
+        for r_e, day in workout_results:
+            event_id = r_e.get("id")
+            if not event_id:
+                continue
+            workout_text = (day.get("workout_text") or "").strip()
+            if not workout_text:
+                continue
+            notes_safe = _sanitize_for_zwo_description((day.get("description") or "").strip())
+            name = day["name"]
+            zwo = _workout_text_to_zwo(workout_text, name=name, description=notes_safe)
+            zwo_b64 = base64.b64encode(zwo.encode("utf-8")).decode("ascii")
+            put_payload = {
+                "type": day.get("icu_type", "Ride"),
+                "category": "WORKOUT",
+                "start_date_local": r_e.get("start_date_local"),
+                "name": name,
+                "filename": f"{day['date']}.zwo",
+                "file_contents_base64": zwo_b64,
+                "external_id": r_e.get("external_id"),
+            }
+            if day.get("target_tss"):
+                put_payload["icu_training_load"] = day["target_tss"]
+            rp = requests.put(
+                f"https://intervals.icu/api/v1/athlete/{icu.athlete_id}/events/{event_id}",
+                json=put_payload, auth=("API_KEY", icu.api_key), timeout=15
+            )
+            if rp.status_code != 200:
+                print(f"  ✗ {day['date']}: HTTP {rp.status_code}")
+
+    # 最终汇报
+    print("\n📊 最终状态:")
+    final_events = icu.get_events(plan['days'][0]['date'], plan['days'][-1]['date'])
+    for e in sorted(final_events, key=lambda x: x.get('start_date_local','')):
+        wd = e.get("workout_doc") or {}
+        steps = len(wd.get("steps", []))
+        desc_len = len(e.get("description") or "")
+        mt = (e.get('moving_time') or 0) // 60
+        print(f"  - {e.get('start_date_local','?')[:10]} | TSS={e.get('icu_training_load')} | dur={mt}m | steps={steps} | desc={desc_len}c | {e.get('name','')[:35]}")
+    print("\n✅ 推送完成")
+
+
+def update_plan_in_icu(plan: dict, event_ids: dict) -> dict:
+    """按 date → event_id 映射，PUT 更新已存在的 ICU 事件。
+    用于已经推送过的 plan 改格式后回写，无需先 delete 再 create。
+    """
+    icu = ICUClient()
+    print("\n♻️ 更新 ICU 事件...")
+    updated = 0
     for day in plan.get("days", []):
         if day.get("training_type") == "Rest":
             continue
-        event = {
-            "start_date_local": f"{day['date']}T09:00:00",
-            "type": day.get("icu_type", "Ride"),
-            "category": "WORKOUT",
-            "name": day["name"],
-            "description": day.get("description", ""),
-            "indoor": day.get("indoor", False),
-        }
-        if day.get("target_tss"):
-            event["icu_training_load"] = day["target_tss"]
+        event_id = event_ids.get(day["date"])
+        if not event_id:
+            print(f"  ⚠ {day['date']} 无对应 event_id，跳过")
+            continue
+        event = _build_event_payload(day)
         try:
-            result = icu.create_event(event)
-            print(f"  ✓ {day['date']} {day['day_of_week']} — {day['name']} (id={result.get('id', '?')})")
-            created += 1
+            icu.update_event(event_id, event)
+            print(f"  ✓ {day['date']} {day['day_of_week']} — {day['name']} (id={event_id})")
+            updated += 1
         except Exception as e:
-            print(f"  ✗ {day['date']} {day['day_of_week']} — 推送失败: {e}")
-    print(f"\n✅ 已创建 {created} 个训练事件")
+            print(f"  ✗ {day['date']} {day['day_of_week']} — 更新失败 (id={event_id}): {e}")
+    print(f"\n✅ 已更新 {updated} 个训练事件")
+    return {"updated": updated}
 
 
 def delete_plan_events(week_start, week_end):

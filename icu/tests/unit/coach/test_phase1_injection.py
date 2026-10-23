@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 from src.coach.phase1_injection import inject_phase1_context
 

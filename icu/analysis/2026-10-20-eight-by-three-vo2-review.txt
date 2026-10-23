@@ -1,0 +1,138 @@
+name = 8x3min vo2 intervals
+harder than 5x4min🫠
+description = 新课程感想：总容量一定情况下，vo2间歇做功组时间越短，体感越累。
+现在还不知道收益如何
+◾️ 20, October Training status ◾️
+😃 Keeping it steady (647)
+🌳 Fitness 69, Fatigue 94, Balance -25
+
+◾️ Ride Summary ◾️
+🐶 Free Training (moderate intensity)
+🏷️ Motivational effect, Sustained, Amused
+🚵 Hillclimb Ride
+📊 RP 245, Int 0.82, Vol 144
+✨ Recovery time 23 hour
+
+◾️ Peak power ◾️
+⚡ 15sec 413w (43%) 
+⚡ 1min 381w (60%) 
+⚡ 2min 369w (87%) 
+⚡ 5min 285w (82%) 
+⚡ 10min 256w (82%) 
+⚡ 20min 221w (75%) 
+⚡ 40min 219w (78%) 
+⚡ 1hour 196w (72%) 
+⚡ 2hour 170w (74%) 
+
+◾️ Power zone ◾️
+⚪ 1zone 25% (-1%)
+🔵 2zone 40% (-10%)
+🟢 3zone 9% (-3%)
+🟡 4zone 4% (-1%)
+🟠 5zone 11% (+8%)
+🔴 6zone 10% (+7%)
+⭕ 7zone 0% (-1%)
+
+◾️ Heartrate zone ◾️
+🤍 1zone 6%
+💙 2zone 29%
+💚 3zone 39%
+💛 4zone 21%
+🧡 5zone 6%
+
+◾️ Anaerobic work ◾️
+🕯️ Matches 21.1
+⌛ AWC duration 26m 8s
+🏋 AWC energy 118.8kJ
+🔋 Maximum discharge 65.2%
+
+◾️ Energy metabolism ◾️
+🔥 Calories burned 1382
+🧀 Fat 51.7%
+🍞 Carb 48.3%
+⏲ Fat loss 76.8g
+
+
+
+🔗https://www.strava.com/clubs/riduck
+🔗https://riduck.com
+start_date_local = 2026-10-20T07:57:10
+moving_time = 7681
+elapsed_time = 8724
+icu_rpe = 7
+feel = 4
+average_temp = 31.223883
+total_elevation_gain = 738.0
+decoupling = 6.9339504
+icu_hr_zone_times = [642, 3954, 1890, 1195, 0]
+icu_zone_times = [{'id': 'Z1', 'secs': 2910}, {'id': 'Z2', 'secs': 2702}, {'id': 'Z3', 'secs': 480}, {'id': 'Z4', 'secs': 149}, {'id': 'Z5', 'secs': 816}, {'id': 'Z6', 'secs': 617}, {'id': 'Z7', 'secs': 7}, {'id': 'SS', 'secs': 186}]
+carbs_ingested = None
+icu_w_prime = None
+icu_pm_cp = 225
+icu_pm_w_prime = 19319
+icu_pm_ftp = 230
+icu_rolling_ftp = 300
+icu_rolling_w_prime = 24772.037
+icu_sweet_spot_min = 84
+lthr = 188
+athlete_max_hr = 205
+icu_resting_hr = 43
+rep lapsi detsi dsi lapavg detavg detdur dei  p0-30 p30-150 p150-end  hrAvg hrMax hrStart hrEnd cad  dAlt grade% wbalMin  recDur recW hrRecEnd
+ 1  2393  2392  -1  347 349.7  180  -2   346  351  349  166.8  178 139 178 94.7  56.0  4.9  14785   215s   92W hr127
+ 2  2789  2787  -2  356 356.2  186  +0   370  359  335  170.8  183 128 182 94.3  59.4  5.0  12031   197s   77W hr135
+ 3  3169  3170  +1  356 357.1  183  +0   367  356  352  174.2  185 136 185 94.5  57.4  4.9  11570   207s   74W hr132
+ 4  3560  3560  +0  356 356.2  183  +0   370  353  355  175.0  186 133 186 96.8  57.2  5.0  11919   197s   82W hr139
+ 5  3941  3940  -1  358 358.6  182  +0   386  354  350  177.2  188 139 187 95.8  57.6  5.0  11254   196s   76W hr135
+ 6  4318  4318  +0  354 355.9  178  -2   385  352  344  177.3  189 136 189 96.2  58.0  5.2  11907   186s   58W hr140
+ 7  4682  4682  +0  359 359.2  181  +0   396  353  346  179.6  189 140 189 96.8  58.4  5.0  11333   183s   55W hr141
+ 8  5045  5046  +1  362 363.2  181  +0   385  360  355  179.8  190 142 190 97.1  58.8  5.0  10544  
+det mean 357.0223832593513 lap mean 356.0
+warmup 0- 2393 avgW 144.99582114500626 avgHR 135.26828249059758
+post avgW 164.80680437424058 avgHR 152.92952612393682 dur 2469
+best 60 381
+best 180 364
+best 300 285
+==== compare ====
+D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-eight-by-three-vo2/2026-09-08_i184403505.json 5x4min vo2max😌 rpe 5 feel 3 temp 29.5
+  HR>= 180 445 s
+  HR>= 185 50 s
+  HR>= 188 0 s
+  W>=330: 1013 s
+    244 s 356 W hr 168 / 180 cad 95
+    245 s 353 W hr 173 / 183 cad 95
+    256 s 333 W hr 172 / 182 cad 95
+    252 s 342 W hr 174 / 185 cad 95
+    258 s 336 W hr 176 / 185 cad 92
+D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-eight-by-three-vo2/2026-10-06_i194051255.json 5 x 4min vo2max intervals rpe 5 feel 3 temp 29.1
+  HR>= 180 817 s
+  HR>= 185 333 s
+  HR>= 188 103 s
+  W>=330: 893 s
+    246 s 341 W hr 173 / 185 cad 91
+    255 s 340 W hr 176 / 187 cad 91
+    260 s 327 W hr 176 / 186 cad 93
+    260 s 333 W hr 176 / 188 cad 93
+    250 s 349 W hr 180 / 192 cad 95
+D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-eight-by-three-vo2/2026-10-13_i196664180.json sauna ride🥵high humidity heavy haze  | failed training day 🥲 rpe 5 feel 3 temp 32.4
+  HR>= 180 788 s
+  HR>= 185 323 s
+  HR>= 188 103 s
+  W>=330: 904 s
+    243 s 353 W hr 174 / 184 cad 93
+    245 s 343 W hr 177 / 188 cad 95
+    253 s 323 W hr 177 / 188 cad 97
+    238 s 347 W hr 181 / 192 cad 97
+    204 s 340 W hr 171 / 185 cad 95
+D:/Cycling/icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-eight-by-three-vo2/2026-10-20_i199292147.json 8x3min vo2 intervals | harder than 5x4min🫠 rpe 7 feel 4 temp 31.2
+  HR>= 180 937 s
+  HR>= 185 463 s
+  HR>= 188 159 s
+  W>=330: 1262 s
+    181 s 347 W hr 167 / 178 cad 95
+    184 s 356 W hr 171 / 183 cad 94
+    184 s 356 W hr 173 / 185 cad 94
+    183 s 356 W hr 175 / 186 cad 97
+    181 s 358 W hr 177 / 188 cad 96
+    180 s 354 W hr 177 / 189 cad 96
+    181 s 359 W hr 179 / 189 cad 97
+    182 s 362 W hr 179 / 190 cad 97

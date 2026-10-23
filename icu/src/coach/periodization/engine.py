@@ -14,7 +14,6 @@ import statistics
 import time
 from datetime import date, timedelta
 from pathlib import Path
-from typing import Optional
 
 from ..common.logging import get_logger
 from .ctl_slope import analyze_ctl_slope
@@ -26,7 +25,9 @@ from .phase_detector import detect_phase
 from .race_calendar import load_race_calendar, next_race_after
 from .snapshot_io import write_periodization_snapshot
 from .types import (
-    MacroWindow, NextRace, Phase, PeriodizationSnapshot,
+    MacroWindow,
+    NextRace,
+    PeriodizationSnapshot,
 )
 
 LOG = get_logger("periodization_engine")
@@ -58,7 +59,7 @@ def _load_athlete(warehouse_dir: Path) -> dict:
         return {}
 
 
-def _load_stimulus_median(memory_dir: Path) -> Optional[float]:
+def _load_stimulus_median(memory_dir: Path) -> float | None:
     """Median stimulus_score from coach_memory/deep_analysis/*.trace.json.
 
     Walks recent .trace.json files in descending mtime order, collects stimulus_score
@@ -103,7 +104,7 @@ def _load_stimulus_median(memory_dir: Path) -> Optional[float]:
     return None
 
 
-def _load_knee_flag(memory_dir: Path) -> Optional[str]:
+def _load_knee_flag(memory_dir: Path) -> str | None:
     """Load knee-loading safety flag from physiology/response_profile.json.
 
     Returns the 'flag' value from doc['knee_loading'] if present, else None.

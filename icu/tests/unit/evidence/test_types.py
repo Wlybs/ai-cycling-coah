@@ -10,7 +10,6 @@ from src.coach.evidence.types import (
     RetrievedCard,
 )
 
-
 # Fixed valid ULIDs (Crockford base32, 26 chars, no I/L/O/U)
 ULID_A = "01HXR0NM8K1234567890ABCDEF"
 ULID_B = "01HXR0NM8K1234567890ABCDEG"

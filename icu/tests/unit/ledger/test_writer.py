@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 
 from src.coach.ledger.types import AthleteStateRef, is_valid_ulid
 from src.coach.ledger.writer import LedgerWriter
@@ -81,7 +82,7 @@ def test_record_persists_optional_fields(ledger_path, sample_state):
 
 def test_record_rejects_invalid_decision_type(ledger_path, sample_state):
     w = LedgerWriter(ledger_path)
-    with pytest.raises(Exception):
+    with pytest.raises(ValidationError):
         w.record(decision_type="bogus", source="test",
                  athlete_state=sample_state, payload={})
     if Path(ledger_path).exists():
@@ -93,7 +94,6 @@ def test_record_rejects_invalid_decision_type(ledger_path, sample_state):
 def _child_write(path: str, n: int, state_dict: dict):
     """Worker process: write N entries to the shared ledger."""
     from src.coach.ledger.writer import LedgerWriter
-    from src.coach.ledger.types import AthleteStateRef
     state = AthleteStateRef(**state_dict)
     w = LedgerWriter(Path(path))
     for i in range(n):

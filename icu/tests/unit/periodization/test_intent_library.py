@@ -1,5 +1,6 @@
 from src.coach.periodization.intent_library import (
-    build_intent_for_phase, INTENT_TEMPLATES,
+    INTENT_TEMPLATES,
+    build_intent_for_phase,
 )
 from src.coach.periodization.types import Phase
 

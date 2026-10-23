@@ -9,7 +9,6 @@ from pydantic import ValidationError
 
 from src.coach.evidence.types import EvidenceCard
 
-
 _FRONTMATTER_DELIM = "+++"
 _REQUIRED_PHASES = {"build", "peak", "competitive"}
 
