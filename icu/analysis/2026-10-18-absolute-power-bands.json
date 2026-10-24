@@ -1,0 +1,6775 @@
+{
+ "generated": "2026-10-21T18:27:42",
+ "raw_api_data_dir": "icu_data_warehouse/9_Coach_Raw/2026-10-18-absolute-power-bands/",
+ "method": {
+  "ftp_used": false,
+  "bands_w": [
+   280,
+   300,
+   320,
+   340
+  ],
+  "band_time": "count of 1 Hz samples with non-null watts >= band; minutes = count/60",
+  "sustained": "within contiguous runs (time step == 1 s, watts non-null, zeros kept): greedy non-overlapping; start sample >= 280 W; furthest end with mean >= 280 W; trailing samples < 280 W trimmed; keep if duration >= 480 s",
+  "per7d": "period total * 7 / days in period",
+  "weeks": "ISO weeks (Mon-Sun), clipped to the period window",
+  "lap_recompute": "lap window = [FIT lap start_time - activity start_date, + FIT total_elapsed_time), stream mean over non-null watts",
+  "work_lap_rule": "240-600 s and stream mean >= 280 W (analyst rule)",
+  "scope": [
+   [
+    "2026-01-01",
+    "2026-06-30"
+   ],
+   [
+    "2026-09-01",
+    "2026-10-17"
+   ]
+  ],
+  "ride_types": "type contains 'Ride'"
+ },
+ "activities": [
+  {
+   "id": "i115245297",
+   "date": "2026-01-02",
+   "iso_week": "2026-W01",
+   "type": "VirtualRide",
+   "name": "室内骑行",
+   "device_watts": true,
+   "icu_training_load": 71,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7207,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i115437266",
+   "date": "2026-01-03",
+   "iso_week": "2026-W01",
+   "type": "VirtualRide",
+   "name": "3h zone2",
+   "device_watts": true,
+   "icu_training_load": 119,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10807,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i115615138",
+   "date": "2026-01-04",
+   "iso_week": "2026-W01",
+   "type": "VirtualRide",
+   "name": "2 set 10x30/30",
+   "device_watts": true,
+   "icu_training_load": 61,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 4143,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 581,
+    "300": 572,
+    "320": 551,
+    "340": 451
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i115864926",
+   "date": "2026-01-05",
+   "iso_week": "2026-W02",
+   "type": "VirtualRide",
+   "name": "甜区👎",
+   "device_watts": true,
+   "icu_training_load": 163,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10801,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 277,
+    "300": 47,
+    "320": 18,
+    "340": 9
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i116091215",
+   "date": "2026-01-06",
+   "iso_week": "2026-W02",
+   "type": "Ride",
+   "name": "江堤有氧 比骑台子有意思",
+   "device_watts": true,
+   "icu_training_load": 159,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12120,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 62,
+    "300": 40,
+    "320": 17,
+    "340": 5
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i116523167",
+   "date": "2026-01-08",
+   "iso_week": "2026-W02",
+   "type": "Ride",
+   "name": "2026第一次🐲",
+   "device_watts": true,
+   "icu_training_load": 162,
+   "longjing_candidate": true,
+   "source": "icu_api_get",
+   "samples": 9244,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 10,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2003,
+    "300": 1205,
+    "320": 641,
+    "340": 351
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4999,
+     "duration_s": 480,
+     "mean_w": 280.7
+    },
+    {
+     "start_s": 6204,
+     "duration_s": 522,
+     "mean_w": 283.8
+    }
+   ],
+   "laps_raw_count": 14,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3042.8,
+     "fit_avg_w": 176,
+     "start_offset_s": 0,
+     "stream_samples": 2837,
+     "null_watts": 0,
+     "stream_mean_w": 175.4
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 424.8,
+     "fit_avg_w": 276,
+     "start_offset_s": 3042,
+     "stream_samples": 425,
+     "null_watts": 0,
+     "stream_mean_w": 276.1
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 235.8,
+     "fit_avg_w": 108,
+     "start_offset_s": 3467,
+     "stream_samples": 236,
+     "null_watts": 0,
+     "stream_mean_w": 108.0
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 462.8,
+     "fit_avg_w": 275,
+     "start_offset_s": 3703,
+     "stream_samples": 463,
+     "null_watts": 0,
+     "stream_mean_w": 275.1
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 209.4,
+     "fit_avg_w": 94,
+     "start_offset_s": 4166,
+     "stream_samples": 210,
+     "null_watts": 0,
+     "stream_mean_w": 95.3
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 406.9,
+     "fit_avg_w": 283,
+     "start_offset_s": 4375,
+     "stream_samples": 407,
+     "null_watts": 0,
+     "stream_mean_w": 282.9
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 250.8,
+     "fit_avg_w": 83,
+     "start_offset_s": 4782,
+     "stream_samples": 251,
+     "null_watts": 0,
+     "stream_mean_w": 83.0
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 448.5,
+     "fit_avg_w": 290,
+     "start_offset_s": 5033,
+     "stream_samples": 449,
+     "null_watts": 0,
+     "stream_mean_w": 290.3
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 199.3,
+     "fit_avg_w": 93,
+     "start_offset_s": 5481,
+     "stream_samples": 200,
+     "null_watts": 0,
+     "stream_mean_w": 93.0
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 382.9,
+     "fit_avg_w": 302,
+     "start_offset_s": 5681,
+     "stream_samples": 383,
+     "null_watts": 0,
+     "stream_mean_w": 302.2
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 238.1,
+     "fit_avg_w": 107,
+     "start_offset_s": 6063,
+     "stream_samples": 239,
+     "null_watts": 0,
+     "stream_mean_w": 107.2
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 424.8,
+     "fit_avg_w": 311,
+     "start_offset_s": 6302,
+     "stream_samples": 425,
+     "null_watts": 0,
+     "stream_mean_w": 311.2
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 687.4,
+     "fit_avg_w": 150,
+     "start_offset_s": 6726,
+     "stream_samples": 684,
+     "null_watts": 0,
+     "stream_mean_w": 150.2
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 2073.8,
+     "fit_avg_w": 205,
+     "start_offset_s": 7414,
+     "stream_samples": 2039,
+     "null_watts": 0,
+     "stream_mean_w": 204.9
+    }
+   ]
+  },
+  {
+   "id": "i116563780",
+   "date": "2026-01-08",
+   "iso_week": "2026-W02",
+   "type": "Ride",
+   "name": "骑行",
+   "device_watts": true,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2134,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 7,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2,
+    "300": 2,
+    "320": 2,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i116935101",
+   "date": "2026-01-10",
+   "iso_week": "2026-W02",
+   "type": "Ride",
+   "name": "20260110莫干山团练加餐",
+   "device_watts": true,
+   "icu_training_load": 273,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 13357,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 41,
+   "dropout_s_in_gaps_le_5s": 32,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3864,
+    "300": 3105,
+    "320": 2397,
+    "340": 1875
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2484,
+     "duration_s": 699,
+     "mean_w": 294.5
+    },
+    {
+     "start_s": 8747,
+     "duration_s": 1192,
+     "mean_w": 280.0
+    }
+   ]
+  },
+  {
+   "id": "i117225334",
+   "date": "2026-01-11",
+   "iso_week": "2026-W02",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 5,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2275,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 11,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 16,
+    "300": 7,
+    "320": 7,
+    "340": 3
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i117354046",
+   "date": "2026-01-12",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "☀️翁金短裤有氧3h",
+   "device_watts": true,
+   "icu_training_load": 151,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 11308,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 5,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 159,
+    "300": 123,
+    "320": 99,
+    "340": 83
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i117575434",
+   "date": "2026-01-13",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "短袖骑真舒服\n能这样骑一周真爽死了",
+   "device_watts": true,
+   "icu_training_load": 174,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10826,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 13,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1771,
+    "300": 1074,
+    "320": 528,
+    "340": 280
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4208,
+     "duration_s": 675,
+     "mean_w": 285.3
+    },
+    {
+     "start_s": 5062,
+     "duration_s": 690,
+     "mean_w": 281.2
+    },
+    {
+     "start_s": 5929,
+     "duration_s": 668,
+     "mean_w": 293.0
+    }
+   ]
+  },
+  {
+   "id": "i117802086",
+   "date": "2026-01-14",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "和俩武功尽失的康复骑",
+   "device_watts": true,
+   "icu_training_load": 98,
+   "longjing_candidate": false,
+   "source": "local:2026-01-14_和俩武功尽失的康复骑_FULL.json",
+   "samples": 10745,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 27,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 323,
+    "300": 248,
+    "320": 197,
+    "340": 146
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i118032999",
+   "date": "2026-01-15",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "☕️📷骑",
+   "device_watts": true,
+   "icu_training_load": 102,
+   "longjing_candidate": false,
+   "source": "local:2026-01-15_☕️📷骑_FULL.json",
+   "samples": 8388,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 36,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 496,
+    "300": 426,
+    "320": 374,
+    "340": 329
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i118274428",
+   "date": "2026-01-16",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "三人骑个菜刀",
+   "device_watts": true,
+   "icu_training_load": 125,
+   "longjing_candidate": false,
+   "source": "local:2026-01-16_三人骑个菜刀_FULL.json",
+   "samples": 11217,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 17,
+   "dropout_s_in_gaps_le_5s": 1,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 524,
+    "300": 472,
+    "320": 420,
+    "340": 354
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i118513041",
+   "date": "2026-01-17",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2294,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 226,
+   "dropout_s_in_gaps_le_5s": 354,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 4,
+    "300": 2,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i118719066",
+   "date": "2026-01-18",
+   "iso_week": "2026-W03",
+   "type": "Ride",
+   "name": "萧山画圈圈骑\n数数画了几个8",
+   "device_watts": true,
+   "icu_training_load": 361,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 23918,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1317,
+   "dropout_s_in_gaps_le_5s": 2020,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2124,
+    "300": 979,
+    "320": 467,
+    "340": 244
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i119199655",
+   "date": "2026-01-20",
+   "iso_week": "2026-W04",
+   "type": "Ride",
+   "name": "感觉有-6度 爆胎骑",
+   "device_watts": true,
+   "icu_training_load": 39,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1891,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 600,
+    "300": 343,
+    "320": 171,
+    "340": 93
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1002,
+     "duration_s": 923,
+     "mean_w": 281.3
+    }
+   ]
+  },
+  {
+   "id": "i120351179",
+   "date": "2026-01-25",
+   "iso_week": "2026-W04",
+   "type": "Ride",
+   "name": "龙源10圈",
+   "device_watts": true,
+   "icu_training_load": 160,
+   "longjing_candidate": false,
+   "source": "local:2026-01-25_龙源10圈_FULL.json",
+   "samples": 11402,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 22,
+   "dropout_s_in_gaps_le_5s": 11,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 557,
+    "300": 478,
+    "320": 398,
+    "340": 297
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i120859257",
+   "date": "2026-01-27",
+   "iso_week": "2026-W05",
+   "type": "Ride",
+   "name": "淀山湖 太浦河环线 三省交界骑",
+   "device_watts": true,
+   "icu_training_load": 172,
+   "longjing_candidate": false,
+   "source": "local:2026-01-27_淀山湖 太浦河环线 三省交界骑_FULL.json",
+   "samples": 13625,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 107,
+   "dropout_s_in_gaps_le_5s": 88,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 614,
+    "300": 495,
+    "320": 402,
+    "340": 340
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i121316934",
+   "date": "2026-01-29",
+   "iso_week": "2026-W05",
+   "type": "Ride",
+   "name": "南昌市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 306,
+   "longjing_candidate": false,
+   "source": "local:2026-01-29_南昌市 公路骑行_FULL.json",
+   "samples": 19158,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 987,
+   "dropout_s_in_gaps_le_5s": 989,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2393,
+    "300": 1308,
+    "320": 696,
+    "340": 384
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 13176,
+     "duration_s": 608,
+     "mean_w": 285.9
+    }
+   ]
+  },
+  {
+   "id": "i121909417",
+   "date": "2026-02-01",
+   "iso_week": "2026-W05",
+   "type": "Ride",
+   "name": "过年老家训练之3h有氧",
+   "device_watts": true,
+   "icu_training_load": 132,
+   "longjing_candidate": false,
+   "source": "local:2026-02-01_过年老家训练之3h有氧_FULL.json",
+   "samples": 10811,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 11,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 158,
+    "300": 124,
+    "320": 90,
+    "340": 62
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i122411221",
+   "date": "2026-02-03",
+   "iso_week": "2026-W06",
+   "type": "Ride",
+   "name": "瞎骑 巡山失败",
+   "device_watts": true,
+   "icu_training_load": 134,
+   "longjing_candidate": false,
+   "source": "local:2026-02-03_瞎骑 巡山失败_FULL.json",
+   "samples": 9040,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 25,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1381,
+    "300": 879,
+    "320": 606,
+    "340": 450
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 555,
+     "duration_s": 619,
+     "mean_w": 281.5
+    },
+    {
+     "start_s": 1297,
+     "duration_s": 516,
+     "mean_w": 285.0
+    }
+   ]
+  },
+  {
+   "id": "i122664821",
+   "date": "2026-02-04",
+   "iso_week": "2026-W06",
+   "type": "Ride",
+   "name": "起伏路lsd",
+   "device_watts": true,
+   "icu_training_load": 174,
+   "longjing_candidate": false,
+   "source": "local:2026-02-04_起伏路lsd_FULL.json",
+   "samples": 13727,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 108,
+   "dropout_s_in_gaps_le_5s": 105,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 293,
+    "300": 228,
+    "320": 186,
+    "340": 149
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i123391181",
+   "date": "2026-02-07",
+   "iso_week": "2026-W06",
+   "type": "Ride",
+   "name": "九江市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "local:2026-02-07_九江市 公路骑行_FULL.json",
+   "samples": 555,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1,
+    "300": 1,
+    "320": 1,
+    "340": 1
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i123402443",
+   "date": "2026-02-07",
+   "iso_week": "2026-W06",
+   "type": "Ride",
+   "name": "Morning 爆胎 Ride",
+   "device_watts": true,
+   "icu_training_load": 115,
+   "longjing_candidate": false,
+   "source": "local:2026-02-07_Morning 爆胎 Ride_FULL.json",
+   "samples": 8637,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 153,
+    "300": 112,
+    "320": 78,
+    "340": 50
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i123639567",
+   "date": "2026-02-08",
+   "iso_week": "2026-W06",
+   "type": "Ride",
+   "name": "冲几脚",
+   "device_watts": true,
+   "icu_training_load": 157,
+   "longjing_candidate": false,
+   "source": "local:2026-02-08_冲几脚_FULL.json",
+   "samples": 7279,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 271,
+    "300": 229,
+    "320": 200,
+    "340": 189
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i124340389",
+   "date": "2026-02-11",
+   "iso_week": "2026-W07",
+   "type": "Ride",
+   "name": "lsd",
+   "device_watts": true,
+   "icu_training_load": 160,
+   "longjing_candidate": false,
+   "source": "local:2026-02-11_lsd_FULL.json",
+   "samples": 13195,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 56,
+   "dropout_s_in_gaps_le_5s": 52,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 241,
+    "300": 181,
+    "320": 148,
+    "340": 113
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i124841059",
+   "date": "2026-02-13",
+   "iso_week": "2026-W07",
+   "type": "Ride",
+   "name": "晨间阈值骑行",
+   "device_watts": true,
+   "icu_training_load": 165,
+   "longjing_candidate": false,
+   "source": "local:2026-02-13_i124841059.json",
+   "samples": 8790,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 15,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2419,
+    "300": 1590,
+    "320": 798,
+    "340": 359
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4236,
+     "duration_s": 567,
+     "mean_w": 297.7
+    },
+    {
+     "start_s": 5381,
+     "duration_s": 566,
+     "mean_w": 298.4
+    },
+    {
+     "start_s": 6695,
+     "duration_s": 571,
+     "mean_w": 302.1
+    },
+    {
+     "start_s": 7841,
+     "duration_s": 570,
+     "mean_w": 305.7
+    }
+   ]
+  },
+  {
+   "id": "i125071883",
+   "date": "2026-02-14",
+   "iso_week": "2026-W07",
+   "type": "Ride",
+   "name": "好热🥵",
+   "device_watts": true,
+   "icu_training_load": 170,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 9748,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 4,
+   "dropout_s_in_gaps_le_5s": 7,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1616,
+    "300": 744,
+    "320": 378,
+    "340": 239
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2826,
+     "duration_s": 496,
+     "mean_w": 280.0
+    }
+   ]
+  },
+  {
+   "id": "i125798957",
+   "date": "2026-02-17",
+   "iso_week": "2026-W08",
+   "type": "Ride",
+   "name": "大年初一瞎骑",
+   "device_watts": true,
+   "icu_training_load": 174,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 13031,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 16,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 734,
+    "300": 466,
+    "320": 279,
+    "340": 160
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i126237808",
+   "date": "2026-02-19",
+   "iso_week": "2026-W08",
+   "type": "Ride",
+   "name": "双排一下",
+   "device_watts": true,
+   "icu_training_load": 158,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 13615,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 9,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 734,
+    "300": 484,
+    "320": 335,
+    "340": 213
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i126474108",
+   "date": "2026-02-20",
+   "iso_week": "2026-W08",
+   "type": "Ride",
+   "name": "九江版萧山天路",
+   "device_watts": true,
+   "icu_training_load": 175,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12088,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 14,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 962,
+    "300": 672,
+    "320": 494,
+    "340": 385
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i126710424",
+   "date": "2026-02-21",
+   "iso_week": "2026-W08",
+   "type": "Ride",
+   "name": "溜达一下",
+   "device_watts": true,
+   "icu_training_load": 91,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 8653,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 13,
+   "dropout_s_in_gaps_le_5s": 6,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 260,
+    "300": 195,
+    "320": 167,
+    "340": 128
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i126956238",
+   "date": "2026-02-22",
+   "iso_week": "2026-W08",
+   "type": "Ride",
+   "name": "环九岭山脉-毛竹山+百丈山",
+   "device_watts": true,
+   "icu_training_load": 278,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 20080,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 406,
+   "dropout_s_in_gaps_le_5s": 461,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 966,
+    "300": 369,
+    "320": 150,
+    "340": 86
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i127690350",
+   "date": "2026-02-25",
+   "iso_week": "2026-W09",
+   "type": "Ride",
+   "name": "环梅岭单飞二区有氧",
+   "device_watts": true,
+   "icu_training_load": 172,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12301,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 25,
+   "dropout_s_in_gaps_le_5s": 19,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 365,
+    "300": 264,
+    "320": 201,
+    "340": 156
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i127690388",
+   "date": "2026-02-25",
+   "iso_week": "2026-W09",
+   "type": "Ride",
+   "name": "城区车子好挤",
+   "device_watts": true,
+   "icu_training_load": 44,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2876,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 5,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 309,
+    "300": 206,
+    "320": 144,
+    "340": 108
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i128373816",
+   "date": "2026-02-28",
+   "iso_week": "2026-W09",
+   "type": "Ride",
+   "name": "lsd之浦卫公路+港漕公路(好骑",
+   "device_watts": true,
+   "icu_training_load": 220,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 17652,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 417,
+   "dropout_s_in_gaps_le_5s": 420,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 652,
+    "300": 510,
+    "320": 399,
+    "340": 291
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i128838122",
+   "date": "2026-03-02",
+   "iso_week": "2026-W10",
+   "type": "Ride",
+   "name": "🐲半打 阈值训练",
+   "device_watts": true,
+   "icu_training_load": 176,
+   "longjing_candidate": true,
+   "source": "icu_api_get",
+   "samples": 9756,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 18,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2302,
+    "300": 1496,
+    "320": 694,
+    "340": 251
+   },
+   "sustained_ge280_8min": [],
+   "laps_raw_count": 15,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3456.3,
+     "fit_avg_w": 169,
+     "start_offset_s": 0,
+     "stream_samples": 3121,
+     "null_watts": 0,
+     "stream_mean_w": 168.8
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 393.8,
+     "fit_avg_w": 298,
+     "start_offset_s": 3457,
+     "stream_samples": 394,
+     "null_watts": 0,
+     "stream_mean_w": 298.2
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 248.8,
+     "fit_avg_w": 62,
+     "start_offset_s": 3850,
+     "stream_samples": 249,
+     "null_watts": 0,
+     "stream_mean_w": 62.4
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 436.9,
+     "fit_avg_w": 297,
+     "start_offset_s": 4099,
+     "stream_samples": 437,
+     "null_watts": 0,
+     "stream_mean_w": 297.3
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 201.1,
+     "fit_avg_w": 60,
+     "start_offset_s": 4536,
+     "stream_samples": 202,
+     "null_watts": 0,
+     "stream_mean_w": 60.6
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 388.3,
+     "fit_avg_w": 305,
+     "start_offset_s": 4737,
+     "stream_samples": 389,
+     "null_watts": 0,
+     "stream_mean_w": 305.4
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 233.2,
+     "fit_avg_w": 73,
+     "start_offset_s": 5125,
+     "stream_samples": 234,
+     "null_watts": 0,
+     "stream_mean_w": 72.5
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 434.9,
+     "fit_avg_w": 303,
+     "start_offset_s": 5359,
+     "stream_samples": 435,
+     "null_watts": 0,
+     "stream_mean_w": 302.6
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 195.5,
+     "fit_avg_w": 42,
+     "start_offset_s": 5794,
+     "stream_samples": 196,
+     "null_watts": 0,
+     "stream_mean_w": 43.0
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 385.0,
+     "fit_avg_w": 307,
+     "start_offset_s": 5989,
+     "stream_samples": 385,
+     "null_watts": 0,
+     "stream_mean_w": 306.6
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 231.7,
+     "fit_avg_w": 62,
+     "start_offset_s": 6374,
+     "stream_samples": 232,
+     "null_watts": 0,
+     "stream_mean_w": 62.4
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 417.8,
+     "fit_avg_w": 314,
+     "start_offset_s": 6606,
+     "stream_samples": 418,
+     "null_watts": 0,
+     "stream_mean_w": 314.8
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 1068.8,
+     "fit_avg_w": 121,
+     "start_offset_s": 7023,
+     "stream_samples": 824,
+     "null_watts": 0,
+     "stream_mean_w": 120.5
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 900.9,
+     "fit_avg_w": 253,
+     "start_offset_s": 8092,
+     "stream_samples": 901,
+     "null_watts": 0,
+     "stream_mean_w": 252.8
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 1428.8,
+     "fit_avg_w": 168,
+     "start_offset_s": 8993,
+     "stream_samples": 1343,
+     "null_watts": 0,
+     "stream_mean_w": 167.5
+    }
+   ]
+  },
+  {
+   "id": "i129358451",
+   "date": "2026-03-04",
+   "iso_week": "2026-W10",
+   "type": "Ride",
+   "name": "翁金3h有氧",
+   "device_watts": true,
+   "icu_training_load": 171,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10746,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 231,
+    "300": 164,
+    "320": 131,
+    "340": 113
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i129661565",
+   "date": "2026-03-05",
+   "iso_week": "2026-W10",
+   "type": "Ride",
+   "name": "h53 阈值训练",
+   "device_watts": true,
+   "icu_training_load": 218,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12867,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 26,
+   "dropout_s_in_gaps_le_5s": 13,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2463,
+    "300": 1489,
+    "320": 689,
+    "340": 348
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4497,
+     "duration_s": 658,
+     "mean_w": 293.7
+    },
+    {
+     "start_s": 5406,
+     "duration_s": 648,
+     "mean_w": 298.6
+    },
+    {
+     "start_s": 6251,
+     "duration_s": 663,
+     "mean_w": 282.9
+    },
+    {
+     "start_s": 7153,
+     "duration_s": 637,
+     "mean_w": 297.7
+    },
+    {
+     "start_s": 8041,
+     "duration_s": 643,
+     "mean_w": 291.7
+    }
+   ]
+  },
+  {
+   "id": "i130120712",
+   "date": "2026-03-07",
+   "iso_week": "2026-W10",
+   "type": "Ride",
+   "name": "☀️休闲骑",
+   "device_watts": true,
+   "icu_training_load": 120,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 8853,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 26,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 809,
+    "300": 700,
+    "320": 629,
+    "340": 522
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 7341,
+     "duration_s": 713,
+     "mean_w": 281.5
+    }
+   ]
+  },
+  {
+   "id": "i130348639",
+   "date": "2026-03-08",
+   "iso_week": "2026-W10",
+   "type": "Ride",
+   "name": "☀️翁金happy 100",
+   "device_watts": true,
+   "icu_training_load": 214,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10923,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 19,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1812,
+    "300": 1361,
+    "320": 1059,
+    "340": 773
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 5638,
+     "duration_s": 489,
+     "mean_w": 281.1
+    },
+    {
+     "start_s": 9535,
+     "duration_s": 758,
+     "mean_w": 317.6
+    },
+    {
+     "start_s": 13648,
+     "duration_s": 620,
+     "mean_w": 289.8
+    }
+   ]
+  },
+  {
+   "id": "i130595513",
+   "date": "2026-03-09",
+   "iso_week": "2026-W11",
+   "type": "Ride",
+   "name": "lsd（一路妖风吹的头疼…）",
+   "device_watts": true,
+   "icu_training_load": 173,
+   "longjing_candidate": false,
+   "source": "local:2026-03-09_i130595513.json",
+   "samples": 13713,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 41,
+   "dropout_s_in_gaps_le_5s": 38,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 121,
+    "300": 63,
+    "320": 34,
+    "340": 10
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i130875012",
+   "date": "2026-03-10",
+   "iso_week": "2026-W11",
+   "type": "Ride",
+   "name": "半打 全是人和车",
+   "device_watts": true,
+   "icu_training_load": 204,
+   "longjing_candidate": true,
+   "source": "local:2026-03-10_i130875012.json",
+   "samples": 10339,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 17,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2831,
+    "300": 2190,
+    "320": 1397,
+    "340": 731
+   },
+   "sustained_ge280_8min": [],
+   "laps_raw_count": 27,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3479.3,
+     "fit_avg_w": 161,
+     "start_offset_s": 0,
+     "stream_samples": 3142,
+     "null_watts": 0,
+     "stream_mean_w": 161.0
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 435.8,
+     "fit_avg_w": 306,
+     "start_offset_s": 3479,
+     "stream_samples": 436,
+     "null_watts": 0,
+     "stream_mean_w": 306.1
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 233.1,
+     "fit_avg_w": 54,
+     "start_offset_s": 3915,
+     "stream_samples": 231,
+     "null_watts": 0,
+     "stream_mean_w": 53.8
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 378.5,
+     "fit_avg_w": 315,
+     "start_offset_s": 4148,
+     "stream_samples": 379,
+     "null_watts": 0,
+     "stream_mean_w": 314.7
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 256.2,
+     "fit_avg_w": 50,
+     "start_offset_s": 4526,
+     "stream_samples": 257,
+     "null_watts": 0,
+     "stream_mean_w": 49.9
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 424.5,
+     "fit_avg_w": 316,
+     "start_offset_s": 4783,
+     "stream_samples": 425,
+     "null_watts": 0,
+     "stream_mean_w": 315.8
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 222.6,
+     "fit_avg_w": 63,
+     "start_offset_s": 5207,
+     "stream_samples": 223,
+     "null_watts": 0,
+     "stream_mean_w": 62.8
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 374.5,
+     "fit_avg_w": 318,
+     "start_offset_s": 5430,
+     "stream_samples": 375,
+     "null_watts": 0,
+     "stream_mean_w": 317.5
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 237.9,
+     "fit_avg_w": 53,
+     "start_offset_s": 5804,
+     "stream_samples": 238,
+     "null_watts": 0,
+     "stream_mean_w": 52.6
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 413.3,
+     "fit_avg_w": 320,
+     "start_offset_s": 6042,
+     "stream_samples": 414,
+     "null_watts": 0,
+     "stream_mean_w": 320.2
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 211.4,
+     "fit_avg_w": 40,
+     "start_offset_s": 6455,
+     "stream_samples": 212,
+     "null_watts": 0,
+     "stream_mean_w": 39.6
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 363.4,
+     "fit_avg_w": 335,
+     "start_offset_s": 6667,
+     "stream_samples": 364,
+     "null_watts": 0,
+     "stream_mean_w": 334.5
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 275.9,
+     "fit_avg_w": 29,
+     "start_offset_s": 7030,
+     "stream_samples": 276,
+     "null_watts": 0,
+     "stream_mean_w": 28.9
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 60.7,
+     "fit_avg_w": 283,
+     "start_offset_s": 7306,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 283.2
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 30.5,
+     "fit_avg_w": 355,
+     "start_offset_s": 7367,
+     "stream_samples": 31,
+     "null_watts": 0,
+     "stream_mean_w": 358.7
+    },
+    {
+     "lap": 16,
+     "fit_duration_s": 65.5,
+     "fit_avg_w": 289,
+     "start_offset_s": 7397,
+     "stream_samples": 66,
+     "null_watts": 0,
+     "stream_mean_w": 288.6
+    },
+    {
+     "lap": 17,
+     "fit_duration_s": 30.8,
+     "fit_avg_w": 375,
+     "start_offset_s": 7463,
+     "stream_samples": 31,
+     "null_watts": 0,
+     "stream_mean_w": 375.0
+    },
+    {
+     "lap": 18,
+     "fit_duration_s": 60.8,
+     "fit_avg_w": 249,
+     "start_offset_s": 7494,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 248.0
+    },
+    {
+     "lap": 19,
+     "fit_duration_s": 29.5,
+     "fit_avg_w": 426,
+     "start_offset_s": 7554,
+     "stream_samples": 30,
+     "null_watts": 0,
+     "stream_mean_w": 426.3
+    },
+    {
+     "lap": 20,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 267,
+     "start_offset_s": 7584,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 267.1
+    },
+    {
+     "lap": 21,
+     "fit_duration_s": 31.3,
+     "fit_avg_w": 391,
+     "start_offset_s": 7645,
+     "stream_samples": 32,
+     "null_watts": 0,
+     "stream_mean_w": 386.7
+    },
+    {
+     "lap": 22,
+     "fit_duration_s": 53.5,
+     "fit_avg_w": 286,
+     "start_offset_s": 7676,
+     "stream_samples": 54,
+     "null_watts": 0,
+     "stream_mean_w": 286.0
+    },
+    {
+     "lap": 23,
+     "fit_duration_s": 1182.1,
+     "fit_avg_w": 109,
+     "start_offset_s": 7730,
+     "stream_samples": 846,
+     "null_watts": 0,
+     "stream_mean_w": 108.5
+    },
+    {
+     "lap": 24,
+     "fit_duration_s": 601.3,
+     "fit_avg_w": 263,
+     "start_offset_s": 8912,
+     "stream_samples": 602,
+     "null_watts": 0,
+     "stream_mean_w": 263.0
+    },
+    {
+     "lap": 25,
+     "fit_duration_s": 159.5,
+     "fit_avg_w": 206,
+     "start_offset_s": 9513,
+     "stream_samples": 160,
+     "null_watts": 0,
+     "stream_mean_w": 206.3
+    },
+    {
+     "lap": 26,
+     "fit_duration_s": 9.4,
+     "fit_avg_w": 772,
+     "start_offset_s": 9673,
+     "stream_samples": 10,
+     "null_watts": 0,
+     "stream_mean_w": 767.9
+    },
+    {
+     "lap": 27,
+     "fit_duration_s": 1449.1,
+     "fit_avg_w": 186,
+     "start_offset_s": 9682,
+     "stream_samples": 1335,
+     "null_watts": 0,
+     "stream_mean_w": 185.2
+    }
+   ]
+  },
+  {
+   "id": "i131122337",
+   "date": "2026-03-11",
+   "iso_week": "2026-W11",
+   "type": "Ride",
+   "name": "三江两岸有氧双排",
+   "device_watts": true,
+   "icu_training_load": 162,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12950,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 114,
+   "dropout_s_in_gaps_le_5s": 101,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 114,
+    "300": 67,
+    "320": 40,
+    "340": 28
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i131156159",
+   "date": "2026-03-11",
+   "iso_week": "2026-W11",
+   "type": "Ride",
+   "name": "骑行",
+   "device_watts": true,
+   "icu_training_load": 7,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2763,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 407,
+   "dropout_s_in_gaps_le_5s": 233,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2,
+    "300": 1,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i132098490",
+   "date": "2026-03-15",
+   "iso_week": "2026-W11",
+   "type": "Ride",
+   "name": "抢回kom👑",
+   "device_watts": true,
+   "icu_training_load": 190,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12684,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 86,
+   "dropout_s_in_gaps_le_5s": 76,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 501,
+    "300": 432,
+    "320": 387,
+    "340": 344
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i132370661",
+   "date": "2026-03-16",
+   "iso_week": "2026-W12",
+   "type": "Ride",
+   "name": "探路探得下单大飞轮了",
+   "device_watts": true,
+   "icu_training_load": 188,
+   "longjing_candidate": false,
+   "source": "local:2026-03-16_i132370661.json",
+   "samples": 11721,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 19,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2011,
+    "300": 1260,
+    "320": 693,
+    "340": 377
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3597,
+     "duration_s": 537,
+     "mean_w": 280.2
+    },
+    {
+     "start_s": 8728,
+     "duration_s": 1525,
+     "mean_w": 291.1
+    }
+   ]
+  },
+  {
+   "id": "i132892666",
+   "date": "2026-03-18",
+   "iso_week": "2026-W12",
+   "type": "VirtualRide",
+   "name": "3x10sets30s/15s",
+   "device_watts": true,
+   "icu_training_load": 64,
+   "longjing_candidate": false,
+   "source": "local:2026-03-18_i132892666.json",
+   "samples": 3029,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 974,
+    "300": 945,
+    "320": 870,
+    "340": 696
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i133142489",
+   "date": "2026-03-19",
+   "iso_week": "2026-W12",
+   "type": "Ride",
+   "name": "轻松有氧+冲刺",
+   "device_watts": true,
+   "icu_training_load": 109,
+   "longjing_candidate": false,
+   "source": "local:2026-03-19_i133142489.json",
+   "samples": 7070,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 95,
+    "300": 85,
+    "320": 77,
+    "340": 75
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i133632565",
+   "date": "2026-03-21",
+   "iso_week": "2026-W12",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 197,
+   "longjing_candidate": false,
+   "source": "local:2026-03-21_i133632565.json",
+   "samples": 8866,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 15,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1842,
+    "300": 1352,
+    "320": 917,
+    "340": 569
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4436,
+     "duration_s": 1865,
+     "mean_w": 287.6
+    }
+   ]
+  },
+  {
+   "id": "i133847457",
+   "date": "2026-03-22",
+   "iso_week": "2026-W12",
+   "type": "Ride",
+   "name": "旺旺训练营之雨骑牵牛岗到失温",
+   "device_watts": true,
+   "icu_training_load": 272,
+   "longjing_candidate": false,
+   "source": "local:2026-03-22_i133847457.json",
+   "samples": 14113,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 249,
+   "dropout_s_in_gaps_le_5s": 238,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3405,
+    "300": 1975,
+    "320": 964,
+    "340": 491
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4810,
+     "duration_s": 3520,
+     "mean_w": 280.6
+    }
+   ]
+  },
+  {
+   "id": "i134622979",
+   "date": "2026-03-25",
+   "iso_week": "2026-W13",
+   "type": "Ride",
+   "name": "休闲局",
+   "device_watts": true,
+   "icu_training_load": 93,
+   "longjing_candidate": false,
+   "source": "local:2026-03-25_i134622979.json",
+   "samples": 6924,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 9,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 869,
+    "300": 742,
+    "320": 612,
+    "340": 521
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3517,
+     "duration_s": 526,
+     "mean_w": 281.7
+    }
+   ]
+  },
+  {
+   "id": "i134622985",
+   "date": "2026-03-25",
+   "iso_week": "2026-W13",
+   "type": "Ride",
+   "name": "真冲不过🐢",
+   "device_watts": true,
+   "icu_training_load": 10,
+   "longjing_candidate": false,
+   "source": "local:2026-03-25_i134622985.json",
+   "samples": 213,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 70,
+    "300": 66,
+    "320": 63,
+    "340": 57
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i134859300",
+   "date": "2026-03-26",
+   "iso_week": "2026-W13",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 5,
+   "longjing_candidate": false,
+   "source": "local:2026-03-26_i134859300.json",
+   "samples": 2248,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 6,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 50,
+    "300": 42,
+    "320": 39,
+    "340": 33
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i135082341",
+   "date": "2026-03-27",
+   "iso_week": "2026-W13",
+   "type": "VirtualRide",
+   "name": "室内骑行",
+   "device_watts": true,
+   "icu_training_load": 33,
+   "longjing_candidate": false,
+   "source": "local:2026-03-27_i135082341.json",
+   "samples": 2701,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 208,
+    "300": 192,
+    "320": 154,
+    "340": 88
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i135302575",
+   "date": "2026-03-28",
+   "iso_week": "2026-W13",
+   "type": "Ride",
+   "name": "2026萧山天路爬坡赛精英组19名",
+   "device_watts": true,
+   "icu_training_load": 47,
+   "longjing_candidate": false,
+   "source": "local:2026-03-28_i135302575.json",
+   "samples": 1587,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1037,
+    "300": 833,
+    "320": 618,
+    "340": 428
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 81,
+     "duration_s": 1578,
+     "mean_w": 290.9
+    }
+   ]
+  },
+  {
+   "id": "i135548292",
+   "date": "2026-03-29",
+   "iso_week": "2026-W13",
+   "type": "Ride",
+   "name": "黄山黟县公开组10th追了一路 单飞训练了\n没意思 下坡亡➕掉链故障王",
+   "device_watts": true,
+   "icu_training_load": 195,
+   "longjing_candidate": false,
+   "source": "local:2026-03-29_i135548292.json",
+   "samples": 7922,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 3481,
+    "300": 2874,
+    "320": 2257,
+    "340": 1673
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 819,
+     "duration_s": 1736,
+     "mean_w": 280.5
+    },
+    {
+     "start_s": 6315,
+     "duration_s": 663,
+     "mean_w": 280.5
+    }
+   ]
+  },
+  {
+   "id": "i136065211",
+   "date": "2026-03-31",
+   "iso_week": "2026-W14",
+   "type": "Ride",
+   "name": "🌧️刷一下赛段",
+   "device_watts": true,
+   "icu_training_load": 191,
+   "longjing_candidate": false,
+   "source": "local:2026-03-31_i136065211.json",
+   "samples": 11037,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 22,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2016,
+    "300": 1412,
+    "320": 956,
+    "340": 693
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4671,
+     "duration_s": 596,
+     "mean_w": 344.0
+    },
+    {
+     "start_s": 11829,
+     "duration_s": 1365,
+     "mean_w": 296.5
+    }
+   ]
+  },
+  {
+   "id": "i136424509",
+   "date": "2026-04-01",
+   "iso_week": "2026-W14",
+   "type": "Ride",
+   "name": "好久没之江东了",
+   "device_watts": true,
+   "icu_training_load": 52,
+   "longjing_candidate": false,
+   "source": "local:2026-04-01_i136424509.json",
+   "samples": 4491,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 25,
+    "300": 18,
+    "320": 9,
+    "340": 9
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i136626300",
+   "date": "2026-04-02",
+   "iso_week": "2026-W14",
+   "type": "Ride",
+   "name": "单飞进化巡山速通  苦练下坡",
+   "device_watts": true,
+   "icu_training_load": 225,
+   "longjing_candidate": false,
+   "source": "local:2026-04-02_i136626300.json",
+   "samples": 14850,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 123,
+   "dropout_s_in_gaps_le_5s": 113,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2591,
+    "300": 1893,
+    "320": 1352,
+    "340": 914
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 5143,
+     "duration_s": 1076,
+     "mean_w": 285.5
+    },
+    {
+     "start_s": 6767,
+     "duration_s": 486,
+     "mean_w": 281.6
+    }
+   ]
+  },
+  {
+   "id": "i137083876",
+   "date": "2026-04-04",
+   "iso_week": "2026-W14",
+   "type": "Ride",
+   "name": "清明DAY 1 龙泉-百山祖-庆元",
+   "device_watts": true,
+   "icu_training_load": 247,
+   "longjing_candidate": false,
+   "source": "local:2026-04-04_i137083876.json",
+   "samples": 17288,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 203,
+   "dropout_s_in_gaps_le_5s": 195,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2189,
+    "300": 1250,
+    "320": 730,
+    "340": 483
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3021,
+     "duration_s": 1192,
+     "mean_w": 280.0
+    },
+    {
+     "start_s": 14189,
+     "duration_s": 482,
+     "mean_w": 281.5
+    }
+   ]
+  },
+  {
+   "id": "i137331114",
+   "date": "2026-04-05",
+   "iso_week": "2026-W14",
+   "type": "Ride",
+   "name": "清明DAY 2 庆元-龙泉",
+   "device_watts": true,
+   "icu_training_load": 170,
+   "longjing_candidate": false,
+   "source": "local:2026-04-05_i137331114.json",
+   "samples": 17090,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 358,
+   "dropout_s_in_gaps_le_5s": 334,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 685,
+    "300": 493,
+    "320": 343,
+    "340": 256
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2508,
+     "duration_s": 499,
+     "mean_w": 283.4
+    }
+   ]
+  },
+  {
+   "id": "i137513392",
+   "date": "2026-04-06",
+   "iso_week": "2026-W15",
+   "type": "Ride",
+   "name": "清明DAY3 千岛湖亚运路线逆时针精简版",
+   "device_watts": true,
+   "icu_training_load": 145,
+   "longjing_candidate": false,
+   "source": "local:2026-04-06_i137513392.json",
+   "samples": 7444,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 7,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1495,
+    "300": 1075,
+    "320": 804,
+    "340": 617
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3131,
+     "duration_s": 607,
+     "mean_w": 287.3
+    }
+   ]
+  },
+  {
+   "id": "i138057807",
+   "date": "2026-04-08",
+   "iso_week": "2026-W15",
+   "type": "Ride",
+   "name": "中泰无氧骑行",
+   "device_watts": true,
+   "icu_training_load": 282,
+   "longjing_candidate": false,
+   "source": "local:2026-04-08_i138057807.json",
+   "samples": 18981,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 58,
+   "dropout_s_in_gaps_le_5s": 18,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1967,
+    "300": 1663,
+    "320": 1417,
+    "340": 1217
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i138344084",
+   "date": "2026-04-09",
+   "iso_week": "2026-W15",
+   "type": "Ride",
+   "name": "三江两岸乱骑",
+   "device_watts": true,
+   "icu_training_load": 194,
+   "longjing_candidate": false,
+   "source": "local:2026-04-09_i138344084.json",
+   "samples": 13893,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 28,
+   "dropout_s_in_gaps_le_5s": 8,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 903,
+    "300": 739,
+    "320": 628,
+    "340": 535
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i138607618",
+   "date": "2026-04-10",
+   "iso_week": "2026-W15",
+   "type": "Ride",
+   "name": "☀️翁金二区有氧",
+   "device_watts": true,
+   "icu_training_load": 124,
+   "longjing_candidate": false,
+   "source": "local:2026-04-10_i138607618.json",
+   "samples": 10664,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 14,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 80,
+    "300": 44,
+    "320": 27,
+    "340": 19
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i139065650",
+   "date": "2026-04-12",
+   "iso_week": "2026-W15",
+   "type": "Ride",
+   "name": "龙井vo2max训练（车太多了…",
+   "device_watts": true,
+   "icu_training_load": 175,
+   "longjing_candidate": true,
+   "source": "local:2026-04-12_i139065650.json",
+   "samples": 9752,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 31,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2188,
+    "300": 2047,
+    "320": 1800,
+    "340": 1356
+   },
+   "sustained_ge280_8min": [],
+   "laps_raw_count": 16,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 7183.3,
+     "fit_avg_w": 148,
+     "start_offset_s": 0,
+     "stream_samples": 2970,
+     "null_watts": 0,
+     "stream_mean_w": 146.9
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 365.2,
+     "fit_avg_w": 339,
+     "start_offset_s": 7183,
+     "stream_samples": 366,
+     "null_watts": 0,
+     "stream_mean_w": 336.5
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 320.7,
+     "fit_avg_w": 26,
+     "start_offset_s": 7548,
+     "stream_samples": 321,
+     "null_watts": 0,
+     "stream_mean_w": 25.8
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 395.3,
+     "fit_avg_w": 331,
+     "start_offset_s": 7869,
+     "stream_samples": 396,
+     "null_watts": 0,
+     "stream_mean_w": 330.8
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 297.2,
+     "fit_avg_w": 33,
+     "start_offset_s": 8264,
+     "stream_samples": 298,
+     "null_watts": 0,
+     "stream_mean_w": 33.3
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 344.7,
+     "fit_avg_w": 329,
+     "start_offset_s": 8562,
+     "stream_samples": 345,
+     "null_watts": 0,
+     "stream_mean_w": 329.2
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 324.5,
+     "fit_avg_w": 10,
+     "start_offset_s": 8906,
+     "stream_samples": 325,
+     "null_watts": 0,
+     "stream_mean_w": 9.9
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 60.8,
+     "fit_avg_w": 257,
+     "start_offset_s": 9231,
+     "stream_samples": 52,
+     "null_watts": 0,
+     "stream_mean_w": 252.0
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 318.7,
+     "fit_avg_w": 335,
+     "start_offset_s": 9292,
+     "stream_samples": 319,
+     "null_watts": 0,
+     "stream_mean_w": 334.7
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 316.5,
+     "fit_avg_w": 17,
+     "start_offset_s": 9610,
+     "stream_samples": 248,
+     "null_watts": 0,
+     "stream_mean_w": 16.9
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 512.6,
+     "fit_avg_w": 195,
+     "start_offset_s": 9927,
+     "stream_samples": 509,
+     "null_watts": 0,
+     "stream_mean_w": 195.3
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 235.9,
+     "fit_avg_w": 349,
+     "start_offset_s": 10439,
+     "stream_samples": 236,
+     "null_watts": 0,
+     "stream_mean_w": 349.1
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 30.5,
+     "fit_avg_w": 311,
+     "start_offset_s": 10675,
+     "stream_samples": 31,
+     "null_watts": 0,
+     "stream_mean_w": 310.5
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 1518.2,
+     "fit_avg_w": 62,
+     "start_offset_s": 10706,
+     "stream_samples": 1027,
+     "null_watts": 0,
+     "stream_mean_w": 62.5
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 421.5,
+     "fit_avg_w": 297,
+     "start_offset_s": 12224,
+     "stream_samples": 422,
+     "null_watts": 0,
+     "stream_mean_w": 296.9
+    },
+    {
+     "lap": 16,
+     "fit_duration_s": 2090.7,
+     "fit_avg_w": 129,
+     "start_offset_s": 12646,
+     "stream_samples": 1894,
+     "null_watts": 0,
+     "stream_mean_w": 129.2
+    }
+   ]
+  },
+  {
+   "id": "i140236575",
+   "date": "2026-04-16",
+   "iso_week": "2026-W16",
+   "type": "Ride",
+   "name": "高效3h zone2",
+   "device_watts": true,
+   "icu_training_load": 156,
+   "longjing_candidate": false,
+   "source": "local:2026-04-16_i140236575.json",
+   "samples": 11430,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 93,
+    "300": 63,
+    "320": 45,
+    "340": 33
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i140518611",
+   "date": "2026-04-17",
+   "iso_week": "2026-W16",
+   "type": "Ride",
+   "name": "Morning ☕️ Ride",
+   "device_watts": true,
+   "icu_training_load": 100,
+   "longjing_candidate": false,
+   "source": "local:2026-04-17_i140518611.json",
+   "samples": 8860,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 27,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 522,
+    "300": 422,
+    "320": 334,
+    "340": 286
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i141011343",
+   "date": "2026-04-19",
+   "iso_week": "2026-W16",
+   "type": "Ride",
+   "name": "Morning Ride",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1024,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i141020569",
+   "date": "2026-04-19",
+   "iso_week": "2026-W16",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 1,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1296,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i141348727",
+   "date": "2026-04-20",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "龙门lsd 🥵",
+   "device_watts": true,
+   "icu_training_load": 208,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 19197,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 348,
+   "dropout_s_in_gaps_le_5s": 340,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 199,
+    "300": 126,
+    "320": 92,
+    "340": 67
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i141907139",
+   "date": "2026-04-22",
+   "iso_week": "2026-W17",
+   "type": "VirtualRide",
+   "name": "室内骑行",
+   "device_watts": true,
+   "icu_training_load": 73,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 3600,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1007,
+    "300": 976,
+    "320": 943,
+    "340": 828
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1026,
+     "duration_s": 599,
+     "mean_w": 291.5
+    }
+   ]
+  },
+  {
+   "id": "i141925798",
+   "date": "2026-04-22",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "Afternoon Ride",
+   "device_watts": null,
+   "icu_training_load": 5,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "missing": "no power stream"
+  },
+  {
+   "id": "i141944382",
+   "date": "2026-04-22",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "Afternoon Ride",
+   "device_watts": true,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 879,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 9,
+    "300": 2,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i142285325",
+   "date": "2026-04-23",
+   "iso_week": "2026-W17",
+   "type": "VirtualRide",
+   "name": "室内骑行",
+   "device_watts": true,
+   "icu_training_load": 28,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1801,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 293,
+    "300": 196,
+    "320": 68,
+    "340": 30
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i142702330",
+   "date": "2026-04-25",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "王位山爬坡赛6th",
+   "device_watts": true,
+   "icu_training_load": 38,
+   "longjing_candidate": false,
+   "source": "local:2026-04-25_王位山爬坡赛6th_FULL.json",
+   "samples": 1233,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 867,
+    "300": 760,
+    "320": 614,
+    "340": 457
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1,
+     "duration_s": 1187,
+     "mean_w": 314.5
+    }
+   ]
+  },
+  {
+   "id": "i142702351",
+   "date": "2026-04-25",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 7,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1210,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 56,
+    "300": 51,
+    "320": 48,
+    "340": 41
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i142756418",
+   "date": "2026-04-25",
+   "iso_week": "2026-W17",
+   "type": "Ride",
+   "name": "莫干山环线推推骑",
+   "device_watts": true,
+   "icu_training_load": 158,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 15531,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 318,
+   "dropout_s_in_gaps_le_5s": 300,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1047,
+    "300": 790,
+    "320": 593,
+    "340": 485
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i143271500",
+   "date": "2026-04-27",
+   "iso_week": "2026-W18",
+   "type": "Ride",
+   "name": "龙一打南坡起点👑",
+   "device_watts": true,
+   "icu_training_load": 251,
+   "longjing_candidate": true,
+   "source": "local:2026-04-27_i143271500.json",
+   "samples": 14982,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 20,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 4220,
+    "300": 2547,
+    "320": 1029,
+    "340": 409
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4138,
+     "duration_s": 496,
+     "mean_w": 281.6
+    },
+    {
+     "start_s": 5405,
+     "duration_s": 487,
+     "mean_w": 286.6
+    },
+    {
+     "start_s": 9267,
+     "duration_s": 480,
+     "mean_w": 283.2
+    }
+   ],
+   "laps_raw_count": 31,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3583.5,
+     "fit_avg_w": 152,
+     "start_offset_s": 0,
+     "stream_samples": 3003,
+     "null_watts": 0,
+     "stream_mean_w": 151.4
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 381.7,
+     "fit_avg_w": 304,
+     "start_offset_s": 3583,
+     "stream_samples": 382,
+     "null_watts": 0,
+     "stream_mean_w": 304.3
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 234.4,
+     "fit_avg_w": 81,
+     "start_offset_s": 3965,
+     "stream_samples": 235,
+     "null_watts": 0,
+     "stream_mean_w": 80.2
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 435.5,
+     "fit_avg_w": 304,
+     "start_offset_s": 4199,
+     "stream_samples": 436,
+     "null_watts": 0,
+     "stream_mean_w": 304.3
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 205.4,
+     "fit_avg_w": 64,
+     "start_offset_s": 4635,
+     "stream_samples": 206,
+     "null_watts": 0,
+     "stream_mean_w": 63.4
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 381.0,
+     "fit_avg_w": 303,
+     "start_offset_s": 4840,
+     "stream_samples": 382,
+     "null_watts": 0,
+     "stream_mean_w": 303.1
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 248.9,
+     "fit_avg_w": 76,
+     "start_offset_s": 5221,
+     "stream_samples": 249,
+     "null_watts": 0,
+     "stream_mean_w": 75.8
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 424.5,
+     "fit_avg_w": 307,
+     "start_offset_s": 5470,
+     "stream_samples": 425,
+     "null_watts": 0,
+     "stream_mean_w": 307.4
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 217.6,
+     "fit_avg_w": 64,
+     "start_offset_s": 5895,
+     "stream_samples": 218,
+     "null_watts": 0,
+     "stream_mean_w": 63.8
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 380.3,
+     "fit_avg_w": 302,
+     "start_offset_s": 6112,
+     "stream_samples": 381,
+     "null_watts": 0,
+     "stream_mean_w": 302.2
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 254.7,
+     "fit_avg_w": 60,
+     "start_offset_s": 6493,
+     "stream_samples": 255,
+     "null_watts": 0,
+     "stream_mean_w": 61.3
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 434.5,
+     "fit_avg_w": 292,
+     "start_offset_s": 6747,
+     "stream_samples": 435,
+     "null_watts": 0,
+     "stream_mean_w": 292.4
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 211.9,
+     "fit_avg_w": 65,
+     "start_offset_s": 7182,
+     "stream_samples": 212,
+     "null_watts": 0,
+     "stream_mean_w": 64.2
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 378.3,
+     "fit_avg_w": 301,
+     "start_offset_s": 7394,
+     "stream_samples": 379,
+     "null_watts": 0,
+     "stream_mean_w": 300.4
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 263.7,
+     "fit_avg_w": 59,
+     "start_offset_s": 7772,
+     "stream_samples": 264,
+     "null_watts": 0,
+     "stream_mean_w": 59.2
+    },
+    {
+     "lap": 16,
+     "fit_duration_s": 438.1,
+     "fit_avg_w": 289,
+     "start_offset_s": 8036,
+     "stream_samples": 439,
+     "null_watts": 0,
+     "stream_mean_w": 288.8
+    },
+    {
+     "lap": 17,
+     "fit_duration_s": 208.5,
+     "fit_avg_w": 47,
+     "start_offset_s": 8474,
+     "stream_samples": 209,
+     "null_watts": 0,
+     "stream_mean_w": 47.1
+    },
+    {
+     "lap": 18,
+     "fit_duration_s": 377.3,
+     "fit_avg_w": 299,
+     "start_offset_s": 8682,
+     "stream_samples": 378,
+     "null_watts": 0,
+     "stream_mean_w": 299.0
+    },
+    {
+     "lap": 19,
+     "fit_duration_s": 256.2,
+     "fit_avg_w": 58,
+     "start_offset_s": 9060,
+     "stream_samples": 257,
+     "null_watts": 0,
+     "stream_mean_w": 58.0
+    },
+    {
+     "lap": 20,
+     "fit_duration_s": 431.1,
+     "fit_avg_w": 301,
+     "start_offset_s": 9316,
+     "stream_samples": 432,
+     "null_watts": 0,
+     "stream_mean_w": 300.7
+    },
+    {
+     "lap": 21,
+     "fit_duration_s": 218.6,
+     "fit_avg_w": 39,
+     "start_offset_s": 9747,
+     "stream_samples": 219,
+     "null_watts": 0,
+     "stream_mean_w": 39.4
+    },
+    {
+     "lap": 22,
+     "fit_duration_s": 391.3,
+     "fit_avg_w": 291,
+     "start_offset_s": 9966,
+     "stream_samples": 392,
+     "null_watts": 0,
+     "stream_mean_w": 290.6
+    },
+    {
+     "lap": 23,
+     "fit_duration_s": 250.9,
+     "fit_avg_w": 54,
+     "start_offset_s": 10357,
+     "stream_samples": 251,
+     "null_watts": 0,
+     "stream_mean_w": 54.3
+    },
+    {
+     "lap": 24,
+     "fit_duration_s": 451.5,
+     "fit_avg_w": 273,
+     "start_offset_s": 10608,
+     "stream_samples": 452,
+     "null_watts": 0,
+     "stream_mean_w": 273.4
+    },
+    {
+     "lap": 25,
+     "fit_duration_s": 225.7,
+     "fit_avg_w": 35,
+     "start_offset_s": 11059,
+     "stream_samples": 226,
+     "null_watts": 0,
+     "stream_mean_w": 34.8
+    },
+    {
+     "lap": 26,
+     "fit_duration_s": 435.8,
+     "fit_avg_w": 252,
+     "start_offset_s": 11285,
+     "stream_samples": 436,
+     "null_watts": 0,
+     "stream_mean_w": 252.1
+    },
+    {
+     "lap": 27,
+     "fit_duration_s": 247.2,
+     "fit_avg_w": 49,
+     "start_offset_s": 11721,
+     "stream_samples": 248,
+     "null_watts": 0,
+     "stream_mean_w": 49.0
+    },
+    {
+     "lap": 28,
+     "fit_duration_s": 583.4,
+     "fit_avg_w": 202,
+     "start_offset_s": 11968,
+     "stream_samples": 584,
+     "null_watts": 0,
+     "stream_mean_w": 202.1
+    },
+    {
+     "lap": 29,
+     "fit_duration_s": 2008.6,
+     "fit_avg_w": 99,
+     "start_offset_s": 12551,
+     "stream_samples": 795,
+     "null_watts": 0,
+     "stream_mean_w": 98.9
+    },
+    {
+     "lap": 30,
+     "fit_duration_s": 984.7,
+     "fit_avg_w": 178,
+     "start_offset_s": 14560,
+     "stream_samples": 964,
+     "null_watts": 0,
+     "stream_mean_w": 177.9
+    },
+    {
+     "lap": 31,
+     "fit_duration_s": 1270.1,
+     "fit_avg_w": 139,
+     "start_offset_s": 15544,
+     "stream_samples": 1253,
+     "null_watts": 0,
+     "stream_mean_w": 138.9
+    }
+   ]
+  },
+  {
+   "id": "i143530897",
+   "date": "2026-04-28",
+   "iso_week": "2026-W18",
+   "type": "Ride",
+   "name": "2026第一次晨练",
+   "device_watts": true,
+   "icu_training_load": 120,
+   "longjing_candidate": false,
+   "source": "local:2026-04-28_i143530897.json",
+   "samples": 5768,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1969,
+    "300": 1218,
+    "320": 709,
+    "340": 396
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1795,
+     "duration_s": 927,
+     "mean_w": 284.8
+    },
+    {
+     "start_s": 4071,
+     "duration_s": 907,
+     "mean_w": 294.4
+    }
+   ]
+  },
+  {
+   "id": "i144484143",
+   "date": "2026-05-01",
+   "iso_week": "2026-W18",
+   "type": "Ride",
+   "name": "五一 day 1:武义环线",
+   "device_watts": true,
+   "icu_training_load": 284,
+   "longjing_candidate": false,
+   "source": "local:2026-05-01_i144484143.json",
+   "samples": 17510,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1156,
+   "dropout_s_in_gaps_le_5s": 1184,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2858,
+    "300": 1656,
+    "320": 846,
+    "340": 486
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1973,
+     "duration_s": 853,
+     "mean_w": 282.5
+    },
+    {
+     "start_s": 5891,
+     "duration_s": 609,
+     "mean_w": 280.8
+    }
+   ]
+  },
+  {
+   "id": "i144719449",
+   "date": "2026-05-02",
+   "iso_week": "2026-W18",
+   "type": "Ride",
+   "name": "五一 day2：安地水库 大应村环线",
+   "device_watts": true,
+   "icu_training_load": 255,
+   "longjing_candidate": false,
+   "source": "local:2026-05-02_i144719449.json",
+   "samples": 16079,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 575,
+   "dropout_s_in_gaps_le_5s": 558,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3026,
+    "300": 2180,
+    "320": 1330,
+    "340": 791
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1053,
+     "duration_s": 1067,
+     "mean_w": 280.7
+    },
+    {
+     "start_s": 6409,
+     "duration_s": 1349,
+     "mean_w": 288.0
+    },
+    {
+     "start_s": 12614,
+     "duration_s": 613,
+     "mean_w": 297.2
+    }
+   ]
+  },
+  {
+   "id": "i145001687",
+   "date": "2026-05-03",
+   "iso_week": "2026-W18",
+   "type": "Ride",
+   "name": "五一day3：浙西环线",
+   "device_watts": true,
+   "icu_training_load": 244,
+   "longjing_candidate": false,
+   "source": "local:2026-05-03_i145001687.json",
+   "samples": 19325,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1291,
+   "dropout_s_in_gaps_le_5s": 1308,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1720,
+    "300": 1317,
+    "320": 835,
+    "340": 441
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3940,
+     "duration_s": 1580,
+     "mean_w": 284.3
+    }
+   ]
+  },
+  {
+   "id": "i145535326",
+   "date": "2026-05-05",
+   "iso_week": "2026-W19",
+   "type": "Ride",
+   "name": "五一day5：翁金拉狗骑",
+   "device_watts": true,
+   "icu_training_load": 219,
+   "longjing_candidate": false,
+   "source": "local:2026-05-05_i145535326.json",
+   "samples": 13540,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 29,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1485,
+    "300": 1252,
+    "320": 1039,
+    "340": 875
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2620,
+     "duration_s": 830,
+     "mean_w": 309.1
+    }
+   ]
+  },
+  {
+   "id": "i146096514",
+   "date": "2026-05-07",
+   "iso_week": "2026-W19",
+   "type": "VirtualRide",
+   "name": "室内骑行",
+   "device_watts": true,
+   "icu_training_load": 17,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1804,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 37,
+    "300": 35,
+    "320": 33,
+    "340": 29
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i146416029",
+   "date": "2026-05-08",
+   "iso_week": "2026-W19",
+   "type": "Ride",
+   "name": "萧山画八 林峰pr15开骑",
+   "device_watts": true,
+   "icu_training_load": 249,
+   "longjing_candidate": false,
+   "source": "local:2026-05-08_i146416029.json",
+   "samples": 16720,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 447,
+   "dropout_s_in_gaps_le_5s": 437,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2996,
+    "300": 2154,
+    "320": 1382,
+    "340": 744
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 16,
+     "duration_s": 991,
+     "mean_w": 333.4
+    },
+    {
+     "start_s": 1572,
+     "duration_s": 896,
+     "mean_w": 283.3
+    },
+    {
+     "start_s": 13330,
+     "duration_s": 556,
+     "mean_w": 280.3
+    }
+   ]
+  },
+  {
+   "id": "i146876743",
+   "date": "2026-05-10",
+   "iso_week": "2026-W19",
+   "type": "Ride",
+   "name": "航坞山阈值训练🥵",
+   "device_watts": true,
+   "icu_training_load": 167,
+   "longjing_candidate": false,
+   "source": "local:2026-05-10_i146876743.json",
+   "samples": 10996,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 21,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1728,
+    "300": 1285,
+    "320": 926,
+    "340": 492
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4691,
+     "duration_s": 685,
+     "mean_w": 288.3
+    },
+    {
+     "start_s": 5726,
+     "duration_s": 605,
+     "mean_w": 301.5
+    },
+    {
+     "start_s": 6628,
+     "duration_s": 605,
+     "mean_w": 300.2
+    },
+    {
+     "start_s": 7528,
+     "duration_s": 610,
+     "mean_w": 299.4
+    }
+   ]
+  },
+  {
+   "id": "i147394122",
+   "date": "2026-05-12",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "答辩结束后Morning 无氧刺激 Ride",
+   "device_watts": true,
+   "icu_training_load": 149,
+   "longjing_candidate": false,
+   "source": "local:2026-05-12_i147394122.json",
+   "samples": 7553,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 11,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1212,
+    "300": 1176,
+    "320": 1145,
+    "340": 1123
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i147394394",
+   "date": "2026-05-12",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "公路骑行",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "local:2026-05-12_i147394394.json",
+   "samples": 836,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 9,
+    "300": 8,
+    "320": 8,
+    "340": 6
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i147761142",
+   "date": "2026-05-13",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "平王环线休闲骑",
+   "device_watts": true,
+   "icu_training_load": 120,
+   "longjing_candidate": false,
+   "source": "local:2026-05-13_i147761142.json",
+   "samples": 14290,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 176,
+   "dropout_s_in_gaps_le_5s": 171,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 81,
+    "300": 62,
+    "320": 47,
+    "340": 40
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i148355063",
+   "date": "2026-05-15",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "龙井高湿度休闲ride",
+   "device_watts": true,
+   "icu_training_load": 124,
+   "longjing_candidate": true,
+   "source": "local:2026-05-15_i148355063.json",
+   "samples": 8157,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 23,
+   "dropout_s_in_gaps_le_5s": 7,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1207,
+    "300": 1036,
+    "320": 660,
+    "340": 408
+   },
+   "sustained_ge280_8min": [],
+   "laps_raw_count": 24,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3785.8,
+     "fit_avg_w": 129,
+     "start_offset_s": 0,
+     "stream_samples": 3134,
+     "null_watts": 0,
+     "stream_mean_w": 128.5
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 91.1,
+     "fit_avg_w": 327,
+     "start_offset_s": 3786,
+     "stream_samples": 92,
+     "null_watts": 0,
+     "stream_mean_w": 328.4
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 17.3,
+     "fit_avg_w": 534,
+     "start_offset_s": 3877,
+     "stream_samples": 18,
+     "null_watts": 0,
+     "stream_mean_w": 522.6
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 89.8,
+     "fit_avg_w": 316,
+     "start_offset_s": 3894,
+     "stream_samples": 90,
+     "null_watts": 0,
+     "stream_mean_w": 316.0
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 19.5,
+     "fit_avg_w": 473,
+     "start_offset_s": 3984,
+     "stream_samples": 20,
+     "null_watts": 0,
+     "stream_mean_w": 468.9
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 118.6,
+     "fit_avg_w": 316,
+     "start_offset_s": 4003,
+     "stream_samples": 119,
+     "null_watts": 0,
+     "stream_mean_w": 316.4
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 17.8,
+     "fit_avg_w": 413,
+     "start_offset_s": 4122,
+     "stream_samples": 18,
+     "null_watts": 0,
+     "stream_mean_w": 412.6
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 306.7,
+     "fit_avg_w": 17,
+     "start_offset_s": 4140,
+     "stream_samples": 307,
+     "null_watts": 0,
+     "stream_mean_w": 18.3
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 89.6,
+     "fit_avg_w": 318,
+     "start_offset_s": 4446,
+     "stream_samples": 90,
+     "null_watts": 0,
+     "stream_mean_w": 317.9
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 17.8,
+     "fit_avg_w": 481,
+     "start_offset_s": 4536,
+     "stream_samples": 18,
+     "null_watts": 0,
+     "stream_mean_w": 481.4
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 132.1,
+     "fit_avg_w": 312,
+     "start_offset_s": 4554,
+     "stream_samples": 133,
+     "null_watts": 0,
+     "stream_mean_w": 312.2
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 22.8,
+     "fit_avg_w": 491,
+     "start_offset_s": 4686,
+     "stream_samples": 23,
+     "null_watts": 0,
+     "stream_mean_w": 491.1
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 123.6,
+     "fit_avg_w": 315,
+     "start_offset_s": 4709,
+     "stream_samples": 124,
+     "null_watts": 0,
+     "stream_mean_w": 315.5
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 13.0,
+     "fit_avg_w": 525,
+     "start_offset_s": 4832,
+     "stream_samples": 14,
+     "null_watts": 0,
+     "stream_mean_w": 495.1
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 333.0,
+     "fit_avg_w": 19,
+     "start_offset_s": 4845,
+     "stream_samples": 273,
+     "null_watts": 0,
+     "stream_mean_w": 19.2
+    },
+    {
+     "lap": 16,
+     "fit_duration_s": 92.8,
+     "fit_avg_w": 320,
+     "start_offset_s": 5178,
+     "stream_samples": 93,
+     "null_watts": 0,
+     "stream_mean_w": 319.6
+    },
+    {
+     "lap": 17,
+     "fit_duration_s": 15.5,
+     "fit_avg_w": 454,
+     "start_offset_s": 5271,
+     "stream_samples": 16,
+     "null_watts": 0,
+     "stream_mean_w": 454.2
+    },
+    {
+     "lap": 18,
+     "fit_duration_s": 89.8,
+     "fit_avg_w": 313,
+     "start_offset_s": 5287,
+     "stream_samples": 90,
+     "null_watts": 0,
+     "stream_mean_w": 313.0
+    },
+    {
+     "lap": 19,
+     "fit_duration_s": 17.3,
+     "fit_avg_w": 415,
+     "start_offset_s": 5376,
+     "stream_samples": 18,
+     "null_watts": 0,
+     "stream_mean_w": 414.9
+    },
+    {
+     "lap": 20,
+     "fit_duration_s": 129.1,
+     "fit_avg_w": 325,
+     "start_offset_s": 5394,
+     "stream_samples": 130,
+     "null_watts": 0,
+     "stream_mean_w": 326.5
+    },
+    {
+     "lap": 21,
+     "fit_duration_s": 13.3,
+     "fit_avg_w": 528,
+     "start_offset_s": 5523,
+     "stream_samples": 14,
+     "null_watts": 0,
+     "stream_mean_w": 496.4
+    },
+    {
+     "lap": 22,
+     "fit_duration_s": 1534.5,
+     "fit_avg_w": 74,
+     "start_offset_s": 5536,
+     "stream_samples": 893,
+     "null_watts": 0,
+     "stream_mean_w": 74.0
+    },
+    {
+     "lap": 23,
+     "fit_duration_s": 602.9,
+     "fit_avg_w": 214,
+     "start_offset_s": 7070,
+     "stream_samples": 603,
+     "null_watts": 0,
+     "stream_mean_w": 213.7
+    },
+    {
+     "lap": 24,
+     "fit_duration_s": 1844.3,
+     "fit_avg_w": 116,
+     "start_offset_s": 7673,
+     "stream_samples": 1837,
+     "null_watts": 0,
+     "stream_mean_w": 115.8
+    }
+   ]
+  },
+  {
+   "id": "i148664725",
+   "date": "2026-05-16",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1040,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i148934107",
+   "date": "2026-05-17",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "千峡湖精英组8th",
+   "device_watts": true,
+   "icu_training_load": 113,
+   "longjing_candidate": false,
+   "source": "local:2026-05-17_i148934107.json",
+   "samples": 5286,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1847,
+    "300": 1604,
+    "320": 1325,
+    "340": 1083
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1117,
+     "duration_s": 665,
+     "mean_w": 280.8
+    },
+    {
+     "start_s": 2091,
+     "duration_s": 1711,
+     "mean_w": 280.1
+    }
+   ]
+  },
+  {
+   "id": "i148954812",
+   "date": "2026-05-17",
+   "iso_week": "2026-W20",
+   "type": "Ride",
+   "name": "千峡湖逃课 原路返回",
+   "device_watts": true,
+   "icu_training_load": 52,
+   "longjing_candidate": false,
+   "source": "local:2026-05-17_i148954812.json",
+   "samples": 6540,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 158,
+    "300": 92,
+    "320": 51,
+    "340": 24
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i149386577",
+   "date": "2026-05-18",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "翁金孤儿夜骑有氧3h",
+   "device_watts": true,
+   "icu_training_load": 161,
+   "longjing_candidate": false,
+   "source": "local:2026-05-18_i149386577.json",
+   "samples": 10239,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 410,
+    "300": 224,
+    "320": 130,
+    "340": 77
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i149894234",
+   "date": "2026-05-20",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "龙半打雨骑演练ride",
+   "device_watts": true,
+   "icu_training_load": 177,
+   "longjing_candidate": true,
+   "source": "local:2026-05-20_i149894234.json",
+   "samples": 9877,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 14,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2292,
+    "300": 1884,
+    "320": 1392,
+    "340": 920
+   },
+   "sustained_ge280_8min": [],
+   "laps_raw_count": 48,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3351.7,
+     "fit_avg_w": 164,
+     "start_offset_s": 0,
+     "stream_samples": 2990,
+     "null_watts": 0,
+     "stream_mean_w": 163.6
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 339,
+     "start_offset_s": 3352,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 339.1
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 65.5,
+     "fit_avg_w": 303,
+     "start_offset_s": 3412,
+     "stream_samples": 66,
+     "null_watts": 0,
+     "stream_mean_w": 302.8
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 60.3,
+     "fit_avg_w": 342,
+     "start_offset_s": 3478,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 341.2
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 60.3,
+     "fit_avg_w": 298,
+     "start_offset_s": 3538,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 298.0
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 343,
+     "start_offset_s": 3599,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 342.6
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 91.6,
+     "fit_avg_w": 296,
+     "start_offset_s": 3659,
+     "stream_samples": 92,
+     "null_watts": 0,
+     "stream_mean_w": 295.8
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 277.4,
+     "fit_avg_w": 34,
+     "start_offset_s": 3751,
+     "stream_samples": 278,
+     "null_watts": 0,
+     "stream_mean_w": 35.1
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 60.8,
+     "fit_avg_w": 333,
+     "start_offset_s": 4028,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 333.0
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 60.8,
+     "fit_avg_w": 300,
+     "start_offset_s": 4089,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 300.1
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 60.0,
+     "fit_avg_w": 347,
+     "start_offset_s": 4150,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 346.7
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 61.5,
+     "fit_avg_w": 300,
+     "start_offset_s": 4210,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 300.6
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 61.5,
+     "fit_avg_w": 345,
+     "start_offset_s": 4271,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 344.7
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 308,
+     "start_offset_s": 4333,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 308.1
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 61.8,
+     "fit_avg_w": 350,
+     "start_offset_s": 4394,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 350.2
+    },
+    {
+     "lap": 16,
+     "fit_duration_s": 262.9,
+     "fit_avg_w": 15,
+     "start_offset_s": 4456,
+     "stream_samples": 263,
+     "null_watts": 0,
+     "stream_mean_w": 15.3
+    },
+    {
+     "lap": 17,
+     "fit_duration_s": 61.3,
+     "fit_avg_w": 330,
+     "start_offset_s": 4719,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 327.2
+    },
+    {
+     "lap": 18,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 300,
+     "start_offset_s": 4780,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 299.5
+    },
+    {
+     "lap": 19,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 347,
+     "start_offset_s": 4841,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 346.8
+    },
+    {
+     "lap": 20,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 305,
+     "start_offset_s": 4901,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 304.9
+    },
+    {
+     "lap": 21,
+     "fit_duration_s": 60.3,
+     "fit_avg_w": 368,
+     "start_offset_s": 4962,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 367.2
+    },
+    {
+     "lap": 22,
+     "fit_duration_s": 86.6,
+     "fit_avg_w": 311,
+     "start_offset_s": 5022,
+     "stream_samples": 87,
+     "null_watts": 0,
+     "stream_mean_w": 310.8
+    },
+    {
+     "lap": 23,
+     "fit_duration_s": 319.5,
+     "fit_avg_w": 10,
+     "start_offset_s": 5109,
+     "stream_samples": 320,
+     "null_watts": 0,
+     "stream_mean_w": 11.5
+    },
+    {
+     "lap": 24,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 337,
+     "start_offset_s": 5428,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 337.2
+    },
+    {
+     "lap": 25,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 305,
+     "start_offset_s": 5489,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 305.2
+    },
+    {
+     "lap": 26,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 363,
+     "start_offset_s": 5550,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 360.4
+    },
+    {
+     "lap": 27,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 284,
+     "start_offset_s": 5611,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 283.9
+    },
+    {
+     "lap": 28,
+     "fit_duration_s": 61.3,
+     "fit_avg_w": 357,
+     "start_offset_s": 5672,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 355.9
+    },
+    {
+     "lap": 29,
+     "fit_duration_s": 60.5,
+     "fit_avg_w": 304,
+     "start_offset_s": 5733,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 304.2
+    },
+    {
+     "lap": 30,
+     "fit_duration_s": 57.0,
+     "fit_avg_w": 360,
+     "start_offset_s": 5794,
+     "stream_samples": 58,
+     "null_watts": 0,
+     "stream_mean_w": 357.7
+    },
+    {
+     "lap": 31,
+     "fit_duration_s": 302.7,
+     "fit_avg_w": 18,
+     "start_offset_s": 5851,
+     "stream_samples": 275,
+     "null_watts": 0,
+     "stream_mean_w": 17.6
+    },
+    {
+     "lap": 32,
+     "fit_duration_s": 60.3,
+     "fit_avg_w": 357,
+     "start_offset_s": 6154,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 355.1
+    },
+    {
+     "lap": 33,
+     "fit_duration_s": 60.0,
+     "fit_avg_w": 303,
+     "start_offset_s": 6214,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 301.8
+    },
+    {
+     "lap": 34,
+     "fit_duration_s": 60.3,
+     "fit_avg_w": 356,
+     "start_offset_s": 6274,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 355.1
+    },
+    {
+     "lap": 35,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 300,
+     "start_offset_s": 6334,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 300.6
+    },
+    {
+     "lap": 36,
+     "fit_duration_s": 61.8,
+     "fit_avg_w": 362,
+     "start_offset_s": 6395,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 361.7
+    },
+    {
+     "lap": 37,
+     "fit_duration_s": 80.3,
+     "fit_avg_w": 298,
+     "start_offset_s": 6457,
+     "stream_samples": 81,
+     "null_watts": 0,
+     "stream_mean_w": 298.6
+    },
+    {
+     "lap": 38,
+     "fit_duration_s": 293.3,
+     "fit_avg_w": 18,
+     "start_offset_s": 6537,
+     "stream_samples": 294,
+     "null_watts": 0,
+     "stream_mean_w": 17.8
+    },
+    {
+     "lap": 39,
+     "fit_duration_s": 60.7,
+     "fit_avg_w": 361,
+     "start_offset_s": 6831,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 359.2
+    },
+    {
+     "lap": 40,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 312,
+     "start_offset_s": 6891,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 311.1
+    },
+    {
+     "lap": 41,
+     "fit_duration_s": 60.8,
+     "fit_avg_w": 355,
+     "start_offset_s": 6952,
+     "stream_samples": 61,
+     "null_watts": 0,
+     "stream_mean_w": 355.0
+    },
+    {
+     "lap": 42,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 292,
+     "start_offset_s": 7013,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 291.2
+    },
+    {
+     "lap": 43,
+     "fit_duration_s": 61.0,
+     "fit_avg_w": 357,
+     "start_offset_s": 7074,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 354.9
+    },
+    {
+     "lap": 44,
+     "fit_duration_s": 61.1,
+     "fit_avg_w": 309,
+     "start_offset_s": 7135,
+     "stream_samples": 62,
+     "null_watts": 0,
+     "stream_mean_w": 308.9
+    },
+    {
+     "lap": 45,
+     "fit_duration_s": 50.3,
+     "fit_avg_w": 371,
+     "start_offset_s": 7196,
+     "stream_samples": 51,
+     "null_watts": 0,
+     "stream_mean_w": 370.5
+    },
+    {
+     "lap": 46,
+     "fit_duration_s": 1591.6,
+     "fit_avg_w": 96,
+     "start_offset_s": 7247,
+     "stream_samples": 830,
+     "null_watts": 0,
+     "stream_mean_w": 95.8
+    },
+    {
+     "lap": 47,
+     "fit_duration_s": 947.4,
+     "fit_avg_w": 199,
+     "start_offset_s": 8838,
+     "stream_samples": 948,
+     "null_watts": 0,
+     "stream_mean_w": 199.2
+    },
+    {
+     "lap": 48,
+     "fit_duration_s": 1253.2,
+     "fit_avg_w": 182,
+     "start_offset_s": 9785,
+     "stream_samples": 1243,
+     "null_watts": 0,
+     "stream_mean_w": 181.4
+    }
+   ]
+  },
+  {
+   "id": "i150447149",
+   "date": "2026-05-22",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 5,
+   "longjing_candidate": false,
+   "source": "local:2026-05-22_i150447149.json",
+   "samples": 874,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 30,
+    "300": 17,
+    "320": 10,
+    "340": 8
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i150509070",
+   "date": "2026-05-22",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "local:2026-05-22_i150509070.json",
+   "samples": 752,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i150694988",
+   "date": "2026-05-23",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "平王8th..",
+   "device_watts": true,
+   "icu_training_load": 101,
+   "longjing_candidate": false,
+   "source": "local:2026-05-23_i150694988.json",
+   "samples": 4259,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1766,
+    "300": 1498,
+    "320": 1213,
+    "340": 967
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 784,
+     "duration_s": 635,
+     "mean_w": 282.9
+    },
+    {
+     "start_s": 3014,
+     "duration_s": 1987,
+     "mean_w": 280.3
+    }
+   ]
+  },
+  {
+   "id": "i150707355",
+   "date": "2026-05-23",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "赛后返程",
+   "device_watts": true,
+   "icu_training_load": 41,
+   "longjing_candidate": false,
+   "source": "local:2026-05-23_i150707355.json",
+   "samples": 7819,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 16,
+   "dropout_s_in_gaps_le_5s": 9,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 39,
+    "300": 27,
+    "320": 17,
+    "340": 15
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i150946617",
+   "date": "2026-05-24",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "金华市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 7,
+   "longjing_candidate": false,
+   "source": "local:2026-05-24_i150946617.json",
+   "samples": 907,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3,
+    "300": 3,
+    "320": 2,
+    "340": 1
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i150954976",
+   "date": "2026-05-24",
+   "iso_week": "2026-W21",
+   "type": "Ride",
+   "name": "武义8th\n三连8 888 发发发",
+   "device_watts": true,
+   "icu_training_load": 131,
+   "longjing_candidate": false,
+   "source": "local:2026-05-24_i150954976.json",
+   "samples": 5391,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2361,
+    "300": 2006,
+    "320": 1654,
+    "340": 1347
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1022,
+     "duration_s": 653,
+     "mean_w": 280.7
+    },
+    {
+     "start_s": 2028,
+     "duration_s": 1956,
+     "mean_w": 280.2
+    },
+    {
+     "start_s": 4433,
+     "duration_s": 951,
+     "mean_w": 280.4
+    }
+   ]
+  },
+  {
+   "id": "i151341625",
+   "date": "2026-05-25",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 12,
+   "longjing_candidate": false,
+   "source": "local:2026-05-25_i151341625.json",
+   "samples": 3108,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 15,
+   "dropout_s_in_gaps_le_5s": 6,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 44,
+    "300": 35,
+    "320": 29,
+    "340": 23
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i151537942",
+   "date": "2026-05-26",
+   "iso_week": "2026-W22",
+   "type": "VirtualRide",
+   "name": "不喜欢下雨天",
+   "device_watts": true,
+   "icu_training_load": 48,
+   "longjing_candidate": false,
+   "source": "local:2026-05-26_i151537942.json empty -> icu_api_get",
+   "samples": 2685,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 791,
+    "300": 148,
+    "320": 9,
+    "340": 1
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 905,
+     "duration_s": 1194,
+     "mean_w": 284.7
+    }
+   ]
+  },
+  {
+   "id": "i151566597",
+   "date": "2026-05-26",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 9,
+   "longjing_candidate": false,
+   "source": "local:2026-05-26_i151566597.json",
+   "samples": 1722,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 16,
+    "300": 10,
+    "320": 6,
+    "340": 1
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i151847174",
+   "date": "2026-05-27",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "高温甜区巡山蒸桑拿",
+   "device_watts": true,
+   "icu_training_load": 307,
+   "longjing_candidate": false,
+   "source": "local:2026-05-27_i151847174.json",
+   "samples": 16623,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 550,
+   "dropout_s_in_gaps_le_5s": 550,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 4334,
+    "300": 2835,
+    "320": 1682,
+    "340": 858
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1674,
+     "duration_s": 1375,
+     "mean_w": 335.1
+    },
+    {
+     "start_s": 5626,
+     "duration_s": 1752,
+     "mean_w": 287.9
+    },
+    {
+     "start_s": 7823,
+     "duration_s": 751,
+     "mean_w": 285.3
+    },
+    {
+     "start_s": 11167,
+     "duration_s": 520,
+     "mean_w": 284.5
+    }
+   ]
+  },
+  {
+   "id": "i152407836",
+   "date": "2026-05-29",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "easy ride",
+   "device_watts": true,
+   "icu_training_load": 99,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7984,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 5,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 599,
+    "300": 454,
+    "320": 317,
+    "340": 212
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i152486761",
+   "date": "2026-05-29",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 7,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2656,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 11,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 11,
+    "300": 7,
+    "320": 6,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i152619969",
+   "date": "2026-05-30",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 4,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1976,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 10,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i152839608",
+   "date": "2026-05-31",
+   "iso_week": "2026-W22",
+   "type": "Ride",
+   "name": "耻辱浙西天路16th 掉出第一集团",
+   "device_watts": true,
+   "icu_training_load": 152,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 6499,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2437,
+    "300": 1924,
+    "320": 1518,
+    "340": 1203
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1132,
+     "duration_s": 1684,
+     "mean_w": 280.2
+    },
+    {
+     "start_s": 2992,
+     "duration_s": 862,
+     "mean_w": 280.3
+    },
+    {
+     "start_s": 5057,
+     "duration_s": 1109,
+     "mean_w": 280.5
+    }
+   ]
+  },
+  {
+   "id": "i153519463",
+   "date": "2026-06-02",
+   "iso_week": "2026-W23",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 96,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7542,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 8,
+   "dropout_s_in_gaps_le_5s": 8,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 340,
+    "300": 230,
+    "320": 168,
+    "340": 112
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4318,
+     "duration_s": 547,
+     "mean_w": 282.2
+    }
+   ]
+  },
+  {
+   "id": "i154309381",
+   "date": "2026-06-04",
+   "iso_week": "2026-W23",
+   "type": "Ride",
+   "name": "休闲三江",
+   "device_watts": true,
+   "icu_training_load": 181,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12591,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 21,
+   "dropout_s_in_gaps_le_5s": 6,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1662,
+    "300": 1125,
+    "320": 703,
+    "340": 482
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 6238,
+     "duration_s": 646,
+     "mean_w": 281.5
+    }
+   ]
+  },
+  {
+   "id": "i154816101",
+   "date": "2026-06-06",
+   "iso_week": "2026-W23",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": null,
+   "icu_training_load": 10,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "missing": "no power stream"
+  },
+  {
+   "id": "i154954337",
+   "date": "2026-06-07",
+   "iso_week": "2026-W23",
+   "type": "Ride",
+   "name": "龙门lsd\n顶级路线",
+   "device_watts": true,
+   "icu_training_load": 200,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 18069,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 211,
+   "dropout_s_in_gaps_le_5s": 194,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 334,
+    "300": 205,
+    "320": 139,
+    "340": 95
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i155698436",
+   "date": "2026-06-09",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "开启4xx！",
+   "device_watts": true,
+   "icu_training_load": 18,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 450,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 280,
+    "300": 272,
+    "320": 263,
+    "340": 244
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i155744089",
+   "date": "2026-06-09",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "杭州市 公路骑行",
+   "device_watts": true,
+   "icu_training_load": 23,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1996,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 7,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 150,
+    "300": 127,
+    "320": 110,
+    "340": 80
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i156006343",
+   "date": "2026-06-10",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "顶级7w破风手助力留风4xx",
+   "device_watts": true,
+   "icu_training_load": 104,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 5177,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 12,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1122,
+    "300": 1091,
+    "320": 1042,
+    "340": 896
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i156411613",
+   "date": "2026-06-11",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "混乱的三江两岸",
+   "device_watts": true,
+   "icu_training_load": 192,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 13368,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 25,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1833,
+    "300": 1347,
+    "320": 953,
+    "340": 750
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 5847,
+     "duration_s": 1168,
+     "mean_w": 284.4
+    },
+    {
+     "start_s": 13081,
+     "duration_s": 945,
+     "mean_w": 282.4
+    }
+   ]
+  },
+  {
+   "id": "i156619002",
+   "date": "2026-06-12",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 1,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2756,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 13,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2,
+    "300": 1,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i157151784",
+   "date": "2026-06-14",
+   "iso_week": "2026-W24",
+   "type": "Ride",
+   "name": "中泰杭州大学生高校比赛活动",
+   "device_watts": true,
+   "icu_training_load": 138,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7480,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 14,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1045,
+    "300": 916,
+    "320": 796,
+    "340": 691
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 10115,
+     "duration_s": 537,
+     "mean_w": 286.3
+    }
+   ]
+  },
+  {
+   "id": "i157664197",
+   "date": "2026-06-16",
+   "iso_week": "2026-W25",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 4,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 2638,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 15,
+   "dropout_s_in_gaps_le_5s": 7,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1,
+    "300": 1,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i157710533",
+   "date": "2026-06-16",
+   "iso_week": "2026-W25",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 825,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i157760236",
+   "date": "2026-06-16",
+   "iso_week": "2026-W25",
+   "type": "Ride",
+   "name": "夜骑翁金",
+   "device_watts": true,
+   "icu_training_load": 145,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 9315,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 14,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1109,
+    "300": 953,
+    "320": 805,
+    "340": 671
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3981,
+     "duration_s": 934,
+     "mean_w": 284.0
+    }
+   ]
+  },
+  {
+   "id": "i157761493",
+   "date": "2026-06-16",
+   "iso_week": "2026-W25",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 1,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 770,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 7,
+    "300": 4,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i157942919",
+   "date": "2026-06-17",
+   "iso_week": "2026-W25",
+   "type": "Ride",
+   "name": "😥",
+   "device_watts": true,
+   "icu_training_load": 40,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 3785,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 17,
+    "300": 10,
+    "320": 3,
+    "340": 2
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i158551564",
+   "date": "2026-06-19",
+   "iso_week": "2026-W25",
+   "type": "VirtualRide",
+   "name": "Zwift - Aspire\n不应该在状态差的时候骑强度的😢",
+   "device_watts": true,
+   "icu_training_load": 30,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1841,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 328,
+    "300": 226,
+    "320": 97,
+    "340": 31
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i158909275",
+   "date": "2026-06-20",
+   "iso_week": "2026-W25",
+   "type": "VirtualRide",
+   "name": "虚拟骑行",
+   "device_watts": true,
+   "icu_training_load": 124,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10820,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2,
+    "300": 1,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i159276714",
+   "date": "2026-06-22",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "🐲半打之梅雨忍不住ride\n成功避雨but超高湿度💧",
+   "device_watts": true,
+   "icu_training_load": 165,
+   "longjing_candidate": true,
+   "source": "local:2026-06-22_i159276714.json",
+   "samples": 9220,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 12,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2471,
+    "300": 2013,
+    "320": 1353,
+    "340": 661
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4241,
+     "duration_s": 494,
+     "mean_w": 282.3
+    }
+   ],
+   "laps_raw_count": 15,
+   "laps": [
+    {
+     "lap": 1,
+     "fit_duration_s": 3643.1,
+     "fit_avg_w": 151,
+     "start_offset_s": 0,
+     "stream_samples": 3028,
+     "null_watts": 0,
+     "stream_mean_w": 150.1
+    },
+    {
+     "lap": 2,
+     "fit_duration_s": 365.5,
+     "fit_avg_w": 331,
+     "start_offset_s": 3643,
+     "stream_samples": 366,
+     "null_watts": 0,
+     "stream_mean_w": 331.2
+    },
+    {
+     "lap": 3,
+     "fit_duration_s": 232.4,
+     "fit_avg_w": 55,
+     "start_offset_s": 4008,
+     "stream_samples": 233,
+     "null_watts": 0,
+     "stream_mean_w": 55.0
+    },
+    {
+     "lap": 4,
+     "fit_duration_s": 411.8,
+     "fit_avg_w": 322,
+     "start_offset_s": 4241,
+     "stream_samples": 412,
+     "null_watts": 0,
+     "stream_mean_w": 321.6
+    },
+    {
+     "lap": 5,
+     "fit_duration_s": 201.4,
+     "fit_avg_w": 58,
+     "start_offset_s": 4653,
+     "stream_samples": 202,
+     "null_watts": 0,
+     "stream_mean_w": 59.6
+    },
+    {
+     "lap": 6,
+     "fit_duration_s": 365.2,
+     "fit_avg_w": 321,
+     "start_offset_s": 4854,
+     "stream_samples": 366,
+     "null_watts": 0,
+     "stream_mean_w": 320.8
+    },
+    {
+     "lap": 7,
+     "fit_duration_s": 242.9,
+     "fit_avg_w": 51,
+     "start_offset_s": 5219,
+     "stream_samples": 243,
+     "null_watts": 0,
+     "stream_mean_w": 50.7
+    },
+    {
+     "lap": 8,
+     "fit_duration_s": 417.0,
+     "fit_avg_w": 316,
+     "start_offset_s": 5462,
+     "stream_samples": 418,
+     "null_watts": 0,
+     "stream_mean_w": 315.4
+    },
+    {
+     "lap": 9,
+     "fit_duration_s": 198.9,
+     "fit_avg_w": 64,
+     "start_offset_s": 5879,
+     "stream_samples": 199,
+     "null_watts": 0,
+     "stream_mean_w": 64.2
+    },
+    {
+     "lap": 10,
+     "fit_duration_s": 363.7,
+     "fit_avg_w": 315,
+     "start_offset_s": 6078,
+     "stream_samples": 364,
+     "null_watts": 0,
+     "stream_mean_w": 315.2
+    },
+    {
+     "lap": 11,
+     "fit_duration_s": 233.9,
+     "fit_avg_w": 65,
+     "start_offset_s": 6442,
+     "stream_samples": 234,
+     "null_watts": 0,
+     "stream_mean_w": 65.3
+    },
+    {
+     "lap": 12,
+     "fit_duration_s": 405.3,
+     "fit_avg_w": 322,
+     "start_offset_s": 6676,
+     "stream_samples": 406,
+     "null_watts": 0,
+     "stream_mean_w": 321.3
+    },
+    {
+     "lap": 13,
+     "fit_duration_s": 1001.7,
+     "fit_avg_w": 115,
+     "start_offset_s": 7081,
+     "stream_samples": 820,
+     "null_watts": 0,
+     "stream_mean_w": 114.4
+    },
+    {
+     "lap": 14,
+     "fit_duration_s": 729.0,
+     "fit_avg_w": 244,
+     "start_offset_s": 8083,
+     "stream_samples": 729,
+     "null_watts": 0,
+     "stream_mean_w": 243.9
+    },
+    {
+     "lap": 15,
+     "fit_duration_s": 1205.5,
+     "fit_avg_w": 200,
+     "start_offset_s": 8812,
+     "stream_samples": 1206,
+     "null_watts": 0,
+     "stream_mean_w": 199.9
+    }
+   ]
+  },
+  {
+   "id": "i159565577",
+   "date": "2026-06-23",
+   "iso_week": "2026-W26",
+   "type": "VirtualRide",
+   "name": "Zwift - Recovery",
+   "device_watts": true,
+   "icu_training_load": 41,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 3639,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i159944004",
+   "date": "2026-06-24",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "h53 high threshold 4 x 10min",
+   "device_watts": true,
+   "icu_training_load": 190,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10538,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 16,
+   "dropout_s_in_gaps_le_5s": 12,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2773,
+    "300": 2415,
+    "320": 1508,
+    "340": 595
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4112,
+     "duration_s": 685,
+     "mean_w": 294.1
+    },
+    {
+     "start_s": 4876,
+     "duration_s": 738,
+     "mean_w": 280.6
+    },
+    {
+     "start_s": 5782,
+     "duration_s": 713,
+     "mean_w": 287.9
+    },
+    {
+     "start_s": 6645,
+     "duration_s": 732,
+     "mean_w": 280.7
+    }
+   ]
+  },
+  {
+   "id": "i160161461",
+   "date": "2026-06-25",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 1871,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 61,
+   "dropout_s_in_gaps_le_5s": 83,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 14,
+    "300": 13,
+    "320": 7,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i160662450",
+   "date": "2026-06-27",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "练到了 太苦了",
+   "device_watts": true,
+   "icu_training_load": 289,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 16812,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1171,
+   "dropout_s_in_gaps_le_5s": 1197,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 3279,
+    "300": 2251,
+    "320": 1505,
+    "340": 974
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 1402,
+     "duration_s": 949,
+     "mean_w": 280.2
+    },
+    {
+     "start_s": 4470,
+     "duration_s": 1378,
+     "mean_w": 280.9
+    }
+   ]
+  },
+  {
+   "id": "i160726571",
+   "date": "2026-06-27",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": null,
+   "icu_training_load": 6,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "missing": "no power stream"
+  },
+  {
+   "id": "i160899289",
+   "date": "2026-06-28",
+   "iso_week": "2026-W26",
+   "type": "Ride",
+   "name": "20码荡回家吃饭",
+   "device_watts": true,
+   "icu_training_load": 119,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 21257,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1705,
+   "dropout_s_in_gaps_le_5s": 2239,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 128,
+    "300": 84,
+    "320": 48,
+    "340": 26
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i161449147",
+   "date": "2026-06-30",
+   "iso_week": "2026-W27",
+   "type": "Ride",
+   "name": "杭州市 骑行",
+   "device_watts": true,
+   "icu_training_load": 2,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 3044,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 233,
+   "dropout_s_in_gaps_le_5s": 324,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2,
+    "300": 2,
+    "320": 1,
+    "340": 1
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i182294626",
+   "date": "2026-09-02",
+   "iso_week": "2026-W36",
+   "type": "Ride",
+   "name": "3h zone2",
+   "device_watts": true,
+   "icu_training_load": 133,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10970,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 7,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 322,
+    "300": 216,
+    "320": 130,
+    "340": 85
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i182878102",
+   "date": "2026-09-03",
+   "iso_week": "2026-W36",
+   "type": "Ride",
+   "name": "chill ride😉\n🇸🇬 is a good place for anaerobic🦵",
+   "device_watts": true,
+   "icu_training_load": 152,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 8499,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 12,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 877,
+    "300": 795,
+    "320": 703,
+    "340": 552
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i183447349",
+   "date": "2026-09-05",
+   "iso_week": "2026-W36",
+   "type": "Ride",
+   "name": "2h z2",
+   "device_watts": true,
+   "icu_training_load": 86,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7380,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 57,
+    "300": 41,
+    "320": 26,
+    "340": 20
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i183730877",
+   "date": "2026-09-06",
+   "iso_week": "2026-W36",
+   "type": "Ride",
+   "name": "nice attack 💪😌\nthanks to jayden and 🚥 😉",
+   "device_watts": true,
+   "icu_training_load": 153,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7171,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 4,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2126,
+    "300": 1752,
+    "320": 1390,
+    "340": 1039
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 5563,
+     "duration_s": 562,
+     "mean_w": 283.6
+    },
+    {
+     "start_s": 6234,
+     "duration_s": 513,
+     "mean_w": 280.4
+    }
+   ]
+  },
+  {
+   "id": "i184403505",
+   "date": "2026-09-08",
+   "iso_week": "2026-W37",
+   "type": "Ride",
+   "name": "5x4min vo2max😌",
+   "device_watts": true,
+   "icu_training_load": 131,
+   "longjing_candidate": false,
+   "source": "local:2026-09-08_i184403505.json",
+   "samples": 6996,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 19,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1587,
+    "300": 1382,
+    "320": 1158,
+    "340": 859
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i184773300",
+   "date": "2026-09-09",
+   "iso_week": "2026-W37",
+   "type": "Ride",
+   "name": "perfect lsd route😍\nstill decoupling last hour 🥲",
+   "device_watts": true,
+   "icu_training_load": 173,
+   "longjing_candidate": false,
+   "source": "local:2026-09-09_i184773300.json",
+   "samples": 14469,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 42,
+   "dropout_s_in_gaps_le_5s": 6,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 392,
+    "300": 283,
+    "320": 199,
+    "340": 139
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i185442926",
+   "date": "2026-09-11",
+   "iso_week": "2026-W37",
+   "type": "Ride",
+   "name": "light threshold training before the rain 🌧️",
+   "device_watts": true,
+   "icu_training_load": 158,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 10239,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 5,
+   "dropout_s_in_gaps_le_5s": 2,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1403,
+    "300": 845,
+    "320": 330,
+    "340": 123
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3087,
+     "duration_s": 596,
+     "mean_w": 299.3
+    },
+    {
+     "start_s": 4642,
+     "duration_s": 900,
+     "mean_w": 299.9
+    }
+   ]
+  },
+  {
+   "id": "i186055900",
+   "date": "2026-09-13",
+   "iso_week": "2026-W37",
+   "type": "Ride",
+   "name": "two attack😉\n(too slow after sungei tengah…🫠",
+   "device_watts": true,
+   "icu_training_load": 163,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 6917,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2322,
+    "300": 1954,
+    "320": 1609,
+    "340": 1302
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2168,
+     "duration_s": 1628,
+     "mean_w": 280.9
+    },
+    {
+     "start_s": 3890,
+     "duration_s": 1120,
+     "mean_w": 280.1
+    },
+    {
+     "start_s": 5427,
+     "duration_s": 546,
+     "mean_w": 282.6
+    }
+   ]
+  },
+  {
+   "id": "i186781493",
+   "date": "2026-09-15",
+   "iso_week": "2026-W38",
+   "type": "Ride",
+   "name": "3sets 15 x 30/15 + 3 x 15s sprint💪",
+   "device_watts": true,
+   "icu_training_load": 148,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7329,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1416,
+    "300": 1376,
+    "320": 1310,
+    "340": 1185
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 950,
+     "duration_s": 696,
+     "mean_w": 303.6
+    },
+    {
+     "start_s": 2263,
+     "duration_s": 755,
+     "mean_w": 298.5
+    },
+    {
+     "start_s": 3618,
+     "duration_s": 681,
+     "mean_w": 303.5
+    }
+   ]
+  },
+  {
+   "id": "i187505371",
+   "date": "2026-09-17",
+   "iso_week": "2026-W38",
+   "type": "Ride",
+   "name": "东海岸小蓝车骑行",
+   "device_watts": null,
+   "icu_training_load": 8,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "missing": "no power stream"
+  },
+  {
+   "id": "i187840446",
+   "date": "2026-09-18",
+   "iso_week": "2026-W38",
+   "type": "Ride",
+   "name": "小蓝车骑行",
+   "device_watts": null,
+   "icu_training_load": 8,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "missing": "no power stream"
+  },
+  {
+   "id": "i188237841",
+   "date": "2026-09-19",
+   "iso_week": "2026-W38",
+   "type": "Ride",
+   "name": "easy ride after a break",
+   "device_watts": true,
+   "icu_training_load": 85,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 8031,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 72,
+    "300": 51,
+    "320": 41,
+    "340": 25
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i188375483",
+   "date": "2026-09-20",
+   "iso_week": "2026-W38",
+   "type": "Ride",
+   "name": "no leg🦵 ride , thanks to today’s slow pace",
+   "device_watts": true,
+   "icu_training_load": 154,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7211,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 2,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 2054,
+    "300": 1650,
+    "320": 1322,
+    "340": 1052
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 3158,
+     "duration_s": 524,
+     "mean_w": 280.8
+    },
+    {
+     "start_s": 5593,
+     "duration_s": 495,
+     "mean_w": 282.5
+    }
+   ]
+  },
+  {
+   "id": "i188713166",
+   "date": "2026-09-21",
+   "iso_week": "2026-W39",
+   "type": "Ride",
+   "name": "💔\nplanned 5h z2, but somehow hurt my glute… so just find why i love riding🚴",
+   "device_watts": true,
+   "icu_training_load": 134,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 12673,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 37,
+   "dropout_s_in_gaps_le_5s": 8,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 672,
+    "300": 486,
+    "320": 327,
+    "340": 225
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i189211655",
+   "date": "2026-09-22",
+   "iso_week": "2026-W39",
+   "type": "VirtualRide",
+   "name": "Zwift - 2h 70%",
+   "device_watts": true,
+   "icu_training_load": 108,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7811,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 5,
+    "300": 1,
+    "320": 1,
+    "340": 1
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i189951196",
+   "date": "2026-09-24",
+   "iso_week": "2026-W39",
+   "type": "Ride",
+   "name": "陨落💔",
+   "device_watts": true,
+   "icu_training_load": 133,
+   "longjing_candidate": false,
+   "source": "icu_api_get",
+   "samples": 7033,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 19,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1360,
+    "300": 1044,
+    "320": 786,
+    "340": 600
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 7331,
+     "duration_s": 791,
+     "mean_w": 286.5
+    }
+   ]
+  },
+  {
+   "id": "i192260588",
+   "date": "2026-10-01",
+   "iso_week": "2026-W40",
+   "type": "VirtualRide",
+   "name": "Zwift - ZONE 2 base endurance training \nhope get my power back soon💪",
+   "device_watts": true,
+   "icu_training_load": 122,
+   "longjing_candidate": false,
+   "source": "local:2026-10-01_i192260588.json",
+   "samples": 11417,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3,
+    "300": 1,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i192592799",
+   "date": "2026-10-02",
+   "iso_week": "2026-W40",
+   "type": "VirtualRide",
+   "name": "Zwift - 3h ZONE 2 endurance base training\ntry to find the best z2 power",
+   "device_watts": true,
+   "icu_training_load": 130,
+   "longjing_candidate": false,
+   "source": "local:2026-10-02_i192592799.json",
+   "samples": 11413,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 1,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i193197201",
+   "date": "2026-10-04",
+   "iso_week": "2026-W40",
+   "type": "Ride",
+   "name": "fitness zero🫠\nthought i could not be dropped, but failed🥲\nswear to train harder to get my power back💪",
+   "device_watts": true,
+   "icu_training_load": 84,
+   "longjing_candidate": false,
+   "source": "local:2026-10-04_i193197201.json",
+   "samples": 4492,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 3,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 904,
+    "300": 780,
+    "320": 667,
+    "340": 557
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2287,
+     "duration_s": 1511,
+     "mean_w": 295.3
+    }
+   ]
+  },
+  {
+   "id": "i193701720",
+   "date": "2026-10-05",
+   "iso_week": "2026-W41",
+   "type": "VirtualRide",
+   "name": "Zwift - 2h high z2",
+   "device_watts": true,
+   "icu_training_load": 114,
+   "longjing_candidate": false,
+   "source": "local:2026-10-05_i193701720.json",
+   "samples": 7819,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 3,
+    "300": 1,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i194051255",
+   "date": "2026-10-06",
+   "iso_week": "2026-W41",
+   "type": "Ride",
+   "name": "5 x 4min vo2max intervals",
+   "device_watts": true,
+   "icu_training_load": 118,
+   "longjing_candidate": false,
+   "source": "local:2026-10-06_i194051255.json",
+   "samples": 7025,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 22,
+   "dropout_s_in_gaps_le_5s": 5,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1288,
+    "300": 1192,
+    "320": 1012,
+    "340": 715
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i194515784",
+   "date": "2026-10-07",
+   "iso_week": "2026-W41",
+   "type": "Ride",
+   "name": "lsd",
+   "device_watts": true,
+   "icu_training_load": 165,
+   "longjing_candidate": false,
+   "source": "local:2026-10-07_i194515784.json",
+   "samples": 15014,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 43,
+   "dropout_s_in_gaps_le_5s": 4,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 269,
+    "300": 185,
+    "320": 124,
+    "340": 79
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i195102040",
+   "date": "2026-10-08",
+   "iso_week": "2026-W41",
+   "type": "Ride",
+   "name": "threshold training at 50km/h in group ride🥳",
+   "device_watts": true,
+   "icu_training_load": 159,
+   "longjing_candidate": false,
+   "source": "local:2026-10-08_i195102040.json",
+   "samples": 9031,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 23,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1900,
+    "300": 1544,
+    "320": 1131,
+    "340": 720
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 4863,
+     "duration_s": 543,
+     "mean_w": 285.0
+    },
+    {
+     "start_s": 5654,
+     "duration_s": 585,
+     "mean_w": 283.1
+    },
+    {
+     "start_s": 8439,
+     "duration_s": 751,
+     "mean_w": 280.6
+    }
+   ]
+  },
+  {
+   "id": "i195605523",
+   "date": "2026-10-10",
+   "iso_week": "2026-W41",
+   "type": "Ride",
+   "name": "z2 base + ntu hill (failed into 45s…😭",
+   "device_watts": true,
+   "icu_training_load": 124,
+   "longjing_candidate": false,
+   "source": "local:2026-10-10_i195605523.json",
+   "samples": 7806,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 27,
+   "dropout_s_in_gaps_le_5s": 3,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 585,
+    "300": 344,
+    "320": 223,
+    "340": 171
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i195955105",
+   "date": "2026-10-11",
+   "iso_week": "2026-W41",
+   "type": "Ride",
+   "name": "two 1000w climb attacks, nice break away with jayden😎\n(jayden looked back at ntu hill too often to make me couldn't stop laughing 😂",
+   "device_watts": true,
+   "icu_training_load": 171,
+   "longjing_candidate": false,
+   "source": "local:2026-10-11_i195955105.json",
+   "samples": 7350,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 4,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 2162,
+    "300": 1787,
+    "320": 1405,
+    "340": 1082
+   },
+   "sustained_ge280_8min": [
+    {
+     "start_s": 2525,
+     "duration_s": 594,
+     "mean_w": 280.1
+    },
+    {
+     "start_s": 5703,
+     "duration_s": 547,
+     "mean_w": 281.2
+    }
+   ]
+  },
+  {
+   "id": "i196664180",
+   "date": "2026-10-13",
+   "iso_week": "2026-W42",
+   "type": "Ride",
+   "name": "sauna ride🥵high humidity heavy haze \nfailed training day 🥲",
+   "device_watts": true,
+   "icu_training_load": 165,
+   "longjing_candidate": false,
+   "source": "local:2026-10-13_i196664180.json",
+   "samples": 10870,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 30,
+   "dropout_s_in_gaps_le_5s": 6,
+   "median_dt_s": 1,
+   "sec_ge": {
+    "280": 1366,
+    "300": 1193,
+    "320": 1015,
+    "340": 772
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i197223842",
+   "date": "2026-10-14",
+   "iso_week": "2026-W42",
+   "type": "VirtualRide",
+   "name": "3h z2 base\nhate haze😕",
+   "device_watts": true,
+   "icu_training_load": 155,
+   "longjing_candidate": false,
+   "source": "local:2026-10-14_i197223842.json",
+   "samples": 12059,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 1,
+    "300": 1,
+    "320": 1,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i197967435",
+   "date": "2026-10-16",
+   "iso_week": "2026-W42",
+   "type": "Ride",
+   "name": "2h z2 top",
+   "device_watts": true,
+   "icu_training_load": 114,
+   "longjing_candidate": false,
+   "source": "local:2026-10-16_i197967435.json",
+   "samples": 7307,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 1,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 169,
+    "300": 87,
+    "320": 50,
+    "340": 33
+   },
+   "sustained_ge280_8min": []
+  },
+  {
+   "id": "i198249990",
+   "date": "2026-10-17",
+   "iso_week": "2026-W42",
+   "type": "VirtualRide",
+   "name": "Zwift - easy ride",
+   "device_watts": true,
+   "icu_training_load": 89,
+   "longjing_candidate": false,
+   "source": "local:2026-10-17_i198249990.json",
+   "samples": 9121,
+   "null_watts": 0,
+   "time_gaps_dt_gt_1": 0,
+   "dropout_s_in_gaps_le_5s": 0,
+   "median_dt_s": 1.0,
+   "sec_ge": {
+    "280": 0,
+    "300": 0,
+    "320": 0,
+    "340": 0
+   },
+   "sustained_ge280_8min": []
+  }
+ ],
+ "aggregates": {
+  "periods": {
+   "peak_2026-04-01_06-09": {
+    "from": "2026-04-01",
+    "to": "2026-06-09",
+    "days": 70,
+    "rides": 59,
+    "rides_with_power": 57,
+    "rides_missing_power": [
+     "i141925798",
+     "i154816101"
+    ],
+    "min_ge_280": 977.8,
+    "min_ge_300": 721.0,
+    "min_ge_320": 509.7,
+    "min_ge_340": 360.4,
+    "sustained_count": 44,
+    "sustained_min": 671.2,
+    "time_gaps_dt_gt_1": 6160,
+    "dropout_s_in_gaps_le_5s": 5782,
+    "samples": 464959,
+    "min_ge_280_per7d": 97.8,
+    "min_ge_300_per7d": 72.1,
+    "min_ge_320_per7d": 51.0,
+    "min_ge_340_per7d": 36.0,
+    "sustained_count_per7d": 4.4,
+    "sustained_min_per7d": 67.1
+   },
+   "now_2026-09-01_10-17": {
+    "from": "2026-09-01",
+    "to": "2026-10-17",
+    "days": 47,
+    "rides": 29,
+    "rides_with_power": 27,
+    "rides_missing_power": [
+     "i187505371",
+     "i187840446"
+    ],
+    "min_ge_280": 388.6,
+    "min_ge_300": 316.5,
+    "min_ge_320": 249.4,
+    "min_ge_340": 188.9,
+    "sustained_count": 19,
+    "sustained_min": 239.0,
+    "time_gaps_dt_gt_1": 308,
+    "dropout_s_in_gaps_le_5s": 44,
+    "samples": 243453,
+    "min_ge_280_per7d": 57.9,
+    "min_ge_300_per7d": 47.1,
+    "min_ge_320_per7d": 37.1,
+    "min_ge_340_per7d": 28.1,
+    "sustained_count_per7d": 2.8,
+    "sustained_min_per7d": 35.6
+   }
+  },
+  "weekly": {
+   "peak_2026-04-01_06-09": [
+    {
+     "from": "2026-04-01",
+     "to": "2026-04-05",
+     "days": 5,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 91.5,
+     "min_ge_300": 60.9,
+     "min_ge_320": 40.6,
+     "min_ge_340": 27.7,
+     "sustained_count": 5,
+     "sustained_min": 62.2,
+     "time_gaps_dt_gt_1": 685,
+     "dropout_s_in_gaps_le_5s": 642,
+     "samples": 53719,
+     "min_ge_280_per7d": 128.1,
+     "min_ge_300_per7d": 85.3,
+     "min_ge_320_per7d": 56.8,
+     "min_ge_340_per7d": 38.8,
+     "sustained_count_per7d": 7.0,
+     "sustained_min_per7d": 87.1,
+     "iso_week": "2026-W14"
+    },
+    {
+     "from": "2026-04-06",
+     "to": "2026-04-12",
+     "days": 7,
+     "rides": 5,
+     "rides_with_power": 5,
+     "rides_missing_power": [],
+     "min_ge_280": 110.5,
+     "min_ge_300": 92.8,
+     "min_ge_320": 77.9,
+     "min_ge_340": 62.4,
+     "sustained_count": 1,
+     "sustained_min": 10.1,
+     "time_gaps_dt_gt_1": 138,
+     "dropout_s_in_gaps_le_5s": 30,
+     "samples": 60734,
+     "min_ge_280_per7d": 110.5,
+     "min_ge_300_per7d": 92.8,
+     "min_ge_320_per7d": 77.9,
+     "min_ge_340_per7d": 62.4,
+     "sustained_count_per7d": 1.0,
+     "sustained_min_per7d": 10.1,
+     "iso_week": "2026-W15"
+    },
+    {
+     "from": "2026-04-13",
+     "to": "2026-04-19",
+     "days": 7,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 10.2,
+     "min_ge_300": 8.1,
+     "min_ge_320": 6.3,
+     "min_ge_340": 5.3,
+     "sustained_count": 0,
+     "sustained_min": 0.0,
+     "time_gaps_dt_gt_1": 32,
+     "dropout_s_in_gaps_le_5s": 4,
+     "samples": 22610,
+     "min_ge_280_per7d": 10.2,
+     "min_ge_300_per7d": 8.1,
+     "min_ge_320_per7d": 6.3,
+     "min_ge_340_per7d": 5.3,
+     "sustained_count_per7d": 0.0,
+     "sustained_min_per7d": 0.0,
+     "iso_week": "2026-W16"
+    },
+    {
+     "from": "2026-04-20",
+     "to": "2026-04-26",
+     "days": 7,
+     "rides": 8,
+     "rides_with_power": 7,
+     "rides_missing_power": [
+      "i141925798"
+     ],
+     "min_ge_280": 58.0,
+     "min_ge_300": 48.4,
+     "min_ge_320": 39.3,
+     "min_ge_340": 31.8,
+     "sustained_count": 2,
+     "sustained_min": 29.8,
+     "time_gaps_dt_gt_1": 669,
+     "dropout_s_in_gaps_le_5s": 642,
+     "samples": 43451,
+     "min_ge_280_per7d": 58.0,
+     "min_ge_300_per7d": 48.4,
+     "min_ge_320_per7d": 39.3,
+     "min_ge_340_per7d": 31.8,
+     "sustained_count_per7d": 2.0,
+     "sustained_min_per7d": 29.8,
+     "iso_week": "2026-W17"
+    },
+    {
+     "from": "2026-04-27",
+     "to": "2026-05-03",
+     "days": 7,
+     "rides": 5,
+     "rides_with_power": 5,
+     "rides_missing_power": [],
+     "min_ge_280": 229.9,
+     "min_ge_300": 148.6,
+     "min_ge_320": 79.2,
+     "min_ge_340": 42.0,
+     "sustained_count": 11,
+     "sustained_min": 156.1,
+     "time_gaps_dt_gt_1": 3045,
+     "dropout_s_in_gaps_le_5s": 3057,
+     "samples": 73664,
+     "min_ge_280_per7d": 229.9,
+     "min_ge_300_per7d": 148.6,
+     "min_ge_320_per7d": 79.2,
+     "min_ge_340_per7d": 42.0,
+     "sustained_count_per7d": 11.0,
+     "sustained_min_per7d": 156.1,
+     "iso_week": "2026-W18"
+    },
+    {
+     "from": "2026-05-04",
+     "to": "2026-05-10",
+     "days": 7,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 104.1,
+     "min_ge_300": 78.8,
+     "min_ge_320": 56.3,
+     "min_ge_340": 35.7,
+     "sustained_count": 8,
+     "sustained_min": 96.3,
+     "time_gaps_dt_gt_1": 498,
+     "dropout_s_in_gaps_le_5s": 444,
+     "samples": 43060,
+     "min_ge_280_per7d": 104.1,
+     "min_ge_300_per7d": 78.8,
+     "min_ge_320_per7d": 56.3,
+     "min_ge_340_per7d": 35.7,
+     "sustained_count_per7d": 8.0,
+     "sustained_min_per7d": 96.3,
+     "iso_week": "2026-W19"
+    },
+    {
+     "from": "2026-05-11",
+     "to": "2026-05-17",
+     "days": 7,
+     "rides": 7,
+     "rides_with_power": 7,
+     "rides_missing_power": [],
+     "min_ge_280": 75.2,
+     "min_ge_300": 66.3,
+     "min_ge_320": 53.9,
+     "min_ge_340": 44.7,
+     "sustained_count": 2,
+     "sustained_min": 39.6,
+     "time_gaps_dt_gt_1": 215,
+     "dropout_s_in_gaps_le_5s": 178,
+     "samples": 43702,
+     "min_ge_280_per7d": 75.2,
+     "min_ge_300_per7d": 66.3,
+     "min_ge_320_per7d": 53.9,
+     "min_ge_340_per7d": 44.7,
+     "sustained_count_per7d": 2.0,
+     "sustained_min_per7d": 39.6,
+     "iso_week": "2026-W20"
+    },
+    {
+     "from": "2026-05-18",
+     "to": "2026-05-24",
+     "days": 7,
+     "rides": 8,
+     "rides_with_power": 8,
+     "rides_missing_power": [],
+     "min_ge_280": 115.0,
+     "min_ge_300": 94.3,
+     "min_ge_320": 73.6,
+     "min_ge_340": 55.6,
+     "sustained_count": 5,
+     "sustained_min": 103.0,
+     "time_gaps_dt_gt_1": 38,
+     "dropout_s_in_gaps_le_5s": 14,
+     "samples": 40118,
+     "min_ge_280_per7d": 115.0,
+     "min_ge_300_per7d": 94.3,
+     "min_ge_320_per7d": 73.6,
+     "min_ge_340_per7d": 55.6,
+     "sustained_count_per7d": 5.0,
+     "sustained_min_per7d": 103.0,
+     "iso_week": "2026-W21"
+    },
+    {
+     "from": "2026-05-25",
+     "to": "2026-05-31",
+     "days": 7,
+     "rides": 8,
+     "rides_with_power": 8,
+     "rides_missing_power": [],
+     "min_ge_280": 137.2,
+     "min_ge_300": 90.2,
+     "min_ge_320": 59.5,
+     "min_ge_340": 38.3,
+     "sustained_count": 8,
+     "sustained_min": 154.1,
+     "time_gaps_dt_gt_1": 593,
+     "dropout_s_in_gaps_le_5s": 560,
+     "samples": 43253,
+     "min_ge_280_per7d": 137.2,
+     "min_ge_300_per7d": 90.2,
+     "min_ge_320_per7d": 59.5,
+     "min_ge_340_per7d": 38.3,
+     "sustained_count_per7d": 8.0,
+     "sustained_min_per7d": 154.1,
+     "iso_week": "2026-W22"
+    },
+    {
+     "from": "2026-06-01",
+     "to": "2026-06-07",
+     "days": 7,
+     "rides": 4,
+     "rides_with_power": 3,
+     "rides_missing_power": [
+      "i154816101"
+     ],
+     "min_ge_280": 38.9,
+     "min_ge_300": 26.0,
+     "min_ge_320": 16.8,
+     "min_ge_340": 11.5,
+     "sustained_count": 2,
+     "sustained_min": 19.9,
+     "time_gaps_dt_gt_1": 240,
+     "dropout_s_in_gaps_le_5s": 208,
+     "samples": 38202,
+     "min_ge_280_per7d": 38.9,
+     "min_ge_300_per7d": 26.0,
+     "min_ge_320_per7d": 16.8,
+     "min_ge_340_per7d": 11.5,
+     "sustained_count_per7d": 2.0,
+     "sustained_min_per7d": 19.9,
+     "iso_week": "2026-W23"
+    },
+    {
+     "from": "2026-06-08",
+     "to": "2026-06-09",
+     "days": 2,
+     "rides": 2,
+     "rides_with_power": 2,
+     "rides_missing_power": [],
+     "min_ge_280": 7.2,
+     "min_ge_300": 6.7,
+     "min_ge_320": 6.2,
+     "min_ge_340": 5.4,
+     "sustained_count": 0,
+     "sustained_min": 0.0,
+     "time_gaps_dt_gt_1": 7,
+     "dropout_s_in_gaps_le_5s": 3,
+     "samples": 2446,
+     "min_ge_280_per7d": 25.2,
+     "min_ge_300_per7d": 23.4,
+     "min_ge_320_per7d": 21.7,
+     "min_ge_340_per7d": 18.9,
+     "sustained_count_per7d": 0.0,
+     "sustained_min_per7d": 0.0,
+     "iso_week": "2026-W24"
+    }
+   ],
+   "now_2026-09-01_10-17": [
+    {
+     "from": "2026-09-01",
+     "to": "2026-09-06",
+     "days": 6,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 56.4,
+     "min_ge_300": 46.7,
+     "min_ge_320": 37.5,
+     "min_ge_340": 28.3,
+     "sustained_count": 2,
+     "sustained_min": 17.9,
+     "time_gaps_dt_gt_1": 23,
+     "dropout_s_in_gaps_le_5s": 2,
+     "samples": 34020,
+     "min_ge_280_per7d": 65.8,
+     "min_ge_300_per7d": 54.5,
+     "min_ge_320_per7d": 43.8,
+     "min_ge_340_per7d": 33.0,
+     "sustained_count_per7d": 2.3,
+     "sustained_min_per7d": 20.9,
+     "iso_week": "2026-W36"
+    },
+    {
+     "from": "2026-09-07",
+     "to": "2026-09-13",
+     "days": 7,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 95.1,
+     "min_ge_300": 74.4,
+     "min_ge_320": 54.9,
+     "min_ge_340": 40.4,
+     "sustained_count": 5,
+     "sustained_min": 79.8,
+     "time_gaps_dt_gt_1": 68,
+     "dropout_s_in_gaps_le_5s": 11,
+     "samples": 38621,
+     "min_ge_280_per7d": 95.1,
+     "min_ge_300_per7d": 74.4,
+     "min_ge_320_per7d": 54.9,
+     "min_ge_340_per7d": 40.4,
+     "sustained_count_per7d": 5.0,
+     "sustained_min_per7d": 79.8,
+     "iso_week": "2026-W37"
+    },
+    {
+     "from": "2026-09-14",
+     "to": "2026-09-20",
+     "days": 7,
+     "rides": 5,
+     "rides_with_power": 3,
+     "rides_missing_power": [
+      "i187505371",
+      "i187840446"
+     ],
+     "min_ge_280": 59.0,
+     "min_ge_300": 51.3,
+     "min_ge_320": 44.5,
+     "min_ge_340": 37.7,
+     "sustained_count": 5,
+     "sustained_min": 52.5,
+     "time_gaps_dt_gt_1": 7,
+     "dropout_s_in_gaps_le_5s": 4,
+     "samples": 22571,
+     "min_ge_280_per7d": 59.0,
+     "min_ge_300_per7d": 51.3,
+     "min_ge_320_per7d": 44.5,
+     "min_ge_340_per7d": 37.7,
+     "sustained_count_per7d": 5.0,
+     "sustained_min_per7d": 52.5,
+     "iso_week": "2026-W38"
+    },
+    {
+     "from": "2026-09-21",
+     "to": "2026-09-27",
+     "days": 7,
+     "rides": 3,
+     "rides_with_power": 3,
+     "rides_missing_power": [],
+     "min_ge_280": 34.0,
+     "min_ge_300": 25.5,
+     "min_ge_320": 18.6,
+     "min_ge_340": 13.8,
+     "sustained_count": 1,
+     "sustained_min": 13.2,
+     "time_gaps_dt_gt_1": 56,
+     "dropout_s_in_gaps_le_5s": 8,
+     "samples": 27517,
+     "min_ge_280_per7d": 34.0,
+     "min_ge_300_per7d": 25.5,
+     "min_ge_320_per7d": 18.6,
+     "min_ge_340_per7d": 13.8,
+     "sustained_count_per7d": 1.0,
+     "sustained_min_per7d": 13.2,
+     "iso_week": "2026-W39"
+    },
+    {
+     "from": "2026-09-28",
+     "to": "2026-10-04",
+     "days": 7,
+     "rides": 3,
+     "rides_with_power": 3,
+     "rides_missing_power": [],
+     "min_ge_280": 15.1,
+     "min_ge_300": 13.0,
+     "min_ge_320": 11.1,
+     "min_ge_340": 9.3,
+     "sustained_count": 1,
+     "sustained_min": 25.2,
+     "time_gaps_dt_gt_1": 4,
+     "dropout_s_in_gaps_le_5s": 1,
+     "samples": 27322,
+     "min_ge_280_per7d": 15.1,
+     "min_ge_300_per7d": 13.0,
+     "min_ge_320_per7d": 11.1,
+     "min_ge_340_per7d": 9.3,
+     "sustained_count_per7d": 1.0,
+     "sustained_min_per7d": 25.2,
+     "iso_week": "2026-W40"
+    },
+    {
+     "from": "2026-10-05",
+     "to": "2026-10-11",
+     "days": 7,
+     "rides": 6,
+     "rides_with_power": 6,
+     "rides_missing_power": [],
+     "min_ge_280": 103.5,
+     "min_ge_300": 84.2,
+     "min_ge_320": 64.9,
+     "min_ge_340": 46.1,
+     "sustained_count": 5,
+     "sustained_min": 50.3,
+     "time_gaps_dt_gt_1": 119,
+     "dropout_s_in_gaps_le_5s": 12,
+     "samples": 54045,
+     "min_ge_280_per7d": 103.5,
+     "min_ge_300_per7d": 84.2,
+     "min_ge_320_per7d": 64.9,
+     "min_ge_340_per7d": 46.1,
+     "sustained_count_per7d": 5.0,
+     "sustained_min_per7d": 50.3,
+     "iso_week": "2026-W41"
+    },
+    {
+     "from": "2026-10-12",
+     "to": "2026-10-17",
+     "days": 6,
+     "rides": 4,
+     "rides_with_power": 4,
+     "rides_missing_power": [],
+     "min_ge_280": 25.6,
+     "min_ge_300": 21.4,
+     "min_ge_320": 17.8,
+     "min_ge_340": 13.4,
+     "sustained_count": 0,
+     "sustained_min": 0.0,
+     "time_gaps_dt_gt_1": 31,
+     "dropout_s_in_gaps_le_5s": 6,
+     "samples": 39357,
+     "min_ge_280_per7d": 29.9,
+     "min_ge_300_per7d": 25.0,
+     "min_ge_320_per7d": 20.8,
+     "min_ge_340_per7d": 15.6,
+     "sustained_count_per7d": 0.0,
+     "sustained_min_per7d": 0.0,
+     "iso_week": "2026-W42"
+    }
+   ]
+  },
+  "monthly": {
+   "2026-01": {
+    "from": "2026-01-01",
+    "to": "2026-01-31",
+    "days": 31,
+    "rides": 20,
+    "rides_with_power": 20,
+    "rides_missing_power": [],
+    "min_ge_280": 272.9,
+    "min_ge_300": 182.1,
+    "min_ge_320": 123.1,
+    "min_ge_340": 87.4,
+    "sustained_count": 9,
+    "sustained_min": 107.6,
+    "time_gaps_dt_gt_1": 2828,
+    "dropout_s_in_gaps_le_5s": 3511,
+    "samples": 196860,
+    "min_ge_280_per7d": 61.6,
+    "min_ge_300_per7d": 41.1,
+    "min_ge_320_per7d": 27.8,
+    "min_ge_340_per7d": 19.7,
+    "sustained_count_per7d": 2.0,
+    "sustained_min_per7d": 24.3
+   },
+   "2026-02": {
+    "from": "2026-02-01",
+    "to": "2026-02-28",
+    "days": 28,
+    "rides": 17,
+    "rides_with_power": 17,
+    "rides_missing_power": [],
+    "min_ge_280": 191.9,
+    "min_ge_300": 120.9,
+    "min_ge_320": 77.6,
+    "min_ge_340": 52.3,
+    "sustained_count": 7,
+    "sustained_min": 65.1,
+    "time_gaps_dt_gt_1": 1128,
+    "dropout_s_in_gaps_le_5s": 1094,
+    "samples": 182078,
+    "min_ge_280_per7d": 48.0,
+    "min_ge_300_per7d": 30.2,
+    "min_ge_320_per7d": 19.4,
+    "min_ge_340_per7d": 13.1,
+    "sustained_count_per7d": 1.8,
+    "sustained_min_per7d": 16.3
+   },
+   "2026-03": {
+    "from": "2026-03-01",
+    "to": "2026-03-31",
+    "days": 31,
+    "rides": 22,
+    "rides_with_power": 22,
+    "rides_missing_power": [],
+    "min_ge_280": 454.1,
+    "min_ge_300": 329.0,
+    "min_ge_320": 221.3,
+    "min_ge_340": 147.0,
+    "sustained_count": 19,
+    "sustained_min": 329.0,
+    "time_gaps_dt_gt_1": 1082,
+    "dropout_s_in_gaps_le_5s": 713,
+    "samples": 183025,
+    "min_ge_280_per7d": 102.5,
+    "min_ge_300_per7d": 74.3,
+    "min_ge_320_per7d": 50.0,
+    "min_ge_340_per7d": 33.2,
+    "sustained_count_per7d": 4.3,
+    "sustained_min_per7d": 74.3
+   },
+   "2026-04": {
+    "from": "2026-04-01",
+    "to": "2026-04-30",
+    "days": 30,
+    "rides": 23,
+    "rides_with_power": 22,
+    "rides_missing_power": [
+     "i141925798"
+    ],
+    "min_ge_280": 373.4,
+    "min_ge_300": 272.9,
+    "min_ge_320": 193.1,
+    "min_ge_340": 140.6,
+    "sustained_count": 13,
+    "sustained_min": 157.1,
+    "time_gaps_dt_gt_1": 1547,
+    "dropout_s_in_gaps_le_5s": 1325,
+    "samples": 201264,
+    "min_ge_280_per7d": 87.1,
+    "min_ge_300_per7d": 63.7,
+    "min_ge_320_per7d": 45.1,
+    "min_ge_340_per7d": 32.8,
+    "sustained_count_per7d": 3.0,
+    "sustained_min_per7d": 36.7
+   },
+   "2026-05": {
+    "from": "2026-05-01",
+    "to": "2026-05-31",
+    "days": 31,
+    "rides": 30,
+    "rides_with_power": 30,
+    "rides_missing_power": [],
+    "min_ge_280": 558.3,
+    "min_ge_300": 415.5,
+    "min_ge_320": 293.5,
+    "min_ge_340": 202.9,
+    "sustained_count": 29,
+    "sustained_min": 494.2,
+    "time_gaps_dt_gt_1": 4366,
+    "dropout_s_in_gaps_le_5s": 4246,
+    "samples": 223047,
+    "min_ge_280_per7d": 126.1,
+    "min_ge_300_per7d": 93.8,
+    "min_ge_320_per7d": 66.3,
+    "min_ge_340_per7d": 45.8,
+    "sustained_count_per7d": 6.5,
+    "sustained_min_per7d": 111.6
+   },
+   "2026-06": {
+    "from": "2026-06-01",
+    "to": "2026-06-30",
+    "days": 30,
+    "rides": 25,
+    "rides_with_power": 23,
+    "rides_missing_power": [
+     "i154816101",
+     "i160726571"
+    ],
+    "min_ge_280": 281.6,
+    "min_ge_300": 221.4,
+    "min_ge_320": 158.4,
+    "min_ge_340": 105.2,
+    "sustained_count": 13,
+    "sustained_min": 174.4,
+    "time_gaps_dt_gt_1": 3539,
+    "dropout_s_in_gaps_le_5s": 4085,
+    "samples": 165804,
+    "min_ge_280_per7d": 65.7,
+    "min_ge_300_per7d": 51.7,
+    "min_ge_320_per7d": 37.0,
+    "min_ge_340_per7d": 24.5,
+    "sustained_count_per7d": 3.0,
+    "sustained_min_per7d": 40.7
+   }
+  }
+ }
+}
