@@ -9,11 +9,11 @@ tags: [nutrition, food-labels]
 
 | 食品/版本 | kcal | P g | C g | F g | 来源与确认状态 |
 |---|---:|---:|---:|---:|---|
-| 10/24本人提供的燕麦（品牌未记） | 383 | 12.1 | 57.8 | 9.0 | 本人标签，见[[sessions/2026-10-24-oat-label-and-breakfast-portion]]；暂假设今天同款 |
-| MARIGOLD Non Fat Natural Yoghurt, No Sugar Added, 1kg绿桶 | 49 | 4.8 | 7.1 | 0.1 | FairPrice背标照片已目视核读，等本人认包装 |
+| 10/24本人提供的燕麦（品牌未记） | 383 | 12.1 | 57.8 | 9.0 | 本人标签，见[[sessions/2026-10-24-oat-label-and-breakfast-portion]]；10/26本人确认同款 |
+| MARIGOLD Non Fat Natural Yoghurt, No Sugar Added, 1kg绿桶 | 49 | 4.8 | 7.1 | 0.1 | FairPrice背标照片已目视核读，10/26本人确认就是此款 |
 | Gardenia Chocolate Royale Loaf, 340g | 341 | 10.8 | 50.4 | 10.3 | 品牌官网营养表；本人写gandenla，产品对应仍待核 |
 | Fortune Japanese Silken Tofu with Omega 3 DHA, 300g双盒 | 57.3 | 5.3 | 2.9 | 2.8 | FoodNutriFacts转录公开标签、其他零售值吻合；尚未核本人包装，精度低于实物标签 |
-| Myprotein Impact Whey，官网当前Sticky Dates口味示例 | 375 | 72 | 8.9 | 5.8 | 仅参考：本人未报系列/口味，不认证为其实际产品；计算用官网每30g 112kcal/P22/C2.7/F1.7 |
+| Myprotein Impact Whey，官网当前Sticky Dates口味示例 | 375 | 72 | 8.9 | 5.8 | 仅参考：本人已确认Milk Tea口味；此行是原计算占位值，非Milk Tea标签，待替换；计算用官网每30g 112kcal/P22/C2.7/F1.7 |
 
 ## 其他标签内容
 
@@ -34,3 +34,7 @@ tags: [nutrition, food-labels]
 - 豆腐厂家产品：https://psc.com.sg/products/fortune-japanese-silken-tofu-300g-omega-3-dha （确认300g及DHA版本，未列出完整营养表）。
 - 乳清：https://www.myprotein.com.sg/p/sports-nutrition/impact-whey-protein-powder/13758396/ ，Nutritional information，页面口味Caramel Sticky Dates；不同口味数值变化。
 - 普通食物：USDA FoodData Central，https://fdc.nal.usda.gov/ 。鸡蛋FDC171287、蓝莓171711、胡萝卜170393、小白菜170390，本轮官方API已读取description及每100g营养。熟米饭FDC168878，沿用10/20已核官方JSON `icu/icu_data_warehouse/9_Coach_Raw/2026-10-20-drcc-dose-diet/usda_168878_cooked_rice.json`，130kcal/P2.69/C28.17/F0.28。熟饭含水率造成实际差异，不认证本人米饭恰好此值。
+
+## 2026-10-26本人确认与Milk Tea查询
+
+酸奶包装、燕麦同款已确认；乳清为Milk Tea。官方对应旧页 https://www.myprotein.com.sg/p/sports-nutrition/impact-whey-protein-milk-tea/11571203/ 搜索索引可核387kcal/100g（30g=116.1kcal），正文无法读取，完整三宏与当前包装未核；不把Sticky Dates行冒称已确认奶茶味。
