@@ -91,7 +91,7 @@ related: [[athlete-quick-facts]] [[decisions]] [[races]]
 15. 看错位，不看单点：同功率心率或RPE异常偏高、组内掉瓦、本人说话方式变化，才是需要注意的信号。
 
 ### D2. 知识库每周迭代（本人 2026-10-26 要求）
-- 主力是每周一早上的桌面定时任务 `cycling-forum-weekly-digest`（会自动合并到 master）。兜底：每次教练会话开头看 `icu/icu_data_warehouse/9_Coach_Raw/forum/` 下最新一次抓取的日期；超过 7 天（说明定时任务漏跑了）就先跑 `icu/scripts/fetch_forum_weekly_top.py`（从 `icu/` 目录用 `.venv/bin/python` 运行），把训练相关的新帖消化进 [[knowledge/README]]，再回答问题。
+- 主力是每周二早上的桌面定时任务 `cycling-forum-weekly-digest`（会自动合并到 master）。兜底：每次教练会话开头看 `icu/icu_data_warehouse/9_Coach_Raw/forum/` 下最新一次抓取的日期；超过 7 天（说明定时任务漏跑了）就先跑 `icu/scripts/fetch_forum_weekly_top.py`（从 `icu/` 目录用 `.venv/bin/python` 运行），把训练相关的新帖消化进 [[knowledge/README]]，再回答问题。
 - 排课或分析前，先查知识库对应主题有没有相关条目；用到时标 [社区]／[从业者] 档位。
 
 ### E. 长短期结合
