@@ -1,0 +1,131 @@
+{
+  "version": "1.0",
+  "date": "2026-10-26",
+  "evidence_level": "label + raw-food proxy; incomplete micronutrients",
+  "food_rows": [
+    {
+      "food": "Egg, whole, raw, fresh",
+      "fdc_id": 171287,
+      "grams": 250,
+      "per100g": {
+        "1087": 56.0,
+        "1089": 1.75,
+        "1090": 12.0,
+        "1092": 138.0,
+        "1106": 160.0,
+        "1114": 2.0,
+        "1162": 0.0,
+        "1178": 0.89,
+        "1258": 3.126,
+        "1079": 0.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171287/nutrients"
+    },
+    {
+      "food": "Blueberries, raw",
+      "fdc_id": 171711,
+      "grams": 40,
+      "per100g": {
+        "1087": 6.0,
+        "1089": 0.28,
+        "1090": 6.0,
+        "1092": 77.0,
+        "1106": 3.0,
+        "1114": 0.0,
+        "1162": 9.7,
+        "1178": 0.0,
+        "1258": 0.028,
+        "1079": 2.4
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171711/nutrients"
+    },
+    {
+      "food": "Carrots, raw",
+      "fdc_id": 170393,
+      "grams": 143,
+      "per100g": {
+        "1087": 33.0,
+        "1089": 0.3,
+        "1090": 12.0,
+        "1092": 320.0,
+        "1106": 835.0,
+        "1114": 0.0,
+        "1162": 5.9,
+        "1178": 0.0,
+        "1258": 0.032,
+        "1079": 2.8
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170393/nutrients"
+    },
+    {
+      "food": "Cabbage, chinese (pak-choi), raw",
+      "fdc_id": 170390,
+      "grams": 106,
+      "per100g": {
+        "1087": 105.0,
+        "1089": 0.8,
+        "1090": 19.0,
+        "1092": 252.0,
+        "1106": 223.0,
+        "1114": 0.0,
+        "1162": 45.0,
+        "1178": 0.0,
+        "1258": 0.027,
+        "1079": 1.0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/170390/nutrients"
+    }
+  ],
+  "label_inputs": {
+    "yogurt_Ca_mg": 684,
+    "bread_Ca_mg": 292.4,
+    "bread_Fe_mg": 15.64,
+    "tofu_Ca_mg_secondary": 161.55,
+    "oat_fiber_g": 15.54,
+    "bread_fiber_g": 6.12
+  },
+  "audited_subtotals": {
+    "Ca_mg": 1438.8400000000001,
+    "Fe_mg": 21.404,
+    "A_RAE_ug": 1831.6299999999999,
+    "C_mg_raw_vegetables_and_blueberries_only": 60.017,
+    "fiber_g_excluding_banana_rice_tofu": 27.683999999999997,
+    "produce_g_estimated": 389
+  },
+  "score": {
+    "carbohydrate": [
+      16,
+      20
+    ],
+    "protein": [
+      15,
+      15
+    ],
+    "micronutrients": [
+      9,
+      9
+    ],
+    "food_structure": [
+      9.8625,
+      10
+    ],
+    "energy": [
+      null,
+      20
+    ],
+    "hydration": [
+      null,
+      10
+    ],
+    "scored_points": 49.8625,
+    "assessable_weight": 54,
+    "normalized_observed": 92.33796296296296,
+    "unknown_weight": 46
+  },
+  "caveats": [
+    "Vitamin C subtotal 60.017 mg is raw-food reference for vegetables and blueberries only; banana/chilli and cooking retention unresolved. C is unscored, not treated as deficiency.",
+    "No rice micronutrients: available USDA rice is enriched and not confirmed user product.",
+    "Saturated fat lower bound does not establish total adequacy; 5 weight excluded.",
+    "Calcium/iron/retinol activity equivalents are estimated food-composition subtotals, not laboratory measurements."
+  ]
+}

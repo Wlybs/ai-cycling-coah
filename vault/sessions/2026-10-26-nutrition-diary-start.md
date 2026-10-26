@@ -20,3 +20,5 @@ tags: [nutrition, food-diary]
 - 缺失不当0、不默认满分；显示可评项目得分及加权覆盖率，资料不足不伪造完整总分。每日看执行、7日看膳食结构和微量摄入趋势、2–4周看体重/表现校准。膳食摄入不诊断营养缺乏。
 - 已核来源线索：UCI 2026 cycling nutrition position statement PMID42744290/doi10.1123/ijsnem.2026-0135；UCI nutritional periodization doi10.1123/ijsnem.2025-0073（出版社全文403，本轮只核索引摘要）；AIS水合/电解质官方网页。仅用于总体原则，不归因自定义权重/阈值给UCI。
 - 尚未给今天正式评分，不因该提案修改已经记录的实际摄入。
+
+后续同日已获本人授权并定稿v1.0，前述“待讨论”仅描述当时状态；当前标准与评分见[[sessions/2026-10-26-nutrition-scoring-v1]]及[[nutrition/scoring-v1]]。
