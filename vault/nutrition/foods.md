@@ -38,3 +38,5 @@ tags: [nutrition, food-labels]
 ## 2026-10-26本人确认与Milk Tea查询
 
 酸奶包装、燕麦同款已确认；乳清为Milk Tea。官方对应旧页 https://www.myprotein.com.sg/p/sports-nutrition/impact-whey-protein-milk-tea/11571203/ 搜索索引可核387kcal/100g（30g=116.1kcal），正文无法读取，完整三宏与当前包装未核；不把Sticky Dates行冒称已确认奶茶味。
+
+- 香蕉：USDA FDC173944 Bananas, raw，官方API核验每100g可食部分89kcal/P1.09/C22.84/F0.33。10/26带皮150g按可食约100g暂估（2/3为计算假设、不是实测），不可直接按150g果肉记账。
