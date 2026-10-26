@@ -10,6 +10,8 @@
 
 ## 生理 / 训练特质（定性）
 
+- 2026-10-26本人自述间歇恢复：呼吸先缓过来，腿部残余疲劳逐渐减轻，不会同速完全缓解。仅记录主观体验，不作机制/病理推断；详[[sessions/2026-10-26-tomorrow-lck-confirmation]]。
+
 - **Type-II 主导**（fast-twitch dominant）。配速 + 高 cadence 是反本能的，需要刻意练。
 - **神经系统敏感**。TSB > +15 反而会神经性 stale（HR 飙升、力量空心）。**A 赛 taper 目标 TSB = 0 ~ +5**，绝对不是教科书 +20。
 - **Anaerobic-dominant PD shape**。5/60min 比例 ≈ 1.41，属于 Ardennes / Puncheur 体质，不是 long-aerobic specialist。**自分类 = 爬坡手 / Puncheur**。
