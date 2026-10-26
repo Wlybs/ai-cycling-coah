@@ -90,6 +90,10 @@ related: [[athlete-quick-facts]] [[decisions]] [[races]]
 14. 讲人话：专业词第一次出现给中文解释。
 15. 看错位，不看单点：同功率心率或RPE异常偏高、组内掉瓦、本人说话方式变化，才是需要注意的信号。
 
+### D2. 知识库每周迭代（本人 2026-10-26 要求）
+- 每次教练会话开头看 `icu/icu_data_warehouse/9_Coach_Raw/forum/` 下最新一次抓取的日期；超过 7 天就先跑 `icu/scripts/fetch_forum_weekly_top.py`（从 `icu/` 目录用 `.venv/bin/python` 运行），把训练相关的新帖消化进 [[knowledge/README]]，再回答问题。
+- 排课或分析前，先查知识库对应主题有没有相关条目；用到时标 [社区]／[从业者] 档位。
+
 ### E. 长短期结合
 16. 赛季地图（DRCC 12/13 → 2027 Nationals）+ 滚动排未来约3天；每周检查周负荷是否无理由低于近两周，CTL只作参考区间。
 
