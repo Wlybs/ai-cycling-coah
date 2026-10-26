@@ -85,7 +85,7 @@ related: [[athlete-quick-facts]] [[decisions]] [[races]]
 
 ### D. 分析与沟通
 11. 每条数字都写来源（文件和日期）；推断标［推断］，估算标［估算］。
-12. rep分析先用 `stream-onset-detect`；数据完整性先核当日活动条数。
+12. rep分析先用 `stream-onset-detect`；数据完整性先核当日活动条数。**核活动要读 `icu_data_warehouse/4_Activities_List/`（含力量训练、跑步等非骑行），再读当天的 `vault/nutrition/<日期>.md`**；`5_Activities_Detail/` 只有骑行，只看它会漏掉力量课（2026-10-26 漏看当天腿部力量课，把当天说成"全休"）。
 13. 只问已发生的体感、状态和数据疑点；已答过的事实查[[athlete-quick-facts]]，不再问。
 14. 讲人话：专业词第一次出现给中文解释。
 15. 看错位，不看单点：同功率心率或RPE异常偏高、组内掉瓦、本人说话方式变化，才是需要注意的信号。
