@@ -66,6 +66,7 @@ related: [[knowledge/README]]
 - 依据: 个人经验。#18：用 AlphaHRV 时，大幅压低清楚地预示快要生病。#6：HRV 能提示生病，但与静息心率经常矛盾，作为"今天练多少"的短期指标靠不住。#13：HRV 低于均值，腿却是最好的时候。
 - 我的判断: 可靠性 低（个人经验，互相矛盾）。HRV 下降可能早于感染症状，这有一定研究支持，但单日数值噪声大[未核实]。与研究：不确定。
 - 对本人: 待验证。与本人现有做法一致：HRV 只当异常趋势信号，配合 RHR 和体感，不单独决定当天课量。
+- 补充（2026-10-27）：TrainerRoad「Incorporating Garmin Training Readiness Data into TR」#5 @Tvandelinder（点赞 4）、#6 @KevinKlaes（点赞 1）2026-10-26（均为普通用户）：单日数据不够做决定，多日趋势才有用；换到压力更大的工作岗位后 HRV 明显下降；生病前通常有连续几天低 HRV。反例见 recovery-and-monitoring 同日新条目（症状出现后 HRV 才变）。
 
 ### ImReady4/iThlete 式做法：把 ln(rMSSD) 和静息心率都换成相对近 30 天的 z 分数，再合成每日建议（收录 2026-10-26）
 - 来源: [社区] intervals.icu「How to Guide - ImReady4 app, for HRV guided training」#374 @Andreas_Schnederle-W（Supporter）2026-10-12，点赞 2；#7 @MedTechCD（staff, moderator）2022-12-23，点赞 2；#12 @Inigo_Tolosa（Supporter，工具作者）2022-12-24，点赞 5，https://forum.intervals.icu/t/how-to-guide-imready4-app-for-hrv-guided-training/25778
@@ -156,3 +157,15 @@ related: [[knowledge/README]]
 - 依据: 观点；同时建议找有耐力运动经验的专业人士评估。
 - 我的判断: 可靠性 中–高——情绪紊乱是过度训练综合征常见报告症状。与研究: 一致。
 - 对本人: 适用——本人 6–7 月有赛季后倦怠；若再出现训练意愿持续低落，应作为恢复不足信号之一，而不只看 HRV/RHR。
+
+### 早上先自评、再看设备数据：起床 15–30 分钟后先记下疲劳、酸痛、动机，再打开 HRV/睡眠分，两者合起来决定是否照做，热身中还可再调（收录 2026-10-27）
+- 来源: [社区] TrainerRoad「Incorporating Garmin Training Readiness Data into TR」#11 @Pbase（普通用户）2026-10-26，点赞 1；同帖 #10 @JoeX 2026-10-26，点赞 1，https://www.trainerroad.com/forum/t/incorporating-garmin-training-readiness-data-into-tr/115381
+- 依据: 个人做法。#11：先自评再看数据，避免被设备分数带着走；把设备当"其中一项"。#10：用数据去印证感觉，而不是用数据决定动作。
+- 我的判断: 可靠性 中——个人做法，无引用；但"先记主观、再看客观"能减少被数字锚定，属于合理的记录习惯。与研究：没有研究（帖中未引用）。
+- 对本人: 适用（做法层面）。与现有规则一致：教练只问体感，HRV/RHR 只当多日趋势信号；本人如愿意，晨间可先写一句体感再看 HRV。不改任何课表剂量。
+
+### 反方：消费级手表的睡眠分期、HRV 常与实际不符；有人生病时 HRV 在症状最重之后才变，起不到预警作用（收录 2026-10-27）
+- 来源: [社区] TrainerRoad「Incorporating Garmin Training Readiness Data into TR」#7 @Saddlesaur 点赞 3；#8 @Greased_Flea 点赞 2；#3 @PhilipK 点赞 0；#2 @ingluis29 点赞 0（均为普通用户）2026-10-26，https://www.trainerroad.com/forum/t/incorporating-garmin-training-readiness-data-into-tr/115381
+- 依据: 个人经验。#7：用了 18 个月，HRV、睡眠质量、Body Battery 与实际对不上，生病时数据比自己感觉还晚。#8：去年冬天流感和新冠，HRV 都在症状最重之后几天才变；半夜 3 点醒了睡不着，手表仍显示深睡充足。#3：醒着被记成睡着。#2：干脆关掉准备度功能，不想让算法告诉自己该什么感觉。
+- 我的判断: 可靠性 低-中（多人经验一致，但没有对照，设备型号和佩戴方式不明）。与研究：没有研究（帖中未引用）[未核实]。与同文件"HRV 压低可提前提示生病"条目相互矛盾，两种情况都存在。
+- 对本人: 适用（作为限制）。设备的睡眠分期和准备度分不作为取消或减课的依据；HRV 继续只看多日趋势并配合静息心率和体感（INDEX 5/12 阀门规则）。

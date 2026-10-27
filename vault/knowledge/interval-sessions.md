@@ -42,6 +42,8 @@ related: [[knowledge/README]]
 - 依据: 个人观点/经验，无引用；同批次 115303 #66 @lucho 也称"把 VO2 课锚定在 FTP 上是老毛病"。
 - 我的判断: 可靠性 中——快起步、高踏频以尽快拉高摄氧的思路与"在接近最大摄氧量时累积时间"的常见观点相符，但具体参数是个人经验；与研究: 不确定 [未核实]（高踏频利于中枢适应的说法未核实）。
 - 对本人: 待验证——本人已做过 8×3 快起步且自评 VO2 较擅长；快肌型支持"不按 %FTP 定 VO2"，但 105rpm 是否适合需本人体感确认。
+- 补充（2026-10-27）：同帖 115303 #72–#76（@GoLongThenGoHome、@3113、@Pbase，普通用户，2026-10-26）：VO2max 是一种生理状态，不是某个功率区间；同样 108%FTP，有人能被拉到接近最大摄氧，有人远远不够；某人 10min 全力 337W，则 9×2min@324W 几乎肯定没有逼近 VO2max。"VO2 区"（功率区间名）和"VO2max"（体能指标）同名，常被混为一谈。可靠性 中（推理与生理常识一致，无引用）。对本人：与 athlete-quick-facts"Z5 功率不等于实测 VO2max"一致；VO2 课瓦数继续锚定近期 3–5min 实际可重复功率，不按 %FTP。
+- 补充（2026-10-27）：TrainerRoad「Could use some help. Why did I progress better on join CC?」#1 @FuryTR（普通用户，自述 1800W+ 冲刺、快肌主导）2026-10-26，点赞 0，https://www.trainerroad.com/forum/t/could-use-some-help-why-did-i-progress-better-on-join-cc/115386 ：认为强冲刺把 FTP 抬高，按通用 RPE 要把 tempo/SST/阈值课的强度往下调、VO2/无氧课往上调。可靠性 低（n=1、无回复），但方向与本条和 eFTP 最短时长条目一致。对本人：同类体质的旁证，不改剂量。
 
 ### 不要刻意"画圆踩踏/往后刮"，专注 12–6 点钟方向的有力下踩即可（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Glutes engaged during endurance, quads at higher zones」#2 / #4 @ingluis29（普通用户）2026-10-01 / 2026-10-02，点赞 1 / 0，https://www.trainerroad.com/forum/t/glutes-engaged-during-endurance-quads-at-higher-zones/115143

@@ -35,3 +35,4 @@ related: [[coach-standard]] [[research/2026-10-26-training-knowledge-channels]]
 - 每周扫描的原始数据：`icu/icu_data_warehouse/9_Coach_Raw/forum/<日期>/index.md`（脚本 `icu/scripts/fetch_forum_weekly_top.py`）
 - 每周摘要：`vault/research/forum-digest/<年>-W<周>.md`
 - 2026-10-26：首次建立；回补近一个月热门与活跃帖（64 个主题，读完 37 个训练相关的，抽出 117 条）。摘要和对本人的要点见 [[research/forum-digest/2026-W44]]。可靠性判断由教练做出：先分三批起草，再统一复核；帖子里引用的论文抽查了 4 篇。
+- 2026-10-27：定时任务首次运行；7 个 NEW/UPDATED 主题读完 6 个，新增 6 条、补充 5 条，本周帖子没有引用论文。摘要追加在 [[research/forum-digest/2026-W44]] 的"2026-10-27 增补"一节。
