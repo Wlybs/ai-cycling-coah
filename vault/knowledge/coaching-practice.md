@@ -24,6 +24,7 @@ related: [[knowledge/README]]
 - 依据: 观点。#2/#5：用基本原理和常识，有效训练看似简单，容易想复杂。#7：KISS，简单的课、持续地做、目的明确。反方 #4（个人经验）：用 ChatGPT 通过 MCP 读 intervals 数据（CTL/ATL、HRV、RHR、睡眠、主观反馈）做了 4–6 周跑步准备，效果满意；他承认 AI 会犯错，需要质疑和纠正，认为理想形态是可靠数据 + 确定性计算 + 安全上限 + 有判断力的人。
 - 我的判断: 可靠性 中（双方都基于经验；#4 自己也承认单次比赛不能证明什么）。与研究：没有研究。
 - 对本人: 适用。本项目的 AI 教练应继续让本人参与课表决策，给出依据，不自动推送。
+- 补充（2026-10-27）：TrainerRoad「Incorporating Garmin Training Readiness Data into TR」#3 @PhilipK（普通用户）2026-10-26，点赞 0：让 Claude 读自己的 Garmin HRV 和睡眠分，它总是建议休息或改轻松课；而 Garmin 会把半夜醒着记成睡着。#10 @JoeX（点赞 1）：试过写"x>n 且 y<m 就做 z"的确定性规则，结论是生理不按这种规则走，指标是"提示"不是"指令"。可靠性 低-中（个人经验）。对本人：提醒本项目的 AI 教练不要把单日可穿戴数据翻译成"减量/休息"，与 INDEX 5/12"阀门降级"规则一致。
 
 ### 让 LLM 只调用确定性代码算数，并单独设一道"每个数字都要标出处"的证据关（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Integrated LLMs vs. Algorithmic Coaching: Utility, Guardrails, and Safety」#3 @GarageLab（Supporter，自述用于工程与运动生理工作流）2026-10-10，点赞 0；#8 @Jaap_van_Ekris（普通用户）2026-10-11，点赞 0，https://forum.intervals.icu/t/integrated-llms-vs-algorithmic-coaching-utility-guardrails-and-safety/132885
