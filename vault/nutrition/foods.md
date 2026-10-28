@@ -75,3 +75,12 @@ tags: [nutrition, food-labels]
 - **Cornetto Unicornetto134ml/85g候选**：Wall’s马来西亚品牌页每支200kcal/P2/C31/F7/饱和脂肪6/糖21/纤维<1g。本人只确认S$2.75、蓝紫炫彩，与本地同名零售款相符但未认包装，不当完全确认新加坡实物。https://www.walls.com.my/p/cornetto-unicornetto.html/08851932396059 。
 - **AL-Baqa Frozen Beef Cubes500g匹配名**：官网标Brazil，与本人描述澳洲不同；没有营养/具体部位。生重220g已确认。USDA171206生炖牛肩肉128kcal/P21.8/F4.48、Fe2.12mg/B12 2.3µg每100g；USDA2646174较肥生肩肉237.10kcal/P18.4/F17.8每100g。只作两种情景，不能混成确定产品标签。https://www.fairprice.com.sg/product/al-baqa-frozen-beef-cubes-500g-10690455 。
 - 干意面品牌未报：USDA168927未强化干意面每100g371kcal/P13.04/C74.67/F1.51/纤维3.2g。番茄USDA170457、西兰花170379/169967已取官方原料/熟食组成；具体计算见10/28长期证据JSON。
+
+
+## 2026-10-28新增：通用熟食微量营养数据库
+
+品牌未列微量时，现使用FSANZ AUSNUT2023完整通用食品组成补齐，长期保存`nutrition/evidence/ausnut-2023-selected-foods.json`（原工作簿SHA256、Food nutrient profiles表、行号、public food key、每100g字段）。它不是上述品牌的检测值。包括熟带皮土豆F007398、普通全脂奶F005634、蓝莓F001290、熟全蛋F003721、熟白意面F006456、茄汁沙丁鱼连汁F007977、香蕉F000262、普通乳清F007493、生牛肉丁F000561、番茄F009193、熟西兰花F001900、普通熟白米F007661、带糖果脆层甜筒F010089。
+
+真实标签优先覆盖宏量及已标微量，生熟和食谱转换写在当日JSON。AUSNUT维A的RE不能直接与900µg RAE相比，统一由视黄醇+膳食β胡萝卜素当量/12换算；D2+D3与25-OH D活性当量分开。不默认为本人产品强化了维D。
+
+来源：https://www.foodstandards.gov.au/science-data/food-nutrient-databases/ausnut/data-files ，2026-10-28复核官方文件说明。过去“未标＝不评分”属于v1历史逻辑，现行[[nutrition/scoring-v2]]允许注明代理与可信度后完整估算。
