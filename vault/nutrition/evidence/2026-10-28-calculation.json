@@ -1,0 +1,243 @@
+{
+  "date": "2026-10-28",
+  "standard": "v1.0",
+  "meals": [
+    {
+      "meal": "早餐",
+      "kcal": 626.2,
+      "P": 30.83,
+      "C": 86.485,
+      "F": 18.19
+    },
+    {
+      "meal": "午饭",
+      "kcal": 734.5,
+      "P": 35.86,
+      "C": 117.30499999999999,
+      "F": 12.495000000000001
+    },
+    {
+      "meal": "骑中",
+      "kcal": 597.1333333333333,
+      "P": 0.9446666666666668,
+      "C": 149.79466666666667,
+      "F": 0.28600000000000003
+    },
+    {
+      "meal": "练后",
+      "kcal": 503.20000000000005,
+      "P": 41.92,
+      "C": 33.900000000000006,
+      "F": 22.099999999999998
+    },
+    {
+      "meal": "晚饭",
+      "kcal": 1275.2131668000002,
+      "P": 60.690000000000005,
+      "C": 162.80400000000003,
+      "F": 41.586
+    },
+    {
+      "meal": "饭后可爱多（候选款）",
+      "kcal": 200,
+      "P": 2,
+      "C": 31,
+      "F": 7
+    }
+  ],
+  "total_working_estimate": {
+    "kcal": 3936.2465001333335,
+    "P": 172.24466666666666,
+    "C": 581.2886666666667,
+    "F": 101.657
+  },
+  "unmeasured_cooking_oil_excluded": true,
+  "banana_edible_g_assumed": 86.66666666666667,
+  "ride_hours": 4.650277777777778,
+  "ride_carbs_g": 149.79466666666667,
+  "ride_carbs_g_per_h": 32.21198255779225,
+  "preride_plus_ride_carbs_g": 267.0996666666667,
+  "preride_plus_ride_carbs_divided_by_ride_hours_not_inride_rate": 57.43735738605818,
+  "calcium_known_subtotal_mg_without_fish_whey_icecream_potato_rice": 1019.1,
+  "iron_known_subtotal_mg_egg_pasta_beef_only": 9.104800000000001,
+  "fiber_working_estimate_g_without_icecream": 27.493333333333332,
+  "produce_g_excluding_potatoes": 496.6666666666667,
+  "score_items": {
+    "energy": {
+      "earned": null,
+      "available": 0,
+      "fixed_weight": 20
+    },
+    "carbohydrate": {
+      "earned": 14.610599127889612,
+      "available": 20,
+      "fixed_weight": 20
+    },
+    "protein": {
+      "earned": 10,
+      "available": 10,
+      "fixed_weight": 15,
+      "unknown": "distribution: breakfast and lunch within 2h merge; post-dinner interval unknown"
+    },
+    "micronutrients": {
+      "earned": 9,
+      "available": 9,
+      "fixed_weight": 20,
+      "known": "Ca4 Fe3 B12 2; other11 unknown; B12 uses generic raw stewing beef21.8P/2.3ugB12 per100g proxy"
+    },
+    "structure": {
+      "earned": 10,
+      "available": 10,
+      "fixed_weight": 15,
+      "unknown": "saturated fat5"
+    },
+    "hydration": {
+      "earned": null,
+      "available": 0,
+      "fixed_weight": 10
+    }
+  },
+  "earned": 43.610599127889614,
+  "available": 49,
+  "coverage_percent": 49,
+  "unknown_weight": 51,
+  "sources": {
+    "sardine_label_photo": "https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/13215694_LXL1_20220506.jpg",
+    "sardine_label_conflict": "Per serving fat printed16.2g vs per100g6.6g; working fat uses6.6*1.55=10.23g, consistent with178kcal. Not certified actual batch.",
+    "beef_proxy": "USDA FDC2646174 raw choice boneless chuck; 237.096894kcal/P18.4/F17.8 per100g; not Al-Baqa measured label or confirmed cut.",
+    "pasta_proxy": "USDA FDC168927 Pasta,dry,unenriched; specific brand unknown",
+    "icecream_candidate": "Wall’s Malaysia Cornetto Unicornetto85g/134ml;200kcal/P2/C31/F7/sat6 percone;SG version not user-confirmed",
+    "milk_proxy": "FairPrice UHT whole milk, version not user-confirmed",
+    "whey_proxy": "Milk Tea flavor historical confirmation; full label missing;112kcal/P22/C2.7/F1.7 proxy retained, not certified flavor label",
+    "beef_B12_proxy": "USDA FDC171206, live official API search record saved during this turn: /tmp/nutrition-20261028/beef_sr_search.json; other retrieved raw cuts show2.07–2.42ug/100g."
+  },
+  "beef_scenarios": {
+    "stew_proxy": {
+      "fdc_id": 171206,
+      "description": "Beef,chuck for stew,separable lean and fat,all grades,raw",
+      "per100g": {
+        "kcal": 128,
+        "P": 21.8,
+        "F": 4.48,
+        "Fe_mg": 2.12,
+        "B12_ug": 2.3
+      }
+    },
+    "fattier_roast_proxy": {
+      "fdc_id": 2646174,
+      "description": "Beef,chuck,roast,boneless,choice,raw",
+      "per100g": {
+        "kcal": 237.096894,
+        "P": 18.4,
+        "F": 17.8
+      }
+    }
+  },
+  "totals_beef_scenario_range": {
+    "kcal": [
+      3696.2333333333336,
+      3936.2465001333335
+    ],
+    "P": [
+      172.24466666666666,
+      179.72466666666668
+    ],
+    "C": [
+      581.2886666666667,
+      581.2886666666667
+    ],
+    "F": [
+      72.353,
+      101.657
+    ]
+  },
+  "beef_scenario_range_is_not_statistical_confidence_interval": true,
+  "audited_per100g_proxies": {
+    "168927": {
+      "description": "Pasta, dry, unenriched",
+      "source": "https://fdc.nal.usda.gov/food-details/168927/nutrients",
+      "nutrients": {
+        "Energy": 371.0,
+        "Protein": 13.04,
+        "Total lipid (fat)": 1.51,
+        "Carbohydrate, by difference": 74.67,
+        "Fiber, total dietary": 3.2,
+        "Calcium, Ca": 21.0,
+        "Iron, Fe": 1.3,
+        "Magnesium, Mg": 53.0,
+        "Potassium, K": 223.0,
+        "Vitamin C, total ascorbic acid": 0.0,
+        "Vitamin B-12": 0.0,
+        "Fatty acids, total saturated": 0.277
+      }
+    },
+    "170457": {
+      "description": "Tomatoes, red, ripe, raw, year round average",
+      "source": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+      "nutrients": {
+        "Energy": 18.0,
+        "Protein": 0.88,
+        "Total lipid (fat)": 0.2,
+        "Carbohydrate, by difference": 3.89,
+        "Fiber, total dietary": 1.2,
+        "Calcium, Ca": 10.0,
+        "Iron, Fe": 0.27,
+        "Magnesium, Mg": 11.0,
+        "Potassium, K": 237.0,
+        "Vitamin C, total ascorbic acid": 13.7,
+        "Vitamin B-12": 0.0,
+        "Fatty acids, total saturated": 0.028
+      }
+    },
+    "170379": {
+      "description": "Broccoli, raw",
+      "source": "https://fdc.nal.usda.gov/food-details/170379/nutrients",
+      "nutrients": {
+        "Energy": 34.0,
+        "Protein": 2.82,
+        "Total lipid (fat)": 0.37,
+        "Carbohydrate, by difference": 6.64,
+        "Fiber, total dietary": 2.6,
+        "Calcium, Ca": 47.0,
+        "Iron, Fe": 0.73,
+        "Magnesium, Mg": 21.0,
+        "Potassium, K": 316.0,
+        "Vitamin C, total ascorbic acid": 89.2,
+        "Vitamin B-12": 0.0,
+        "Fatty acids, total saturated": 0.114
+      }
+    },
+    "169967": {
+      "description": "Broccoli, cooked, boiled, drained, without salt",
+      "source": "https://fdc.nal.usda.gov/food-details/169967/nutrients",
+      "nutrients": {
+        "Energy": 35.0,
+        "Protein": 2.38,
+        "Total lipid (fat)": 0.41,
+        "Carbohydrate, by difference": 7.18,
+        "Fiber, total dietary": 3.3,
+        "Calcium, Ca": 40.0,
+        "Iron, Fe": 0.67,
+        "Magnesium, Mg": 21.0,
+        "Potassium, K": 293.0,
+        "Vitamin C, total ascorbic acid": 64.9,
+        "Vitamin B-12": 0.0,
+        "Fatty acids, total saturated": 0.079
+      }
+    }
+  },
+  "reported_water_and_salt": {
+    "plain_and_sugar_water_L": [
+      3,
+      4
+    ],
+    "milk_ml": 700,
+    "salt_in_sugar_water_g": 2,
+    "sodium_from_added_salt_mg_estimated": 786.8,
+    "recovery_intake_within_min": 30
+  },
+  "reference_weight_sensitivity_kg": [
+    61.0,
+    64.099
+  ]
+}

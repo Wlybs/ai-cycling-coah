@@ -67,3 +67,11 @@ tags: [nutrition, food-labels]
 - FairPrice **UHT Milk Full Cream**：每100ml65.2kcal/P3.32/C5.2/F3.4，饱和脂肪2.2g、钙114mg、钠40mg。官网原表每250ml：163kcal/P8.3/C13/F8.5/饱和脂肪5.5/钙285mg/钠100mg。用户仅说FairPrice全脂牛奶，不能认定一定是UHT而非冷藏鲜奶。来源：https://www.fairprice.com.sg/product/fairprice-uht-milk-full-cream-12-x-1l-ctn-12704504 ，Nutritional data，2026-10-28查。
 - 土豆USDA FDC170026生的肉及皮，每100g77kcal/P2.05/C17.49/F0.09/纤维2.1。适用于生可食重参考；水煮/蒸/烤的熟重不可不加说明直接套用。https://fdc.nal.usda.gov/food-details/170026/nutrients 。
 - 麦当劳番茄酱：新加坡版尚未核包重/成分，不登记确定SG标签。10/28临时采用加拿大官方9.1g包10kcal/C3/P0.1/F0作为小包代理，见当日日记来源；不将加拿大钠75mg当新加坡准确钠值。
+
+
+## 2026-10-28晚补：辣椒沙丁鱼、可爱多候选及牛肉代理
+
+- **FairPrice Sardine In Tomato Sauce and Chilli155g，SKU13215694**：每罐178kcal/P16.3/C5.3/纤维2g/饱和脂肪3.3g/钠791mg。脂肪栏每罐16.2g与每100g6.6g不一致，暂用后者×1.55=10.23g，与能量更相符，待实物核对。来源为官网标签照片，不能套普通茄汁155g的157kcal/P22.2。https://www.fairprice.com.sg/product/fairprice-sardine-in-tomato-sauce-and-chilli-155g-13215694 ；https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/13215694_LXL1_20220506.jpg 。本人确认吃辣椒款、连鱼带酱全吃。
+- **Cornetto Unicornetto134ml/85g候选**：Wall’s马来西亚品牌页每支200kcal/P2/C31/F7/饱和脂肪6/糖21/纤维<1g。本人只确认S$2.75、蓝紫炫彩，与本地同名零售款相符但未认包装，不当完全确认新加坡实物。https://www.walls.com.my/p/cornetto-unicornetto.html/08851932396059 。
+- **AL-Baqa Frozen Beef Cubes500g匹配名**：官网标Brazil，与本人描述澳洲不同；没有营养/具体部位。生重220g已确认。USDA171206生炖牛肩肉128kcal/P21.8/F4.48、Fe2.12mg/B12 2.3µg每100g；USDA2646174较肥生肩肉237.10kcal/P18.4/F17.8每100g。只作两种情景，不能混成确定产品标签。https://www.fairprice.com.sg/product/al-baqa-frozen-beef-cubes-500g-10690455 。
+- 干意面品牌未报：USDA168927未强化干意面每100g371kcal/P13.04/C74.67/F1.51/纤维3.2g。番茄USDA170457、西兰花170379/169967已取官方原料/熟食组成；具体计算见10/28长期证据JSON。
