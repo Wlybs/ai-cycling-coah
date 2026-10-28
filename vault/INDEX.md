@@ -41,7 +41,7 @@
 
 ## 最近 5 次 session
 
-- 2026-10-28 — [[sessions/2026-10-28-indoor-lsd-review]] — 室内LSD 4h39均198/NP199W、TSS205；前3h心率稳，后90min同功率心率上漂（脱钩6.7%，10/21为0.4%），原因待核（补给约32g/h？/室温/昨日4×15）。TSS>200且TSB−25.3→10/29全休、10/30照常休；周六A室内3h ERG195＋60g/h补给。
+- 2026-10-28 — [[sessions/2026-10-28-indoor-lsd-review]] — 室内LSD 4h39均198/NP199W、TSS205；前3h心率稳，后90min同功率心率上漂（脱钩6.7%，10/21为0.4%），原因待核（补给约32g/h？/室温/昨日4×15）。本人作废"TSS>200且TSB<−20次日强制休"，停训由本人体感定；10/29恢复轻松骑行日、10/30休；周六A室内3h ERG195＋60g/h补给。
 - 2026-10-28 — [[sessions/2026-10-28-indoor-lsd-pre-meal-and-fueling]] — 下午室内LSD 4–5h：早餐09:00约86g碳水，先吃正餐（出发前2–3h熟米饭400g+鸡胸200g；不足2h改白面包150g）；骑中约60g/h=每小时一壶白糖45g+盐0.5g＋白面包35g；骑后乳清30g+碳水。
 - 2026-10-27 — [[sessions/2026-10-27-unstructured-rides-for-volume]] — 本人明确自由长骑/团骑、不严格Z2；ABC同步去瓦数/计圈/踏频/TSS完成线，旧175–200不再是目标，时长窗口非必达。骑时自由，骑后按实际强度调周计划；硬团骑计质量、Crazies仍算质量。
 - 2026-10-27 — [[sessions/2026-10-27-mental-load-and-enjoyable-volume]] — 本人今日轻度精神累、近期多间歇少快乐；明日ABC同步为[[plans/2026-10-28-free-endurance]]（revision39）：自由户外/ERG195/聊天骑，3–4.5h窗口、175–200宽参考，3h后仍想骑才延，取消盯表/每圈任务，不加Tempo；Thu有氧/Fri休不变，旧周预算非必达。
@@ -86,7 +86,7 @@
 - 🔴 **HARD RULE 课表 single source of truth = ICU push workout_doc** (5/12 锁定)：vault 简写 ("3×3×450W") 仅做参考，引用必查 ICU push 的 workout_doc 真实 steps（之前混淆 race-rhythm = 3×3min 稳态 450W vs 真实 3 set × 6min 含 9 次 W' burst）
 - 🔴 **HARD RULE 阀门设计降级 (5/12 锁定)**: HRV 单日数值不再硬挂 reps 上限（5/10 OU 与 5/12 30/30 用户两次覆盖阀门均 A 级完成，3 次决策阀门错 2 次）；reps 数由用户体感决定；阀门仅作"异常趋势信号"——HRV 连续 2-3 天下滑 **AND** RHR 比 baseline 高 5+ bpm 持续 2 天 → 教练主动 flag，但不指定 dose
 - 🔴 **HARD RULE 累积（持续增长）**：
-  - 单日 >200 TSS **AND** TSB <-20 → 次日强制休（两条同时）
+  - ~~单日 >200 TSS AND TSB <-20 → 次日强制休~~ **10/28本人作废**：停不停训由本人体感决定，TSS/TSB只作信息，教练不据此强制休，见[[decisions]] 2026-10-28
   - race-specificity 矩阵审计
   - W'/CP 物理核算（双层池 22+12=36）
   - 路骑优先
