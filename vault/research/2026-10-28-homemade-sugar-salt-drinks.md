@@ -1,0 +1,83 @@
+---
+date: 2026-10-28
+tags: [research, nutrition, hydration, sucrose]
+---
+# 白糖、盐、水：公路车训练与比赛配方
+
+## 本人事实与适用边界
+- 本轮本人报告：720ml壶装100g或120g白糖，两种都觉得越喝越渴；约1h或稍多喝完，不另喝水，试过0.5g和1g盐/壶感觉无区别；分别32°C室外白天及27°C室内骑行台。120g/壶无胃胀或恶心，主要嘴里黏黏、有点渴但可接受。应用于DRCC与Crazies，不沿途补水。不能据此诊断脱水、果糖不耐受或缺钠。
+- 已回读最近5次session及quick-facts：过去高糖摄入未报肠胃不适、10/26说100g/720ml甜度可接受；10/23自报约4h/31°C喝3.2L（约0.8L/h，仅该次条件）。本轮口渴补充了过去的记录，并不证明过去无不适的报告错误。
+- 数据同步完成：2026-10-28T22:29:04；当日详情1条i202627708。本研究不使用FTP、体重、ATL或TSB计算补液处方。
+
+## 结论与机制
+白糖可作为低成本主力碳水；蔗糖消化后提供近1:1葡萄糖与果糖。没有证据可为本人指定一个跨所有强度和天气的“最佳浓度”。先分别定碳水g/h、液体ml/h、钠mg/L，再得到饮料浓度。能吞下、无胃肠症状，不等于补液速度最佳。
+
+按加糖后最终饮料体积720ml计算：100g=13.89%，120g=16.67%（g/100ml）。若是720ml水再加糖，最终体积更大，不能直接套以上浓度。
+
+高能量密度可减慢胃排空，高渗肠腔内容物可暂时使水进入肠腔而延迟净吸收（S1 §3.2–3.3）；对本人的解释是机制推断，尚未确定实际原因。口腔甜腻/口干与汗损超过实际补液也需区分，不能仅凭“渴”判断哪项占主导。浓糖水并非完全不吸水，更不能称一定让全身净脱水。加盐不能降低糖浓度或渗透压，盐多同样增加溶质负担。
+
+## 可执行起点（教练将指南转成水壶配方，未作本人最优配方试验）
+以下全部按普通食盐NaCl、加水至最终720ml。用秤，不以“撮”作精确单位。
+
+| 场景 | 白糖/720ml | 糖浓度 | 普通食盐/720ml |
+|---|---:|---:|---:|
+| 炎热、喝水需求高、优先处理口渴 | 30–40g | 4.2–5.6% | 先1.0g |
+| 日常有氧主力 | 45g | 6.25% | 先1.0g |
+| 长有氧/较硬训练、喝着舒服时 | 60g | 8.33% | 先1.0g |
+| 100–120g浓缩糖壶 | 100–120g | 13.9–16.7% | 按总液体及总钠另算，不能随糖同比增加 |
+
+1g普通NaCl约393mg钠；1g/720ml约546mg钠/L。这个起点落在S3的500–700mg钠/L常用建议内，不声称匹配本人汗钠。过去0.5g/720ml约273mg钠/L，不能仅凭这个差别判旧方案导致口渴。汗率/汗钠很高或另吃胶、运动饮料时，需重新合计；盐不强求跟糖量成比例。
+
+## 何时与多少
+下列分档是综合指南和本人训练场景的起始建议；强度与时长共同决定，不是按FTP百分比直接算。
+- 饭后、轻松≤60min：通常不必专门补糖；高强度短课另看骑前供给。
+- 普通1–2h有氧：30–45g碳水/h可作起点。
+- 本人3–5h长有氧：45–60g/h作起点，结合骑前餐、后续恢复及实际体验；不把所有长有氧都限制在30g/h。
+- 包含持续节奏/阈值、约1.5–3h：50–70g/h为实践起点。
+- 较长比赛/硬团骑：60–90g/h为常用起点，特别是>2.5h；短比赛不因“比赛”二字自动上90。
+- 100–120g/h可有特定用途，但不是本轮解决口渴的默认目标。S4支持120g/h相对60g/h减少3h后CP下降；不等于证明120g/720ml纯白糖对本人更合适。
+
+g/壶不等于g/h。饮料提供的糖g/h=每壶糖g×每小时喝该饮料ml÷720。胶、香蕉、100PLUS另外计入。骑前餐影响出发糖原与早段供给，但不冒充骑中摄入，也不把整顿餐均匀摊给最后一小时。
+
+长训练可从前半小时起分次喝，约每10–15min小口为方便执行的安排，非已证最优时钟；不用等口渴难受或饿了才开始补。实际喝水量按天气、汗损、口渴及耐受调整，避免为了把糖稀释到某数字而强喝。骑后称重可低负担校准，但不是给初步建议的必要门槛。
+
+## 浓糖壶的比赛用途
+适合把它作为分次取用的碳水储备，并有可用的无糖液体。与胶配水相似是执行类比，不代表生理完全等效。
+- 100g/720ml糖壶+720ml无糖液体，两壶若2h内分次配着喝完：50g糖/h、720ml液体/h；总摄入糖/液体约6.94%。
+- 120g/720ml糖壶+720ml无糖液体，同样2h喝完：60g糖/h、720ml液体/h；总摄入约8.33%。
+- 无糖液体可按需要配成淡盐水。以上是供给算术，不保证胃内每时刻恰好同浓度；分次交替，不把水全拖到两小时后。
+- 想要90g/h，不必把每壶都加到120g；先看每小时实际液体。例如每小时90g糖+总1L液体约9%，是否合适仍由耐受和补液需要决定。
+- 本人已经报告13.9–16.7%饮料不解渴，不建议炎热比赛只带这类糖壶且无额外可饮液体。比赛前必须在近似强度/天气实测。
+
+## 证据与integrity pass
+S1. Pérez-Castillo等，2023-12-20在线、2024卷期，*Compositional Aspects of Beverages Designed to Promote Hydration Before, During, and After Exercise: Concepts Revisited*，Nutrients 16(1):17，doi:10.3390/nu16010017。全文§3.2（能量密度、胃排空）、§3.3（高渗与肠腔水通量）；Table1（补液个体化）。叙述综述，部分作者有Abbott关联；不能当本人14–17%糖水实验。
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10781183/
+
+S2. Morton等，2026，*From Metabolism to Medals: Contemporary Perspectives and Revisiting Carbohydrate Guidelines for Fueling Endurance Athletes during Exercise*，J Nutr 156:101442，doi:10.1016/j.tjnut.2026.101442。全文Introduction、Composition of CHO blends、Ratio of fructose-to-glucose（近1:1合理性），以及Format of CHO ingestion；常用30–60/90g/h框架及高摄入更新。综述/实践观点，有运动营养行业关联；不证明任意商用粉与白糖完全等效。
+https://pmc.ncbi.nlm.nih.gov/articles/PMC13197957/
+
+S3. Quaresma等，2025，*Clinical Practice Guidelines for Sports Nutrition: Brazilian Sports Nutrition Association*，J Phys Educ 36:e3605，doi:10.4025/jphyseduc.v36i1.3605。Hydration部分500–700mg钠/L段；Carbohydrates部分>75min的30–60g/h及>2.5h混合糖最高90g/h。盐换算与配方为本笔记算术，不是原文指定每壶1g盐。
+https://new.scielo.br/j/jpe/a/RJ9gMsLgCcVPkspNVYSFsjk/?lang=en
+
+S4. Norte等，2026-06-19，*Graded Carbohydrate Ingestion up to 120 g·h−1 Attenuates the Reduction in Critical Power Following 3 h of Moderate-Intensity Exercise in a Dose-Dependent Manner*，Scand J Med Sci Sports 36:e70326，doi:10.1111/sms.70326。n=16；Abstract和§2.7：60/120g/h，麦芽糊精:果糖1:0.8，13.3%/26.7%浓饮、允许额外自由饮水。高浓度可有用途，8%不是吸收硬上限。CP采用3min测试末30s功率估计，非真实公路比赛成绩；不能直接外推纯白糖最佳浓度。
+https://onlinelibrary.wiley.com/doi/10.1111/sms.70326
+
+S5. Macrae等，2026-07-08在线，J Appl Physiol 141:517–526，*Exercise-induced dehydration decreases exogenous glucose oxidation during prolonged cycling in a temperate environment*，doi:10.1152/japplphysiol.01192.2025。PubMed摘要级核验：n=9、相同60g/h葡萄糖，低补液条件外源葡萄糖氧化下降约16%。不能把此效应量直接套本人白糖。
+https://pubmed.ncbi.nlm.nih.gov/42420769/
+
+S6. *Hydration management for athletes (2026): A joint consensus statement…*，Sports Medicine and Health Science，PII S2666337626001198。出版社全文直接open受403限制，已核检索可读§6.1–6.2及Table6–7；只用于训练中演练、按汗损/环境个体化、避免过饮和补液不足。未认证作者或DOI，不捏造引用元数据。
+https://www.sciencedirect.com/science/article/pii/S2666337626001198
+
+S7. Costa等，2025，*Sports Dietitians Australia and Ultra Sports Science Foundation Joint Position Statement: A Practitioner Guide to the Prevention and Management of Exercise-Associated Gastrointestinal Perturbations and Symptoms*，Sports Med 55:1097–1134，doi:10.1007/s40279-025-02186-6。已核PubMed摘要（个体化、训练补给耐受、维持水合），以及检索可读全文表格（热、强度与摄入量/浓度为影响因素）；不提供本人从有氧到高强度的数值耐受保证。
+https://pubmed.ncbi.nlm.nih.gov/40195264/
+
+## 本人补充后的最终个体应用（覆盖上文“配额外水”的默认可行性）
+- 本人的主要不适是口腔黏甜感；“口感导致的不解渴感”是当前优先核验的解释，不是已确定原因。无胃胀/恶心不证明没有吸收延迟，但也绝不能据此说吸收已经失败。0.5→1g盐未改变体验，不继续靠加盐处理。
+- 补读10/25 Crazies session：当天约2h、76.5km、均温25.9°C，本人自报两720ml壶100PLUS共72g碳水+白糖100g+两胶80g≈252g/2h≈126g/h（旧记录写约250/125）；无GI不适。活动时长来自详情i201276413，本人摄入来自叙述，设备carbs_ingested为空。已在较硬团骑接受过高小时摄入，不能说完全没有高强度经验；但当天壶内约86g/720ml≈11.9%，不同于120g/720ml纯白糖，且不据表现认定高糖剂量因果获益。
+- 对约2h、不补水Crazies的首次配方比较：两720ml壶各75g白糖+1g盐（10.4%），合计150g糖/1.44L≈75g/h、720ml/h；口感与高强度都合适后，比较各90g（12.5%），即90g/h。两者是便于比较的试行档，不是文献证明75或90对本人最优。
+- 本人已有高摄入耐受，100–120g/h不列为禁止。若同类高强度实测确有收益、口感可接受且水合合适，可以保留。不能承诺120一定优于90，也不能仅因高于90就叫浪费。
+- 可把总糖集中在一壶并留另一壶无糖水用于冲口，但总糖/总液体不变时只是口感/分配调整，不称肠胃整体已稀释；同理“淡糖水+胶补回同量糖”没有凭空补水收益。
+- 不沿途补水意味着总容量是约束：1.44L对应2h=720、2.5h=576、3h=480ml/h。DRCC旧用时2–2h45本来是未校准估计，不当作真实完赛时长；赛前按预计天气与同条件实际水需求决定带多少。若沿用10/23户外自报约0.8L/h作情景，2.5h约需2L，而不是给所有天气固定处方。水量不足需增加携水/调整后勤，配方不能制造水。
+- 验证安排（教练建议而非已证最优流程）：在已有较硬训练/Crazies里比较75/90g档，别额外增加硬课；其他摄入尽量一致，约每10–15min分次小口。看口腔黏感/口渴是否妨碍喝完、胃肠感觉、末段骑行表现；可选骑前后干身称重帮助判断水量，单次表现不定因果。
+
+审计：本人报告、原文机制、指南范围与教练配方推导已分开；没有给本人诊断、声称测得汗率/血钠/渗透压，也没有承诺单一最佳浓度。本人补充的场景、盐量、喝完时长及无GI症状已纳入；未解决的是同浓度在更硬强度下的重复耐受和实际水合，而不是要求他重复报告已答信息。
