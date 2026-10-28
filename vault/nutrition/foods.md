@@ -60,3 +60,10 @@ tags: [nutrition, food-labels]
 | 10/24 | 燕麦383kcal/P12.1/C57.8/F9/纤维11.1/钠3mg每100g | 10/26本人明确同款，可沿用 |
 
 各历史出处见对应`nutrition/YYYY-MM-DD`。旧菜单的脱脂酸奶P4/C7等近似不覆盖已确认MARIGOLD背标。食品身份与营养值不确定时保留版本，不拼接成精确新标签。
+
+
+## 2026-10-28新增参考（产品版本待本人确认）
+
+- FairPrice **UHT Milk Full Cream**：每100ml65.2kcal/P3.32/C5.2/F3.4，饱和脂肪2.2g、钙114mg、钠40mg。官网原表每250ml：163kcal/P8.3/C13/F8.5/饱和脂肪5.5/钙285mg/钠100mg。用户仅说FairPrice全脂牛奶，不能认定一定是UHT而非冷藏鲜奶。来源：https://www.fairprice.com.sg/product/fairprice-uht-milk-full-cream-12-x-1l-ctn-12704504 ，Nutritional data，2026-10-28查。
+- 土豆USDA FDC170026生的肉及皮，每100g77kcal/P2.05/C17.49/F0.09/纤维2.1。适用于生可食重参考；水煮/蒸/烤的熟重不可不加说明直接套用。https://fdc.nal.usda.gov/food-details/170026/nutrients 。
+- 麦当劳番茄酱：新加坡版尚未核包重/成分，不登记确定SG标签。10/28临时采用加拿大官方9.1g包10kcal/C3/P0.1/F0作为小包代理，见当日日记来源；不将加拿大钠75mg当新加坡准确钠值。
