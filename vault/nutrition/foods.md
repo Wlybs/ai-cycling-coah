@@ -90,3 +90,8 @@ tags: [nutrition, food-labels]
 
 - **Magnolia Wafer Durian62ml候选**：用户报Prime/S$1.60/两片饼干夹榴莲雪糕，身份未最终确认；厂家确认62ml榴莲威化款，FairPrice对应4包背标每个94kcal/P1.2/C11.9/F4.5、饱和2.6/总糖8.3/纤维0.6/钠41mg。来源：https://fnncreameries.com/product/magnolia-wafer-durian/ ；https://www.fairprice.com.sg/product/f-n-magnolia-ice-cream-with-wafer-durian-4-per-pack-13145804 ；https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/13145804_BXL1_20250616.jpg （已目视核每62ml列，2026-10-29）。不是已确认本人包装，不套昨天Cornetto。
 - 外食100g铁板牛肉按整菜拆分，不当100g纯肉；150g干锅包菜应计明确假设油，清蒸巴沙鱼用熟食代理。AUSNUT新增F000929熟炒瘦牛肉、F000403蒸煮巴沙鱼、F001987熟包菜、F006225洋葱、F006143燕麦、F009688低脂自然酸奶、F003095威化筒。微量通用代理保存`nutrition/evidence/2026-10-29-ausnut-selected-foods.json`，精确食谱假设在当日JSON，仅为本餐估计，不注册成商家营养标签。
+
+
+### 2026-10-29杂菜饭口径订正（覆盖当日初估配方）
+
+本人明确午饭荤菜为含配菜汁水的总熟重，牛肉确为熟肉；未声明肥瘦。初估70g熟瘦牛肉/整150g鱼肉不再使用。当前具体情景牛肉100g整菜暂拆50g熟肉、鱼150g整菜暂拆90g熟净鱼，其余为配菜油汁；这些是本次假设，不是新加坡杂菜饭固定肉率。午饭蛋白中央约37g、变动情景32–42g。新增AUSNUT F000872普通熟牛肉、F009183嫩豆腐；晚饭实吃另加150g豆腐，型号暂沿用先前Fortune，并非本人新确认品牌。

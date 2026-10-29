@@ -1,0 +1,495 @@
+{
+  "date": "2026-10-29",
+  "scope": "已报告早餐/午饭/饭前加餐/晚饭；截至训练开始前",
+  "scoring_standard": "v2.0",
+  "user_update": "尚未训练，回复时约1小时后开始；白水量不记得",
+  "training_completed_as_reported": false,
+  "planned_training_duration_and_type": null,
+  "water_l": null,
+  "food_rows": [
+    {
+      "meal": "早餐",
+      "food": "燕麦",
+      "reported_portion": "70g",
+      "macro": {
+        "kcal": 268.1,
+        "protein_g": 8.47,
+        "carbohydrate_g": 40.46,
+        "fat_g": 6.3
+      },
+      "micro": {
+        "calcium_mg": 28.0,
+        "iron_mg": 2.45,
+        "magnesium_mg": 72.8,
+        "potassium_mg": 217.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 7.77,
+        "saturated_fat_g": 1.2109999999999999,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F006143",
+      "source_note": "此前同款标签；沿用干重口径",
+      "assumptions": []
+    },
+    {
+      "meal": "早餐",
+      "food": "全脂纯牛奶",
+      "reported_portion": "100g",
+      "macro": {
+        "kcal": 65.2,
+        "protein_g": 3.32,
+        "carbohydrate_g": 5.2,
+        "fat_g": 3.4
+      },
+      "micro": {
+        "calcium_mg": 114,
+        "iron_mg": 0.02,
+        "magnesium_mg": 10.0,
+        "potassium_mg": 142.0,
+        "vitamin_B12_ug": 0.4,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 2.2,
+        "vitamin_A_RAE_ug": 42.5,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F005634",
+      "source_note": "暂沿用此前FairPrice UHT全脂奶代理，品牌/版本本餐未重述；100g≈100ml计算近似",
+      "assumptions": []
+    },
+    {
+      "meal": "早餐",
+      "food": "蓝莓",
+      "reported_portion": "40g",
+      "macro": {
+        "kcal": 22.8,
+        "protein_g": 0.296,
+        "carbohydrate_g": 5.796,
+        "fat_g": 0.132
+      },
+      "micro": {
+        "calcium_mg": 4.4,
+        "iron_mg": 0.14,
+        "magnesium_mg": 2.4,
+        "potassium_mg": 33.2,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.8,
+        "fiber_g": 1.2,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F001290",
+      "source_note": "USDA FDC171711普通蓝莓",
+      "assumptions": []
+    },
+    {
+      "meal": "早餐",
+      "food": "鸡蛋",
+      "reported_portion": "3个",
+      "macro": {
+        "kcal": 214.5,
+        "protein_g": 18.84,
+        "carbohydrate_g": 1.08,
+        "fat_g": 14.265
+      },
+      "micro": {
+        "calcium_mg": 58.5,
+        "iron_mg": 2.4150000000000005,
+        "magnesium_mg": 15.0,
+        "potassium_mg": 160.5,
+        "vitamin_B12_ug": 1.8,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 3.7949999999999995,
+        "vitamin_A_RAE_ug": 195.25,
+        "vitamin_D2_D3_ug": 2.115
+      },
+      "proxy_key": "F003721",
+      "source_note": "每个50g可食部分假设；USDA FDC171287全蛋原料参考，烹调方式未报，未含额外油",
+      "assumptions": []
+    },
+    {
+      "meal": "早餐",
+      "food": "MARIGOLD Non Fat Natural Yoghurt, No Sugar Added",
+      "reported_portion": "200g",
+      "macro": {
+        "kcal": 98.0,
+        "protein_g": 9.6,
+        "carbohydrate_g": 14.2,
+        "fat_g": 0.2
+      },
+      "micro": {
+        "calcium_mg": 360,
+        "iron_mg": 0.14,
+        "magnesium_mg": 40.0,
+        "potassium_mg": 592.0,
+        "vitamin_B12_ug": 1.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 0.2,
+        "vitamin_A_RAE_ug": 0.5,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F009688",
+      "source_note": "本人此前确认绿桶同款，已核背标；无添加糖不代表总糖为0",
+      "assumptions": []
+    },
+    {
+      "meal": "午饭",
+      "food": "熟米饭",
+      "reported_portion": "150g",
+      "macro": {
+        "kcal": 195.0,
+        "protein_g": 4.035,
+        "carbohydrate_g": 42.255,
+        "fat_g": 0.4200000000000001
+      },
+      "micro": {
+        "calcium_mg": 3.0,
+        "iron_mg": 0.135,
+        "magnesium_mg": 6.0,
+        "potassium_mg": 37.5,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 1.2,
+        "saturated_fat_g": 0.06,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F007661",
+      "source_note": "午饭杂菜饭150g按熟重；宏量沿用USDA168878代理，微量用非强化AUSNUT熟白米，不套强化铁叶酸",
+      "assumptions": []
+    },
+    {
+      "meal": "午饭",
+      "food": "铁板牛肉",
+      "reported_portion": "100g整道菜",
+      "macro": {
+        "kcal": 200.61950286806882,
+        "protein_g": 21.825,
+        "carbohydrate_g": 4.87,
+        "fat_g": 10.24
+      },
+      "micro": {
+        "calcium_mg": 6.25,
+        "iron_mg": 1.996,
+        "magnesium_mg": 17.900000000000002,
+        "potassium_mg": 279.0,
+        "vitamin_B12_ug": 1.75,
+        "vitamin_C_mg": 1.05,
+        "fiber_g": 0.345,
+        "saturated_fat_g": 1.9140000000000001,
+        "vitamin_A_RAE_ug": 0.7,
+        "vitamin_D2_D3_ug": 0.105
+      },
+      "source_note": "AUSNUT F000929熟瘦牛肉、F006225洋葱组成的明确食谱代理；非商家化验",
+      "recipe_assumption": {
+        "cooked_beef_g": 70,
+        "onion_g": 15,
+        "oil_g": 8,
+        "sauce_g": 7,
+        "carbohydrate_in_sauce_g": 4
+      },
+      "sensitivity": "牛肉60–85g、油4–12g、酱汁碳水2–7g，非统计区间"
+    },
+    {
+      "meal": "午饭",
+      "food": "干锅包菜",
+      "reported_portion": "150g整道菜",
+      "macro": {
+        "kcal": 144.39388145315488,
+        "protein_g": 2.16,
+        "carbohydrate_g": 5.24,
+        "fat_g": 12.135
+      },
+      "micro": {
+        "calcium_mg": 43.2,
+        "iron_mg": 0.5805,
+        "magnesium_mg": 14.85,
+        "potassium_mg": 398.25,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 36.45,
+        "fiber_g": 2.835,
+        "saturated_fat_g": 1.7999999999999998,
+        "vitamin_A_RAE_ug": 13.3875,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F001987",
+      "recipe_assumption": {
+        "cooked_cabbage_g": 135,
+        "oil_g": 12,
+        "sauce_g": 3,
+        "carbohydrate_in_sauce_g": 2
+      },
+      "sensitivity": "油8–20g；若含五花肉且未报告会改变结果"
+    },
+    {
+      "meal": "午饭",
+      "food": "清蒸巴沙鱼",
+      "reported_portion": "150g",
+      "macro": {
+        "kcal": 159.96940726577438,
+        "protein_g": 28.05,
+        "carbohydrate_g": 0.0,
+        "fat_g": 5.15
+      },
+      "micro": {
+        "calcium_mg": 33.0,
+        "iron_mg": 0.72,
+        "magnesium_mg": 49.5,
+        "potassium_mg": 526.5,
+        "vitamin_B12_ug": 3.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 1.2,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.06
+      },
+      "proxy_key": "F000403",
+      "recipe_assumption": {
+        "cooked_edible_fish_g": 150,
+        "oil_g": 2
+      },
+      "sensitivity": "熟可食鱼代理，浇油0–5g，酱汁/钠未精确"
+    },
+    {
+      "meal": "饭前加餐",
+      "food": "榴莲威化夹心雪糕（候选Magnolia）",
+      "reported_portion": "1个，Prime购入S$1.60",
+      "macro": {
+        "kcal": 94,
+        "protein_g": 1.2,
+        "carbohydrate_g": 11.9,
+        "fat_g": 4.5
+      },
+      "micro": {
+        "calcium_mg": 33.849999999999994,
+        "iron_mg": 0.14500000000000002,
+        "magnesium_mg": 5.5,
+        "potassium_mg": 56.550000000000004,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.6,
+        "saturated_fat_g": 2.6,
+        "vitamin_A_RAE_ug": 58.06666666666667,
+        "vitamin_D2_D3_ug": 0.0175
+      },
+      "brand_candidate": "Magnolia Wafer Durian62ml，未由本人认包装",
+      "label_source": "https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/13145804_BXL1_20250616.jpg",
+      "label_other": {
+        "fiber_g": 0.6,
+        "total_sugars_g": 8.3,
+        "saturated_fat_g": 2.6,
+        "sodium_mg": 41
+      },
+      "micro_proxy": "仅未标微量暂用普通冰淇淋35g+威化5g，不是62ml=40g实测；宏量/纤维/饱和脂肪仍用候选标签"
+    },
+    {
+      "meal": "晚饭",
+      "food": "熟米饭",
+      "reported_portion": "450g",
+      "macro": {
+        "kcal": 585.0,
+        "protein_g": 12.105,
+        "carbohydrate_g": 126.765,
+        "fat_g": 1.2600000000000002
+      },
+      "micro": {
+        "calcium_mg": 9.0,
+        "iron_mg": 0.405,
+        "magnesium_mg": 18.0,
+        "potassium_mg": 112.5,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 3.6,
+        "saturated_fat_g": 0.18,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F007661",
+      "source_note": "午饭杂菜饭150g按熟重；宏量沿用USDA168878代理，微量用非强化AUSNUT熟白米，不套强化铁叶酸",
+      "assumptions": []
+    },
+    {
+      "meal": "晚饭",
+      "food": "西红柿",
+      "reported_portion": "150g",
+      "macro": {
+        "kcal": 27,
+        "protein_g": 1.32,
+        "carbohydrate_g": 5.835,
+        "fat_g": 0.3
+      },
+      "micro": {
+        "calcium_mg": 16.5,
+        "iron_mg": 0.345,
+        "magnesium_mg": 15.0,
+        "potassium_mg": 315.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 21.0,
+        "fiber_g": 1.65,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 25.5,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F009193",
+      "assumptions": [
+        "生熟未报，暂按原料150g；微量原料参考，长时间烹调会改变维C"
+      ]
+    },
+    {
+      "meal": "晚饭",
+      "food": "西兰花",
+      "reported_portion": "150g",
+      "macro": {
+        "kcal": 52.5,
+        "protein_g": 3.57,
+        "carbohydrate_g": 10.77,
+        "fat_g": 0.615
+      },
+      "micro": {
+        "calcium_mg": 39.0,
+        "iron_mg": 0.87,
+        "magnesium_mg": 18.0,
+        "potassium_mg": 271.5,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 85.5,
+        "fiber_g": 3.75,
+        "saturated_fat_g": 0.10500000000000002,
+        "vitamin_A_RAE_ug": 56.25,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "proxy_key": "F001900",
+      "assumptions": [
+        "生熟未报，暂用熟可食150g普通蒸煮参考，不额外另算油"
+      ]
+    },
+    {
+      "meal": "晚饭",
+      "food": "鸡蛋",
+      "reported_portion": "4个",
+      "macro": {
+        "kcal": 286,
+        "protein_g": 25.12,
+        "carbohydrate_g": 1.44,
+        "fat_g": 19.02
+      },
+      "micro": {
+        "calcium_mg": 78.0,
+        "iron_mg": 3.22,
+        "magnesium_mg": 20.0,
+        "potassium_mg": 214.0,
+        "vitamin_B12_ug": 2.4,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 5.06,
+        "vitamin_A_RAE_ug": 260.3333333333333,
+        "vitamin_D2_D3_ug": 2.82
+      },
+      "proxy_key": "F003721",
+      "assumptions": [
+        "每个50g可食部分，200g；宏量原料USDA全蛋、微量熟全蛋代理，额外油单列"
+      ]
+    },
+    {
+      "meal": "家常用油假设",
+      "food": "早餐/晚饭未称家常烹调油（估算附项）",
+      "reported_portion": "未报告；暂估10g/日，0–20g情景",
+      "macro": {
+        "kcal": 90,
+        "protein_g": 0,
+        "carbohydrate_g": 0,
+        "fat_g": 10
+      },
+      "micro": {
+        "saturated_fat_g": 1.5
+      },
+      "assumptions": [
+        "v2默认家常油10g/日；不新增实际已吃事实；午饭三道菜油另已计，不重复再加全日10g"
+      ]
+    }
+  ],
+  "macronutrient_total": {
+    "kcal": 2503.082791586998,
+    "protein_g": 139.911,
+    "carbohydrate_g": 275.811,
+    "fat_g": 87.937
+  },
+  "micronutrient_estimate": {
+    "calcium_mg": 826.7,
+    "iron_mg": 13.581499999999998,
+    "magnesium_mg": 304.95,
+    "potassium_mg": 3355.5,
+    "vitamin_B12_ug": 10.35,
+    "vitamin_C_mg": 144.8,
+    "fiber_g": 22.949999999999996,
+    "saturated_fat_g": 21.825,
+    "vitamin_A_RAE_ug": 652.4875,
+    "vitamin_D2_D3_ug": 5.1175
+  },
+  "meal_totals": {
+    "早餐": {
+      "kcal": 668.6,
+      "protein_g": 40.526,
+      "carbohydrate_g": 66.736,
+      "fat_g": 24.297
+    },
+    "午饭": {
+      "kcal": 699.9827915869981,
+      "protein_g": 56.07,
+      "carbohydrate_g": 52.365,
+      "fat_g": 27.945
+    },
+    "饭前加餐": {
+      "kcal": 94,
+      "protein_g": 1.2,
+      "carbohydrate_g": 11.9,
+      "fat_g": 4.5
+    },
+    "晚饭": {
+      "kcal": 950.5,
+      "protein_g": 42.115,
+      "carbohydrate_g": 144.81,
+      "fat_g": 21.195
+    },
+    "家常用油假设": {
+      "kcal": 90,
+      "protein_g": 0,
+      "carbohydrate_g": 0,
+      "fat_g": 10
+    }
+  },
+  "produce_g_estimated": 490,
+  "oil_assumed_g_total": 32,
+  "oil_allocation": {
+    "lunch_beef": 8,
+    "lunch_cabbage": 12,
+    "lunch_fish": 2,
+    "home_breakfast_and_dinner_combined": 10
+  },
+  "confidence": "截至晚餐食物估算：中等B；外食配方C、雪糕型号B/C；非准确概率",
+  "daily_final_score": null,
+  "daily_final_score_note": "用户明确训练尚未开始，此处不是全天最终摄入/训练结算；完成后统一完整100分评分+可信度，不输出部分覆盖率",
+  "sensitivity_not_confidence_interval": true,
+  "excluded_from_precise_micro_accounting": [
+    "外食酱汁钠与实际盐量未核；不把所列成分钠小计当全日钠",
+    "未知油种的维E等不以通用植物油假造具体值"
+  ],
+  "sync_timestamp": "2026-10-29T18:05:42.884097",
+  "sync_success": true,
+  "activity_at_sync": "无10/29已上传活动，与本人尚未训练一致；不等于今天全休",
+  "sources": [
+    "nutrition/foods.md",
+    "nutrition/evidence/2026-10-29-breakfast-calculation.json",
+    "nutrition/evidence/2026-10-29-ausnut-selected-foods.json",
+    "nutrition/evidence/ausnut-2023-selected-foods.json"
+  ],
+  "selected_recipe_scenario_energy_kcal": [
+    2291.6908221797325,
+    2771.170745697897
+  ],
+  "status": "superseded after user clarification; not additional intake"
+}
