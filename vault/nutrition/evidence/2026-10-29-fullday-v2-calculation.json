@@ -308,5 +308,22 @@
   "confidence_label": "中B（能量与水电解质为C，整体最高为中）",
   "confidence_not_probability": true,
   "sensitivity_not_confidence_interval": true,
-  "new_measurements_invented": false
+  "new_measurements_invented": false,
+  "cross_session_user_evidence": [
+    {
+      "session_id": "000dca25-0f07-4601-99de-7ae23abb69f3",
+      "timestamp_UTC": "2026-10-29T15:00:16.581Z",
+      "transcript_line": 203,
+      "user_food_excerpt": "2瓶（720ml+70g白糖+1g盐），一根150g香蕉，一根40g碳水能量胶，额外一瓶720ml清水（最后还剩下500ml水没喝）。全程不饿，甚至刚开始骑的时候因为吃过饭，都觉得越骑越饱。"
+    },
+    {
+      "session_id": "000dca25-0f07-4601-99de-7ae23abb69f3",
+      "timestamp_UTC": "2026-10-29T15:05:51.805Z",
+      "transcript_line": 271,
+      "user_food_excerpt": "在我的饮食记录助手里记下这些饮食补给，我骑完之后还吃了一根150g香蕉和常规练后蛋白粉（30g蛋白粉+4g肌酸+4gbeta丙氨酸）。"
+    }
+  ],
+  "reverified_sync_timestamp": "2026-10-29T23:20:56.784208",
+  "unknown_label_fields_note": "糖/盐等未列微量在算术中按可忽略代理；能量胶钠等未核成分未知，不能把便于求和的0解读为产品实测0。乳清微量与品牌未标微量来自通用代理。",
+  "supplement_bookkeeping_note": "肌酸和β-丙氨酸按实际各4g单列，未并入标签宏量与能量合计；不将β丙氨酸当作乳清蛋白或声称已核绝对零能量。"
 }
