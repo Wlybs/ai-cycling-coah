@@ -84,3 +84,9 @@ tags: [nutrition, food-labels]
 真实标签优先覆盖宏量及已标微量，生熟和食谱转换写在当日JSON。AUSNUT维A的RE不能直接与900µg RAE相比，统一由视黄醇+膳食β胡萝卜素当量/12换算；D2+D3与25-OH D活性当量分开。不默认为本人产品强化了维D。
 
 来源：https://www.foodstandards.gov.au/science-data/food-nutrient-databases/ausnut/data-files ，2026-10-28复核官方文件说明。过去“未标＝不评分”属于v1历史逻辑，现行[[nutrition/scoring-v2]]允许注明代理与可信度后完整估算。
+
+
+## 2026-10-29新增：榴莲威化夹心雪糕候选、外食食谱代理
+
+- **Magnolia Wafer Durian62ml候选**：用户报Prime/S$1.60/两片饼干夹榴莲雪糕，身份未最终确认；厂家确认62ml榴莲威化款，FairPrice对应4包背标每个94kcal/P1.2/C11.9/F4.5、饱和2.6/总糖8.3/纤维0.6/钠41mg。来源：https://fnncreameries.com/product/magnolia-wafer-durian/ ；https://www.fairprice.com.sg/product/f-n-magnolia-ice-cream-with-wafer-durian-4-per-pack-13145804 ；https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/13145804_BXL1_20250616.jpg （已目视核每62ml列，2026-10-29）。不是已确认本人包装，不套昨天Cornetto。
+- 外食100g铁板牛肉按整菜拆分，不当100g纯肉；150g干锅包菜应计明确假设油，清蒸巴沙鱼用熟食代理。AUSNUT新增F000929熟炒瘦牛肉、F000403蒸煮巴沙鱼、F001987熟包菜、F006225洋葱、F006143燕麦、F009688低脂自然酸奶、F003095威化筒。微量通用代理保存`nutrition/evidence/2026-10-29-ausnut-selected-foods.json`，精确食谱假设在当日JSON，仅为本餐估计，不注册成商家营养标签。
