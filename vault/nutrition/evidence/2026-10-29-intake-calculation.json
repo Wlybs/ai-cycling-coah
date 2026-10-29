@@ -428,28 +428,35 @@
       ]
     },
     {
-      "meal": "家常用油假设",
-      "food": "早餐/晚饭未称家常烹调油（估算附项）",
-      "reported_portion": "未报告；暂估10g/日，0–20g情景",
+      "meal": "晚饭",
+      "food": "家常烹调油（本人报全天3–5g，中点4g）",
+      "reported_portion": "本人估计合计3–5g，中央4g",
       "macro": {
-        "kcal": 90,
+        "kcal": 36,
         "protein_g": 0,
         "carbohydrate_g": 0,
-        "fat_g": 10
+        "fat_g": 4
       },
       "micro": {
-        "saturated_fat_g": 1.5
+        "saturated_fat_g": 0.6
       },
       "assumptions": [
-        "v2默认家常油10g/日；不新增实际已吃事实；午饭三道菜油另已计，不重复再加全日10g"
+        "本人今天实际用油估计3–5g，中央4g；覆盖旧10g默认值",
+        "为展示每餐小计，将家常油暂归晚饭计算，早餐/晚饭真实分配未报；不改变全日总量",
+        "午饭外食油中央22g已含菜内，独立于本人家常用油；不是本人报告外食油22g",
+        "喷两下不固定等于4g，喷头流量未测"
+      ],
+      "home_oil_g_range": [
+        3,
+        5
       ]
     }
   ],
   "macronutrient_total": {
-    "kcal": 2539.7517208413,
+    "kcal": 2485.7517208413,
     "protein_g": 128.976,
     "carbohydrate_g": 285.111,
-    "fat_g": 92.732
+    "fat_g": 86.732
   },
   "micronutrient_estimate": {
     "calcium_mg": 993.1000000000001,
@@ -459,7 +466,7 @@
     "vitamin_B12_ug": 7.949999999999999,
     "vitamin_C_mg": 158.5,
     "fiber_g": 27.449999999999996,
-    "saturated_fat_g": 23.121,
+    "saturated_fat_g": 22.221,
     "vitamin_A_RAE_ug": 657.625,
     "vitamin_D2_D3_ug": 5.0985
   },
@@ -483,25 +490,19 @@
       "fat_g": 4.5
     },
     "晚饭": {
-      "kcal": 1036.45,
+      "kcal": 1072.45,
       "protein_g": 50.065000000000005,
       "carbohydrate_g": 149.16,
-      "fat_g": 25.395
-    },
-    "家常用油假设": {
-      "kcal": 90,
-      "protein_g": 0,
-      "carbohydrate_g": 0,
-      "fat_g": 10
+      "fat_g": 29.395
     }
   },
   "produce_g_estimated": 550,
-  "oil_assumed_g_total": 32,
+  "oil_assumed_g_total": 26,
   "oil_allocation": {
     "lunch_beef": 8,
     "lunch_cabbage": 12,
     "lunch_fish": 2,
-    "home_breakfast_and_dinner_combined": 10
+    "home_breakfast_and_dinner_combined": 4
   },
   "confidence": "截至晚餐食物估算中B，午饭肉鱼占比与配方C；范围为情景不是置信区间",
   "daily_final_score": null,
@@ -521,7 +522,7 @@
     "nutrition/evidence/ausnut-2023-selected-foods.json"
   ],
   "user_clarification": "午饭各菜均含配菜酱汁总熟重量，牛肉为熟肉；“不是熟肉”为口误，本人随后订正为熟肉，并补充晚饭150g豆腐。未确认肉的肥瘦。",
-  "estimate_revision": "2; supersedes initial estimate; does not add a second lunch",
+  "estimate_revision": "3; user reported home oil3–5g and requested per-meal subtotals",
   "prior_estimate_archive": "nutrition/evidence/2026-10-29-intake-initial-estimate.json",
   "lunch_meat_fish_sensitivity": [
     {
@@ -537,5 +538,18 @@
       "fat_g": 36.647
     }
   ],
-  "scenario_note": "上述午饭情景仅变肉鱼占比、对应配菜、肉鱼两道菜油酱；包菜油量和其他餐保持中央值。上版2290–2770范围已被替代，不沿用为新版区间。"
+  "scenario_note": "上述午饭情景仅变肉鱼占比、对应配菜、肉鱼两道菜油酱；包菜油量和其他餐保持中央值。上版2290–2770范围已被替代，不沿用为新版区间。",
+  "home_oil_user_reported_g_range": [
+    3,
+    5
+  ],
+  "oil_allocation_note": "26g为外食油假设22g＋本人家常油估计中点4g，不是本人实际报全天总油26g；餐次展示将家常4g暂计晚饭。",
+  "home_oil_only_energy_sensitivity_kcal": [
+    2476.7517208413,
+    2494.7517208413
+  ],
+  "home_oil_only_fat_sensitivity_g": [
+    85.732,
+    87.732
+  ]
 }
