@@ -1,0 +1,312 @@
+{
+  "date": "2026-10-29",
+  "standard": "scoring-v2.0",
+  "scope": "全天：早餐/午饭/饭前加餐/晚饭/AWE骑中/练后",
+  "supersedes_section": "2026-10-29.md「今晚AWE骑中实际摄入」（commit 45264c6）骑中小计并入本表，不另加",
+  "base_file": "nutrition/evidence/2026-10-29-intake-calculation.json（截至晚饭，未改）",
+  "new_rows": [
+    {
+      "meal": "AWE骑中",
+      "food": "白糖（FairPrice细白糖，2壶×70g）",
+      "reported_portion": "140g",
+      "macro": {
+        "kcal": 560.0,
+        "protein_g": 0.0,
+        "carbohydrate_g": 140.0,
+        "fat_g": 0.0
+      },
+      "micro": {
+        "calcium_mg": 0.0,
+        "iron_mg": 0.0,
+        "magnesium_mg": 0.0,
+        "potassium_mg": 0.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "source_note": "按约100%碳水、4kcal/g估算，包装标签未核"
+    },
+    {
+      "meal": "AWE骑中",
+      "food": "盐（每壶1g）",
+      "reported_portion": "2g",
+      "macro": {
+        "kcal": 0.0,
+        "protein_g": 0.0,
+        "carbohydrate_g": 0.0,
+        "fat_g": 0.0
+      },
+      "micro": {
+        "calcium_mg": 0.0,
+        "iron_mg": 0.0,
+        "magnesium_mg": 0.0,
+        "potassium_mg": 0.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "sodium_mg": 786.8,
+      "source_note": "NaCl含钠39.3%；是否加碘未报"
+    },
+    {
+      "meal": "AWE骑中",
+      "food": "香蕉（带皮150g）",
+      "reported_portion": "150g带皮，可食约96g",
+      "macro": {
+        "kcal": 85.44,
+        "protein_g": 1.0464000000000002,
+        "carbohydrate_g": 21.926399999999997,
+        "fat_g": 0.31679999999999997
+      },
+      "micro": {
+        "calcium_mg": 4.8,
+        "iron_mg": 0.2784,
+        "magnesium_mg": 28.8,
+        "potassium_mg": 334.08,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 4.8,
+        "fiber_g": 2.112,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 2.08,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "source_note": "宏量USDA FDC173944；微量AUSNUT F000262；可食比例USDA SR27皮36%"
+    },
+    {
+      "meal": "AWE骑中",
+      "food": "无咖啡因能量胶（40g碳水规格）",
+      "reported_portion": "1支",
+      "macro": {
+        "kcal": 160.0,
+        "protein_g": 0.0,
+        "carbohydrate_g": 40.0,
+        "fat_g": 0.0
+      },
+      "micro": {
+        "calcium_mg": 0.0,
+        "iron_mg": 0.0,
+        "magnesium_mg": 0.0,
+        "potassium_mg": 0.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "source_note": "碳水为本人已报规格；热量按4kcal/g估算，未核标签；钠等未知不当0解释"
+    },
+    {
+      "meal": "练后",
+      "food": "香蕉（带皮150g）",
+      "reported_portion": "150g带皮，可食约96g",
+      "macro": {
+        "kcal": 85.44,
+        "protein_g": 1.0464000000000002,
+        "carbohydrate_g": 21.926399999999997,
+        "fat_g": 0.31679999999999997
+      },
+      "micro": {
+        "calcium_mg": 4.8,
+        "iron_mg": 0.2784,
+        "magnesium_mg": 28.8,
+        "potassium_mg": 334.08,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 4.8,
+        "fiber_g": 2.112,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 2.08,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "source_note": "同骑中香蕉"
+    },
+    {
+      "meal": "练后",
+      "food": "Myprotein Impact Whey（Milk Tea）",
+      "reported_portion": "30g",
+      "macro": {
+        "kcal": 112.0,
+        "protein_g": 22.0,
+        "carbohydrate_g": 2.7,
+        "fat_g": 1.7
+      },
+      "micro": {
+        "calcium_mg": 126.0,
+        "iron_mg": 0.147,
+        "magnesium_mg": 23.4,
+        "potassium_mg": 144.0,
+        "vitamin_B12_ug": 1.41,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.54,
+        "saturated_fat_g": 0.369,
+        "vitamin_A_RAE_ug": 2.3,
+        "vitamin_D2_D3_ug": 0.063
+      },
+      "source_note": "宏量沿用foods.md每30g 112kcal/P22/C2.7/F1.7非本口味代理；微量AUSNUT F007493普通乳清"
+    },
+    {
+      "meal": "练后",
+      "food": "肌酸4g＋β-丙氨酸4g",
+      "reported_portion": "各4g",
+      "macro": {
+        "kcal": 0.0,
+        "protein_g": 0.0,
+        "carbohydrate_g": 0.0,
+        "fat_g": 0.0
+      },
+      "micro": {
+        "calcium_mg": 0.0,
+        "iron_mg": 0.0,
+        "magnesium_mg": 0.0,
+        "potassium_mg": 0.0,
+        "vitamin_B12_ug": 0.0,
+        "vitamin_C_mg": 0.0,
+        "fiber_g": 0.0,
+        "saturated_fat_g": 0.0,
+        "vitamin_A_RAE_ug": 0.0,
+        "vitamin_D2_D3_ug": 0.0
+      },
+      "source_note": "补剂，不计入能量宏量"
+    }
+  ],
+  "meal_totals": {
+    "早餐": {
+      "kcal": 668.6,
+      "protein_g": 40.526,
+      "carbohydrate_g": 66.736,
+      "fat_g": 24.297
+    },
+    "午饭": {
+      "kcal": 650.7017208413002,
+      "protein_g": 37.185,
+      "carbohydrate_g": 57.315000000000005,
+      "fat_g": 28.54
+    },
+    "饭前加餐": {
+      "kcal": 94,
+      "protein_g": 1.2,
+      "carbohydrate_g": 11.9,
+      "fat_g": 4.5
+    },
+    "晚饭": {
+      "kcal": 1072.45,
+      "protein_g": 50.065000000000005,
+      "carbohydrate_g": 149.16,
+      "fat_g": 29.395
+    },
+    "AWE骑中": {
+      "kcal": 805.44,
+      "protein_g": 1.0464000000000002,
+      "carbohydrate_g": 201.9264,
+      "fat_g": 0.31679999999999997
+    },
+    "练后": {
+      "kcal": 197.44,
+      "protein_g": 23.0464,
+      "carbohydrate_g": 24.626399999999997,
+      "fat_g": 2.0168
+    }
+  },
+  "day_total": {
+    "kcal": 3488.6317208413,
+    "protein_g": 153.0688,
+    "carbohydrate_g": 511.6638,
+    "fat_g": 89.0656
+  },
+  "micronutrient_total": {
+    "calcium_mg": 1128.7,
+    "iron_mg": 16.176799999999997,
+    "magnesium_mg": 462.79999999999995,
+    "potassium_mg": 4352.81,
+    "vitamin_B12_ug": 9.36,
+    "vitamin_C_mg": 168.10000000000002,
+    "fiber_g": 32.214,
+    "saturated_fat_g": 22.59,
+    "vitamin_A_RAE_ug": 664.085,
+    "vitamin_D2_D3_ug": 5.161499999999999
+  },
+  "ride": {
+    "activity": "i203196687",
+    "elapsed_s": 13170,
+    "moving_s": 10655,
+    "device_calories": 2174.0,
+    "device_calorie_basis": "口径未验证，暂按gross",
+    "kJ": 1924.965,
+    "TSS": 162,
+    "sync": "athlete_snapshot 2026-10-29T22:51:22（教练会话同步）",
+    "carb_g": 201.9264,
+    "g_per_h_elapsed": 55.19628246013668,
+    "g_per_h_moving": 68.22478085405913,
+    "fluid_l": 1.66,
+    "sodium_from_salt_mg": 786.8
+  },
+  "energy_model": {
+    "weight_kg": 61.0,
+    "BMR": 1612.3000000000002,
+    "PAL": 1.4,
+    "ride_hours_elapsed": 3.658333333333333,
+    "exercise_net_kcal": 1928.2362152777778,
+    "need_kcal": 4185.456215277778,
+    "ratio": 0.8335128935543693,
+    "sensitivity_scores": {
+      "PAL1.3_device×0.85": 20.0,
+      "PAL1.3_device×1.0": 17.79,
+      "PAL1.3_device×1.15": 13.46,
+      "PAL1.4_device×0.85": 20.0,
+      "PAL1.4_device×1.0": 15.57,
+      "PAL1.4_device×1.15": 11.55,
+      "PAL1.5_device×0.85": 17.85,
+      "PAL1.5_device×1.0": 13.51,
+      "PAL1.5_device×1.15": 9.77
+    }
+  },
+  "scores": {
+    "energy": 15.567526236957956,
+    "carb": {
+      "day": 10,
+      "pre": 3,
+      "ride": 3,
+      "ride_if_target60": 2.7598141230068336,
+      "post": 3,
+      "sum": 19
+    },
+    "protein": 15,
+    "micro": {
+      "calcium_mg": 4,
+      "iron_mg": 3,
+      "vitamin_A_RAE_ug": 1.4757444444444445,
+      "vitamin_C_mg": 3,
+      "vitamin_D2_D3_ug": 0.6881999999999999,
+      "vitamin_B12_ug": 2,
+      "magnesium_mg": 2,
+      "potassium_mg": 2
+    },
+    "micro_sum": 18.163944444444443,
+    "structure": {
+      "produce_g": 742.0,
+      "produce": 5,
+      "fiber": 5,
+      "sat_fat_pct": 5.827786257443386,
+      "sat": 5,
+      "sum": 15
+    },
+    "water": {
+      "fluid": 4.5,
+      "sodium": 3.5,
+      "sum": 8.0
+    }
+  },
+  "total_score_unrounded": 90.7314706814024,
+  "reported_score_rounded": 91,
+  "confidence_internal_index": 0.715,
+  "confidence_label": "中B（能量与水电解质为C，整体最高为中）",
+  "confidence_not_probability": true,
+  "sensitivity_not_confidence_interval": true,
+  "new_measurements_invented": false
+}
