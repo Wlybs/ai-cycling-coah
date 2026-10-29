@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-29",
+  "scope": "breakfast only; actual intake reported",
+  "standard": "nutrition/scoring-v2.md",
+  "meal_confidence": "B / 中等；非全天可信度或准确概率",
+  "food_rows": [
+    {
+      "food": "燕麦",
+      "reported_g": 70,
+      "calculation_g": 70,
+      "basis": "此前同款标签；沿用干重口径",
+      "per100": {
+        "kcal": 383,
+        "protein_g": 12.1,
+        "carbohydrate_g": 57.8,
+        "fat_g": 9,
+        "fiber_g": 11.1
+      },
+      "source": "vault/nutrition/foods.md；vault/sessions/2026-10-24-oat-label-and-breakfast-portion.md",
+      "estimated_contribution": {
+        "kcal": 268.1,
+        "protein_g": 8.47,
+        "carbohydrate_g": 40.46,
+        "fat_g": 6.3,
+        "fiber_g": 7.77
+      }
+    },
+    {
+      "food": "全脂纯牛奶",
+      "reported_g": 100,
+      "calculation_ml": 100,
+      "basis": "暂沿用此前FairPrice UHT全脂奶代理，品牌/版本本餐未重述；100g≈100ml计算近似",
+      "per100": {
+        "kcal": 65.2,
+        "protein_g": 3.32,
+        "carbohydrate_g": 5.2,
+        "fat_g": 3.4,
+        "calcium_mg": 114
+      },
+      "source": "https://www.fairprice.com.sg/product/fairprice-uht-milk-full-cream-12-x-1l-ctn-12704504",
+      "estimated_contribution": {
+        "kcal": 65.2,
+        "protein_g": 3.32,
+        "carbohydrate_g": 5.2,
+        "fat_g": 3.4,
+        "calcium_mg": 114.0
+      }
+    },
+    {
+      "food": "蓝莓",
+      "reported_g": 40,
+      "calculation_g": 40,
+      "basis": "USDA FDC171711普通蓝莓",
+      "per100": {
+        "kcal": 57,
+        "protein_g": 0.74,
+        "carbohydrate_g": 14.49,
+        "fat_g": 0.33,
+        "fiber_g": 2.4
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171711/nutrients",
+      "estimated_contribution": {
+        "kcal": 22.8,
+        "protein_g": 0.296,
+        "carbohydrate_g": 5.796,
+        "fat_g": 0.132,
+        "fiber_g": 0.96
+      }
+    },
+    {
+      "food": "鸡蛋",
+      "reported_count": 3,
+      "calculation_g": 150,
+      "basis": "每个50g可食部分假设；USDA FDC171287全蛋原料参考，烹调方式未报，未含额外油",
+      "per100": {
+        "kcal": 143,
+        "protein_g": 12.56,
+        "carbohydrate_g": 0.72,
+        "fat_g": 9.51,
+        "fiber_g": 0
+      },
+      "source": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+      "estimated_contribution": {
+        "kcal": 214.5,
+        "protein_g": 18.84,
+        "carbohydrate_g": 1.08,
+        "fat_g": 14.265,
+        "fiber_g": 0.0
+      }
+    },
+    {
+      "food": "MARIGOLD Non Fat Natural Yoghurt, No Sugar Added",
+      "reported_g": 200,
+      "calculation_g": 200,
+      "basis": "本人此前确认绿桶同款，已核背标；无添加糖不代表总糖为0",
+      "per100": {
+        "kcal": 49,
+        "protein_g": 4.8,
+        "carbohydrate_g": 7.1,
+        "fat_g": 0.1,
+        "calcium_mg": 180,
+        "total_sugars_g": 5.4
+      },
+      "source": "https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/10671211_BXL1_20250529.jpg",
+      "estimated_contribution": {
+        "kcal": 98.0,
+        "protein_g": 9.6,
+        "carbohydrate_g": 14.2,
+        "fat_g": 0.2,
+        "calcium_mg": 360.0,
+        "total_sugars_g": 10.8
+      }
+    }
+  ],
+  "macronutrient_total": {
+    "kcal": 668.6,
+    "protein_g": 40.526,
+    "carbohydrate_g": 66.736,
+    "fat_g": 24.297
+  },
+  "fiber_estimate_g": 8.73,
+  "milk_and_yogurt_calcium_subtotal_mg": 474,
+  "assumptions": [
+    "燕麦沿用干重口径",
+    "牛奶100g近似100ml，沿用此前FairPrice全脂标签代理",
+    "3蛋按150g可食部分；烹调油未报，早餐估算不含额外油"
+  ],
+  "daily_score": null,
+  "daily_score_note": "仅早餐，未虚构全天剩余食物；全天记录完整后按v2给100分制估算+可信度。"
+}

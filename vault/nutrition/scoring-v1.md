@@ -1,10 +1,13 @@
 ---
 created: 2026-10-26
 version: '1.0'
+status: superseded
 type: nutrition-scoring-standard
 tags: [nutrition, scoring, cycling]
 ---
 # 公路车营养评分 v1.0
+
+> 历史版本；2026-10-28起现行标准为[[nutrition/scoring-v2]]。本页原规则保留用于复核旧分，不能继续作为日常半覆盖评分的输出规则。
 
 用户已确定：训练与恢复优先，兼顾增肌减脂；建议必须考虑预算。2026-10-26启用。以下权重、折算、分档是本人的管理工具，不是经过验证的临床量表，也不代表成绩提高或疾病风险的概率。参考文献支持营养原则，不支持我们自定的分数。
 
