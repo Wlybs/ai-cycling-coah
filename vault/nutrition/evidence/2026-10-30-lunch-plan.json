@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "suggestion-only-not-eaten",
+  "status": "superseded-by-actual-lunch-confirmation",
   "user_prepared_foods": {
     "beef_liver_g": 200,
     "potato_with_skin_g": 200,
@@ -139,5 +139,8 @@
   "previous_liver_suggestion_g": 100,
   "user_fixed_liver_g": 200,
   "planned_liver_g": 200,
-  "user_constraint": "牛肝200g必须这一顿吃掉"
+  "user_constraint": "牛肝200g必须这一顿吃掉",
+  "actual_lunch_source": "nutrition/evidence/2026-10-30-intake-calculation.json",
+  "actual_cooked_rice_g": 350,
+  "note": "此文件保留300g熟饭建议历史；当天只用实际350g午饭入账一次，不能与计划相加。"
 }

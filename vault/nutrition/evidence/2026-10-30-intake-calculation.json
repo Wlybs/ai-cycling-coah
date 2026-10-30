@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-30",
+  "status": "breakfast-and-lunch-reported",
+  "user_lunch_confirmation": "午饭就按这个吃了，350g熟米饭（多吃了50g）、200g牛肝、200g带皮土豆、150g豆腐，没加鸡蛋",
+  "breakfast_evidence": "nutrition/evidence/2026-10-30-breakfast-calculation.json",
+  "lunch_food_rows": [
+    {
+      "food": "熟米饭",
+      "portion": "350g熟重，本人确认实际",
+      "macro": {
+        "kcal": 455,
+        "protein_g": 9.415,
+        "carbohydrate_g": 98.595,
+        "fat_g": 0.98
+      }
+    },
+    {
+      "food": "带皮土豆",
+      "portion": "200g带皮，本人确认实际；沿用前文处理前重量口径",
+      "macro": {
+        "kcal": 154,
+        "protein_g": 4.1,
+        "carbohydrate_g": 34.98,
+        "fat_g": 0.18
+      }
+    },
+    {
+      "food": "牛肝",
+      "portion": "200g，本人确认实际；沿用前文生重估算",
+      "macro": {
+        "kcal": 336.52007648183553,
+        "protein_g": 40,
+        "carbohydrate_g": 5.4,
+        "fat_g": 17.2
+      }
+    },
+    {
+      "food": "豆腐",
+      "portion": "150g，本人确认实际；暂沿用Fortune嫩豆腐数据",
+      "macro": {
+        "kcal": 85.95,
+        "protein_g": 7.95,
+        "carbohydrate_g": 4.35,
+        "fat_g": 4.2
+      }
+    }
+  ],
+  "meal_totals": {
+    "早餐": {
+      "kcal": 623.886,
+      "protein_g": 39.04012,
+      "carbohydrate_g": 65.77594,
+      "fat_g": 20.507019999999997
+    },
+    "午饭": {
+      "kcal": 1031.4700764818356,
+      "protein_g": 61.465,
+      "carbohydrate_g": 143.325,
+      "fat_g": 22.56
+    }
+  },
+  "confirmed_intake_to_date_total": {
+    "kcal": 1655.3560764818355,
+    "protein_g": 100.50512,
+    "carbohydrate_g": 209.10093999999998,
+    "fat_g": 43.06702
+  },
+  "lunch_egg_count": 0,
+  "difference_from_plan": {
+    "cooked_rice_g": 50,
+    "kcal": 65,
+    "protein_g": 1.345,
+    "carbohydrate_g": 14.085,
+    "fat_g": 0.14
+  },
+  "source_reference": "nutrition/evidence/2026-10-30-lunch-plan.json；食品组成与维A原始条目见该JSON及nutrition/foods.md",
+  "weighing_assumptions": [
+    "肉与土豆沿用既有生重口径，本轮未重述，需注明",
+    "豆腐暂沿用既有嫩豆腐品牌数据",
+    "烹调油尚未分配，本餐表不额外叠加全日4g，之后按实际只计一次"
+  ],
+  "oil_note": "本次未报告额外烹调油，食物合计暂未加；全天统一按本人实际用量或少油3–5g默认范围只计一次，不把未含油说成真实0。",
+  "confidence": "食物估算中B；早餐蛋55g是否带壳、肝薯烹调生熟与油为主要不确定。",
+  "daily_score": null,
+  "daily_score_note": "目前仅早餐和午饭，未给全天最终分，晚饭等报告后再按scoring-v2完整评分。"
+}
