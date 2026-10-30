@@ -100,3 +100,8 @@ tags: [nutrition, food-labels]
 ## 2026-10-30新增：明确带壳蛋重的可食估算参考
 
 USDA SR28 NDB01123 Egg, whole, raw, fresh列Refuse:12% Shell；参考原文https://www.ars.usda.gov/ARSUserFiles/80400525/Data/SR/SR28/reports/sr28fg01.pdf 。只有明确/暂定带壳称重时才以约88%估可食量，去壳净重不再扣壳。10/30本人报每个55g，是否带壳未明，暂定带壳并保留165g全可食备选，不能记录成本人已确认55g带壳。该比例为通用参考，不是每个蛋实测。
+
+
+## 2026-10-30再次确认：白吐司本人标签
+
+本人确认今天吃的白吐司沿用10/20原标签：每100g213kcal/P8g/C44.4g/F1.6g/钠644mg，品牌未记。原始记录[[sessions/2026-10-20-lsd-comparison-food-warmup-and-execution]]第10行。500g＝1065kcal/P40/C222/F8/钠3220mg。糖、纤维、饱和脂肪未报，保持未知；不要套Chocolate Royale。标签能量与4/4/9反推略有差异，现阶段保留本人原标签，不编造成分表。仅本次确认沿用，不自动认定所有未来白面包同款。

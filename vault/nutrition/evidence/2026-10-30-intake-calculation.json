@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "status": "breakfast-and-lunch-reported",
+  "status": "breakfast-lunch-and-postlunch-snack-reported",
   "user_lunch_confirmation": "午饭就按这个吃了，350g熟米饭（多吃了50g）、200g牛肝、200g带皮土豆、150g豆腐，没加鸡蛋",
   "breakfast_evidence": "nutrition/evidence/2026-10-30-breakfast-calculation.json",
   "lunch_food_rows": [
@@ -57,13 +57,19 @@
       "protein_g": 61.465,
       "carbohydrate_g": 143.325,
       "fat_g": 22.56
+    },
+    "午后加餐": {
+      "kcal": 1130,
+      "protein_g": 41.345,
+      "carbohydrate_g": 236.085,
+      "fat_g": 8.14
     }
   },
   "confirmed_intake_to_date_total": {
-    "kcal": 1655.3560764818355,
-    "protein_g": 100.50512,
-    "carbohydrate_g": 209.10093999999998,
-    "fat_g": 43.06702
+    "kcal": 2785.3560764818358,
+    "protein_g": 141.85012,
+    "carbohydrate_g": 445.18594,
+    "fat_g": 51.20702
   },
   "lunch_egg_count": 0,
   "difference_from_plan": {
@@ -82,5 +88,45 @@
   "oil_note": "本次未报告额外烹调油，食物合计暂未加；全天统一按本人实际用量或少油3–5g默认范围只计一次，不把未含油说成真实0。",
   "confidence": "食物估算中B；早餐蛋55g是否带壳、肝薯烹调生熟与油为主要不确定。",
   "daily_score": null,
-  "daily_score_note": "目前仅早餐和午饭，未给全天最终分，晚饭等报告后再按scoring-v2完整评分。"
+  "daily_score_note": "目前到午后加餐，晚饭尚未报；最终完整估算评分待全天补齐，不把一次较多加餐当诊断或已证能量缺口。",
+  "post_lunch_food_rows": [
+    {
+      "food": "额外熟米饭",
+      "portion": "50g，午饭后另吃；不替换原350g午饭",
+      "macro": {
+        "kcal": 65,
+        "protein_g": 1.345,
+        "carbohydrate_g": 14.085,
+        "fat_g": 0.14
+      },
+      "source": "沿用熟米饭每100g130kcal/P2.69/C28.17/F0.28"
+    },
+    {
+      "food": "白吐司",
+      "portion": "500g；本人确认同此前标签",
+      "macro": {
+        "kcal": 1065,
+        "protein_g": 40,
+        "carbohydrate_g": 222,
+        "fat_g": 8
+      },
+      "sodium_mg_label": 3220,
+      "source": "本人10/20标签每100g213kcal/P8/C44.4/F1.6/Na644mg，本轮确认同款；sessions/2026-10-20-lsd-comparison-food-warmup-and-execution.md",
+      "unreported_label_fields": {
+        "fiber_g": null,
+        "saturated_fat_g": null,
+        "total_sugars_g": null
+      },
+      "energy_note": "热量沿本人标签，不用4/4/9自行覆盖；标签能量与宏量反推略有差异，保留原报值。"
+    }
+  ],
+  "user_hunger_feedback": {
+    "after_lunch": "很饿；先额外50g饭后仍很饿，随后吃500g白吐司",
+    "after_snack": "现在挺舒服，但还能吃",
+    "time_from_lunch_to_snack": null,
+    "bread_same_prior_label_confirmed": true,
+    "not_diagnosed_as_eating_disorder": true,
+    "cause_not_proven": true
+  },
+  "latest_sync_timestamp": "2026-10-30T14:53:34.333197"
 }
