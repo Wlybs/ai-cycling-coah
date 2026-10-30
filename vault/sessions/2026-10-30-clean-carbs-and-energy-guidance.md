@@ -1,0 +1,27 @@
+---
+date: 2026-10-30
+tags: [nutrition, coach-session, carbohydrate, fueling]
+---
+# 2026-10-30 “干净碳水”、吃饱与能量管理
+
+## 用户问题
+询问当前白吐司/自制饭算不算干净碳水，运动员饿就放开吃是否有益表现，自己应吃自制饭吃饱还是控热量。目标沿既有训练恢复优先、兼顾增肌减脂；此处是分析与建议，未新确认食物、未改变当天实际摄入或称用户已采纳长期策略。
+
+## 当前证据
+本轮sync全量成功，snapshot2026-10-30T15:02:01.462928；10/28与10/29实际分别移动4h39/2h58（后一日历时3h40），见详情i202627708/i203196687。本日午后额外50g熟饭＋500g同标签白吐司已记；加餐后本人说“现在挺舒服，但还能吃”。具体摄入读[[nutrition/2026-10-30]]及现行JSON，未因理论讨论再加一次。前两日恢复需求可作为解释候选，不能由一次食欲证明精确热量缺口、缺糖、疾病或暴食诊断。
+
+## 建议
+“干净碳水”是非正式食物标签，不能据此判断份量。米饭/土豆/燕麦/普通白吐司均可提供训练碳水；燕麦为全谷，白吐司与白米饭属精制主食，营养组成不同。少油低脂不等于无热量，烹饪在家不使能量失效；日常应有主食、蛋白、蔬果和合理脂肪的多样性。骑中糖水/胶也可有训练用途，不以是否“干净”评判适用性。
+
+补足本来不足的能量/碳水可支持训练和恢复，已经足够时继续追加不保证更多适应或更高功率。长期总能量仍影响体组成，不能保证所谓干净碳水不限量不增脂；以减脂为目标时需能量管理，但当前没有校准TDEE/稳定体组成趋势，不开固定低热量上限，不按单日模型差额强制进食或限制。不能把今天每次吃到非常饱当作训练处方。
+
+对本人采用训练需求优先的建议框架：规律正餐吃到不明显饿、舒服满足；长骑/硬课前中后主动留足碳水，休息/恢复日仍完成前日修复供给，随后随训练量调节主食与补给。食欲是反馈而非唯一能量计量器；“还能吃”不作为必须继续加食物的目标。连续强饥饿或恢复/训练变差时，先审计供能与时序；不要求强守最初300g米饭。已记录的少油习惯继续保留，无需加昂贵补剂。
+
+总能量按数周趋势校准：同条件多日晨重均值、腰围、训练完成质量、睡眠与饥饿共同解释。只有持续体重/腰围趋势与目标不符且恢复良好，再温和调整非关键训练时段的份量；避免只看一顿或次日秤重就断言增脂。不以跳餐、额外训练抵消今天加餐，不强制每日称重或制定快速减重速度。当前优先稳住供能和饥饿，再讨论可持续的减脂幅度。
+
+## 依据与引用完整性
+1. Morton JP等，2025，UCI Sports Nutrition Project: Nutritional Periodization: Strategies to Enhance Training Adaptation and Recovery，DOI10.1123/ijsnem.2025-0073。已读原论文PDF：首页明确First Published Online Oct22 2025；PDF第2页“CHO Periodization, Fueling, and Refueling for the Work Required”段（行139–147）按前次耗竭、下一练间隔、下一课强度时长调碳水；第12页Table2注（行872附近）将体组成目标与能量需求并入安排；第26页非技术总结（行2212–2217）强调完成训练和恢复的足量供给。原文PDF：https://waltersport.com/wp-content/uploads/2025/10/UCI-Sports-Nutrition-Project-Nutritional-Periodization-Strategies-to-Enhance-Training-Adaptation-and-Recovery-Morton-et-al.-2025.pdf 。本轮未系统检索所有反证，不宣称每次追加碳水必然提升表现。
+2. Burke LM等，2026，UCI Sports Nutrition Project: Body Composition, Energy Requirements, and Energy Availability in Cycling，36:305–323，DOI10.1123/ijsnem.2025-0255。已核原文作者/日期/期刊及PDF：首页能量平衡与EA区别；第3页（行194–198）体组成目标与周期化摄入；第12页Individual-Level Strategies（行1003–1014）体重作为指标、避免压过恢复/健康/表现。原文PDF：https://assets.ctfassets.net/761l7gh5x5an/6XYj9tVoBM6Rj2uLG44ZNM/8c254527860b29b75868165abde1f516/UCI_Burke_2026_Energy_availability_in_Cycling.pdf 。不外推为任何个人的固定最佳热量/体重。
+3. WHO Healthy diet，2026-01-26，Carbohydrates和四项原则：能量平衡、充足、多样性、全谷/蔬果/豆类与纤维。https://www.who.int/news-room/fact-sheets/detail/healthy-diet 。用于日常食物选择，不将普通人口糖/脂比例机械套作骑中补给禁令。
+
+2–4周趋势校准、餐次饱腹表述和本人的具体执行方式是本轮实践建议，不冒称上述论文验证了这一精确个体方案。没有改变scoring-v2权重或既有食物计账规则。
