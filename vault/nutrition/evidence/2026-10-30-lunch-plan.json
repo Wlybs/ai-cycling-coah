@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-30",
+  "status": "suggestion-only-not-eaten",
+  "user_prepared_foods": {
+    "beef_liver_g": 200,
+    "potato_with_skin_g": 200,
+    "tofu_g": 150,
+    "vegetables": "目前没有"
+  },
+  "recommended_cooked_rice_g": 300,
+  "recommended_egg_count": 0,
+  "recommended_liver_g": 100,
+  "liver_recommendation_context": "按此前2026-10-21个体食谱推算建议低频100g份量，非每日100g或精确安全阈值；未把200g单次等同中毒，不因昨天单日维A偏低就加肝。余下留下一次低频牛肝餐，不建议同日/接着几天累计吃完。",
+  "weighing_assumptions": [
+    "肉与土豆沿用既有生重口径，本轮未重述，需注明",
+    "豆腐暂沿用既有嫩豆腐品牌数据",
+    "烹调油尚未分配，本餐表不额外叠加全日4g，之后按实际只计一次"
+  ],
+  "food_rows": [
+    {
+      "food": "熟米饭",
+      "portion": "300g",
+      "macro": {
+        "kcal": 390,
+        "protein_g": 8.07,
+        "carbohydrate_g": 84.51,
+        "fat_g": 0.84
+      }
+    },
+    {
+      "food": "带皮土豆",
+      "portion": "200g，暂沿用处理前生重口径",
+      "macro": {
+        "kcal": 154,
+        "protein_g": 4.1,
+        "carbohydrate_g": 34.98,
+        "fat_g": 0.18
+      }
+    },
+    {
+      "food": "牛肝",
+      "portion": "建议100g，暂按生重；已备200g不等于已吃",
+      "macro": {
+        "kcal": 168.26003824091777,
+        "protein_g": 20,
+        "carbohydrate_g": 2.7,
+        "fat_g": 8.6
+      }
+    },
+    {
+      "food": "豆腐",
+      "portion": "150g，暂沿用Fortune嫩豆腐",
+      "macro": {
+        "kcal": 85.95,
+        "protein_g": 7.95,
+        "carbohydrate_g": 4.35,
+        "fat_g": 4.2
+      }
+    }
+  ],
+  "suggested_lunch_total": {
+    "kcal": 798.2100382409178,
+    "protein_g": 40.120000000000005,
+    "carbohydrate_g": 126.54,
+    "fat_g": 13.82
+  },
+  "if_prepared_200g_liver_all_eaten_instead": {
+    "status": "alternative-not-confirmed",
+    "macro": {
+      "kcal": 966.4700764818356,
+      "protein_g": 60.120000000000005,
+      "carbohydrate_g": 129.24,
+      "fat_g": 22.42
+    }
+  },
+  "liver_reference": {
+    "key": "F000619",
+    "row": 2003,
+    "description": "Beef, liver, raw",
+    "per100g": {
+      "Energy with dietary fibre (kJ)": 704,
+      "Energy without dietary fibre (kJ)": 704,
+      "Moisture (g)": 66.9,
+      "Protein (g)": 20,
+      "Total fat (g)": 8.6,
+      "Available carbohydrate, with sugar alcohols (g)": 2.7,
+      "Available carbohydrate, without sugar alcohols (g)": 2.7,
+      "Starch (g)": 0,
+      "Total sugars (g)": 0,
+      "Added sugars (g)": 0,
+      "Free sugars (g)": 0,
+      "Dietary fibre (g)": 0,
+      "Alcohol (g)": 0,
+      "Ash (g)": 1.4,
+      "Calcium (Ca) (mg)": 6,
+      "Iodine (I) (ug)": 1.4,
+      "Iron (Fe) (mg)": 5.8,
+      "Magnesium (Mg) (mg)": 15,
+      "Phosphorus (P) (mg)": 387,
+      "Potassium (K) (mg)": 320,
+      "Selenium (Se) (ug)": 39.7,
+      "Sodium (Na) (mg)": 78,
+      "Zinc (Zn) (mg)": 3.6,
+      "Preformed vitamin A (retinol) (ug)": 13600,
+      "Beta-carotene (ug)": 1660,
+      "Pro vitamin A (beta-carotene equivalents) (ug)": 1660,
+      "Vitamin A retinol equivalents (ug)": 13877,
+      "Thiamin (B1) (mg)": 0.23,
+      "Riboflavin (B2) (mg)": 4.8,
+      "Niacin (B3) (mg)": 9.4,
+      "Niacin derived equivalents (mg)": 13.78,
+      "Pyridoxine (B6) (mg)": 1.08,
+      "Folate, natural (ug)": 290,
+      "Folic acid (ug)": 0,
+      "Total folates (ug)": 290,
+      "Dietary folate equivalents (ug)": 290,
+      "Cobalamin (B12) (ug)": 59.3,
+      "Vitamin C (mg)": 14,
+      "Cholecalciferol (D3) (ug)": 1.2,
+      "Ergocalciferol (D2) (ug)": 0,
+      "25-hydroxy cholecalciferol (25-OH D3) (ug)": 0,
+      "25-hydroxy ergocalciferol (25-OH D2) (ug)": 0,
+      "Vitamin D3 equivalents (ug)": 1.2,
+      "Alpha tocopherol (mg)": 0.4,
+      "Vitamin E (mg)": 0.38,
+      "Total saturated fat (g)": 2.82,
+      "Total monounsaturated fat (g)": 2.08,
+      "Linoleic acid (g)": 0.3,
+      "Alpha linolenic acid (g)": 0.27,
+      "Eicosapentaenoic acid (EPA) (mg)": 159.32,
+      "Docosapentaenoic acid (DPA) (mg)": 299.51,
+      "Docosahexaenoic acid (DHA) (mg)": 101.96,
+      "Total polyunsaturated fat (g)": 1.45,
+      "Total long chain omega 3 fatty acids (mg)": 560.789,
+      "Total trans fatty acids (mg)": 498.34,
+      "Caffeine (mg)": 0,
+      "Cholesterol (mg)": 271,
+      "Tryptophan (mg)": 258
+    }
+  },
+  "liver_vitamin_A_note": "官方AUSNUT生肝retinol13600µg/100g，100g仍为高预成维A食物，烹调保留按既有75–80%场景而非能充分去除。成人UL是长期参考，单餐超出不等于急性中毒。",
+  "sources": [
+    "nutrition/foods.md",
+    "sessions/2026-10-21-beef-liver-dose-calculation.md",
+    "https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/"
+  ],
+  "current_sync": "2026-10-30T11:10:58.050163，全量成功；当天尚无已上传活动，不据此宣称全天休息已完成",
+  "daily_actual_changed": false
+}
