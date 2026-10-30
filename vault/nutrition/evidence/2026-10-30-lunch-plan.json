@@ -9,8 +9,7 @@
   },
   "recommended_cooked_rice_g": 300,
   "recommended_egg_count": 0,
-  "recommended_liver_g": 100,
-  "liver_recommendation_context": "按此前2026-10-21个体食谱推算建议低频100g份量，非每日100g或精确安全阈值；未把200g单次等同中毒，不因昨天单日维A偏低就加肝。余下留下一次低频牛肝餐，不建议同日/接着几天累计吃完。",
+  "liver_recommendation_context": "当前200g整份依本人本餐明确约束安排，覆盖先100g的建议；维A背景没有因此改变，不认证为日常重复安全份量，也不再反复要求本人分餐。本轮仍是准备吃，不当吃完确认。",
   "weighing_assumptions": [
     "肉与土豆沿用既有生重口径，本轮未重述，需注明",
     "豆腐暂沿用既有嫩豆腐品牌数据",
@@ -39,12 +38,12 @@
     },
     {
       "food": "牛肝",
-      "portion": "建议100g，暂按生重；已备200g不等于已吃",
+      "portion": "200g，本人固定本餐份量；暂沿用生重口径",
       "macro": {
-        "kcal": 168.26003824091777,
-        "protein_g": 20,
-        "carbohydrate_g": 2.7,
-        "fat_g": 8.6
+        "kcal": 336.52007648183553,
+        "protein_g": 40,
+        "carbohydrate_g": 5.4,
+        "fat_g": 17.2
       }
     },
     {
@@ -59,19 +58,10 @@
     }
   ],
   "suggested_lunch_total": {
-    "kcal": 798.2100382409178,
-    "protein_g": 40.120000000000005,
-    "carbohydrate_g": 126.54,
-    "fat_g": 13.82
-  },
-  "if_prepared_200g_liver_all_eaten_instead": {
-    "status": "alternative-not-confirmed",
-    "macro": {
-      "kcal": 966.4700764818356,
-      "protein_g": 60.120000000000005,
-      "carbohydrate_g": 129.24,
-      "fat_g": 22.42
-    }
+    "kcal": 966.4700764818356,
+    "protein_g": 60.120000000000005,
+    "carbohydrate_g": 129.24,
+    "fat_g": 22.419999999999998
   },
   "liver_reference": {
     "key": "F000619",
@@ -145,5 +135,9 @@
     "https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/"
   ],
   "current_sync": "2026-10-30T11:10:58.050163，全量成功；当天尚无已上传活动，不据此宣称全天休息已完成",
-  "daily_actual_changed": false
+  "daily_actual_changed": false,
+  "previous_liver_suggestion_g": 100,
+  "user_fixed_liver_g": 200,
+  "planned_liver_g": 200,
+  "user_constraint": "牛肝200g必须这一顿吃掉"
 }
