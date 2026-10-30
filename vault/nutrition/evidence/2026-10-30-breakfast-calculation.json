@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-30",
+  "scope": "早餐实际回述；非全天结算",
+  "food_rows": [
+    {
+      "food": "干燕麦",
+      "reported_portion": "70g",
+      "calculation_g": 70,
+      "per100g": {
+        "kcal": 383,
+        "protein_g": 12.1,
+        "carbohydrate_g": 57.8,
+        "fat_g": 9,
+        "fiber_g": 11.1
+      },
+      "source": "本人既有标签，nutrition/foods.md",
+      "estimated_contribution": {
+        "kcal": 268.1,
+        "protein_g": 8.47,
+        "carbohydrate_g": 40.46,
+        "fat_g": 6.3,
+        "fiber_g": 7.77
+      }
+    },
+    {
+      "food": "MARIGOLD无添加糖脱脂酸奶",
+      "reported_portion": "250g",
+      "calculation_g": 250,
+      "per100g": {
+        "kcal": 49,
+        "protein_g": 4.8,
+        "carbohydrate_g": 7.1,
+        "fat_g": 0.1,
+        "calcium_mg": 180,
+        "total_sugars_g": 5.4
+      },
+      "source": "既有已核背标；nutrition/foods.md",
+      "estimated_contribution": {
+        "kcal": 122.5,
+        "protein_g": 12.0,
+        "carbohydrate_g": 17.75,
+        "fat_g": 0.25,
+        "calcium_mg": 450.0,
+        "total_sugars_g": 13.5
+      }
+    },
+    {
+      "food": "鸡蛋",
+      "reported_portion": "3个，每个55g",
+      "calculation_g": 145.2,
+      "per100g": {
+        "kcal": 143,
+        "protein_g": 12.56,
+        "carbohydrate_g": 0.72,
+        "fat_g": 9.51,
+        "fiber_g": 0
+      },
+      "source": "USDA FDC171287；SR28 NDB01123壳12%",
+      "assumption": "55g暂按带壳重，165g×88%=145.2g可食；本人未明确带壳/去壳；烹调方式未报，宏量原料代理",
+      "estimated_contribution": {
+        "kcal": 207.636,
+        "protein_g": 18.23712,
+        "carbohydrate_g": 1.04544,
+        "fat_g": 13.808519999999998,
+        "fiber_g": 0.0
+      }
+    },
+    {
+      "food": "蓝莓",
+      "reported_portion": "45g",
+      "calculation_g": 45,
+      "per100g": {
+        "kcal": 57,
+        "protein_g": 0.74,
+        "carbohydrate_g": 14.49,
+        "fat_g": 0.33,
+        "fiber_g": 2.4
+      },
+      "source": "USDA FDC171711，既有核读资料",
+      "estimated_contribution": {
+        "kcal": 25.65,
+        "protein_g": 0.33299999999999996,
+        "carbohydrate_g": 6.520499999999999,
+        "fat_g": 0.14850000000000002,
+        "fiber_g": 1.08
+      }
+    }
+  ],
+  "meal_totals": {
+    "早餐": {
+      "kcal": 623.886,
+      "protein_g": 39.04012,
+      "carbohydrate_g": 65.77594,
+      "fat_g": 20.507019999999997
+    }
+  },
+  "confirmed_intake_to_date_total": {
+    "kcal": 623.886,
+    "protein_g": 39.04012,
+    "carbohydrate_g": 65.77594,
+    "fat_g": 20.507019999999997
+  },
+  "fiber_g": 8.85,
+  "yogurt_calcium_only_mg": 450,
+  "egg_shell_reference": "https://www.ars.usda.gov/ARSUserFiles/80400525/Data/SR/SR28/reports/sr28fg01.pdf ; NDB01123 Egg, whole, raw, fresh, Refuse12% Shell",
+  "if_55g_is_edible_weight_instead": {
+    "egg_edible_g": 165,
+    "breakfast_total": {
+      "kcal": 652.1999999999999,
+      "protein_g": 41.527,
+      "carbohydrate_g": 65.91850000000001,
+      "fat_g": 22.389999999999997
+    }
+  },
+  "oil_note": "早餐烹调方式/油量未报，此餐不先加全日4g；当天合并按本人少油3–5g范围仅计一次，不能重复记每餐4g。",
+  "confidence": "中B，主要为鸡蛋带壳口径与烹调方式",
+  "daily_score": null,
+  "daily_score_note": "仅早餐，先记单餐及截至当前合计，全天记录补齐按scoring-v2完整评分。"
+}
