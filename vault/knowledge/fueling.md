@@ -24,6 +24,7 @@ related: [[knowledge/README]]
 - 依据: 观点与机理论述，未引用具体研究（原帖末尾被截断）。要点：(1) 刻意降低碳水可用性会让同样的外部负荷内部代价更高，RPE 上升、糖原恢复变慢、下一课更贵，所以"最大可吸收负荷"不是独立于补给的固定上限；(2) 目标应是代谢灵活性，而不是追高 FatMax 功率；(3) 低糖原训练放大部分适应信号，但信号多不等于成绩好，长期低碳水会降低训练质量和恢复；(4) 短的轻松骑需要很少碳水，长耐力日要吃够、别让后半程变成求生，阈值/VO2/比赛专项课需要高碳水可用性，很高的摄入量要训练过胃肠才合适；(5) 减重应靠全天/全周能量缺口，不是靠骑中少吃。
 - 我的判断: 可靠性 高。与碳水周期化（fuel for the work required）的主流框架一致，表述克制。与研究：一致。
 - 对本人: 适用。两堂硬课和长课按 60–90 g/h 吃足；短的 Z2 可以少吃。本人有减脂目标，缺口应放在休息日和非训练时段，不放在硬课骑中。
+- 补充（2026-11-03）：同帖 #97 @ivegotabike（Supporter）2026-10-28：几乎全在低区间的骑行，和有大量"烧火柴"高强度努力的骑行，最优补给不同。#98 @Phil（普通用户）2026-10-28：17–18 小时、IF 0.75 的超长距离和几小时、IF 0.85 的骑行不是一回事；他认为高碳水骑手依赖碳水、FatMax 很低（举例 0.4 g/min），而 FatMax 可以练（无出处，[未核实]）。可靠性：#97 中（与本条一致）；#98 低。对本人：不变，DRCC 和 Crazies 属于有大量高强度努力的那一类。
 
 ### 个人经验：体型瘦长、储能少的人改用高量液体碳水后耐受时长和强度明显提高（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Is the current High-Carb training paradigm total BS?」#10 @SimmarBakkuh（Supporter）2026-10-06，点赞 8，https://forum.intervals.icu/t/is-the-current-high-carb-training-paradigm-total-bs/132731
@@ -48,12 +49,14 @@ related: [[knowledge/README]]
 - 依据: 引用 Lobo et al. (2023)、Rajanayagam & Alsabri (2021)、Sorokin et al. (2009)、Brito et al., 2024、Mont, L., et al. (2009)。建议每小时钾 150–300 mg、钠 500–1000 mg、镁 50–100 mg；120 g/h 只用于高强度课和比赛，Z2 用 30–60 g/h。
 - 我的判断: 可靠性 低。按帖中给出的标题，这些文献讨论的是耐力运动员房颤风险整体，未见它们证明骑中摄入碳水会引发心律失常；整条机理链像推演出来的（格式也像 AI 生成）。运动中儿茶酚胺会压低胰岛素反应，剧烈运动时血钾通常是升高的，与"骑中摄入碳水导致低钾"的前提不符[未核实]。与研究：没有研究直接支持这一因果链。
 - 对本人: 不适用（不据此改补给）。新加坡湿热下补钠有其道理，但剂量应按出汗量定，不按这条推理定。
+- 补充（2026-11-03）：同帖 #102 @Phil（普通用户）2026-10-28 称有"新证据"把高糖摄入和房颤联系起来，并扯到糖尿病和胰岛素抵抗，没有给任何出处。可靠性 低[未核实]，判断不变。
 
 ### 争议说法：Noakes 2026 年综述称运动中约 10 g/h 碳水就足以维持"小葡萄糖池"（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Is the current High-Carb training paradigm total BS?」#89/#93 @ivegotabike（Supporter）2026-10-23 / 10-25，点赞 0/0；#14 同一用户 2026-10-07 点赞 2，https://forum.intervals.icu/t/is-the-current-high-carb-training-paradigm-total-bs/132731
 - 依据: #89 引用一篇 Noakes 论文，帖中写"published 21 Jan 2026"、链接 academic.oup.com/edrv/article/47/2/191，并摘录原文：长时间运动的营养策略应侧重维持运动中的 Small Glucose Pool，约 10 g/h 即可。#14 另列 Noakes 与 Burke 的 "Does a low-carbohydrate diet impede endurance sports performance? Debate Consensus" 以及 Burke 的 "Ketogenic low-CHO, high-fat diet: the future of elite endurance sport?"，作为正反两方的阅读入口。
 - 我的判断: 可靠性 低（作为实操处方）。这是一篇综述里的"新解读"，不是剂量对照试验；与多数研究里摄入量在 60–90 g/h 左右表现更好的结论冲突[剂量-反应细节未核实]。我没有核对过这篇 2026 年论文本身[未核实]。与研究：冲突。
 - 对本人: 不适用。DRCC 是接近阈值、约 2h 的比赛，没有理由降到 10 g/h。
+- 补充（2026-11-03）：教练核查（2026-11-03，Europe PMC 摘要）：Noakes TD, Prins PJ, Buga A, D'Agostino DP, Volek JS, Koutnik AP. Carbohydrate Ingestion on Exercise Metabolism and Physical Performance. Endocr Rev 2026;47(2):191–243（PMID 41562187；Europe PMC 记的出版日期是 2026-03-01，帖中"21 Jan 2026"可能是在线首发日，未核）。论文属实，是综述（160 多项研究），不是剂量对照试验。摘要的核心主张：运动中补碳水的主要作用是防止运动性低血糖，在超过 2–3 小时的长时间运动里最突出；高脂适应者脂肪氧化很高、表现相当。但摘要同时写明，运动中补碳水能显著提高表现，糖原耗竭时也一样。"约 10 g/h 就够"的剂量说法在摘要里没有出现，只见于帖中引用的正文[正文未核]。同帖 #100 @Phil（普通用户）2026-10-28 摘录的正文段落，讲的是超马跑者（约 5–8 km/h、45–55% VO2max）几乎全靠脂肪供能，不是比赛型骑行。几位作者是低碳/生酮方向的研究者，立场要考虑进去。判断不变：对本人 DRCC 这种约 2 小时、接近阈值的比赛不适用；摘要本身反而支持"运动中补碳水能提高表现"。
 
 ### 高能量周转下，先查补给再怪负荷：睡眠被打断是低能量可用性的典型信号（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Why Overtraining for me was the best thing I ever did」#3 @Kerry22（普通用户）2026-10-02，点赞 1；#8 @JamN（Supporter）2026-10-03，点赞 1，https://forum.intervals.icu/t/why-overtraining-for-me-was-the-best-thing-i-ever-did/132683
@@ -102,6 +105,7 @@ related: [[knowledge/README]]
 - 依据: 称为"测得的最高值"，来自一名超长距离骑手（未给研究出处）。
 - 我的判断: 可靠性 低——极端个案、无出处；我印象中文献报告的最大脂肪氧化一般 <1 g/min，生酮适应的超耐力运动员约 1.5 g/min 左右 [未核实]，2 g/min 远高于常见报道。与研究: 冲突/不确定 [未核实]。
 - 对本人: 不适用——本人比赛是 ~2h 接近阈值的高强度，主要靠碳水供能；不追求脂肪适应。
+- 补充（2026-11-03）：intervals.icu「Is the current High-Carb training paradigm total BS?」#100 @Phil（普通用户）2026-10-28 也说"已观测到高达 2 g/min 的脂肪氧化"，称出自 Noakes 2026 综述里的一张图（帖中贴图，未核）；他摘录的同一段原文也说明，这类高值对应的是长时间、低强度的场景。Noakes 2026 的摘要只说高脂适应者脂肪氧化"很高"，没有给数值[2 g/min 未核实]。判断不变。
 
 ### 高温出汗手滑时，某些胶（帖中点名 SiS）很难撕开，赛前可预先剪口（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Loved and hated energy gels」#3 @jiffylush 2023-03-09 点赞 1；#62 @Sunderland 2026-10-14 点赞 0（德州高温，手出汗打不开），https://www.trainerroad.com/forum/t/loved-and-hated-energy-gels/81819
