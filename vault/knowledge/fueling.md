@@ -50,6 +50,7 @@ related: [[knowledge/README]]
 - 我的判断: 可靠性 低。按帖中给出的标题，这些文献讨论的是耐力运动员房颤风险整体，未见它们证明骑中摄入碳水会引发心律失常；整条机理链像推演出来的（格式也像 AI 生成）。运动中儿茶酚胺会压低胰岛素反应，剧烈运动时血钾通常是升高的，与"骑中摄入碳水导致低钾"的前提不符[未核实]。与研究：没有研究直接支持这一因果链。
 - 对本人: 不适用（不据此改补给）。新加坡湿热下补钠有其道理，但剂量应按出汗量定，不按这条推理定。
 - 补充（2026-11-03）：同帖 #102 @Phil（普通用户）2026-10-28 称有"新证据"把高糖摄入和房颤联系起来，并扯到糖尿病和胰岛素抵抗，没有给任何出处。可靠性 低[未核实]，判断不变。
+- 补充（2026-11-10）：同帖 #102 @Phil（普通用户）2026-10-28 再称"房颤与高糖摄入有关的新证据"，楼内没有给任何来源[未核实]。仍按本条原判断：争议说法，不据此调整补给。
 
 ### 争议说法：Noakes 2026 年综述称运动中约 10 g/h 碳水就足以维持"小葡萄糖池"（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Is the current High-Carb training paradigm total BS?」#89/#93 @ivegotabike（Supporter）2026-10-23 / 10-25，点赞 0/0；#14 同一用户 2026-10-07 点赞 2，https://forum.intervals.icu/t/is-the-current-high-carb-training-paradigm-total-bs/132731
@@ -57,6 +58,7 @@ related: [[knowledge/README]]
 - 我的判断: 可靠性 低（作为实操处方）。这是一篇综述里的"新解读"，不是剂量对照试验；与多数研究里摄入量在 60–90 g/h 左右表现更好的结论冲突[剂量-反应细节未核实]。我没有核对过这篇 2026 年论文本身[未核实]。与研究：冲突。
 - 对本人: 不适用。DRCC 是接近阈值、约 2h 的比赛，没有理由降到 10 g/h。
 - 补充（2026-11-03）：教练核查（2026-11-03，Europe PMC 摘要）：Noakes TD, Prins PJ, Buga A, D'Agostino DP, Volek JS, Koutnik AP. Carbohydrate Ingestion on Exercise Metabolism and Physical Performance. Endocr Rev 2026;47(2):191–243（PMID 41562187；Europe PMC 记的出版日期是 2026-03-01，帖中"21 Jan 2026"可能是在线首发日，未核）。论文属实，是综述（160 多项研究），不是剂量对照试验。摘要的核心主张：运动中补碳水的主要作用是防止运动性低血糖，在超过 2–3 小时的长时间运动里最突出；高脂适应者脂肪氧化很高、表现相当。但摘要同时写明，运动中补碳水能显著提高表现，糖原耗竭时也一样。"约 10 g/h 就够"的剂量说法在摘要里没有出现，只见于帖中引用的正文[正文未核]。同帖 #100 @Phil（普通用户）2026-10-28 摘录的正文段落，讲的是超马跑者（约 5–8 km/h、45–55% VO2max）几乎全靠脂肪供能，不是比赛型骑行。几位作者是低碳/生酮方向的研究者，立场要考虑进去。判断不变：对本人 DRCC 这种约 2 小时、接近阈值的比赛不适用；摘要本身反而支持"运动中补碳水能提高表现"。
+- 补充（2026-11-10）：同帖 #100 @Phil（普通用户）2026-10-28 贴了一段论文摘录（楼内未写论文名，[推断] 是 #93 的 Noakes 2026 Endocr Rev）：超马跑者 5–8 km/h、约 45–55% VO2max 时，脂肪氧化几乎能供应全部能量。该摘录的具体页码与引文未核[未核实]。同一辩题的后续：Burke LM, Noakes TD. Does a low-carbohydrate diet impede endurance sports performance? Debate Consensus. Am J Clin Nutr 2026;123(5):101271（PMID 42070893，教练核查 2026-11-10，Europe PMC 摘要；帖中 #14 曾附链接）：双方同意肌肉对两种燃料的氧化能力都可训练，且运动中吃碳水能防止低血糖、提高长时间项目表现；分歧在于"最大化碳水氧化"是否比"够防低血糖的量"更有优势。对本人：仍不支持把比赛补给降到很低；DRCC/Crazies 按现行补给。
 
 ### 高能量周转下，先查补给再怪负荷：睡眠被打断是低能量可用性的典型信号（收录 2026-10-26）
 - 来源: [社区] intervals.icu「Why Overtraining for me was the best thing I ever did」#3 @Kerry22（普通用户）2026-10-02，点赞 1；#8 @JamN（Supporter）2026-10-03，点赞 1，https://forum.intervals.icu/t/why-overtraining-for-me-was-the-best-thing-i-ever-did/132683
@@ -106,6 +108,7 @@ related: [[knowledge/README]]
 - 我的判断: 可靠性 低——极端个案、无出处；我印象中文献报告的最大脂肪氧化一般 <1 g/min，生酮适应的超耐力运动员约 1.5 g/min 左右 [未核实]，2 g/min 远高于常见报道。与研究: 冲突/不确定 [未核实]。
 - 对本人: 不适用——本人比赛是 ~2h 接近阈值的高强度，主要靠碳水供能；不追求脂肪适应。
 - 补充（2026-11-03）：intervals.icu「Is the current High-Carb training paradigm total BS?」#100 @Phil（普通用户）2026-10-28 也说"已观测到高达 2 g/min 的脂肪氧化"，称出自 Noakes 2026 综述里的一张图（帖中贴图，未核）；他摘录的同一段原文也说明，这类高值对应的是长时间、低强度的场景。Noakes 2026 的摘要只说高脂适应者脂肪氧化"很高"，没有给数值[2 g/min 未核实]。判断不变。
+- 补充（2026-11-10）：intervals.icu「Is the current High-Carb training paradigm total BS?」#99/#109 @ivegotabike（Supporter）2026-10-28 / 11-06；#100 @Phil（普通用户）2026-10-28，https://forum.intervals.icu/t/is-the-current-high-carb-training-paradigm-total-bs/132731 。#99：Fatmax 可练，但多数人不专门练；#109：Fatmax ≠ 只烧脂肪（与本库"FatMax 强度下碳水仍在大量氧化"一致）；#100 称"能量几乎可以全靠体脂、只吃够稳血糖的碳水"、"250 W 可全由脂肪供能"，后一句无出处[未核实]，且他自己也承认进攻时仍要碳水。反方研究见本文件"生酮/低碳高脂"一条（同日收录，已核 Europe PMC）。
 
 ### 高温出汗手滑时，某些胶（帖中点名 SiS）很难撕开，赛前可预先剪口（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Loved and hated energy gels」#3 @jiffylush 2023-03-09 点赞 1；#62 @Sunderland 2026-10-14 点赞 0（德州高温，手出汗打不开），https://www.trainerroad.com/forum/t/loved-and-hated-energy-gels/81819
@@ -130,3 +133,24 @@ related: [[knowledge/README]]
 - 依据: 引用研究，发帖人原文给出的标题："A Five-Week Periodized Carbohydrate Diet Does Not Improve Maximal Lactate Steady-State Exercise Capacity and Substrate Oxidation in Well-Trained Cyclists compared to a High-Carbohydrate Diet"（PMC，帖中未写作者和年份）。
 - 我的判断: 可靠性 中——引用了具体研究；但只是单一研究、单一指标。与研究: 一致——碳水周期化/"train low"对表现的研究结果不一，部分研究有收益、部分没有 [未核实 具体研究]。**教练核查（2026-10-26，Europe PMC 摘要）：Prieto-Bellver 等 2024 Nutrients，17 名训练有素的车手，5 周；周期化碳水组（13 堂课在低碳水状态下练）与高碳水组的最大乳酸稳态功率都提高（约 +9 W 和 +11 W），两组在所有指标上都没有差别。在近三年内，可作 [研究] 引用。**
 - 对本人: 适用——本人减脂按"轻松日少吃、硬课日多吃"调整即可，不必为了"代谢适应"刻意在质量课前低碳水。
+
+### 生酮/低碳高脂饮食能把运动中脂肪氧化提高到约 1.5 g/min，但对表现总体中性或更差，高强度受损；短期断碳水后再补回碳水也没能恢复高强度表现（收录 2026-11-10）
+- 来源: [社区] intervals.icu「Is the current High-Carb training paradigm total BS?」#113 @ivegotabike（Supporter）2026-11-07，点赞 0，https://forum.intervals.icu/t/is-the-current-high-carb-training-paradigm-total-bs/132731 ；[研究] 帖中引用的三处研究，教练核查（2026-11-10，Europe PMC 摘要）如下。
+- 依据:
+  - Leaf A, Rothschild JA, …, Antonio J. International society of sports nutrition position stand: ketogenic diets. J Int Soc Sports Nutr 2024;21(1):2368167（PMID 38934469）：立场声明第 3 点与帖中引文逐字一致——相比高碳水低脂饮食，生酮饮食对运动表现\"大体中性或有害\"，尽管运动中脂肪氧化显著升高（约 1.5 g/min）；第 4 点：涉及精英运动员的研究都显示表现下降（均 ≤6 周）。帖中这条在抓取文本里显示为验证页，链接从原始 JSON 里找到。
+  - Burke LM, Whitfield J, Heikura IA, et al. Adaptation to a low carbohydrate high fat diet is rapid but impairs endurance exercise metabolism and performance despite enhanced glycogen availability. J Physiol 2021;599(3):771–790（PMID 32697366）：精英竞走运动员，低碳高脂适应后运动中脂肪氧化增加 >200%（约 1.43 g/min），但同速度下摄氧量高约 5–8%；再补 24 小时高碳水后比赛，高碳水组全部进步（约 5.7%），低碳高脂组 7 人中 6 人变慢；帖中\"5–6 天就有明显底物变化，但补回碳水也没恢复高强度表现\"一句与摘要结论一致。帖中没有贴这篇的链接，是教练按引文在 Europe PMC 检索到的，作者、期刊由教练补全。
+  - McSwiney FT, Fusco B, McCabe L, et al. Changes in body composition and substrate utilization after a short-term ketogenic diet in endurance-trained males. Biol Sport 2021;38(1):145–152（PMID 33795923）：9 名耐力训练男性，随意进食生酮 7 天；最大功率、VO2peak 不变，体重下降（脂肪和去脂体重都减），脂肪氧化升高、碳水利用下降，赛后最大脂肪氧化 0.95 g/min。帖中\"提高 1.8 倍\"在取到的摘要里因截断看不到前测值，倍数未核[未核实]。
+- 我的判断: 可靠性 高（立场声明 2024 在近三年内；Burke 2021、McSwiney 2021 超出三年，但与 2024 立场声明及 Burke & Noakes 2026 辩论共识的方向一致，未见被推翻）。局限：McSwiney 只有 9 人、7 天，且没测表现；Burke 2021 是竞走不是骑行。与研究：一致。
+- 对本人: 适用——本人是爬坡型、比赛里有很多高强度拉扯（DRCC、Crazies 终点坡），正是低碳高脂最可能伤到的部分。继续按训练需要吃碳水，不尝试生酮或长期低碳；本人增肌减脂的目标也不靠断碳水来做。不改现行补给和饮食安排。
+
+### 很浓的碳水瓶（如 250 g / 950 ml）之后要配几口清水；也有人改成每壶 90–120 g、每小时一壶，省去浓壶和清水壶来回换（收录 2026-11-10）
+- 来源: [社区] TrainerRoad「The Triathlon & Ironman Training Thread 2026」#120/#123 @trilovetohelp 2026-09-15，点赞 1；#121 @jamesdrichey 2026-09-15，点赞 2；#122 @giventotri（均为普通用户），https://www.trainerroad.com/forum/t/the-triathlon-ironman-training-thread-2026/111476
+- 依据: 个人经验与观点，没有引用。#120：高渗溶液，跟几口清水\"帮助胃排空、吸收更快\"；热天有人会出问题，必须在接近比赛的条件下先试。#121：每壶 90–120 g、每小时一壶。#122：约 80 g/h 对 70.3 已够。#123：常见建议是碳水和水分壶装（无来源）。
+- 我的判断: 可靠性 低-中——\"浓度高的饮料胃排空更慢\"是常见生理说法，但帖中没有数据，\"配清水能加快吸收\"未核[未核实]。与研究：未核。
+- 对本人: 参考——本人已实测 720 ml 壶 100–120 g 白糖（约 14–17%）、1h 左右喝完不另喝水，无胃胀恶心，只有嘴黏、有点渴；120 g 下更硬强度的耐受尚不知。若以后要用更浓的配方，或在 DRCC 这种不能沿途补水的场合出现口渴/胃不适，可试\"喝几口浓壶后跟几口清水\"，算待验证的执行方式，不改现行配方。
+
+### 铁三经验：跑步段抽筋多半是前面骑得太猛（或比训练时更用力），补钠救不了（收录 2026-11-10）
+- 来源: [社区] TrainerRoad「The Triathlon & Ironman Training Thread 2026」#124 @jamesdrichey 2026-09-15，点赞 0；#125 @trilovetohelp 2026-09-15（均为普通用户），https://www.trainerroad.com/forum/t/the-triathlon-ironman-training-thread-2026/111476
+- 依据: #124 自称\"普遍共识\"，没有引用；他也承认自己从没做过出汗测试、电解质凭感觉放。#125：抽筋通常就是比训练时更用力。
+- 我的判断: 可靠性 低——两人都没有证据；运动相关抽筋的成因（神经肌肉疲劳还是脱水/电解质）本身有争议，本次没有核查研究[未核实]。与研究：未核。
+- 对本人: 参考——本人 10/28 试过 0.5 g / 1 g 盐无明显区别，与\"不能简单靠补钠解决\"的方向不矛盾，但本条不能用来下结论。不改补给。

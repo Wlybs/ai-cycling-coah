@@ -36,6 +36,7 @@ related: [[knowledge/README]]
 - 依据: 模型定义：Fitness 默认时间常数 42 天，Fatigue 默认 7 天；约 6 周规律训练后曲线才有意义。#6：维持 70 需要每周约 490（70×7），可以每天 70，也可以隔天 140。#103：此前误以为超过 42 天的负荷不再计入，其实是指数加权，更早的负荷权重变小但仍有贡献。
 - 我的判断: 可靠性 高（属于模型数学）。与研究：不适用（模型定义本身）。
 - 对本人: 适用。估算周负荷对 CTL 的影响时用这条：周负荷高于约 7×当前 CTL，CTL 才会上升；具体数值读当前的 fitness_trend，不在这里写死。
+- 补充（2026-11-10）：intervals.icu「Calculate Needed Training Load?」#15 @JASON_C_WILLIAMS（Supporter）2022-01-10，点赞 2；#18 @app4g（Supporter, staff, moderator）2022-07-08，点赞 5；#71 @Chris_Hancock（Supporter）2025-04-29，点赞 2；#6 @MedTechCD（staff, moderator）2022-01-08，点赞 5；#7 @Gato_Felix（Supporter）2022-01-08，点赞 2，https://forum.intervals.icu/t/calculate-needed-training-load/5788 （本次抓取只含 #1–#20、#62–#81）。具体系数：Fitness = 昨日 × 0.976472 + 当日负荷 × 0.023528；Fatigue = 昨日 × 0.866878 + 当日负荷 × 0.133122；#18 用 wellness API 自己复算，与 intervals.icu 显示值对上（与 TrainingPeaks 的线性写法差约 ±1 的取整）。教练复算：0.976472 = e^(−1/42)，0.866878 = e^(−1/7)，与 42 天/7 天时间常数一致。#71 由此推出"要把 Form 停在 −10 或 −30 当天需要多少负荷"的公式（界面显示是取整值，算出来有偏差）；#79/#81：不用算，在日历里排好未来课，intervals 会自动投影 Form。经验规则（无研究）：#6 每周加负荷不超过 10%、每 4 周一个负荷减约 50% 的恢复周；#7 转述 Alan Couzens（原链接已失效，二手）：CTL 每月涨约 10，3 周加载末 TSB 低点约 −20。可靠性：系数 高（可复算），经验规则 低-中。对本人：系数可用来核对本项目 coach_memory 里的 CTL/ATL；按本人 10/28 决定，TSB/加量规则只作信息，不用来强制休或卡加量。
 
 ### Form（TSB）用绝对值还是百分比，对 CTL 很低或很高的人差别很大；有人把自己的下限定在 −22 而不是默认 −30（收录 2026-10-26）
 - 来源: [社区] intervals.icu「FITNESS PAGE - a guide to getting started」#3 @MedTechCD（staff, moderator）2022-08-13，点赞 27，https://forum.intervals.icu/t/fitness-page-a-guide-to-getting-started/17702
@@ -91,9 +92,16 @@ related: [[knowledge/README]]
 - 我的判断: 可靠性 中——功率—时长模型依赖各时长的最大努力，这是模型本身的前提，逻辑上成立；与研究：没有研究（帖中未引用）。
 - 对本人: 适用。本人不做全力 FTP 测试；Faber 双向、Crazies 终点坡这类自然出现的全力努力就是"伪装测试"，也是 90 天滚动最好值的来源。功率曲线某个时长长期没有全力时，该时长的数只能当下限，不能反推能力下降。不改课表。
 - 补充（2026-11-03）：intervals.icu「eFTP accuracy vs 20 min test」#3 @hugo_fouke（普通用户）2026-11-02，点赞 3；#2 @Lukasz_Pludowski（Supporter）2026-11-02，点赞 1；#5 @MedTechCD（staff, moderator）2026-11-02，点赞 1，https://forum.intervals.icu/t/eftp-accuracy-vs-20-min-test/133393 。要点：eFTP 只能和它看到的硬努力一样准，平时多骑轻松时通常偏低；"20 分钟测试 ×95%"本身也只是经验估计，比例因人而异；两周内各做一次全力的 3–5 分钟和 12–20 分钟（测试、比赛、硬爬坡都算）后，eFTP 通常接近 20 分钟测试的结果。版主 #5：eFTP 有内置衰减，但降得很慢，几周没做硬努力不应让它大幅下调；长时间停训后要重新评估。可靠性 中（和本条原意一致；"接近"到什么程度帖中没有数据）。对本人：不改——本人定强度不按 FTP 百分比；本人冲刺强，3–5 分钟努力里的无氧成分也会把 eFTP 抬高，eFTP 仍不作准。
+- 补充（2026-11-10）：同帖「eFTP accuracy vs 20 min test」#6 @hugo_fouke（普通用户）2026-11-03，点赞 1；#11 @Gerald M（staff, moderator）2026-11-04，点赞 1，https://forum.intervals.icu/t/eftp-accuracy-vs-20-min-test/133393 。#6：一次 60% 骑两小时的轻松骑不能说明上限变低，所以模型不会因为一段轻松期就下调 eFTP；真正停训（生病、几周不骑）后，应主动做一次硬努力或测试来重设，而不是等估值慢慢降。#11：eFTP 的检测时长默认 180 秒（3 分钟），可在设置里改到最长 30 分钟，再到功率曲线上看该时长的点。可靠性 中（版主说明的是软件行为）。对本人：与本条"长期没有全力的时长只能当下限"一致；本人冲刺强，默认 3 分钟检测会让 eFTP 偏受无氧成分影响，eFTP 继续不作准。不改课表、不改 ICU 设置。
 
 ### 一次轻松骑里夹几个 30–40 秒冲刺，就可能把 NP/IF 抬到 0.8 左右；只看 IF 判断"骑得多硬"会误导（收录 2026-11-03）
 - 来源: [社区] TrainerRoad「How it started, how it's going aka predictions vs reality」#326 @Helvellyn（普通用户）2026-10-31，点赞 1；背景 #320 @Boysey95、#324 @Bones（均为普通用户）2026-10-31，https://www.trainerroad.com/forum/t/how-it-started-how-its-going-aka-predictions-vs-reality/110892
 - 依据: 观点。#320 认为把 IF 0.81 的骑行评为"中等"，说明 FTP 设低了；#324 反驳：非结构化的户外骑，IF 0.81 谁都会觉得中等；#326：NP 不是真实功率，一次 80 分钟、IF 0.81 的骑行有无数种组成方式，几次 30–40 秒冲刺加上其余时间的轻松骑就能做到。
 - 我的判断: 可靠性 中——NP 的算法（先取 30 秒滚动平均，再按四次方平均）会放大短时间的高功率，这是公式本身的性质；具体冲刺几次能到 0.81，帖中没有算[未核实]。与研究：没有研究（属于公式性质）。
 - 对本人: 适用——Crazies 和 AWE 团骑里短加速很多，IF/TSS 会偏高。比较两次团骑、或判断某次 Z2 有没有骑超，看各区间时长和实际功率分布，不只看 IF。不改课表。
+
+### 社区自定义"Sprint Load"字段：认为功率 TSS 低估短冲刺的神经肌肉疲劳，用"冲刺米数 × RPE ÷ 200"另算一份负荷（收录 2026-11-10）
+- 来源: [社区] intervals.icu「Custom Field: Neuromuscular Track and field Sprint Load (Based on Sprint Meters & RPE)」#1 @Jorgefly（Supporter）2026-11-07，点赞 1，https://forum.intervals.icu/t/custom-field-neuromuscular-track-and-field-sprint-load-based-on-sprint-meters-rpe/133500
+- 依据: 作者自己设计的公式，没有数据或研究；除数 200 是为了不把 PMC 图拉歪而定的，属于人为缩放。主要面向田径、球类冲刺，骑行加速只是顺带提到。
+- 我的判断: 可靠性 低——"40 分钟冲刺课 TSS 很小但次日很累"这个现象常见，但该公式没有验证，不能当负荷标准。与研究：没有研究。
+- 对本人: 待验证，不采用——与本库"IF 会被短加速抬高"一条看的是不同方向：功率指标可能高估团骑的有氧难度，同时低估冲刺对腿的消耗。判断 Crazies 后的疲劳仍以本人体感和下一堂课能否正常踩为准。
