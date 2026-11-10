@@ -54,6 +54,7 @@ related: [[knowledge/README]]
 - 依据: 个人经验（Unbound 后约 2 个月的 Leadville 只能吃 Unbound 的底子）；#14 强调心理消耗与身体消耗一样难持续。
 - 我的判断: 可靠性 中。与研究: 没有研究。
 - 对本人: 适用——DRCC（12/13）之后到 2027 目标之间应安排过渡/减量期，不要接着冲下一个巅峰；与 6–7 月"赛季后倦怠"的复盘结论一致。
+- 补充（2026-11-10）：TrainerRoad「Important race 4 weeks after my "A" Race」#11 @grwoolf（普通用户）2026-11-08，点赞 1；#5 @Jolyzara 2026-11-07，点赞 3；#7 @Un-QuittingBikes 2026-11-07，点赞 1；#8/#10 @JoeX 2026-11-08（均为普通用户），https://www.trainerroad.com/forum/t/important-race-4-weeks-after-my-a-race/115573 。A 赛后 4 周还有一场重要比赛时：#11 第 1 周休到恢复、有状态就尽早做几次努力，第 2–3 周照专项期那样练硬课，目的是止住下滑而不是再涨，赛周正常轻减量；理由是 A 赛前已经用一部分体能换了新鲜度，体能高点其实在减量前，一场单日赛只加急性疲劳、不会挖深坑；"多数人没法在这么短的窗口里两次达到巅峰"。#5 偏保守：大部分时间轻松骑，感觉好了每周加 1 堂维持课，"带着疲劳去比赛反而会伤表现"。#8/#10：第一场打得多狠决定第二场怎么准备，按 RPE 是否符合预期调，不怕降课强度。#7：第二场是 34 km 纯爬坡（高 tempo 持续），可练 SST 进阶加很轻的减量。可靠性 中（经验，两种做法都有理，无研究）。对本人：DRCC 12/13 之后暂无已定的紧接比赛，不改安排；以后两场赛相隔 3–4 周时，可按"先恢复、再保强度、不追第二个巅峰"排。
 
 ### "维持"不等于轻松：要保住体能需要保留强度，可以减量但不要去掉硬课（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Suggested "Maintaining Fitness" plan looks way too hard -- did I do something wrong?」#4 @eddie（TrainerRoad Team, staff, moderator, admin）2026-10-13，点赞 4，https://www.trainerroad.com/forum/t/suggested-maintaining-fitness-plan-looks-way-too-hard-did-i-do-something-wrong/115249
