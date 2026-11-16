@@ -54,6 +54,7 @@ related: [[knowledge/README]]
 - 依据: 个人经验（每周 3 次）。
 - 我的判断: 可靠性 中——低训练量、高强度的力量训练已被广泛证明有效；但他每周 3 次，与本人每周 1 次不可直接比较。与研究: 一致（大方向）。
 - 对本人: 待验证——本人只能每周一次、器械有限，可以参考"少动作、组间休息充分、接近力竭"的思路，但本人的"前两次轻、留 3–4 次余力"进阶规则仍有效（ACL 史）。
+- 补充（2026-11-17）：TrainerRoad「Strength Training Not to Failure」#1 @chondro（普通用户，60 岁）2026-11-14，点赞 0，https://www.trainerroad.com/forum/t/strength-training-not-to-failure/115761 。不再练到力竭、每组至少留约 3 次余力后，自述身体是 10 年来感觉最好的；同帖 #2–#4 说 TR 的 AI 只把力竭组算进负荷。可靠性 低（N=1 体感）。对本人：与本人"留 3–4 次余力"的规则一致，不改。
 
 ### 力量训练 + 骑行训练合起来能提升骑行能力，但力量课要做周期化、算进总负荷和时间（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Consistency v weight training (and both)」#2 @Twowkg（普通用户）2026-10-20，点赞 0，https://www.trainerroad.com/forum/t/consistency-v-weight-training-and-both/115328

@@ -177,3 +177,15 @@ related: [[knowledge/README]]
 - 我的判断: 可靠性 中——与 [[coach-standard]] 第 10 条"全人视角"一致；#8 的周结构是个案建议。与研究：没有研究（帖中未引用）。
 - 对本人: 部分适用——本人是学生，没有体力劳动；但上课多、作息紧的周，同理按"生活负荷也算负荷"处理，由本人体感决定是否减课。不改课表。
 - 补充（2026-11-10）：TrainerRoad「What workout did you do today? (2026)」#649 @Locke31104（普通用户）2026-11-06，点赞 6，https://www.trainerroad.com/forum/t/what-workout-did-you-do-today-2026/108570 ：工作很糟的一天，骑行心率稳在 140 多，但主观用力感（RPE）明显偏高。N=1、单次。对本人：生活压力大的那天 RPE 偏高不一定是体能问题，与本库"RPE 只按这一堂实际感觉打分"一起看。
+
+### 赛季末连续比赛：比赛本身算硬课；疲劳时把一堂 VO2 换成耐力骑、保持骑行频率，不必一下砍到很少（收录 2026-11-17）
+- 来源: [社区] TrainerRoad「Body may be cooked from training, HRV low and TR recommends less volume, don't know what to do」#4 @Twowkg 点赞 1；#6 @splash 点赞 2；#7 @JoeX 点赞 1（均为普通用户，2026-11-15）；#10 @eddie（TrainerRoad Team, staff）2026-11-16，点赞 0，https://www.trainerroad.com/forum/t/body-may-be-cooked-from-training-hrv-low-and-tr-recommends-less-volume-dont-know-what-to-do/115764
+- 依据: 个人经验与员工建议。发帖人每周 2 堂硬课加 1 场 CX 赛，本季已赛 13 场，HRV 持续偏低，最近 3 场比赛心率拉不上去。Twowkg：每周硬日限 2 个（比赛算在内），按真实体感判断，不按指标。splash：A 赛已过，12 月前练不出多少新体能，比赛更需要新鲜度；用缩组数/缩时长的轻课保住规律。JoeX：一直每周练 5 天，就别突然降到 2 天，可以同样频率全骑轻松；他认为 HRV 常是干扰信号。eddie：感觉疲劳就去掉一个强度日，恢复后想加回再加。发帖人 #9 随后把周四的 VO2 换成了耐力骑。
+- 我的判断: 可靠性 中——多人意见一致，员工此处建议的是少练，没有产品立场；"赛季最后几周练不出新体能"是常见说法，帖中没有研究 [未核实]。与研究: 没有研究。
+- 对本人: 适用——与本人"每周硬课 ≤2、Crazies 算 1""停不停训由本人体感决定"一致。DRCC 前若 Crazies 之后连续出现"同功率心率高、腿空"（如 11/6），可优先把另一堂硬课换成耐力骑，而不是整周停；是否换由本人体感决定。不改核心剂量。
+
+### 热身要很久才进入状态、Z2 也觉得吃力，可能是累积疲劳的信号；有人固定先骑 10–15 分钟很轻、再逐步加到课表强度（收录 2026-11-17）
+- 来源: [社区] TrainerRoad「RPE gets easier as ride gets harder. How are you rating it?」#2 @Twowkg 点赞 1；#5 @Evermen 点赞 0；#6 @Norry1 点赞 1；#7 @Saddlesaur 点赞 0（均为普通用户，2026-11-15），https://www.trainerroad.com/forum/t/rpe-gets-easier-as-ride-gets-harder-how-are-you-rating-it/115765
+- 依据: 个人经验。发帖人前一周加量多、做砸一堂 over-under，随后一堂 2h 高位 Z2 课前 15 分钟感觉像"Hard"，1h15 之后反而很轻松，心率降了 8–10 bpm。Twowkg：热身越久才顺，往往说明越累。Evermen：上一堂是高强度时需要更长热身。Norry1/Saddlesaur：课前自己加 10–15 分钟很轻的骑行或重复一遍热身段。
+- 我的判断: 可靠性 低-中——个人体会，没有数据；"开头难、后面顺"也可能与补给、前一天课型有关，帖中无法区分。与研究: 没有研究。
+- 对本人: 待验证——可作为本人体感判断里的一项参考（热身是否异常久），不作为停训规则；本人课表本来就按体感调整。
