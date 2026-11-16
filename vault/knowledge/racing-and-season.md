@@ -18,6 +18,7 @@ related: [[knowledge/README]]
 - 依据: 自身执教观察。
 - 我的判断: 可靠性 低——经验之谈，数字无来源；与研究: 不确定 [未核实]。
 - 对本人: 待验证——到 12/13 DRCC 的强化期短于 12 周，暂不受此限；2027 长期规划时可作为分块时长的参考。
+- 补充（2026-11-17）：TrainerRoad「FTP Improved by 180w in exactly 1 yr (need help)」#35 @eddie（TrainerRoad Team, staff）2026-11-12，点赞 0，https://www.trainerroad.com/forum/t/ftp-improved-by-180w-in-exactly-1-yr-need-help/115741 。很难长期只待在提升期（build），长期目标宜按基础→提升→专项排；耐力训练练过头像"慢烤"，察觉时往往已经要退两周；FTP 一年里会有一个高峰、两侧都会回落，靠持续训练让每年的高峰更高。可靠性 低-中（员工经验，没有数据；"12 周"仍无来源）。对本人：2027 长期规划可参考"每年一个高峰"；DRCC 前不改安排。
 
 ### 在长计划中途插入专项期（即使近期无比赛）可增加针对性与变化（收录 2026-10-26）
 - 来源: [社区] TrainerRoad「Specialty phase mid plan」#4 @eddie（TrainerRoad Team, staff/admin）2026-10-23，点赞 0；#2 @ntisdell（普通用户）2026-10-19，点赞 1，https://www.trainerroad.com/forum/t/specialty-phase-mid-plan/115304
