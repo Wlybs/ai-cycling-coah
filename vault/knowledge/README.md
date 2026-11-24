@@ -39,3 +39,4 @@ related: [[coach-standard]] [[research/2026-10-26-training-knowledge-channels]]
 - 2026-11-03：定时任务；30 个 NEW/UPDATED 主题读完 15 个训练相关的，新增 7 条、补充 6 条；Europe PMC 核查 2 篇（Noakes 2026 Endocr Rev 属实但摘要未见"10 g/h"；Bosquet 2007 减量 meta 为教练补充的研究背景）。摘要见 [[research/forum-digest/2026-W45]]。
 - 2026-11-10：定时任务；31 个 NEW/UPDATED 主题读完 24 个，新增 11 条、补充 10 条；Europe PMC 核查 4 篇（ISSN 2024 生酮立场声明、Burke 2021 J Physiol 属实；McSwiney 2021 的"1.8 倍"摘要截断未核；Burke & Noakes 2026 辩论共识补核），另复算 intervals.icu 的 CTL/ATL 系数。摘要见 [[research/forum-digest/2026-W46]]。
 - 2026-11-17：定时任务；20 个 NEW/UPDATED 主题读完 15 个，新增 8 条、补充 4 条；本周帖子没有引用具体论文，未做 Europe PMC 核查。摘要见 [[research/forum-digest/2026-W47]]。
+- 2026-11-24：定时任务；26 个 NEW/UPDATED 主题读完 15 个训练相关的，新增 14 条、补充 1 条；Europe PMC 核查 8 篇（Jones 2024 J Physiol、Burke 2011、Kerksick 2017 摘要属实；Joyner & Coyle 2008、Impellizzeri 2019、Passfield 2017、Bassett & Howley 2000 题录属实；Gollnick 1973 存在但无摘要、表内数字未核）。摘要见 [[research/forum-digest/2026-W48]]。
