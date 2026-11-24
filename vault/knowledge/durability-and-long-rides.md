@@ -43,3 +43,15 @@ related: [[knowledge/README]]
 - 依据: 推理与个人观察；#5/#7 明确说不知道有这方面的研究。KonaSS：只要实际骑在 Z2 的总时间相同就无妨；像每小时停 10 分钟这样长期下来才可能有差别；短暂停下补给反而可能让后段骑得更好。cnidos：停 10–15 分钟后身体开始转入恢复状态，重新骑时同功率心率偏高，但不知道这会影响训练效果。
 - 我的判断: 可靠性 低-中——没有研究，属于合理推断；"停车后同功率心率偏高"是常见观察，帖中的机制解释（激素/体液变化）没有出处 [未核实]。与研究: 没有研究。
 - 对本人: 适用——本人户外长课会停车买 100PLUS、加水，不必为此压缩停车或补时；分析长课心率漂移时，停车 10 分钟以上前后的心率要分段看，不要算进同一段的漂移。另见 [[knowledge/racing-and-season]] 的 café legs 条目。
+
+### 备战 200 英里砾石赛（Unbound 200）：通用计划排的最长骑太短，多人建议自己加长骑，至少练到 5h，2 月起每周加约 30 分钟（收录 2026-11-24）
+- 来源: [社区] TrainerRoad「Got in for unbound 200! Training plan?」#6 @Joe 点赞 4；#7 @Byyny（自称完赛两次）点赞 3；#8 @timgasser 点赞 3；#10 @grwoolf（自称参赛 5 次）点赞 5；#16 @Elgro 点赞 2；#17 @ReadingTrail47（均为普通用户）2026-11-21 至 11-23，https://www.trainerroad.com/forum/t/got-in-for-unbound-200-training-plan/115850
+- 依据: 个人经验。#6：TR 给 15 小时的 200 英里赛只排了约 2.5h 长骑，他自己加了约 6 次长骑，其余用两天结构化间歇＋逐周加长的长骑；#7：2 月前每周 2–3 天间歇（VO2、阈值）加几次 1.5h Z2，2 月起长骑每周加约 30 分钟，并把一天间歇换成 15–30 分钟的 Z3 重复或 over-under；#8：至少练到 5h；#10：TR 优化的是通用体能，长骑要自己加，同时练补给、坐姿、配速；#16：每个周期休息周前把最长一次骑延长到 3.5–4.5h；#17：>2.5–3h 的赛事补 60–90 g/h，混合糖时 90+ g/h，长骑中练出肠胃适应，并引用 Burke 2011 与 Kerksick 2017。
+- 我的判断: 教练核查（2026-11-24，Europe PMC）：Burke LM, Hawley JA, Wong SH, Jeukendrup AE. Carbohydrates for training and competition. J Sports Sci 2011（PMID 21660838）摘要写"30–60 g/h 适合更长项目，>2.5h 可受益于最高约 90 g/h，需混合碳水"，与 #17 一致；Kerksick CM 等 ISSN 营养时机立场声明 J Int Soc Sports Nutr 2017（PMID 28919842）摘要写 >60 分钟、>70% VO2max 的运动约 30–60 g/h（6–8% 溶液），也属实，但我读到的摘要部分没有"混合碳水"的论述 [未核实]。两篇都早于近三年，本周未查是否被后续研究取代。长骑的个人建议可靠性 低-中，各人说法一致但没有数据；Fascat 视频帖中没给内容，我没看 [未核实]。
+- 对本人: 部分适用——DRCC 12/13 是约 2h 的短赛，200 英里的具体做法不适用；对 2027 年长赛事的规划，"通用计划不覆盖赛事专项时长，要自己加长骑"与本人"有空 4–5h 长课、按目标安排"一致；补给与本人 60–90 g/h 一致。不改课表剂量。
+
+### 耐久性（resilience）：Jones 2024 综述——VO2max、效率、分数利用率会在长时间疲劳运动中变差，CP 在 2h 重度强度骑行后平均可降约 10%（教练核查）（收录 2026-11-24）
+- 来源: [社区] intervals.icu「Could you tell me where I can access research papers on cycling power training」#6 @GarageLab（Supporter，贴了一份标注"AI-assisted"的阅读清单，帖文被截断，清单里 Jones 条目只剩标题开头）2026-11-17，https://forum.intervals.icu/t/could-you-tell-me-where-i-can-access-research-papers-on-cycling-power-training/133732
+- 依据: 阅读清单。用 Europe PMC 核对了清单里出现的题目：Joyner & Coyle 2008 J Physiol（PMID 17901124）；Impellizzeri, Marcora, Coutts 2019 IJSPP（PMID 30614348）；Passfield 等 2017 J Sports Sci（PMID 27686573）；Bassett & Howley 2000 MSSE（PMID 10647532）；Jones AM 2024 J Physiol（PMID 37606604）。五篇都存在、作者年份刊名与帖子一致。
+- 我的判断: 教练核查（2026-11-24，Europe PMC 摘要）：Jones AM, "The fourth dimension: physiological resilience as an independent determinant of endurance exercise performance", J Physiol 2024 摘要写，起跑线上的 VO2max、效率、分数利用率不是静态的，会随疲劳性耐力运动恶化，例如临界功率（CP）在 2h 重度强度骑行后平均可下降约 10%。Passfield 2017 摘要说，简单汇总方法反映不了一次课的功率分布，也体现不了代谢压力。清单里对每篇的概述（如"平均功率相同、变异性不同的两场比赛压力不同"）是 GarageLab 的转述，我只核了题录和摘要，细节 [未核实]。可靠性：Jones 2024 的摘要内容属实，高；转述部分中。
+- 对本人: 适用——DRCC 和 Crazies 的决胜在后段，支持"看疲劳后的功率"（见 2026-11-17 条目）；"约 10%"是平均数，本人个体差异未测，不能直接当本人数值。Passfield 的"只看平均/NP 会失真"与本人 Crazies 的 IF 误导条目一致。不改课表剂量。
